@@ -382,8 +382,9 @@ namespace ReqM_Tool
 
     }
 
-
-    ///////////// CLASES 
+    /* *******************/
+    /* CLASS DEFINITIONS */
+    /* *******************/
     class MyFile
     {
         /* path for the file in where is searched the "pattern" (requirement_id) */
