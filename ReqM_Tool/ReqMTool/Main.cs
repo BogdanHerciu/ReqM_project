@@ -77,7 +77,7 @@ namespace ReqM_Tool
         {
             if (FileDialog.ShowDialog() == DialogResult.OK)
               {
-                /* build the file path */
+                /* build the XML file path */
                 XmlFilePath = FileDialog.FileName;
                   try
                   { 
