@@ -1,0 +1,48 @@
+C:\Users\bogda\Desktop\xml-1.0\XMLtoTABLEandTABLEtoXML\XMLtoTABLEandTABLEtoXML\bin\Debug\XMLtoTABLEandTABLEtoXML.exe.config
+C:\Users\bogda\Desktop\xml-1.0\XMLtoTABLEandTABLEtoXML\XMLtoTABLEandTABLEtoXML\bin\Debug\XMLtoTABLEandTABLEtoXML.exe
+C:\Users\bogda\Desktop\xml-1.0\XMLtoTABLEandTABLEtoXML\XMLtoTABLEandTABLEtoXML\bin\Debug\XMLtoTABLEandTABLEtoXML.pdb
+C:\Users\bogda\Desktop\xml-1.0\XMLtoTABLEandTABLEtoXML\XMLtoTABLEandTABLEtoXML\obj\Debug\XMLtoTABLEandTABLEtoXML.Properties.Resources.resources
+C:\Users\bogda\Desktop\xml-1.0\XMLtoTABLEandTABLEtoXML\XMLtoTABLEandTABLEtoXML\obj\Debug\ReqM Tool.csproj.GenerateResource.Cache
+C:\Users\bogda\Desktop\xml-1.0\XMLtoTABLEandTABLEtoXML\XMLtoTABLEandTABLEtoXML\obj\Debug\XMLtoTABLEandTABLEtoXML.exe
+C:\Users\bogda\Desktop\xml-1.0\XMLtoTABLEandTABLEtoXML\XMLtoTABLEandTABLEtoXML\obj\Debug\XMLtoTABLEandTABLEtoXML.pdb
+C:\Users\bogda\Desktop\xml-1.0\XMLtoTABLEandTABLEtoXML\XMLtoTABLEandTABLEtoXML\obj\Debug\ReqM Tool.csprojResolveAssemblyReference.cache
+C:\Users\bogda\Desktop\xml-1.0\XMLtoTABLEandTABLEtoXML\XMLtoTABLEandTABLEtoXML\obj\Debug\ReqM_Tool.Main.resources
+C:\Users\bogda\Desktop\xml-1.0\xml-1.0\XMLtoTABLEandTABLEtoXML\XMLtoTABLEandTABLEtoXML\bin\Debug\XMLtoTABLEandTABLEtoXML.exe.config
+C:\Users\bogda\Desktop\xml-1.0\xml-1.0\XMLtoTABLEandTABLEtoXML\XMLtoTABLEandTABLEtoXML\obj\Debug\XMLtoTABLEandTABLEtoXML.exe
+C:\Users\bogda\Desktop\xml-1.0\xml-1.0\XMLtoTABLEandTABLEtoXML\XMLtoTABLEandTABLEtoXML\obj\Debug\XMLtoTABLEandTABLEtoXML.pdb
+C:\Users\bogda\Desktop\xml-1.0\xml-1.0\XMLtoTABLEandTABLEtoXML\XMLtoTABLEandTABLEtoXML\bin\Debug\XMLtoTABLEandTABLEtoXML.exe
+C:\Users\bogda\Desktop\xml-1.0\xml-1.0\XMLtoTABLEandTABLEtoXML\XMLtoTABLEandTABLEtoXML\bin\Debug\XMLtoTABLEandTABLEtoXML.pdb
+C:\Users\bogda\Desktop\xml-1.0\xml-1.0\XMLtoTABLEandTABLEtoXML\XMLtoTABLEandTABLEtoXML\obj\Debug\ReqM Tool.csprojResolveAssemblyReference.cache
+C:\Users\bogda\Desktop\xml-1.0\xml-1.0\XMLtoTABLEandTABLEtoXML\XMLtoTABLEandTABLEtoXML\obj\Debug\ReqM_Tool.Main.resources
+C:\Users\bogda\Desktop\xml-1.0\xml-1.0\XMLtoTABLEandTABLEtoXML\XMLtoTABLEandTABLEtoXML\obj\Debug\XMLtoTABLEandTABLEtoXML.Properties.Resources.resources
+C:\Users\bogda\Desktop\xml-1.0\xml-1.0\XMLtoTABLEandTABLEtoXML\XMLtoTABLEandTABLEtoXML\obj\Debug\ReqM Tool.csproj.GenerateResource.Cache
+C:\Users\bogda\Desktop\xml-1.0\xml-1.0\ReqM_Tool_Project\XMLtoTABLEandTABLEtoXML\obj\Debug\ReqM Tool.csprojResolveAssemblyReference.cache
+C:\Users\bogda\Desktop\xml-1.0\xml-1.0\ReqM_Tool_Project\XMLtoTABLEandTABLEtoXML\obj\Debug\ReqM_Tool.Main.resources
+C:\Users\bogda\Desktop\xml-1.0\xml-1.0\ReqM_Tool_Project\XMLtoTABLEandTABLEtoXML\obj\Debug\ReqM Tool.csproj.GenerateResource.Cache
+C:\Users\bogda\Desktop\xml-1.0\xml-1.0\ReqM_Tool_Project\XMLtoTABLEandTABLEtoXML\bin\Debug\RequirementManagementTool.exe.config
+C:\Users\bogda\Desktop\xml-1.0\xml-1.0\ReqM_Tool_Project\XMLtoTABLEandTABLEtoXML\bin\Debug\RequirementManagementTool.exe
+C:\Users\bogda\Desktop\xml-1.0\xml-1.0\ReqM_Tool_Project\XMLtoTABLEandTABLEtoXML\bin\Debug\RequirementManagementTool.pdb
+C:\Users\bogda\Desktop\xml-1.0\xml-1.0\ReqM_Tool_Project\XMLtoTABLEandTABLEtoXML\obj\Debug\ReqM_namespace.Properties.Resources.resources
+C:\Users\bogda\Desktop\xml-1.0\xml-1.0\ReqM_Tool_Project\XMLtoTABLEandTABLEtoXML\obj\Debug\RequirementManagementTool.exe
+C:\Users\bogda\Desktop\xml-1.0\xml-1.0\ReqM_Tool_Project\XMLtoTABLEandTABLEtoXML\obj\Debug\RequirementManagementTool.pdb
+C:\Users\bogda\Desktop\xml-1.0\xml-1.0\ReqM_Tool_Project\ReqMTool\bin\Debug\RequirementManagementTool.exe.config
+C:\Users\bogda\Desktop\xml-1.0\xml-1.0\ReqM_Tool_Project\ReqMTool\obj\Debug\RequirementManagementTool.exe
+C:\Users\bogda\Desktop\xml-1.0\xml-1.0\ReqM_Tool_Project\ReqMTool\obj\Debug\RequirementManagementTool.pdb
+C:\Users\bogda\Desktop\xml-1.0\xml-1.0\ReqM_Tool_Project\ReqMTool\bin\Debug\RequirementManagementTool.exe
+C:\Users\bogda\Desktop\xml-1.0\xml-1.0\ReqM_Tool_Project\ReqMTool\bin\Debug\RequirementManagementTool.pdb
+C:\Users\bogda\Desktop\xml-1.0\xml-1.0\ReqM_Tool_Project\ReqMTool\obj\Debug\ReqM Tool.csprojResolveAssemblyReference.cache
+C:\Users\bogda\Desktop\xml-1.0\xml-1.0\ReqM_Tool_Project\ReqMTool\obj\Debug\ReqM_Tool.Main.resources
+C:\Users\bogda\Desktop\xml-1.0\xml-1.0\ReqM_Tool_Project\ReqMTool\obj\Debug\ReqM_namespace.Properties.Resources.resources
+C:\Users\bogda\Desktop\xml-1.0\xml-1.0\ReqM_Tool_Project\ReqMTool\obj\Debug\ReqM Tool.csproj.GenerateResource.Cache
+C:\Users\bogda\Desktop\ReqM_Tool_Project\ReqMTool\bin\Debug\RequirementManagementTool.exe.config
+C:\Users\bogda\Desktop\ReqM_Tool_Project\ReqMTool\obj\Debug\RequirementManagementTool.exe
+C:\Users\bogda\Desktop\ReqM_Tool_Project\ReqMTool\obj\Debug\RequirementManagementTool.pdb
+C:\Users\bogda\Desktop\Demo\ReqM_Tool\ReqMTool\bin\Debug\RequirementManagementTool.exe.config
+C:\Users\bogda\Desktop\Demo\ReqM_Tool\ReqMTool\obj\Debug\RequirementManagementTool.exe
+C:\Users\bogda\Desktop\Demo\ReqM_Tool\ReqMTool\obj\Debug\RequirementManagementTool.pdb
+C:\Users\bogda\Desktop\Demo\ReqM_Tool\ReqMTool\bin\Debug\RequirementManagementTool.exe
+C:\Users\bogda\Desktop\Demo\ReqM_Tool\ReqMTool\bin\Debug\RequirementManagementTool.pdb
+C:\Users\bogda\Desktop\Demo\ReqM_Tool\ReqMTool\obj\Debug\ReqM Tool.csprojResolveAssemblyReference.cache
+C:\Users\bogda\Desktop\Demo\ReqM_Tool\ReqMTool\obj\Debug\ReqM_Tool.Main.resources
+C:\Users\bogda\Desktop\Demo\ReqM_Tool\ReqMTool\obj\Debug\ReqM_namespace.Properties.Resources.resources
+C:\Users\bogda\Desktop\Demo\ReqM_Tool\ReqMTool\obj\Debug\ReqM Tool.csproj.GenerateResource.Cache

@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<root_file xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"> 
+  <document_settings>
+    <doc_settings>
+      <Baseline>1</Baseline>
+    </doc_settings>
+  </document_settings>
+  <Requirements>
+    <Req>
+      <ID>REQ1</ID>
+      <Description>First requirement from asdxml file.</Description>
+      <Status>Approved</Status>
+      <CreatedBy>BogdanHerciu</CreatedBy>
+      <Priority>1</Priority>
+      <ToTest>src</ToTest>
+      <Baseline>1</Baseline>
+    </Req>
+    <Req>
+      <ID>REQ2</ID>
+      <Description>First requirement from asdxml file.</Description>
+      <Status>Approved</Status>
+      <CreatedBy>BogdanHerciu</CreatedBy>
+      <Priority>1</Priority>
+      <ToTest>tst</ToTest>
+      <Baseline>2</Baseline>
+    </Req>
+  </Requirements>
+</root_file>
