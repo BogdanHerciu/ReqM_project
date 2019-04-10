@@ -125,7 +125,6 @@ namespace ReqM_Tool
                         CreatedBy = "CreatedBy",    /* default text for the CreatedBy */
                         Priority = "Priority",      /* default text for the Priority */
                         ToTest = "ToTest",          /* default text for the ToTest */
-                        Baseline = "Baseline"       /* default text for the Baseline */
                     });
 
                     /* refresh the dataGridView */
@@ -364,7 +363,6 @@ namespace ReqM_Tool
         [System.Xml.Serialization.XmlElement("Priority")]
         public string Priority { get; set; }
         public string ToTest { get; set; }
-        public string Baseline { get; set; }
     }
     [Serializable()]
     [System.Xml.Serialization.XmlRoot("root_file")]
