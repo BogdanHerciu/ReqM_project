@@ -383,7 +383,7 @@ namespace ReqM_Tool
     }
 
     /* *******************/
-    /* CLASS DEFINITIONS */
+    /* CLASS DEFINITIONS */ 
     /* *******************/
     class MyFile
     {
