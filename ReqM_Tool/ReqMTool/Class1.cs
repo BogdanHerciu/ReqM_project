@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Runtime.Serialization;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -40,7 +40,7 @@ namespace function_namespace
             return true;
         }
 
-        public static string getPath(string sourcepath, string testpath, string ToTest)
+        public static string getPath(string sourcepath, string testpath, string ToTest, int index)
         {
             if (ToTest == "src")
             {
@@ -57,7 +57,7 @@ namespace function_namespace
             }
             else
             {
-                MessageBox.Show("Error! item ToTest is not valid!");
+                MessageBox.Show("Error! Requirement from row "+ (index +1)+ " has member ToTest invalid!");
                 return null;
             }
         }
