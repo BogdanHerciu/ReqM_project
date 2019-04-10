@@ -223,7 +223,7 @@ namespace ReqM_Tool
                 requirementFound = false;
 
                 /* is a test requirement or a source requirement? */
-                selectable_path = myFunctions.getPath(implementationFilePath, testFilePath, listOfRequirements.Requirements_Dynamic_List[index].ToTest);
+                selectable_path = myFunctions.getPath(implementationFilePath, testFilePath, listOfRequirements.Requirements_Dynamic_List[index].ToTest, index);
                 if (selectable_path == null)
                 {
                     /* if no path is selected, exit the function */
