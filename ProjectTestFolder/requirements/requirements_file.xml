@@ -1,12 +1,7 @@
 <?xml version="1.0"?>
-<root_file> 
-  <document_settings>
-    <doc_settings>
-      <Baseline>1</Baseline>
-    </doc_settings>
-  </document_settings>
+<root_file xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Requirements>
-    <Req>
+    <RequirementItem>
       <ID>REQ1</ID>
       <Description>First requirement from asdxml file.</Description>
       <Status>Approved</Status>
@@ -14,15 +9,42 @@
       <Priority>1</Priority>
       <ToTest>src</ToTest>
       <Baseline>1</Baseline>
-    </Req>
-    <Req>
+    </RequirementItem>
+    <RequirementItem>
       <ID>REQ2</ID>
       <Description>First requirement from asdxml file.</Description>
       <Status>Approved</Status>
       <CreatedBy>BogdanHerciu</CreatedBy>
-      <Priority>1</Priority>
+      <Priority>2</Priority>
       <ToTest>tst</ToTest>
       <Baseline>2</Baseline>
-    </Req>
+    </RequirementItem>
+    <RequirementItem>
+      <ID>ID</ID>
+      <Description>Description</Description>
+      <Status>Status</Status>
+      <CreatedBy>CreatedBy</CreatedBy>
+      <Priority>Priority</Priority>
+      <ToTest>ToTest</ToTest>
+      <Baseline>Baseline</Baseline>
+    </RequirementItem>
+    <RequirementItem>
+      <ID>ID</ID>
+      <Description>Description</Description>
+      <Status>Status</Status>
+      <CreatedBy>CreatedBy</CreatedBy>
+      <Priority>Priority</Priority>
+      <ToTest>ToTest</ToTest>
+      <Baseline>Baseline</Baseline>
+    </RequirementItem>
+    <RequirementItem>
+      <ID>ID</ID>
+      <Description>Description</Description>
+      <Status>Status</Status>
+      <CreatedBy>CreatedBy</CreatedBy>
+      <Priority>Priority</Priority>
+      <ToTest>ToTest</ToTest>
+      <Baseline>Baseline</Baseline>
+    </RequirementItem>
   </Requirements>
 </root_file>
