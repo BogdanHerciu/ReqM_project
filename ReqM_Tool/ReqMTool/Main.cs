@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Runtime.Serialization;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -85,6 +85,7 @@ namespace ReqM_Tool
 
             SaveFileDialog sfd = new SaveFileDialog();
             sfd.Filter = "XML|*.xml";
+            /* open File dialog where to save the file */
             if (sfd.ShowDialog() == DialogResult.OK)
             {
                 try
@@ -116,7 +117,7 @@ namespace ReqM_Tool
 
 
                     /* INSERT AFTER: add a new element to Requirements_Dynamic_List "database" */
-                    listOfRequirements.Requirements_Dynamic_List.Insert(selected_row+1, new Req()
+                    listOfRequirements.Requirements_Dynamic_List.Insert(selected_row+1, new RequirementItem()
                     {
                         ID = "ID",                  /* default text for the ID */
                         Description = "Description",/* default text for the Description */
@@ -138,6 +139,7 @@ namespace ReqM_Tool
         } 
         private void DeleteBtn_Click(object sender, EventArgs e)
         {
+            /* check if a XML file is open */
             if (XmlFilePath == null)
             {
                 MessageBox.Show("No file has been opened!");
@@ -210,9 +212,10 @@ namespace ReqM_Tool
             /* check if the requirement has been found or not in all folders FLAG */
             bool requirementFound = false;
 
-            for (int x = 0; x < (listOfRequirements.Requirements_Dynamic_List.Count()); x++)
+            for (int index = 0; index < (listOfRequirements.Requirements_Dynamic_List.Count()); index++)
             {
-                pattern = listOfRequirements.Requirements_Dynamic_List[x].ID;
+                /* the name of the requirement which is searched in all files */
+                pattern = listOfRequirements.Requirements_Dynamic_List[index].ID;
                 MyFile mf = new MyFile();
                 MatchCollection matches;
                 string selectable_path = null;
@@ -220,17 +223,20 @@ namespace ReqM_Tool
                 requirementFound = false;
 
                 /* is a test requirement or a source requirement? */
-                selectable_path = myFunctions.getPath(implementationFilePath, testFilePath, listOfRequirements.Requirements_Dynamic_List[x].ToTest);
+                selectable_path = myFunctions.getPath(implementationFilePath, testFilePath, listOfRequirements.Requirements_Dynamic_List[index].ToTest);
                 if (selectable_path == null)
                 {
+                    /* if no path is selected, exit the function */
                     return;
                 }
-                
+
+                /* search in each file from the folder "selectable_path" */
                 foreach (string file in Directory.GetFiles(selectable_path, "*.*"))
                 { 
                     content = File.ReadAllText(file);
                     Regex r = new Regex(pattern, RegexOptions.IgnoreCase);
                     matches = r.Matches(content);
+
                     /* if Requirement is found. Add into the table. */
                     if (matches.Count > 0)
                     { 
@@ -283,11 +289,13 @@ namespace ReqM_Tool
 
         private void ImplementationPathButton_Click_1(object sender, EventArgs e)
         {
+            /* get the file path for the "source" folder(folder in where are the .c and .h files) */
             FolderBrowserDialog fbd = new FolderBrowserDialog();
             DialogResult result = fbd.ShowDialog();
 
             if (result == DialogResult.OK)
             {
+                /* save "source" folder path */
                 implementationFilePath = fbd.SelectedPath;
             }
         }
@@ -299,6 +307,7 @@ namespace ReqM_Tool
 
             if (result == DialogResult.OK)
             {
+                /* save "test" folder path */
                 testFilePath = fbd.SelectedPath;
             }
         }
@@ -324,11 +333,11 @@ namespace ReqM_Tool
     }
     class MyFile
     {
+        /* path for the file in where is searched the "pattern" (requirement_id) */
         public string FileName { get; set; }
-        public int Occurences { get; set; }
-        public string Requirement_ID { get; set; }
     }
     [Serializable()]
+    /* class used to extract the setting */
     public class doc_settings
     {
         [System.Xml.Serialization.XmlElement("Baseline")]
@@ -337,7 +346,8 @@ namespace ReqM_Tool
     }
 
     [Serializable()]
-    public class Req
+    [System.Xml.Serialization.XmlRoot("Req")]
+    public class RequirementItem
     {
         [System.Xml.Serialization.XmlElement("ID")]
         public string ID { get; set; }
@@ -372,7 +382,7 @@ namespace ReqM_Tool
     {
         [XmlArray("Requirements")]
        
-        public List<Req> Requirements_Dynamic_List = new List<Req>();
+        public List<RequirementItem> Requirements_Dynamic_List = new List<RequirementItem>();
         public void SaveAs(string fileName)
         {
             using (FileStream stream = new FileStream(fileName, FileMode.Create ))
@@ -387,6 +397,7 @@ namespace ReqM_Tool
             {
                 var XML = new XmlSerializer(typeof(root_file));
                 XML.Serialize(stream, this);
+
             }
         }
     }
