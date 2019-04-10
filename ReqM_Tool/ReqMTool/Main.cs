@@ -19,8 +19,11 @@ using function_namespace;
 namespace ReqM_Tool
 {
 
+
     public partial class Main : Form
     {
+ 
+
         /* create variable to the root of the xml file, for reading the requirements */
         root_file listOfRequirements = null;
         /* create variable to the root of the xml file, for reading the settings */
@@ -50,6 +53,26 @@ namespace ReqM_Tool
             InitializeComponent();
         }
 
+        /* Method called when a cell is modified */
+        private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        { 
+            /* collor change for ToTest column */
+            if(e.ColumnIndex == Column_ToTest)
+            { 
+                if (
+               (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString() == "tst") ||
+               (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString() == "src")
+               )
+                {
+                    dataGridView1.Rows[e.RowIndex].Cells[Column_ToTest].Style.BackColor = Color.White; 
+                }
+                else
+                {
+                    dataGridView1.Rows[e.RowIndex].Cells[Column_ToTest].Style.BackColor = Color.Red;
+                }
+            }
+        }
+
         private void OpenBtn_Click(object sender, EventArgs e)
         {
             if (FileDialog.ShowDialog() == DialogResult.OK)
@@ -67,19 +90,22 @@ namespace ReqM_Tool
 
                     /* add the data into the table */
                     dataGridView1.DataSource = listOfRequirements.Requirements_Dynamic_List;
+                    /* add event for Cell value changed */
+                    dataGridView1.CellValueChanged -= dataGridView1_CellValueChanged;
+                    dataGridView1.CellValueChanged += dataGridView1_CellValueChanged;
 
                     /* color with red ToTest column if there's an error! */
                     for (int index = 0; index < (listOfRequirements.Requirements_Dynamic_List.Count()); index++)
                     {
                         if (
-                            (listOfRequirements.Requirements_Dynamic_List[index].ToTest != "tst") &&
-                            (listOfRequirements.Requirements_Dynamic_List[index].ToTest != "src")
+                            (listOfRequirements.Requirements_Dynamic_List[index].ToTest.ToString() != "tst") &&
+                            (listOfRequirements.Requirements_Dynamic_List[index].ToTest.ToString() != "src")
                             )
                         {
                             dataGridView1.Rows[index].Cells[Column_ToTest].Style.BackColor = Color.Red;
-                        }
+                        } 
                     }
-
+                    
                     /**** load the settings ****/
                     /* create a serializer for the settings list */
                     XmlSerializer settings_serializer = new XmlSerializer(typeof(root_settings));
@@ -350,7 +376,14 @@ namespace ReqM_Tool
                Console.WriteLine(ex);
            }
         }
+
+
+
+
     }
+
+
+    ///////////// CLASES 
     class MyFile
     {
         /* path for the file in where is searched the "pattern" (requirement_id) */
@@ -420,4 +453,6 @@ namespace ReqM_Tool
             }
         }
     }
+
+
 }
