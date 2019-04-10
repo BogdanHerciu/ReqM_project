@@ -18,12 +18,21 @@ using function_namespace;
 
 namespace ReqM_Tool
 {
+
     public partial class Main : Form
     {
         /* create variable to the root of the xml file, for reading the requirements */
         root_file listOfRequirements = null;
         /* create variable to the root of the xml file, for reading the settings */
         root_settings listOfSettings = null;
+
+        /* define columns from DataGridView */
+        public int Column_ID = 0;
+        public int Column_Description = 1;
+        public int Column_Status = 2;
+        public int Column_CreatedBy = 3;
+        public int Column_Priority = 4;
+        public int Column_ToTest = 5;
 
         /* all the files from a folder */
         List<MyFile> listOfFiles;
@@ -55,10 +64,22 @@ namespace ReqM_Tool
                     StreamReader reader = new StreamReader(XmlFilePath);
                     /* dezerialize the data */
                     listOfRequirements = (root_file)serializer.Deserialize(reader);
-               
+
                     /* add the data into the table */
                     dataGridView1.DataSource = listOfRequirements.Requirements_Dynamic_List;
-                    
+
+                    /* color with red ToTest column if there's an error! */
+                    for (int index = 0; index < (listOfRequirements.Requirements_Dynamic_List.Count()); index++)
+                    {
+                        if (
+                            (listOfRequirements.Requirements_Dynamic_List[index].ToTest != "tst") &&
+                            (listOfRequirements.Requirements_Dynamic_List[index].ToTest != "src")
+                            )
+                        {
+                            dataGridView1.Rows[index].Cells[Column_ToTest].Style.BackColor = Color.Red;
+                        }
+                    }
+
                     /**** load the settings ****/
                     /* create a serializer for the settings list */
                     XmlSerializer settings_serializer = new XmlSerializer(typeof(root_settings));
