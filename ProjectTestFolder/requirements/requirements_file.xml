@@ -13,7 +13,6 @@
       <CreatedBy>BogdanHerciu</CreatedBy>
       <Priority>1</Priority>
       <ToTest>src</ToTest>
-      <Baseline>1</Baseline>
     </RequirementItem>
     <RequirementItem>
       <ID>REQ2</ID>
@@ -22,7 +21,6 @@
       <CreatedBy>BogdanHerciu</CreatedBy>
       <Priority>2</Priority>
       <ToTest>tst</ToTest>
-      <Baseline>2</Baseline>
     </RequirementItem>
     <RequirementItem>
       <ID>ID</ID>
@@ -31,7 +29,6 @@
       <CreatedBy>CreatedBy</CreatedBy>
       <Priority>Priority</Priority>
       <ToTest>ToTest</ToTest>
-      <Baseline>Baseline</Baseline>
     </RequirementItem>
     <RequirementItem>
       <ID>ID</ID>
@@ -39,8 +36,7 @@
       <Status>Status</Status>
       <CreatedBy>CreatedBy</CreatedBy>
       <Priority>Priority</Priority>
-      <ToTest>ToTest</ToTest>
-      <Baseline>Baseline</Baseline>
+      <ToTest>tst</ToTest>
     </RequirementItem>
     <RequirementItem>
       <ID>ID</ID>
@@ -48,8 +44,7 @@
       <Status>Status</Status>
       <CreatedBy>CreatedBy</CreatedBy>
       <Priority>Priority</Priority>
-      <ToTest>ToTest</ToTest>
-      <Baseline>Baseline</Baseline>
+      <ToTest>src</ToTest>
     </RequirementItem>
   </Requirements>
 </root_file>
