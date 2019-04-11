@@ -74,142 +74,21 @@ namespace ReqM_Tool
 
         private void OpenBtn_Click(object sender, EventArgs e)
         {
-            if (FileDialog.ShowDialog() == DialogResult.OK)
-              {
-                /* build the XML file path */
-                XmlFilePath = FileDialog.FileName;
-                  try
-                  { 
-                    /* create a serializer for the requirements */
-                    XmlSerializer serializer = new XmlSerializer(typeof(root_file));
-                    /* read the data from the xml file */
-                    StreamReader reader = new StreamReader(XmlFilePath);
-                    /* dezerialize the data */
-                    listOfRequirements = (root_file)serializer.Deserialize(reader);
-
-                    /* add the data into the table */
-                    dataGridView1.DataSource = listOfRequirements.Requirements_Dynamic_List;
-                    /* add event for Cell value changed */
-                    dataGridView1.CellValueChanged -= dataGridView1_CellValueChanged;
-                    dataGridView1.CellValueChanged += dataGridView1_CellValueChanged;
-
-                    /* color with red needscoverage column if there's an error! */
-                    for (int index = 0; index < (listOfRequirements.Requirements_Dynamic_List.Count()); index++)
-                    {
-                        if (
-                            (listOfRequirements.Requirements_Dynamic_List[index].needscoverage.ToString() != "tst") &&
-                            (listOfRequirements.Requirements_Dynamic_List[index].needscoverage.ToString() != "src")
-                            )
-                        {
-                            dataGridView1.Rows[index].Cells[Column_needscoverage].Style.BackColor = Color.Red;
-                        } 
-                    }
-                    
-                    /**** load the settings ****/
-                    /* create a serializer for the settings list */
-                    XmlSerializer settings_serializer = new XmlSerializer(typeof(root_settings));
-                    /* read the data from the xml file */
-                    StreamReader reader_settings = new StreamReader(XmlFilePath);
-                    /* dezerialize the data */
-                    listOfSettings = (root_settings)settings_serializer.Deserialize(reader_settings);
-                }
-                  catch (Exception ex)
-                  {
-                      Console.WriteLine(ex);
-                  }
-                  
-              }
+            
         }
 
         private void SaveBtn_Click(object sender, EventArgs e)
         {
-            if (XmlFilePath == null)
-            {
-                MessageBox.Show("No file has been opened!");
-                return;
-            }
-
-            SaveFileDialog sfd = new SaveFileDialog();
-            sfd.Filter = "XML|*.xml";
-            /* open File dialog where to save the file */
-            if (sfd.ShowDialog() == DialogResult.OK)
-            {
-                try
-                {
-                    listOfRequirements.SaveAs(XmlFilePath);
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex);
-                }
-            }
+  
         }
 
         private void AddBtn_Click(object sender, EventArgs e)
         {
-            if (XmlFilePath == null)
-            {
-                MessageBox.Show("No file has been opened!");
-                return;
-            }
-            else
-            {
-                /* make sure that AllowUserToAddRows is set to 'true' */
-                dataGridView1.AllowUserToAddRows = true;
-                if (this.dataGridView1.SelectedRows.Count > 0)
-                {
-                    /* get the selected row */
-                    int selected_row = (this.dataGridView1.SelectedRows[0].Index);
-
-
-                    /* INSERT AFTER: add a new element to Requirements_Dynamic_List "database" */
-                    listOfRequirements.Requirements_Dynamic_List.Insert(selected_row+1, new RequirementItem()
-                    {
-                        id = "id",                                /* default text for the id */
-                        description = "description",              /* default text for the description */
-                        status = "status",                        /* default text for the Status */
-                        CreatedBy = "CreatedBy",                  /* default text for the CreatedBy */
-                        Priority = "Priority",                    /* default text for the Priority */
-                        needscoverage = "needscoverage",          /* default text for the needscoverage */
-                        providescoverage = "providescoverage",    /* default text for the providescoverage */
-                        version = "version",                      /* default text for the version */
-                    });
-
-                    /* refresh the dataGridView */
-                    dataGridView1.DataSource = null;
-                    dataGridView1.DataSource = listOfRequirements.Requirements_Dynamic_List;
-                }
-                else {
-                    MessageBox.Show("No row is selected for adding a new item");
-                }
-            }
+            
         } 
         private void DeleteBtn_Click(object sender, EventArgs e)
         {
-            /* check if a XML file is open */
-            if (XmlFilePath == null)
-            {
-                MessageBox.Show("No file has been opened!");
-                return;
-            }
-            else
-            {
-                if (this.dataGridView1.SelectedRows.Count > 0)
-                {
-                    /* get the selected row */
-                    int selected_row = (this.dataGridView1.SelectedRows[0].Index);
 
-                    /* remove the row from the List */
-                    listOfRequirements.Requirements_Dynamic_List.RemoveAt(selected_row);
-
-                    /* refresh the dataGridView */
-                    dataGridView1.DataSource = null;
-                    dataGridView1.DataSource = listOfRequirements.Requirements_Dynamic_List;
-                }
-                else {
-                    MessageBox.Show("No row is selected for removal.");
-                }
-            }
         }
 
         private void Main_Load(object sender, EventArgs e)
@@ -361,30 +240,174 @@ namespace ReqM_Tool
 
         private void button1_Click_1(object sender, EventArgs e)
         {
+
+        }
+
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (FileDialog.ShowDialog() == DialogResult.OK)
+            {
+                /* build the XML file path */
+                XmlFilePath = FileDialog.FileName;
+                try
+                {
+                    /* create a serializer for the requirements */
+                    XmlSerializer serializer = new XmlSerializer(typeof(root_file));
+                    /* read the data from the xml file */
+                    StreamReader reader = new StreamReader(XmlFilePath);
+                    /* dezerialize the data */
+                    listOfRequirements = (root_file)serializer.Deserialize(reader);
+
+                    /* add the data into the table */
+                    dataGridView1.DataSource = listOfRequirements.Requirements_Dynamic_List;
+                    /* add event for Cell value changed */
+                    dataGridView1.CellValueChanged -= dataGridView1_CellValueChanged;
+                    dataGridView1.CellValueChanged += dataGridView1_CellValueChanged;
+
+                    /* color with red needscoverage column if there's an error! */
+                    for (int index = 0; index < (listOfRequirements.Requirements_Dynamic_List.Count()); index++)
+                    {
+                        if (
+                            (listOfRequirements.Requirements_Dynamic_List[index].needscoverage.ToString() != "tst") &&
+                            (listOfRequirements.Requirements_Dynamic_List[index].needscoverage.ToString() != "src")
+                            )
+                        {
+                            dataGridView1.Rows[index].Cells[Column_needscoverage].Style.BackColor = Color.Red;
+                        }
+                    }
+
+                    /**** load the settings ****/
+                    /* create a serializer for the settings list */
+                    XmlSerializer settings_serializer = new XmlSerializer(typeof(root_settings));
+                    /* read the data from the xml file */
+                    StreamReader reader_settings = new StreamReader(XmlFilePath);
+                    /* dezerialize the data */
+                    listOfSettings = (root_settings)settings_serializer.Deserialize(reader_settings);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex);
+                }
+
+            }
+        }
+
+        private void saveToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
             if (XmlFilePath == null)
             {
                 MessageBox.Show("No file has been opened!");
-                return; 
+                return;
             }
 
-           try
-           {
+            try
+            {
                 /* Save the file to the XmlFilePath (the path from where was opened) */
-               listOfRequirements.Save(XmlFilePath);
-           }
-           catch (Exception ex)
-           {
-               Console.WriteLine(ex);
-           }
+                listOfRequirements.Save(XmlFilePath);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
         }
 
+        private void saveAsToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (XmlFilePath == null)
+            {
+                MessageBox.Show("No file has been opened!");
+                return;
+            }
+
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = "XML|*.xml";
+            /* open File dialog where to save the file */
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    listOfRequirements.SaveAs(XmlFilePath);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex);
+                }
+            }
+        }
+
+        private void addRowToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (XmlFilePath == null)
+            {
+                MessageBox.Show("No file has been opened!");
+                return;
+            }
+            else
+            {
+                /* make sure that AllowUserToAddRows is set to 'true' */
+                dataGridView1.AllowUserToAddRows = true;
+                if (this.dataGridView1.SelectedRows.Count > 0)
+                {
+                    /* get the selected row */
+                    int selected_row = (this.dataGridView1.SelectedRows[0].Index);
 
 
+                    /* INSERT AFTER: add a new element to Requirements_Dynamic_List "database" */
+                    listOfRequirements.Requirements_Dynamic_List.Insert(selected_row + 1, new RequirementItem()
+                    {
+                        id = "id",                                /* default text for the id */
+                        description = "description",              /* default text for the description */
+                        status = "status",                        /* default text for the Status */
+                        CreatedBy = "CreatedBy",                  /* default text for the CreatedBy */
+                        Priority = "Priority",                    /* default text for the Priority */
+                        needscoverage = "needscoverage",          /* default text for the needscoverage */
+                        providescoverage = "providescoverage",    /* default text for the providescoverage */
+                        version = "version",                      /* default text for the version */
+                    });
 
+                    /* refresh the dataGridView */
+                    dataGridView1.DataSource = null;
+                    dataGridView1.DataSource = listOfRequirements.Requirements_Dynamic_List;
+                }
+                else
+                {
+                    MessageBox.Show("No row is selected for adding a new item");
+                }
+            }
+        }
+
+        private void deleteRowToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            /* check if a XML file is open */
+            if (XmlFilePath == null)
+            {
+                MessageBox.Show("No file has been opened!");
+                return;
+            }
+            else
+            {
+                if (this.dataGridView1.SelectedRows.Count > 0)
+                {
+                    /* get the selected row */
+                    int selected_row = (this.dataGridView1.SelectedRows[0].Index);
+
+                    /* remove the row from the List */
+                    listOfRequirements.Requirements_Dynamic_List.RemoveAt(selected_row);
+
+                    /* refresh the dataGridView */
+                    dataGridView1.DataSource = null;
+                    dataGridView1.DataSource = listOfRequirements.Requirements_Dynamic_List;
+                }
+                else
+                {
+                    MessageBox.Show("No row is selected for removal.");
+                }
+            }
+        }
     }
 
     /* *******************/
-    /* CLASS DEFINITIONS */ 
+    /* CLASS DEFINITIONS */
     /* *******************/
     class MyFile
     {
