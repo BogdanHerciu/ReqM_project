@@ -312,8 +312,8 @@ namespace ReqM_Tool
             this.selectSourcePathToolStripMenuItem,
             this.selectTestPathToolStripMenuItem});
             this.editToolStripMenuItem1.Name = "editToolStripMenuItem1";
-            this.editToolStripMenuItem1.Size = new System.Drawing.Size(39, 20);
-            this.editToolStripMenuItem1.Text = "Edit";
+            this.editToolStripMenuItem1.Size = new System.Drawing.Size(61, 20);
+            this.editToolStripMenuItem1.Text = "Settings";
             // 
             // selectSourcePathToolStripMenuItem
             // 
