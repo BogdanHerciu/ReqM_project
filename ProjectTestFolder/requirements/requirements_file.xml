@@ -12,39 +12,8 @@
       <Status>Approved</Status>
       <CreatedBy>BogdanHerciu</CreatedBy>
       <Priority>1</Priority>
-      <ToTest>src</ToTest>
-    </RequirementItem>
-    <RequirementItem>
-      <ID>REQ2</ID>
-      <Description>First requirement from asdxml file.</Description>
-      <Status>Approved</Status>
-      <CreatedBy>BogdanHerciu</CreatedBy>
-      <Priority>2</Priority>
-      <ToTest>tst</ToTest>
-    </RequirementItem>
-    <RequirementItem>
-      <ID>ID</ID>
-      <Description>Description</Description>
-      <Status>Status</Status>
-      <CreatedBy>CreatedBy</CreatedBy>
-      <Priority>Priority</Priority>
-      <ToTest>ToTest</ToTest>
-    </RequirementItem>
-    <RequirementItem>
-      <ID>ID</ID>
-      <Description>Description</Description>
-      <Status>Status</Status>
-      <CreatedBy>CreatedBy</CreatedBy>
-      <Priority>Priority</Priority>
-      <ToTest>tst</ToTest>
-    </RequirementItem>
-    <RequirementItem>
-      <ID>ID</ID>
-      <Description>Description</Description>
-      <Status>Status</Status>
-      <CreatedBy>CreatedBy</CreatedBy>
-      <Priority>Priority</Priority>
-      <ToTest>src</ToTest>
+      <needscoverage>src</needscoverage>
+	  <providescoverage>REQ1</providescoverage>
     </RequirementItem>
   </Requirements>
 </root_file>

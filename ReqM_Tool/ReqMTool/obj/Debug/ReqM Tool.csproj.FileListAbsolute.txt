@@ -46,3 +46,12 @@ C:\Users\bogda\Desktop\Demo\ReqM_Tool\ReqMTool\obj\Debug\ReqM Tool.csprojResolve
 C:\Users\bogda\Desktop\Demo\ReqM_Tool\ReqMTool\obj\Debug\ReqM_Tool.Main.resources
 C:\Users\bogda\Desktop\Demo\ReqM_Tool\ReqMTool\obj\Debug\ReqM_namespace.Properties.Resources.resources
 C:\Users\bogda\Desktop\Demo\ReqM_Tool\ReqMTool\obj\Debug\ReqM Tool.csproj.GenerateResource.Cache
+C:\Users\bogda\Desktop\ReqM_project\ReqM_Tool\ReqMTool\bin\Debug\RequirementManagementTool.exe.config
+C:\Users\bogda\Desktop\ReqM_project\ReqM_Tool\ReqMTool\obj\Debug\RequirementManagementTool.exe
+C:\Users\bogda\Desktop\ReqM_project\ReqM_Tool\ReqMTool\obj\Debug\RequirementManagementTool.pdb
+C:\Users\bogda\Desktop\ReqM_project\ReqM_Tool\ReqMTool\bin\Debug\RequirementManagementTool.exe
+C:\Users\bogda\Desktop\ReqM_project\ReqM_Tool\ReqMTool\bin\Debug\RequirementManagementTool.pdb
+C:\Users\bogda\Desktop\ReqM_project\ReqM_Tool\ReqMTool\obj\Debug\ReqM Tool.csprojResolveAssemblyReference.cache
+C:\Users\bogda\Desktop\ReqM_project\ReqM_Tool\ReqMTool\obj\Debug\ReqM_Tool.Main.resources
+C:\Users\bogda\Desktop\ReqM_project\ReqM_Tool\ReqMTool\obj\Debug\ReqM_namespace.Properties.Resources.resources
+C:\Users\bogda\Desktop\ReqM_project\ReqM_Tool\ReqMTool\obj\Debug\ReqM Tool.csproj.GenerateResource.Cache

@@ -40,24 +40,24 @@ namespace function_namespace
             return true;
         }
 
-        public static string getPath(string sourcepath, string testpath, string ToTest, int index)
+        public static string getPath(string sourcepath, string testpath, string needscoverage, int index)
         {
-            if (ToTest == "src")
+            if (needscoverage == "src")
             {
                 return sourcepath;
             }
-            else if (ToTest == "tst")
+            else if (needscoverage == "tst")
             {
                 return testpath;
             }
-            else if (ToTest == "src,txt")
+            else if (needscoverage == "src,txt")
             {
                 /* TODO */
                 return null;
             }
             else
             {
-                MessageBox.Show("Error! Requirement from row "+ (index +1)+ " has member ToTest invalid!");
+                MessageBox.Show("Error! Requirement from row "+ (index +1)+ " has member needscoverage invalid!");
                 return null;
             }
         }

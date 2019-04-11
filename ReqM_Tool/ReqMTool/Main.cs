@@ -35,7 +35,8 @@ namespace ReqM_Tool
         public int Column_Status = 2;
         public int Column_CreatedBy = 3;
         public int Column_Priority = 4;
-        public int Column_ToTest = 5;
+        public int Column_needscoverage = 5;
+        public int Column_providescoverage = 6;
 
         /* all the files from a folder */
         List<MyFile> listOfFiles;
@@ -55,20 +56,20 @@ namespace ReqM_Tool
 
         /* Method called when a cell is modified */
         private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
-        { 
-            /* collor change for ToTest column */
-            if(e.ColumnIndex == Column_ToTest)
+        {
+            /* collor change for needscoverage column */
+            if (e.ColumnIndex == Column_needscoverage)
             { 
                 if (
                (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString() == "tst") ||
                (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString() == "src")
                )
                 {
-                    dataGridView1.Rows[e.RowIndex].Cells[Column_ToTest].Style.BackColor = Color.White; 
+                    dataGridView1.Rows[e.RowIndex].Cells[Column_needscoverage].Style.BackColor = Color.White; 
                 }
                 else
                 {
-                    dataGridView1.Rows[e.RowIndex].Cells[Column_ToTest].Style.BackColor = Color.Red;
+                    dataGridView1.Rows[e.RowIndex].Cells[Column_needscoverage].Style.BackColor = Color.Red;
                 }
             }
         }
@@ -94,15 +95,15 @@ namespace ReqM_Tool
                     dataGridView1.CellValueChanged -= dataGridView1_CellValueChanged;
                     dataGridView1.CellValueChanged += dataGridView1_CellValueChanged;
 
-                    /* color with red ToTest column if there's an error! */
+                    /* color with red needscoverage column if there's an error! */
                     for (int index = 0; index < (listOfRequirements.Requirements_Dynamic_List.Count()); index++)
                     {
                         if (
-                            (listOfRequirements.Requirements_Dynamic_List[index].ToTest.ToString() != "tst") &&
-                            (listOfRequirements.Requirements_Dynamic_List[index].ToTest.ToString() != "src")
+                            (listOfRequirements.Requirements_Dynamic_List[index].needscoverage.ToString() != "tst") &&
+                            (listOfRequirements.Requirements_Dynamic_List[index].needscoverage.ToString() != "src")
                             )
                         {
-                            dataGridView1.Rows[index].Cells[Column_ToTest].Style.BackColor = Color.Red;
+                            dataGridView1.Rows[index].Cells[Column_needscoverage].Style.BackColor = Color.Red;
                         } 
                     }
                     
@@ -171,7 +172,8 @@ namespace ReqM_Tool
                         Status = "Status",          /* default text for the Status */
                         CreatedBy = "CreatedBy",    /* default text for the CreatedBy */
                         Priority = "Priority",      /* default text for the Priority */
-                        ToTest = "ToTest",          /* default text for the ToTest */
+                        needscoverage = "needscoverage",          /* default text for the needscoverage */
+                        providescoverage = "providescoverage", /* default text for the providescoverage */
                     });
 
                     /* refresh the dataGridView */
@@ -269,7 +271,7 @@ namespace ReqM_Tool
                 requirementFound = false;
 
                 /* is a test requirement or a source requirement? */
-                selectable_path = myFunctions.getPath(implementationFilePath, testFilePath, listOfRequirements.Requirements_Dynamic_List[index].ToTest, index);
+                selectable_path = myFunctions.getPath(implementationFilePath, testFilePath, listOfRequirements.Requirements_Dynamic_List[index].needscoverage, index);
                 if (selectable_path == null)
                 {
                     /* if no path is selected, exit the function */
@@ -417,7 +419,9 @@ namespace ReqM_Tool
 
         [System.Xml.Serialization.XmlElement("Priority")]
         public string Priority { get; set; }
-        public string ToTest { get; set; }
+        public string needscoverage { get; set; }
+
+        public string providescoverage { get; set; }
     }
     [Serializable()]
     [System.Xml.Serialization.XmlRoot("root_file")]
