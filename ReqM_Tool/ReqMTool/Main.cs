@@ -21,9 +21,7 @@ namespace ReqM_Tool
 
 
     public partial class Main : Form
-    {
- 
-
+    { 
         /* create variable to the root of the xml file, for reading the requirements */
         root_file listOfRequirements = null;
         /* create variable to the root of the xml file, for reading the settings */
@@ -167,13 +165,14 @@ namespace ReqM_Tool
                     /* INSERT AFTER: add a new element to Requirements_Dynamic_List "database" */
                     listOfRequirements.Requirements_Dynamic_List.Insert(selected_row+1, new RequirementItem()
                     {
-                        ID = "ID",                  /* default text for the ID */
-                        Description = "Description",/* default text for the Description */
-                        Status = "Status",          /* default text for the Status */
-                        CreatedBy = "CreatedBy",    /* default text for the CreatedBy */
-                        Priority = "Priority",      /* default text for the Priority */
+                        id = "id",                                /* default text for the id */
+                        description = "description",              /* default text for the description */
+                        status = "status",                        /* default text for the Status */
+                        CreatedBy = "CreatedBy",                  /* default text for the CreatedBy */
+                        Priority = "Priority",                    /* default text for the Priority */
                         needscoverage = "needscoverage",          /* default text for the needscoverage */
-                        providescoverage = "providescoverage", /* default text for the providescoverage */
+                        providescoverage = "providescoverage",    /* default text for the providescoverage */
+                        version = "version",                      /* default text for the version */
                     });
 
                     /* refresh the dataGridView */
@@ -263,7 +262,7 @@ namespace ReqM_Tool
             for (int index = 0; index < (listOfRequirements.Requirements_Dynamic_List.Count()); index++)
             {
                 /* the name of the requirement which is searched in all files */
-                pattern = listOfRequirements.Requirements_Dynamic_List[index].ID;
+                pattern = listOfRequirements.Requirements_Dynamic_List[index].id;
                 MyFile mf = new MyFile();
                 MatchCollection matches;
                 string selectable_path = null;
@@ -405,14 +404,14 @@ namespace ReqM_Tool
     [System.Xml.Serialization.XmlRoot("Req")]
     public class RequirementItem
     {
-        [System.Xml.Serialization.XmlElement("ID")]
-        public string ID { get; set; }
+        [System.Xml.Serialization.XmlElement("id")]
+        public string id { get; set; }
 
-        [System.Xml.Serialization.XmlElement("Description")]
-        public string Description { get; set; }
+        [System.Xml.Serialization.XmlElement("description")]
+        public string description { get; set; }
 
-        [System.Xml.Serialization.XmlElement("Status")]
-        public string Status { get; set; }
+        [System.Xml.Serialization.XmlElement("status")]
+        public string status { get; set; }
 
         [System.Xml.Serialization.XmlElement("CreatedBy")]
         public string CreatedBy { get; set; }
@@ -422,6 +421,7 @@ namespace ReqM_Tool
         public string needscoverage { get; set; }
 
         public string providescoverage { get; set; }
+        public string version { get; set; }
     }
     [Serializable()]
     [System.Xml.Serialization.XmlRoot("root_file")]

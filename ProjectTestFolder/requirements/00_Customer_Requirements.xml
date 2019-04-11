@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<root_file xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <document_settings>
+    <doc_settings>
+      <Baseline>1</Baseline>
+    </doc_settings>
+  </document_settings>
+  <Requirements>
+    <RequirementItem>
+      <id>CustReq.Service0x22</id>
+      <description>Diagnostic Service 0x22 is needed, according to UDS Standard.</description>
+      <status>Approved</status>
+      <CreatedBy>BogdanHerciu</CreatedBy>
+      <Priority>1</Priority>
+      <needscoverage>src</needscoverage>
+	  <providescoverage>REQ1</providescoverage>
+	  <version>2</version>
+    </RequirementItem>
+  </Requirements>
+</root_file>
