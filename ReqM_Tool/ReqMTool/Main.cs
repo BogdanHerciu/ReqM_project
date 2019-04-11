@@ -113,89 +113,7 @@ namespace ReqM_Tool
 
         private void button2_Click(object sender, EventArgs e)
         {
-            /* check the paths for null */
-            if (false == myFunctions.Paths(implementationFilePath, testFilePath, XmlFilePath))
-            {
-                return;
-            }
-
-            /* create variable to the root of the xml file */
-            root_file listOfRequirements = null; 
-            /* create a serializer */
-            XmlSerializer serializer = new XmlSerializer(typeof(root_file));
-            /* read the data from the xml file */
-            StreamReader reader = new StreamReader(XmlFilePath);
-            /* dezerialize the data */
-            listOfRequirements = (root_file)serializer.Deserialize(reader);
-
-            /* SEARCH EACH REQUIREMENT_ID IN FILES. */
-            listOfFiles = new List<MyFile>(); 
-            string content = string.Empty;
-            /* Clear the Grid View */
-            dataGridView2.Rows.Clear();
-            /* search in folders string */
-            string pattern;
-            /* check if the requirement has been found or not in all folders FLAG */
-            bool requirementFound = false;
-
-            for (int index = 0; index < (listOfRequirements.Requirements_Dynamic_List.Count()); index++)
-            {
-                /* the name of the requirement which is searched in all files */
-                pattern = listOfRequirements.Requirements_Dynamic_List[index].id;
-                MyFile mf = new MyFile();
-                MatchCollection matches;
-                string selectable_path = null;
-                /* flag to check if the requirement is not found in any file */
-                requirementFound = false;
-
-                /* is a test requirement or a source requirement? */
-                selectable_path = myFunctions.getPath(implementationFilePath, testFilePath, listOfRequirements.Requirements_Dynamic_List[index].needscoverage, index);
-                if (selectable_path == null)
-                {
-                    /* if no path is selected, exit the function */
-                    return;
-                }
-
-                /* search in each file from the folder "selectable_path" */
-                foreach (string file in Directory.GetFiles(selectable_path, "*.*"))
-                { 
-                    content = File.ReadAllText(file);
-                    Regex r = new Regex(pattern, RegexOptions.IgnoreCase);
-                    matches = r.Matches(content);
-
-                    /* if Requirement is found. Add into the table. */
-                    if (matches.Count > 0)
-                    { 
-                        int rowId = dataGridView2.Rows.Add();
-                        /* grab the new row */
-                        DataGridViewRow row = dataGridView2.Rows[rowId];
-                        
-                        /* add the data */
-                        /* Set Req_ID and Covered cell only first time */
-                        if (requirementFound == false)
-                        { 
-                            row.Cells[0].Value = pattern;
-                            row.Cells[1].Value = "Covered";
-                            /* TODO: merge cells!!! */
-                            
-                        }
-                        row.Cells[2].Value = Path.GetFileName(file);
-                        /* set the color */
-                        row.DefaultCellStyle.BackColor = Color.Green;
-
-                        /* mark as a found requirement */
-                        requirementFound = true;
-                    }
-                } /* end foreach */
-
-                /* if the requirement has not been found, add requirement_id and "notCovered" text */
-                if (requirementFound == false)
-                {
-                    myFunctions.ReqNotFound_AddRow(dataGridView2,pattern);
-                }
-            }  
-            /* close the reader */
-            reader.Close();
+            
         }
 
         private void ImplementationPathButton_Click(object sender, EventArgs e)
@@ -215,27 +133,12 @@ namespace ReqM_Tool
 
         private void ImplementationPathButton_Click_1(object sender, EventArgs e)
         {
-            /* get the file path for the "source" folder(folder in where are the .c and .h files) */
-            FolderBrowserDialog fbd = new FolderBrowserDialog();
-            DialogResult result = fbd.ShowDialog();
-
-            if (result == DialogResult.OK)
-            {
-                /* save "source" folder path */
-                implementationFilePath = fbd.SelectedPath;
-            }
+ 
         }
 
         private void button3_Click_1(object sender, EventArgs e)
         {
-            FolderBrowserDialog fbd = new FolderBrowserDialog();
-            DialogResult result = fbd.ShowDialog();
-
-            if (result == DialogResult.OK)
-            {
-                /* save "test" folder path */
-                testFilePath = fbd.SelectedPath;
-            }
+  
         }
 
         private void button1_Click_1(object sender, EventArgs e)
@@ -403,6 +306,118 @@ namespace ReqM_Tool
                     MessageBox.Show("No row is selected for removal.");
                 }
             }
+        }
+
+        private void selectSourcePathToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            /* get the file path for the "source" folder(folder in where are the .c and .h files) */
+            FolderBrowserDialog fbd = new FolderBrowserDialog();
+            DialogResult result = fbd.ShowDialog();
+
+            if (result == DialogResult.OK)
+            {
+                /* save "source" folder path */
+                implementationFilePath = fbd.SelectedPath;
+            }
+        }
+
+        private void selectTestPathToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog fbd = new FolderBrowserDialog();
+            DialogResult result = fbd.ShowDialog();
+
+            if (result == DialogResult.OK)
+            {
+                /* save "test" folder path */
+                testFilePath = fbd.SelectedPath;
+            }
+        }
+
+        private void makeCoverageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            /* check the paths for null */
+            if (false == myFunctions.Paths(implementationFilePath, testFilePath, XmlFilePath))
+            {
+                return;
+            }
+
+            /* create variable to the root of the xml file */
+            root_file listOfRequirements = null;
+            /* create a serializer */
+            XmlSerializer serializer = new XmlSerializer(typeof(root_file));
+            /* read the data from the xml file */
+            StreamReader reader = new StreamReader(XmlFilePath);
+            /* dezerialize the data */
+            listOfRequirements = (root_file)serializer.Deserialize(reader);
+
+            /* SEARCH EACH REQUIREMENT_ID IN FILES. */
+            listOfFiles = new List<MyFile>();
+            string content = string.Empty;
+            /* Clear the Grid View */
+            dataGridView2.Rows.Clear();
+            /* search in folders string */
+            string pattern;
+            /* check if the requirement has been found or not in all folders FLAG */
+            bool requirementFound = false;
+
+            for (int index = 0; index < (listOfRequirements.Requirements_Dynamic_List.Count()); index++)
+            {
+                /* the name of the requirement which is searched in all files */
+                pattern = listOfRequirements.Requirements_Dynamic_List[index].id;
+                MyFile mf = new MyFile();
+                MatchCollection matches;
+                string selectable_path = null;
+                /* flag to check if the requirement is not found in any file */
+                requirementFound = false;
+
+                /* is a test requirement or a source requirement? */
+                selectable_path = myFunctions.getPath(implementationFilePath, testFilePath, listOfRequirements.Requirements_Dynamic_List[index].needscoverage, index);
+                if (selectable_path == null)
+                {
+                    /* if no path is selected, exit the function */
+                    return;
+                }
+
+                /* search in each file from the folder "selectable_path" */
+                foreach (string file in Directory.GetFiles(selectable_path, "*.*"))
+                {
+                    content = File.ReadAllText(file);
+                    Regex r = new Regex(pattern, RegexOptions.IgnoreCase);
+                    matches = r.Matches(content);
+
+                    /* if Requirement is found. Add into the table. */
+                    if (matches.Count > 0)
+                    {
+                        int rowId = dataGridView2.Rows.Add();
+                        /* grab the new row */
+                        DataGridViewRow row = dataGridView2.Rows[rowId];
+
+                        /* add the data */
+                        /* Set Req_ID and Covered cell only first time */
+                        if (requirementFound == false)
+                        {
+                            row.Cells[0].Value = pattern;
+                            row.Cells[1].Value = "Covered";
+                            /* TODO: merge cells!!! */
+
+                        }
+                        row.Cells[2].Value = Path.GetFileName(file);
+                        /* set the color */
+                        row.DefaultCellStyle.BackColor = Color.Green;
+
+                        /* mark as a found requirement */
+                        requirementFound = true;
+                    }
+                } /* end foreach */
+
+                /* if the requirement has not been found, add requirement_id and "notCovered" text */
+                if (requirementFound == false)
+                {
+                    myFunctions.ReqNotFound_AddRow(dataGridView2, pattern);
+                }
+            }
+            /* close the reader */
+            reader.Close();
         }
     }
 
