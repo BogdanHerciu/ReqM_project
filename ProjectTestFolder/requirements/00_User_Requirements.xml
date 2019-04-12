@@ -8,7 +8,7 @@
       <CreatedBy>BogdanHerciu</CreatedBy>
       <Priority>1</Priority>
       <needscoverage>src</needscoverage>
-      <providescoverage>REQ1</providescoverage>
+      <providescoverage>N/A</providescoverage>
       <version>2</version>
     </RequirementItem>
   </Requirements>
