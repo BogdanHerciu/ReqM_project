@@ -71,6 +71,10 @@ namespace ReqM_Tool
             this.contextMenuStrip3 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.asdToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip4 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.publishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveAsWordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveAsPdfToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveAsExcelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.LoadTab.SuspendLayout();
             this.tabPage4.SuspendLayout();
@@ -89,9 +93,10 @@ namespace ReqM_Tool
             // 
             this.dataGridView1.AllowUserToOrderColumns = true;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(6, 27);
+            this.dataGridView1.Location = new System.Drawing.Point(8, 33);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(781, 372);
+            this.dataGridView1.Size = new System.Drawing.Size(1041, 458);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -100,10 +105,11 @@ namespace ReqM_Tool
             this.LoadTab.Controls.Add(this.tabPage4);
             this.LoadTab.Controls.Add(this.tabPage1);
             this.LoadTab.Controls.Add(this.tabPage3);
-            this.LoadTab.Location = new System.Drawing.Point(12, 2);
+            this.LoadTab.Location = new System.Drawing.Point(16, 2);
+            this.LoadTab.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.LoadTab.Name = "LoadTab";
             this.LoadTab.SelectedIndex = 0;
-            this.LoadTab.Size = new System.Drawing.Size(801, 431);
+            this.LoadTab.Size = new System.Drawing.Size(1068, 530);
             this.LoadTab.TabIndex = 6;
             // 
             // tabPage4
@@ -111,10 +117,11 @@ namespace ReqM_Tool
             this.tabPage4.Controls.Add(this.label1);
             this.tabPage4.Controls.Add(this.label4);
             this.tabPage4.Controls.Add(this.pictureBox1);
-            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Location = new System.Drawing.Point(4, 25);
+            this.tabPage4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(793, 405);
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage4.Size = new System.Drawing.Size(1060, 501);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "StartPage";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -122,9 +129,10 @@ namespace ReqM_Tool
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(364, 388);
+            this.label1.Location = new System.Drawing.Point(485, 478);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(31, 13);
+            this.label1.Size = new System.Drawing.Size(36, 16);
             this.label1.TabIndex = 7;
             this.label1.Text = "2019";
             // 
@@ -132,7 +140,8 @@ namespace ReqM_Tool
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(295, 134);
+            this.label4.Location = new System.Drawing.Point(393, 165);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(155, 31);
             this.label4.TabIndex = 5;
@@ -141,9 +150,10 @@ namespace ReqM_Tool
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(678, 3);
+            this.pictureBox1.Location = new System.Drawing.Point(904, 4);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(115, 26);
+            this.pictureBox1.Size = new System.Drawing.Size(153, 32);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
@@ -154,27 +164,30 @@ namespace ReqM_Tool
             this.tabPage1.Controls.Add(this.menuStrip1);
             this.tabPage1.Controls.Add(this.menuStrip2);
             this.tabPage1.Controls.Add(this.menuStrip3);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Location = new System.Drawing.Point(4, 25);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(793, 405);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage1.Size = new System.Drawing.Size(1060, 501);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Database";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // menuStrip1
             // 
-            this.menuStrip1.Location = new System.Drawing.Point(3, 51);
+            this.menuStrip1.Location = new System.Drawing.Point(4, 52);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(787, 24);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(1052, 24);
             this.menuStrip1.TabIndex = 6;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // menuStrip2
             // 
-            this.menuStrip2.Location = new System.Drawing.Point(3, 27);
+            this.menuStrip2.Location = new System.Drawing.Point(4, 28);
             this.menuStrip2.Name = "menuStrip2";
-            this.menuStrip2.Size = new System.Drawing.Size(787, 24);
+            this.menuStrip2.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
+            this.menuStrip2.Size = new System.Drawing.Size(1052, 24);
             this.menuStrip2.TabIndex = 7;
             this.menuStrip2.Text = "menuStrip2";
             // 
@@ -183,9 +196,10 @@ namespace ReqM_Tool
             this.menuStrip3.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.editToolStripMenuItem});
-            this.menuStrip3.Location = new System.Drawing.Point(3, 3);
+            this.menuStrip3.Location = new System.Drawing.Point(4, 4);
             this.menuStrip3.Name = "menuStrip3";
-            this.menuStrip3.Size = new System.Drawing.Size(787, 24);
+            this.menuStrip3.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
+            this.menuStrip3.Size = new System.Drawing.Size(1052, 24);
             this.menuStrip3.TabIndex = 8;
             this.menuStrip3.Text = "menuStrip3";
             // 
@@ -195,6 +209,7 @@ namespace ReqM_Tool
             this.openToolStripMenuItem,
             this.saveToolStripMenuItem1,
             this.saveAsToolStripMenuItem1,
+            this.publishToolStripMenuItem,
             this.closeToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
@@ -203,28 +218,28 @@ namespace ReqM_Tool
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(111, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.openToolStripMenuItem.Text = "Open";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem1
             // 
             this.saveToolStripMenuItem1.Name = "saveToolStripMenuItem1";
-            this.saveToolStripMenuItem1.Size = new System.Drawing.Size(111, 22);
+            this.saveToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.saveToolStripMenuItem1.Text = "Save";
             this.saveToolStripMenuItem1.Click += new System.EventHandler(this.saveToolStripMenuItem1_Click);
             // 
             // saveAsToolStripMenuItem1
             // 
             this.saveAsToolStripMenuItem1.Name = "saveAsToolStripMenuItem1";
-            this.saveAsToolStripMenuItem1.Size = new System.Drawing.Size(111, 22);
+            this.saveAsToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.saveAsToolStripMenuItem1.Text = "SaveAs";
             this.saveAsToolStripMenuItem1.Click += new System.EventHandler(this.saveAsToolStripMenuItem1_Click);
             // 
             // closeToolStripMenuItem
             // 
             this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-            this.closeToolStripMenuItem.Size = new System.Drawing.Size(111, 22);
+            this.closeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.closeToolStripMenuItem.Text = "Close";
             // 
             // editToolStripMenuItem
@@ -254,9 +269,10 @@ namespace ReqM_Tool
             // 
             this.tabPage3.Controls.Add(this.dataGridView2);
             this.tabPage3.Controls.Add(this.menuStrip4);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Location = new System.Drawing.Point(4, 25);
+            this.tabPage3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(793, 405);
+            this.tabPage3.Size = new System.Drawing.Size(1060, 501);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Coverage";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -270,10 +286,11 @@ namespace ReqM_Tool
             this.Column1,
             this.Column2,
             this.Column3});
-            this.dataGridView2.Location = new System.Drawing.Point(3, 27);
+            this.dataGridView2.Location = new System.Drawing.Point(4, 33);
+            this.dataGridView2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.ReadOnly = true;
-            this.dataGridView2.Size = new System.Drawing.Size(787, 344);
+            this.dataGridView2.Size = new System.Drawing.Size(1049, 423);
             this.dataGridView2.TabIndex = 1;
             this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
             // 
@@ -302,7 +319,8 @@ namespace ReqM_Tool
             this.toolsToolStripMenuItem});
             this.menuStrip4.Location = new System.Drawing.Point(0, 0);
             this.menuStrip4.Name = "menuStrip4";
-            this.menuStrip4.Size = new System.Drawing.Size(793, 24);
+            this.menuStrip4.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
+            this.menuStrip4.Size = new System.Drawing.Size(1060, 24);
             this.menuStrip4.TabIndex = 6;
             this.menuStrip4.Text = "menuStrip4";
             // 
@@ -423,14 +441,43 @@ namespace ReqM_Tool
             this.contextMenuStrip4.Name = "contextMenuStrip4";
             this.contextMenuStrip4.Size = new System.Drawing.Size(61, 4);
             // 
+            // publishToolStripMenuItem
+            // 
+            this.publishToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.saveAsWordToolStripMenuItem,
+            this.saveAsPdfToolStripMenuItem,
+            this.saveAsExcelToolStripMenuItem});
+            this.publishToolStripMenuItem.Name = "publishToolStripMenuItem";
+            this.publishToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.publishToolStripMenuItem.Text = "Publish";
+            // 
+            // saveAsWordToolStripMenuItem
+            // 
+            this.saveAsWordToolStripMenuItem.Name = "saveAsWordToolStripMenuItem";
+            this.saveAsWordToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveAsWordToolStripMenuItem.Text = "Save as Word";
+            // 
+            // saveAsPdfToolStripMenuItem
+            // 
+            this.saveAsPdfToolStripMenuItem.Name = "saveAsPdfToolStripMenuItem";
+            this.saveAsPdfToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveAsPdfToolStripMenuItem.Text = "Save as Pdf";
+            // 
+            // saveAsExcelToolStripMenuItem
+            // 
+            this.saveAsExcelToolStripMenuItem.Name = "saveAsExcelToolStripMenuItem";
+            this.saveAsExcelToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveAsExcelToolStripMenuItem.Text = "Save as Excel";
+            // 
             // Main
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(825, 445);
+            this.ClientSize = new System.Drawing.Size(1100, 548);
             this.Controls.Add(this.LoadTab);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Main";
             this.Text = "Requirements Management Tool™";
             this.Load += new System.EventHandler(this.Main_Load);
@@ -498,6 +545,10 @@ namespace ReqM_Tool
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip4;
         private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem makeCoverageToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem publishToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveAsWordToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveAsPdfToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveAsExcelToolStripMenuItem;
     }
 }
 

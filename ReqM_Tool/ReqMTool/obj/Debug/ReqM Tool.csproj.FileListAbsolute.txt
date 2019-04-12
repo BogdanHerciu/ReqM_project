@@ -55,3 +55,13 @@ C:\Users\bogda\Desktop\ReqM_project\ReqM_Tool\ReqMTool\obj\Debug\ReqM Tool.cspro
 C:\Users\bogda\Desktop\ReqM_project\ReqM_Tool\ReqMTool\obj\Debug\ReqM_Tool.Main.resources
 C:\Users\bogda\Desktop\ReqM_project\ReqM_Tool\ReqMTool\obj\Debug\ReqM_namespace.Properties.Resources.resources
 C:\Users\bogda\Desktop\ReqM_project\ReqM_Tool\ReqMTool\obj\Debug\ReqM Tool.csproj.GenerateResource.Cache
+C:\Users\bogdan.herciu\Desktop\Req_Tool\ReqM_project\ReqM_Tool\ReqMTool\bin\Debug\RequirementManagementTool.exe.config
+C:\Users\bogdan.herciu\Desktop\Req_Tool\ReqM_project\ReqM_Tool\ReqMTool\bin\Debug\RequirementManagementTool.exe
+C:\Users\bogdan.herciu\Desktop\Req_Tool\ReqM_project\ReqM_Tool\ReqMTool\obj\Debug\ReqM Tool.csprojAssemblyReference.cache
+C:\Users\bogdan.herciu\Desktop\Req_Tool\ReqM_project\ReqM_Tool\ReqMTool\obj\Debug\ReqM_Tool.Main.resources
+C:\Users\bogdan.herciu\Desktop\Req_Tool\ReqM_project\ReqM_Tool\ReqMTool\obj\Debug\ReqM_namespace.Properties.Resources.resources
+C:\Users\bogdan.herciu\Desktop\Req_Tool\ReqM_project\ReqM_Tool\ReqMTool\obj\Debug\ReqM Tool.csproj.GenerateResource.cache
+C:\Users\bogdan.herciu\Desktop\Req_Tool\ReqM_project\ReqM_Tool\ReqMTool\obj\Debug\ReqM Tool.csproj.CoreCompileInputs.cache
+C:\Users\bogdan.herciu\Desktop\Req_Tool\ReqM_project\ReqM_Tool\ReqMTool\obj\Debug\RequirementManagementTool.exe
+C:\Users\bogdan.herciu\Desktop\Req_Tool\ReqM_project\ReqM_Tool\ReqMTool\obj\Debug\RequirementManagementTool.pdb
+C:\Users\bogdan.herciu\Desktop\Req_Tool\ReqM_project\ReqM_Tool\ReqMTool\bin\Debug\RequirementManagementTool.pdb
