@@ -2,15 +2,15 @@
 *
 *   COMPANY:        NTT DATA Romania (19-21 Constanta Street, Cluj Napoca)
 *
-*	PROJECT:		2019 Summer Internship
+*   PROJECT:		2019 Summer Internship
 *
-*	FILE:			file05.h
+*   FILE:			file05.h
 *
-*	AUTHOR:			John Doe
+*   AUTHOR:			John Doe
 *
-*	DESCRIPTION:	This is a demo file used by the C# Application
+*   DESCRIPTION:	This is a demo file used by the C# Application
 *
-*	HISTORY:        14-Apr-2019 Initial Version
+*   HISTORY:        14-Apr-2019 Initial Version
 *
 **************************************************************************** */
 
@@ -43,7 +43,7 @@ enum RequirementList
 /* functions ************************************************************** */
 
 /******************************************************************************
-*	Full name:       requirementsTraceability
+*   Full name:       requirementsTraceability
 *
 *   Description:     Search the requirement with "req" ID in all project files
 *
