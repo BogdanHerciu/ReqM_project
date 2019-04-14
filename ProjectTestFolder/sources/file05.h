@@ -2,11 +2,11 @@
 *
 *   COMPANY:        NTT DATA Romania (19-21 Constanta Street, Cluj Napoca)
 *
-*   PROJECT:		2019 Summer Internship
+*   PROJECT:        2019 Summer Internship
 *
-*   FILE:			file05.h
+*   FILE:           file05.h
 *
-*   AUTHOR:			John Doe
+*   AUTHOR:         John Doe
 *
 *   DESCRIPTION:	This is a demo file used by the C# Application
 *
