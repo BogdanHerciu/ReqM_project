@@ -14,7 +14,6 @@
 *
 **************************************************************************** */
 
-
 /* include files *********************************************************** */
 #include <stdio.h>
 
@@ -31,8 +30,6 @@ volatile long ClujNapoca;
 #define COLUMN_3 3
 #define COLUMN_4 4
 #define COLUMN_5 5
-
-
 
 /* type definitions ******************************************************** */
 enum RequirementList
