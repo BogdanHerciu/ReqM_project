@@ -11,3 +11,7 @@ ReqM_Tool/ReqMTool/obj/Debug/ReqM Tool.csproj.GenerateResource.Cache
 ReqM_Tool/ReqMTool/obj/Debug/ReqM Tool.csproj.FileListAbsolute.txt
 ReqM_Tool/ReqMTool/bin/Debug/RequirementManagementTool.exe
 *.exe
+ReqM_Tool/.vs/ReqMTool/v16/.suo
+ReqM_Tool/.vs/ReqMTool/v16/Server/sqlite3/storage.ide
+ReqM_Tool/.vs/ReqMTool/v16/Server/sqlite3/storage.ide-shm
+ReqM_Tool/.vs/ReqMTool/v16/Server/sqlite3/storage.ide-wal
