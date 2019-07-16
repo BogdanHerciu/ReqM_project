@@ -163,6 +163,21 @@ namespace ReqM_Tool
 
                     /* add the data into the table */
                     dataGridView1.DataSource = listOfRequirements.Requirements_Dynamic_List;
+
+                    /* default columns to display */
+                    for (int i = 0; i < dataGridView1.Columns.Count; i++)
+                    {
+                        dataGridView1.Columns[i].Visible = false;
+                    }
+
+                    dataGridView1.Columns["id"].Visible = true;
+                    dataGridView1.Columns["description"].Visible = true;
+                    dataGridView1.Columns["status"].Visible = true;
+                    dataGridView1.Columns["CreatedBy"].Visible = true;
+                    dataGridView1.Columns["needscoverage"].Visible = true;
+                    dataGridView1.Columns["providescoverage"].Visible = true;
+                    dataGridView1.Columns["version"].Visible = true; 
+
                     /* add event for Cell value changed */
                     dataGridView1.CellValueChanged -= dataGridView1_CellValueChanged;
                     dataGridView1.CellValueChanged += dataGridView1_CellValueChanged;
@@ -229,7 +244,8 @@ namespace ReqM_Tool
             {
                 try
                 {
-                    listOfRequirements.SaveAs(XmlFilePath);
+                   
+                    listOfRequirements.SaveAs(sfd.FileName);
                 }
                 catch (Exception ex)
                 {
@@ -259,13 +275,22 @@ namespace ReqM_Tool
                     listOfRequirements.Requirements_Dynamic_List.Insert(selected_row + 1, new RequirementItem()
                     {
                         id = "id",                                /* default text for the id */
-                        description = "description",              /* default text for the description */
-                        status = "status",                        /* default text for the Status */
-                        CreatedBy = "CreatedBy",                  /* default text for the CreatedBy */
-                        Priority = "Priority",                    /* default text for the Priority */
-                        needscoverage = "needscoverage",          /* default text for the needscoverage */
-                        providescoverage = "providescoverage",    /* default text for the providescoverage */
-                        version = "version",                      /* default text for the version */
+                        description = "Please enter the description of the requirement",    /* default text for the description */
+                        status = "Draft",                         /* default text for the Status */
+                        CreatedBy = "Author of the requirement",  /* default text for the CreatedBy */
+                        needscoverage = "To be linked",           /* default text for the needscoverage */
+                        providescoverage = "To be linked",        /* default text for the providescoverage */
+                        version = "0.1",                          /* default text for the version */
+                        SafetyRelevant = "N/A",                   /* default text for the SafetyRelevant */
+                        ChangeRequest = "Change Request ID",
+                        ReviewID = "Review Ticket ID",
+                        RequirementType = "Template",
+                        Chapter = "first element from the list",
+                        HWPlatform = "first elem from list",
+                        Domain = "N/A",
+                        TestedAt = "N/A",
+                        
+                        
                     });
 
                     /* refresh the dataGridView */
@@ -419,6 +444,16 @@ namespace ReqM_Tool
             /* close the reader */
             reader.Close();
         }
+
+        private void CloseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("Are you sure?", "Close Document", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                dataGridView1.DataSource = null;
+            }
+           
+        }
     }
 
     /* *******************/
@@ -454,12 +489,40 @@ namespace ReqM_Tool
         [System.Xml.Serialization.XmlElement("CreatedBy")]
         public string CreatedBy { get; set; }
 
-        [System.Xml.Serialization.XmlElement("Priority")]
-        public string Priority { get; set; }
+        [System.Xml.Serialization.XmlElement("needscoverage")]
         public string needscoverage { get; set; }
 
+        [System.Xml.Serialization.XmlElement("providescoverage")]
         public string providescoverage { get; set; }
+
+        [System.Xml.Serialization.XmlElement("version")]
         public string version { get; set; }
+
+        [System.Xml.Serialization.XmlElement("SafetyRelevant")]
+        public string SafetyRelevant { get; set; }
+
+        [System.Xml.Serialization.XmlElement("ChangeRequest")]
+        public string ChangeRequest { get; set; }
+
+        [System.Xml.Serialization.XmlElement("ReviewID")]
+        public string ReviewID { get; set; }
+
+        [System.Xml.Serialization.XmlElement("RequirementType")]
+        public string RequirementType { get; set; }
+
+        [System.Xml.Serialization.XmlElement("Chapter")]
+        public string Chapter { get; set; }
+
+        [System.Xml.Serialization.XmlElement("HWPlatform")]
+        public string HWPlatform { get; set; }
+
+        [System.Xml.Serialization.XmlElement("Domain")]
+        public string Domain { get; set; }
+
+        [System.Xml.Serialization.XmlElement("TestedAt")]
+        public string TestedAt { get; set; }
+
+        
     }
     [Serializable()]
     [System.Xml.Serialization.XmlRoot("root_file")]
@@ -468,7 +531,7 @@ namespace ReqM_Tool
 
         [XmlArray("document_settings")]
         public List<doc_settings> list_of_settings = new List<doc_settings>();
-   // public List<document_settings> Settings_List = new List<document_settings>();
+   //public List<document_settings> Settings_List = new List<document_settings>();
     }
 
     [Serializable()]
