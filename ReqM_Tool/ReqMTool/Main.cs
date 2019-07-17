@@ -455,6 +455,10 @@ namespace ReqM_Tool
            
         }
 
+        private void PublishToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
 
         private void SaveAsExcelToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -530,10 +534,7 @@ namespace ReqM_Tool
             ((Microsoft.Office.Interop.Excel._Application)excel).Quit();
         }
 
-        private void PublishToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
+        
     }
 
     /* *******************/
