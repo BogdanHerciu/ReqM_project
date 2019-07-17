@@ -1,5 +1,10 @@
 <?xml version="1.0"?>
 <root_file xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <document_settings>
+    <doc_settings>
+      <Baseline>1</Baseline>
+    </doc_settings>
+  </document_settings>
   <Requirements>
     <RequirementItem>
       <id>NTT.0x22.DID</id>

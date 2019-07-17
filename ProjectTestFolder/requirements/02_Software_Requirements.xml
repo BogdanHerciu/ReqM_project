@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<root_file>
+<root_file xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <document_settings>
     <doc_settings>
       <Baseline>1</Baseline>
@@ -12,17 +12,17 @@
       <status>Approved</status>
       <CreatedBy>BogdanHerciu</CreatedBy>
       <needscoverage>src</needscoverage>
-	  <providescoverage>NTT.0x22.DID</providescoverage>
-	  <version>2</version>
+      <providescoverage>NTT.0x22.DID</providescoverage>
+      <version>2</version>
     </RequirementItem>
-	<RequirementItem>
+    <RequirementItem>
       <id>NTT.0x22.Type</id>
       <description>The input parameter shall be an uint8 type.</description>
       <status>Approved</status>
       <CreatedBy>BogdanHerciu</CreatedBy>
       <needscoverage>src</needscoverage>
-	  <providescoverage>NTT.0x22.Input</providescoverage>
-	  <version>2</version>
+      <providescoverage>NTT.0x22.Input</providescoverage>
+      <version>2</version>
     </RequirementItem>
   </Requirements>
 </root_file>

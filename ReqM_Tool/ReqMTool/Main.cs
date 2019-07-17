@@ -23,9 +23,9 @@ namespace ReqM_Tool
     public partial class Main : Form
     { 
         /* create variable to the root of the xml file, for reading the requirements */
-        root_file listOfRequirements = null;
+        root_file listOfRequirements = new root_file();
         /* create variable to the root of the xml file, for reading the settings */
-        root_settings listOfSettings = null;
+        //root_settings listOfSettings = null;
 
         /* define columns from DataGridView */
         public int Column_ID = 0;
@@ -196,11 +196,11 @@ namespace ReqM_Tool
 
                     /**** load the settings ****/
                     /* create a serializer for the settings list */
-                    XmlSerializer settings_serializer = new XmlSerializer(typeof(root_settings));
+                    //XmlSerializer settings_serializer = new XmlSerializer(typeof(root_settings));
                     /* read the data from the xml file */
-                    StreamReader reader_settings = new StreamReader(XmlFilePath);
+                    //StreamReader reader_settings = new StreamReader(XmlFilePath);
                     /* dezerialize the data */
-                    listOfSettings = (root_settings)settings_serializer.Deserialize(reader_settings);
+                    //listOfSettings = (root_settings)settings_serializer.Deserialize(reader_settings);
                 }
                 catch (Exception ex)
                 {
@@ -454,6 +454,87 @@ namespace ReqM_Tool
             }
            
         }
+
+        private void PublishToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void SaveAsExcelToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DataSet ds = new DataSet();
+
+            //Convert the XML into Dataset
+            ds.ReadXml(XmlFilePath);
+
+            //Retrieve the table fron Dataset
+            DataTable dt = ds.Tables[1];
+
+            // Create an Excel object
+            Microsoft.Office.Interop.Excel.Application excel = new Microsoft.Office.Interop.Excel.Application();
+
+            //Create workbook object
+
+
+            Microsoft.Office.Interop.Excel.Workbook workbook = excel.Workbooks.Open(Filename : XmlFilePath);
+
+            //Create worksheet object
+            Microsoft.Office.Interop.Excel.Worksheet worksheet = workbook.ActiveSheet;
+
+            // Column Headings
+            int iColumn = 0;
+
+            foreach (DataColumn c in dt.Columns)
+            {
+                iColumn++;
+                excel.Cells[1, iColumn] = c.ColumnName;
+            }
+
+            // Row Data
+            int iRow = worksheet.UsedRange.Rows.Count - 1;
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                iRow++;
+
+                // Row's Cell Data
+                iColumn = 0;
+                foreach (DataColumn c in dt.Columns)
+                {
+                    iColumn++;
+                    excel.Cells[iRow + 1, iColumn] = dr[c.ColumnName];
+                }
+            }
+
+                    ((Microsoft.Office.Interop.Excel._Worksheet)worksheet).Activate();
+
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = "Excel|*.xlsx";
+            /* open File dialog where to save the file */
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    //Save the workbook
+                    workbook.SaveAs(sfd.FileName);
+
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex);
+                }
+            }
+
+
+
+            //Close the Workbook
+            workbook.Close();
+
+            // Finally Quit the Application
+            ((Microsoft.Office.Interop.Excel._Application)excel).Quit();
+        }
+
+        
     }
 
     /* *******************/
@@ -464,6 +545,7 @@ namespace ReqM_Tool
         /* path for the file in where is searched the "pattern" (requirement_id) */
         public string FileName { get; set; }
     }
+
     [Serializable()]
     /* class used to extract the setting */
     public class doc_settings
@@ -473,8 +555,14 @@ namespace ReqM_Tool
         
     }
 
+    /*public class Chapter
+    {
+        [System.Xml.Serialization.XmlElement("chapter")]
+        public string chapter { get; set; }
+    }*/
+
     [Serializable()]
-    [System.Xml.Serialization.XmlRoot("Req")]
+    [System.Xml.Serialization.XmlRoot("Requirements")]
     public class RequirementItem
     {
         [System.Xml.Serialization.XmlElement("id")]
@@ -524,17 +612,28 @@ namespace ReqM_Tool
 
         
     }
-    [Serializable()]
+
+    /*[Serializable()]
     [System.Xml.Serialization.XmlRoot("root_file")]
     public class root_settings
     {
 
         [XmlArray("document_settings")]
         public List<doc_settings> list_of_settings = new List<doc_settings>();
-   //public List<document_settings> Settings_List = new List<document_settings>();
+
+        public void Save(string fileName)
+        {
+            using (FileStream stream = new FileStream(fileName, FileMode.Create))
+            {
+                var XML = new XmlSerializer(typeof(root_settings));
+                XML.Serialize(stream, this);
+
+            }
+        }
+        //public List<document_settings> Settings_List = new List<document_settings>();
     }
 
-    [Serializable()]
+    /*[Serializable()]
     [System.Xml.Serialization.XmlRoot("root_file")]
     public class root_file
     {
@@ -544,6 +643,43 @@ namespace ReqM_Tool
         public void SaveAs(string fileName)
         {
             using (FileStream stream = new FileStream(fileName, FileMode.Create ))
+            {
+                var XML = new XmlSerializer(typeof(root_file));
+                XML.Serialize(stream, this);
+            }
+        }
+        public void Save(string fileName)
+        {
+            using (FileStream stream = new FileStream(fileName, FileMode.Append))
+            {
+                var XML = new XmlSerializer(typeof(root_file));
+                XML.Serialize(stream, this);
+
+            }
+        }
+    }*/
+
+    public class root_file
+    {
+        
+        [XmlArray("document_settings")]
+        public List<doc_settings> list_of_settings { get; set; }
+
+        [XmlArray("Requirements")]
+        public List<RequirementItem> Requirements_Dynamic_List { get; set; }
+
+        /*[XmlArray("Chapters")]
+        public List<string> chapters { get; set; }*/
+
+        public root_file()
+        {
+            list_of_settings = new List<doc_settings>();
+            Requirements_Dynamic_List = new List<RequirementItem>();
+            //chapters = new List<string>();
+        }
+        public void SaveAs(string fileName)
+        {
+            using (FileStream stream = new FileStream(fileName, FileMode.Create))
             {
                 var XML = new XmlSerializer(typeof(root_file));
                 XML.Serialize(stream, this);
