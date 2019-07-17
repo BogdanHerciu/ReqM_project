@@ -11,7 +11,6 @@
       <description>The input parameter DID shall be an uint8 type.</description>
       <status>Approved</status>
       <CreatedBy>BogdanHerciu</CreatedBy>
-      <Priority>1</Priority>
       <needscoverage>src</needscoverage>
 	  <providescoverage>NTT.0x22.DID</providescoverage>
 	  <version>2</version>
@@ -21,7 +20,6 @@
       <description>The input parameter shall be an uint8 type.</description>
       <status>Approved</status>
       <CreatedBy>BogdanHerciu</CreatedBy>
-      <Priority>2</Priority>
       <needscoverage>src</needscoverage>
 	  <providescoverage>NTT.0x22.Input</providescoverage>
 	  <version>2</version>
