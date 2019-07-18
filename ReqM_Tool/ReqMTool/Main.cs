@@ -12,7 +12,7 @@ using System.Xml;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Xml.Serialization;
-using System.Collections.Generic;
+//using System.Collections.Generic;
 using function_namespace;
 
 
@@ -21,7 +21,7 @@ namespace ReqM_Tool
 
 
     public partial class Main : Form
-    { 
+    {
         /* create variable to the root of the xml file, for reading the requirements */
         root_file listOfRequirements = new root_file();
         /* create variable to the root of the xml file, for reading the settings */
@@ -57,13 +57,13 @@ namespace ReqM_Tool
         {
             /* collor change for needscoverage column */
             if (e.ColumnIndex == Column_needscoverage)
-            { 
+            {
                 if (
                (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString() == "tst") ||
                (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString() == "src")
                )
                 {
-                    dataGridView1.Rows[e.RowIndex].Cells[Column_needscoverage].Style.BackColor = Color.White; 
+                    dataGridView1.Rows[e.RowIndex].Cells[Column_needscoverage].Style.BackColor = Color.White;
                 }
                 else
                 {
@@ -74,18 +74,22 @@ namespace ReqM_Tool
 
         private void OpenBtn_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void SaveBtn_Click(object sender, EventArgs e)
         {
-  
+
         }
 
         private void AddBtn_Click(object sender, EventArgs e)
         {
-            
-        } 
+
+
+        }
+
+
+
         private void DeleteBtn_Click(object sender, EventArgs e)
         {
 
@@ -98,7 +102,7 @@ namespace ReqM_Tool
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -113,12 +117,12 @@ namespace ReqM_Tool
 
         private void button2_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void ImplementationPathButton_Click(object sender, EventArgs e)
         {
-   
+
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -133,12 +137,12 @@ namespace ReqM_Tool
 
         private void ImplementationPathButton_Click_1(object sender, EventArgs e)
         {
- 
+
         }
 
         private void button3_Click_1(object sender, EventArgs e)
         {
-  
+
         }
 
         private void button1_Click_1(object sender, EventArgs e)
@@ -176,7 +180,7 @@ namespace ReqM_Tool
                     dataGridView1.Columns["CreatedBy"].Visible = true;
                     dataGridView1.Columns["needscoverage"].Visible = true;
                     dataGridView1.Columns["providescoverage"].Visible = true;
-                    dataGridView1.Columns["version"].Visible = true; 
+                    dataGridView1.Columns["version"].Visible = true;
 
                     /* add event for Cell value changed */
                     dataGridView1.CellValueChanged -= dataGridView1_CellValueChanged;
@@ -244,7 +248,7 @@ namespace ReqM_Tool
             {
                 try
                 {
-                   
+
                     listOfRequirements.SaveAs(sfd.FileName);
                 }
                 catch (Exception ex)
@@ -289,8 +293,8 @@ namespace ReqM_Tool
                         HWPlatform = "first elem from list",
                         Domain = "N/A",
                         TestedAt = "N/A",
-                        
-                        
+
+
                     });
 
                     /* refresh the dataGridView */
@@ -452,7 +456,7 @@ namespace ReqM_Tool
             {
                 dataGridView1.DataSource = null;
             }
-           
+
         }
 
         private void PublishToolStripMenuItem_Click(object sender, EventArgs e)
@@ -475,8 +479,8 @@ namespace ReqM_Tool
 
             //Create workbook object
 
+            Microsoft.Office.Interop.Excel.Workbook workbook = excel.Workbooks.Open(Filename: XmlFilePath);
 
-            Microsoft.Office.Interop.Excel.Workbook workbook = excel.Workbooks.Open(Filename : XmlFilePath);
 
             //Create worksheet object
             Microsoft.Office.Interop.Excel.Worksheet worksheet = workbook.ActiveSheet;
@@ -625,6 +629,39 @@ namespace ReqM_Tool
 
             chart1.Series["Series1"].Points.AddXY("Requirements missing", countReq - countReqFound);
             chart1.Series["Series1"].Points.AddXY("Found Requirements", countReqFound);
+        }
+
+        private void InsertImagesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            
+
+            string FileName = null;
+
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.RestoreDirectory = true;
+
+            openFileDialog.Filter = "All picture files (*.BMP;*.JPG;*.GIF)|*.BMP;*.JPG;*.GIF";
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                /* get the selected row */
+                int selected_row = (this.dataGridView1.SelectedRows[0].Index);
+                    { 
+                    FileName = openFileDialog.FileName;
+                    //pictureBox2.Image = Image.FromFile(FileName);
+                    DataGridViewImageColumn img = new DataGridViewImageColumn();
+                    Image image = Image.FromFile(FileName);
+                    //img.Image = image;
+                    
+                    
+                    dataGridView1.Columns.Add(img);
+                    img.HeaderText = "Image";
+                    img.Name = "img";
+                    dataGridView1.Rows[selected_row].Cells["img"].Value = image;
+                }
+            }
+
         }
     }
 
