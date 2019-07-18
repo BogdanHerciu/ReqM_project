@@ -65,3 +65,13 @@ C:\Users\bogdan.herciu\Desktop\Req_Tool\ReqM_project\ReqM_Tool\ReqMTool\obj\Debu
 C:\Users\bogdan.herciu\Desktop\Req_Tool\ReqM_project\ReqM_Tool\ReqMTool\obj\Debug\RequirementManagementTool.exe
 C:\Users\bogdan.herciu\Desktop\Req_Tool\ReqM_project\ReqM_Tool\ReqMTool\obj\Debug\RequirementManagementTool.pdb
 C:\Users\bogdan.herciu\Desktop\Req_Tool\ReqM_project\ReqM_Tool\ReqMTool\bin\Debug\RequirementManagementTool.pdb
+E:\NTT\GitHub\ReqM_Tool\ReqMTool\obj\Debug\ReqM Tool.csprojAssemblyReference.cache
+E:\NTT\GitHub\ReqM_Tool\ReqMTool\obj\Debug\ReqM_Tool.Main.resources
+E:\NTT\GitHub\ReqM_Tool\ReqMTool\obj\Debug\ReqM_namespace.Properties.Resources.resources
+E:\NTT\GitHub\ReqM_Tool\ReqMTool\obj\Debug\ReqM Tool.csproj.GenerateResource.cache
+E:\NTT\GitHub\ReqM_Tool\ReqMTool\obj\Debug\ReqM Tool.csproj.CoreCompileInputs.cache
+E:\NTT\GitHub\ReqM_Tool\ReqMTool\obj\Debug\RequirementManagementTool.exe
+E:\NTT\GitHub\ReqM_Tool\ReqMTool\obj\Debug\RequirementManagementTool.pdb
+E:\NTT\GitHub\ReqM_Tool\ReqMTool\bin\Debug\RequirementManagementTool.exe.config
+E:\NTT\GitHub\ReqM_Tool\ReqMTool\bin\Debug\RequirementManagementTool.exe
+E:\NTT\GitHub\ReqM_Tool\ReqMTool\bin\Debug\RequirementManagementTool.pdb

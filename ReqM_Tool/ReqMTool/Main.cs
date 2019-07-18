@@ -534,7 +534,98 @@ namespace ReqM_Tool
             ((Microsoft.Office.Interop.Excel._Application)excel).Quit();
         }
 
-        
+        private void Label2_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Button1_Click_2(object sender, EventArgs e)
+        {
+            /* total number of requirements */
+            float countReq = 0;
+            /* number of found requirements */
+            float countReqFound = 0;
+            float coverage = 0; ;
+
+            string content = string.Empty;
+            MatchCollection matches;
+
+            /* check the paths for null */
+            if (false == myFunctions.Paths(implementationFilePath, testFilePath, XmlFilePath))
+            {
+                return;
+            }
+
+            /* path of xml files */
+            string path = XmlFilePath;
+            int indx = path.LastIndexOf("\\");
+            if (indx > 0)
+                path = path.Substring(0, indx + 1);
+
+            foreach (string file in Directory.GetFiles(path, "*Software*"))
+            {
+                /* create variable to the root of the xml file */
+                root_file listOfRequirements = null;
+                /* create a serializer */
+                XmlSerializer serializer = new XmlSerializer(typeof(root_file));
+                /* read the data from the xml file */
+                StreamReader reader = new StreamReader(file);
+                /* dezerialize the data */
+                listOfRequirements = (root_file)serializer.Deserialize(reader);
+
+                /* count RequirementItems */
+                countReq += listOfRequirements.Requirements_Dynamic_List.Count();
+
+                /* search in folders string */
+                string pattern;
+                for (int index = 0; index < (listOfRequirements.Requirements_Dynamic_List.Count()); index++)
+                {
+                    /* ID - the name of the Requirement which is searched in all files */
+                    pattern = listOfRequirements.Requirements_Dynamic_List[index].id;
+
+                    string selectable_path = implementationFilePath;
+
+                    /* search in each file from the folder "selectable_path" */
+                    foreach (string file2 in Directory.GetFiles(selectable_path, "*.*"))    //.c.h
+                    {
+                        content = File.ReadAllText(file2);
+                        Regex r = new Regex(pattern, RegexOptions.IgnoreCase);
+                        matches = r.Matches(content);
+
+                        /* if Requirement is found,  */
+                        if (matches.Count > 0)
+                        {
+                            countReqFound++;
+                            break;
+                        }
+                    }
+
+                    selectable_path = testFilePath;
+
+                    /* search in each file from the folder "selectable_path" */
+                    foreach (string file2 in Directory.GetFiles(selectable_path, "*.*"))    //.c.h
+                    {
+                        content = File.ReadAllText(file2);
+                        Regex r = new Regex(pattern, RegexOptions.IgnoreCase);
+                        matches = r.Matches(content);
+
+                        /* if Requirement is found, count it */
+                        if (matches.Count > 0)
+                        {
+                            countReqFound++;
+                            break;
+                        }
+                    }
+                }
+            }
+            coverage = (countReqFound / countReq) * 100;
+
+            textBox1.Text = countReq.ToString();
+            textBox2.Text = coverage.ToString() + "%";
+
+            chart1.Series["Series1"].Points.AddXY("Requirements missing", countReq - countReqFound);
+            chart1.Series["Series1"].Points.AddXY("Found Requirements", countReqFound);
+        }
     }
 
     /* *******************/
