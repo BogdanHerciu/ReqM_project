@@ -12,20 +12,27 @@ using System.Xml;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Xml.Serialization;
-//using System.Collections.Generic;
+using System.Collections.Generic;
 using function_namespace;
-
+using ReqM_namespace;
 
 namespace ReqM_Tool
 {
 
 
     public partial class Main : Form
-    {
+    { 
         /* create variable to the root of the xml file, for reading the requirements */
         root_file listOfRequirements = new root_file();
         /* create variable to the root of the xml file, for reading the settings */
-        //root_settings listOfSettings = null;
+        bool statistics = false;
+
+        /* define lists of possible values */
+        public List<string> status { get; } 
+        public List<string> safetyRelevant { get; }
+        public List<string> domain { get; }
+        public List<string> tested { get; }
+        public List<string> type { get; }
 
         /* define columns from DataGridView */
         public int Column_ID = 0;
@@ -35,6 +42,9 @@ namespace ReqM_Tool
         public int Column_Priority = 4;
         public int Column_needscoverage = 5;
         public int Column_providescoverage = 6;
+
+        /* FilterForm checkBoxes */
+        public bool cbox1;
 
         /* all the files from a folder */
         List<MyFile> listOfFiles;
@@ -50,6 +60,16 @@ namespace ReqM_Tool
         public Main()
         {
             InitializeComponent();
+			status = new List<string> { "Accepted by project", "Ready for review", "Discarded by project", "In work", "Draft" };
+            safetyRelevant = new List<string> { "N/A", "QM", "ASIL A", "ASIL B", "ASIL C", "ASIL D" };
+            domain = new List<string> { "N/A", "SW", "MD", "HW" };
+            tested = new List<string> { "N/A", "SYS.5", "SYS.4", "SWE.6", "SWE.5", "SWE.4", "DEV Test/Review" };
+            type = new List<string> { "Description", "Technical Requirement", "Project Requirement", "Functional Requirement", "Non-Functional Requirement", "Template" };
+        }
+
+        public DataGridView dgv
+        {
+            get { return dataGridView1; }
         }
 
         /* Method called when a cell is modified */
@@ -57,13 +77,13 @@ namespace ReqM_Tool
         {
             /* collor change for needscoverage column */
             if (e.ColumnIndex == Column_needscoverage)
-            {
+            { 
                 if (
                (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString() == "tst") ||
                (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString() == "src")
                )
                 {
-                    dataGridView1.Rows[e.RowIndex].Cells[Column_needscoverage].Style.BackColor = Color.White;
+                    dataGridView1.Rows[e.RowIndex].Cells[Column_needscoverage].Style.BackColor = Color.White; 
                 }
                 else
                 {
@@ -74,22 +94,18 @@ namespace ReqM_Tool
 
         private void OpenBtn_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         private void SaveBtn_Click(object sender, EventArgs e)
         {
-
+  
         }
 
         private void AddBtn_Click(object sender, EventArgs e)
         {
-
-
-        }
-
-
-
+            
+        } 
         private void DeleteBtn_Click(object sender, EventArgs e)
         {
 
@@ -102,7 +118,7 @@ namespace ReqM_Tool
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -117,12 +133,7 @@ namespace ReqM_Tool
 
         private void button2_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void ImplementationPathButton_Click(object sender, EventArgs e)
-        {
-
+            
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -137,12 +148,12 @@ namespace ReqM_Tool
 
         private void ImplementationPathButton_Click_1(object sender, EventArgs e)
         {
-
+ 
         }
 
         private void button3_Click_1(object sender, EventArgs e)
         {
-
+  
         }
 
         private void button1_Click_1(object sender, EventArgs e)
@@ -156,6 +167,15 @@ namespace ReqM_Tool
             {
                 /* build the XML file path */
                 XmlFilePath = FileDialog.FileName;
+
+                string extension = Path.GetExtension(XmlFilePath);
+
+                /* verify file format */
+                if (extension != ".xml")
+                {
+                    MessageBox.Show("Unsupported file format. Please open supported Requirements file.");
+                    return;
+                }
                 try
                 {
                     /* create a serializer for the requirements */
@@ -167,6 +187,8 @@ namespace ReqM_Tool
 
                     /* add the data into the table */
                     dataGridView1.DataSource = listOfRequirements.Requirements_Dynamic_List;
+
+                    //listOfRequirements.list_of_settings.ElementAt(0).columns = new List<string> { "a", "b" };
 
                     /* default columns to display */
                     for (int i = 0; i < dataGridView1.Columns.Count; i++)
@@ -180,7 +202,7 @@ namespace ReqM_Tool
                     dataGridView1.Columns["CreatedBy"].Visible = true;
                     dataGridView1.Columns["needscoverage"].Visible = true;
                     dataGridView1.Columns["providescoverage"].Visible = true;
-                    dataGridView1.Columns["version"].Visible = true;
+                    dataGridView1.Columns["version"].Visible = true; 
 
                     /* add event for Cell value changed */
                     dataGridView1.CellValueChanged -= dataGridView1_CellValueChanged;
@@ -198,14 +220,8 @@ namespace ReqM_Tool
                         }
                     }
 
-                    /**** load the settings ****/
-                    /* create a serializer for the settings list */
-                    //XmlSerializer settings_serializer = new XmlSerializer(typeof(root_settings));
-                    /* read the data from the xml file */
-                    //StreamReader reader_settings = new StreamReader(XmlFilePath);
-                    /* dezerialize the data */
-                    //listOfSettings = (root_settings)settings_serializer.Deserialize(reader_settings);
-                }
+                   
+                }                
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex);
@@ -248,7 +264,7 @@ namespace ReqM_Tool
             {
                 try
                 {
-
+                   
                     listOfRequirements.SaveAs(sfd.FileName);
                 }
                 catch (Exception ex)
@@ -289,12 +305,12 @@ namespace ReqM_Tool
                         ChangeRequest = "Change Request ID",
                         ReviewID = "Review Ticket ID",
                         RequirementType = "Template",
-                        Chapter = "first element from the list",
-                        HWPlatform = "first elem from list",
+                        Chapter = listOfRequirements.customValues.chapters.ElementAt(0), //"first element from the list",
+                        HWPlatform = listOfRequirements.customValues.hwPlatforms.ElementAt(0),
                         Domain = "N/A",
                         TestedAt = "N/A",
-
-
+                        
+                        
                     });
 
                     /* refresh the dataGridView */
@@ -456,7 +472,7 @@ namespace ReqM_Tool
             {
                 dataGridView1.DataSource = null;
             }
-
+           
         }
 
         private void PublishToolStripMenuItem_Click(object sender, EventArgs e)
@@ -466,54 +482,38 @@ namespace ReqM_Tool
 
         private void SaveAsExcelToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DataSet ds = new DataSet();
+            //DataSet ds = new DataSet();
 
             //Convert the XML into Dataset
-            ds.ReadXml(XmlFilePath);
+            //ds.ReadXml(XmlFilePath);
 
             //Retrieve the table fron Dataset
-            DataTable dt = ds.Tables[1];
+            // DataTable dt = ds.Tables[1];
 
             // Create an Excel object
             Microsoft.Office.Interop.Excel.Application excel = new Microsoft.Office.Interop.Excel.Application();
 
             //Create workbook object
-
-            Microsoft.Office.Interop.Excel.Workbook workbook = excel.Workbooks.Open(Filename: XmlFilePath);
-
+            Microsoft.Office.Interop.Excel.Workbook workbook = excel.Workbooks.Add(Type.Missing);
 
             //Create worksheet object
             Microsoft.Office.Interop.Excel.Worksheet worksheet = workbook.ActiveSheet;
 
-            // Column Headings
-            int iColumn = 0;
-
-            foreach (DataColumn c in dt.Columns)
+            for (int i = 1; i < dataGridView1.Columns.Count+1; i++)
             {
-                iColumn++;
-                excel.Cells[1, iColumn] = c.ColumnName;
+                worksheet.Cells[1, i] = dataGridView1.Columns[i - 1].HeaderText;
             }
-
-            // Row Data
-            int iRow = worksheet.UsedRange.Rows.Count - 1;
-
-            foreach (DataRow dr in dt.Rows)
+            for (int i = 0; i < dataGridView1.Rows.Count; i++)
             {
-                iRow++;
-
-                // Row's Cell Data
-                iColumn = 0;
-                foreach (DataColumn c in dt.Columns)
+                for (int j = 0; j < dataGridView1.Columns.Count; j++)
                 {
-                    iColumn++;
-                    excel.Cells[iRow + 1, iColumn] = dr[c.ColumnName];
+                    worksheet.Cells[i + 2, j + 1] = dataGridView1.Rows[i].Cells[j].Value.ToString();
                 }
             }
 
-                    ((Microsoft.Office.Interop.Excel._Worksheet)worksheet).Activate();
-
             SaveFileDialog sfd = new SaveFileDialog();
             sfd.Filter = "Excel|*.xlsx";
+
             /* open File dialog where to save the file */
             if (sfd.ShowDialog() == DialogResult.OK)
             {
@@ -528,8 +528,6 @@ namespace ReqM_Tool
                     Console.WriteLine(ex);
                 }
             }
-
-
 
             //Close the Workbook
             workbook.Close();
@@ -631,37 +629,10 @@ namespace ReqM_Tool
             chart1.Series["Series1"].Points.AddXY("Found Requirements", countReqFound);
         }
 
-        private void InsertImagesToolStripMenuItem_Click(object sender, EventArgs e)
+        private void Button2_Click_1(object sender, EventArgs e)
         {
-
-            
-
-            string FileName = null;
-
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.RestoreDirectory = true;
-
-            openFileDialog.Filter = "All picture files (*.BMP;*.JPG;*.GIF)|*.BMP;*.JPG;*.GIF";
-
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                /* get the selected row */
-                int selected_row = (this.dataGridView1.SelectedRows[0].Index);
-                    { 
-                    FileName = openFileDialog.FileName;
-                    //pictureBox2.Image = Image.FromFile(FileName);
-                    DataGridViewImageColumn img = new DataGridViewImageColumn();
-                    Image image = Image.FromFile(FileName);
-                    //img.Image = image;
-                    
-                    
-                    dataGridView1.Columns.Add(img);
-                    img.HeaderText = "Image";
-                    img.Name = "img";
-                    dataGridView1.Rows[selected_row].Cells["img"].Value = image;
-                }
-            }
-
+            FilterForm form = new FilterForm(this);
+            form.Show();   
         }
     }
 
@@ -681,13 +652,30 @@ namespace ReqM_Tool
         [System.Xml.Serialization.XmlElement("Baseline")]
         public string Baseline { get; set; }
         
+        [XmlArray("Columns")]
+        [XmlArrayItem(ElementName = "column")]
+        public List<string> columns { get; set; }
     }
 
-    /*public class Chapter
+    public class CustomValues
     {
+        [XmlArray("Chapters")]
+        [XmlArrayItem(ElementName = "chapter")]
+        public List<string> chapters { get; set; }
+
+        [XmlArray("HWPlatform")]
+        [XmlArrayItem(ElementName = "value")]
+        public List<string> hwPlatforms { get; set; }
+    
         [System.Xml.Serialization.XmlElement("chapter")]
         public string chapter { get; set; }
-    }*/
+   
+        public CustomValues()
+        {
+            chapters = new List<string>();
+            hwPlatforms = new List<string>();
+        }
+    }
 
     [Serializable()]
     [System.Xml.Serialization.XmlRoot("Requirements")]
@@ -741,69 +729,24 @@ namespace ReqM_Tool
         
     }
 
-    /*[Serializable()]
-    [System.Xml.Serialization.XmlRoot("root_file")]
-    public class root_settings
-    {
-
-        [XmlArray("document_settings")]
-        public List<doc_settings> list_of_settings = new List<doc_settings>();
-
-        public void Save(string fileName)
-        {
-            using (FileStream stream = new FileStream(fileName, FileMode.Create))
-            {
-                var XML = new XmlSerializer(typeof(root_settings));
-                XML.Serialize(stream, this);
-
-            }
-        }
-        //public List<document_settings> Settings_List = new List<document_settings>();
-    }
-
-    /*[Serializable()]
-    [System.Xml.Serialization.XmlRoot("root_file")]
-    public class root_file
-    {
-        [XmlArray("Requirements")]
-       
-        public List<RequirementItem> Requirements_Dynamic_List = new List<RequirementItem>();
-        public void SaveAs(string fileName)
-        {
-            using (FileStream stream = new FileStream(fileName, FileMode.Create ))
-            {
-                var XML = new XmlSerializer(typeof(root_file));
-                XML.Serialize(stream, this);
-            }
-        }
-        public void Save(string fileName)
-        {
-            using (FileStream stream = new FileStream(fileName, FileMode.Append))
-            {
-                var XML = new XmlSerializer(typeof(root_file));
-                XML.Serialize(stream, this);
-
-            }
-        }
-    }*/
-
+   
     public class root_file
     {
         
         [XmlArray("document_settings")]
         public List<doc_settings> list_of_settings { get; set; }
 
+        [System.Xml.Serialization.XmlElement("custom_values")]
+        public CustomValues customValues { get; set; }
         [XmlArray("Requirements")]
         public List<RequirementItem> Requirements_Dynamic_List { get; set; }
 
-        /*[XmlArray("Chapters")]
-        public List<string> chapters { get; set; }*/
 
         public root_file()
         {
             list_of_settings = new List<doc_settings>();
             Requirements_Dynamic_List = new List<RequirementItem>();
-            //chapters = new List<string>();
+            customValues = new CustomValues();
         }
         public void SaveAs(string fileName)
         {

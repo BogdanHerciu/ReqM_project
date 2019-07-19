@@ -29,7 +29,6 @@ namespace ReqM_Tool
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
@@ -41,6 +40,7 @@ namespace ReqM_Tool
             this.label4 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.button2 = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
             this.menuStrip3 = new System.Windows.Forms.MenuStrip();
@@ -56,7 +56,6 @@ namespace ReqM_Tool
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addRowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteRowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.insertImagesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -106,20 +105,11 @@ namespace ReqM_Tool
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToOrderColumns = true;
-            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridView1.Location = new System.Drawing.Point(6, 27);
+            this.dataGridView1.Location = new System.Drawing.Point(6, 32);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.Size = new System.Drawing.Size(781, 372);
+            this.dataGridView1.Size = new System.Drawing.Size(781, 367);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -179,6 +169,7 @@ namespace ReqM_Tool
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.button2);
             this.tabPage1.Controls.Add(this.dataGridView1);
             this.tabPage1.Controls.Add(this.menuStrip1);
             this.tabPage1.Controls.Add(this.menuStrip2);
@@ -190,6 +181,16 @@ namespace ReqM_Tool
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Database";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(712, 4);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 9;
+            this.button2.Text = "View";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.Button2_Click_1);
             // 
             // menuStrip1
             // 
@@ -267,19 +268,19 @@ namespace ReqM_Tool
             // saveAsWordToolStripMenuItem
             // 
             this.saveAsWordToolStripMenuItem.Name = "saveAsWordToolStripMenuItem";
-            this.saveAsWordToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.saveAsWordToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.saveAsWordToolStripMenuItem.Text = "Save as Word";
             // 
             // saveAsPdfToolStripMenuItem
             // 
             this.saveAsPdfToolStripMenuItem.Name = "saveAsPdfToolStripMenuItem";
-            this.saveAsPdfToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.saveAsPdfToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.saveAsPdfToolStripMenuItem.Text = "Save as Pdf";
             // 
             // saveAsExcelToolStripMenuItem
             // 
             this.saveAsExcelToolStripMenuItem.Name = "saveAsExcelToolStripMenuItem";
-            this.saveAsExcelToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.saveAsExcelToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.saveAsExcelToolStripMenuItem.Text = "Save as Excel";
             this.saveAsExcelToolStripMenuItem.Click += new System.EventHandler(this.SaveAsExcelToolStripMenuItem_Click);
             // 
@@ -294,8 +295,7 @@ namespace ReqM_Tool
             // 
             this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addRowToolStripMenuItem,
-            this.deleteRowToolStripMenuItem,
-            this.insertImagesToolStripMenuItem});
+            this.deleteRowToolStripMenuItem});
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
             this.editToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
             this.editToolStripMenuItem.Text = "Edit";
@@ -313,13 +313,6 @@ namespace ReqM_Tool
             this.deleteRowToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.deleteRowToolStripMenuItem.Text = "Delete Row";
             this.deleteRowToolStripMenuItem.Click += new System.EventHandler(this.deleteRowToolStripMenuItem_Click);
-            // 
-            // insertImagesToolStripMenuItem
-            // 
-            this.insertImagesToolStripMenuItem.Name = "insertImagesToolStripMenuItem";
-            this.insertImagesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.insertImagesToolStripMenuItem.Text = "Insert Images";
-            this.insertImagesToolStripMenuItem.Click += new System.EventHandler(this.InsertImagesToolStripMenuItem_Click);
             // 
             // tabPage3
             // 
@@ -479,6 +472,7 @@ namespace ReqM_Tool
             // 
             this.textBox2.Location = new System.Drawing.Point(136, 80);
             this.textBox2.Name = "textBox2";
+            this.textBox2.ReadOnly = true;
             this.textBox2.Size = new System.Drawing.Size(100, 20);
             this.textBox2.TabIndex = 2;
             // 
@@ -486,6 +480,7 @@ namespace ReqM_Tool
             // 
             this.textBox1.Location = new System.Drawing.Point(136, 54);
             this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
             this.textBox1.Size = new System.Drawing.Size(100, 20);
             this.textBox1.TabIndex = 1;
             // 
@@ -671,7 +666,7 @@ namespace ReqM_Tool
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ToolStripMenuItem insertImagesToolStripMenuItem;
+        private System.Windows.Forms.Button button2;
     }
 }
 
