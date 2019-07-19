@@ -25,7 +25,14 @@ namespace ReqM_Tool
         /* create variable to the root of the xml file, for reading the requirements */
         root_file listOfRequirements = new root_file();
         /* create variable to the root of the xml file, for reading the settings */
-        //root_settings listOfSettings = null;
+        bool statistics = false;
+
+        /* define lists of possible values */
+        public List<string> status { get; } 
+        public List<string> safetyRelevant { get; }
+        public List<string> domain { get; }
+        public List<string> tested { get; }
+        public List<string> type { get; }
 
         /* define columns from DataGridView */
         public int Column_ID = 0;
@@ -53,6 +60,11 @@ namespace ReqM_Tool
         public Main()
         {
             InitializeComponent();
+			status = new List<string> { "Accepted by project", "Ready for review", "Discarded by project", "In work", "Draft" };
+            safetyRelevant = new List<string> { "N/A", "QM", "ASIL A", "ASIL B", "ASIL C", "ASIL D" };
+            domain = new List<string> { "N/A", "SW", "MD", "HW" };
+            tested = new List<string> { "N/A", "SYS.5", "SYS.4", "SWE.6", "SWE.5", "SWE.4", "DEV Test/Review" };
+            type = new List<string> { "Description", "Technical Requirement", "Project Requirement", "Functional Requirement", "Non-Functional Requirement", "Template" };
         }
 
         public DataGridView dgv
@@ -176,6 +188,8 @@ namespace ReqM_Tool
                     /* add the data into the table */
                     dataGridView1.DataSource = listOfRequirements.Requirements_Dynamic_List;
 
+                    //listOfRequirements.list_of_settings.ElementAt(0).columns = new List<string> { "a", "b" };
+
                     /* default columns to display */
                     for (int i = 0; i < dataGridView1.Columns.Count; i++)
                     {
@@ -206,13 +220,7 @@ namespace ReqM_Tool
                         }
                     }
 
-                    /**** load the settings ****/
-                    /* create a serializer for the settings list */
-                    //XmlSerializer settings_serializer = new XmlSerializer(typeof(root_settings));
-                    /* read the data from the xml file */
-                    //StreamReader reader_settings = new StreamReader(XmlFilePath);
-                    /* dezerialize the data */
-                    //listOfSettings = (root_settings)settings_serializer.Deserialize(reader_settings);
+                   
                 }                
                 catch (Exception ex)
                 {
@@ -297,8 +305,8 @@ namespace ReqM_Tool
                         ChangeRequest = "Change Request ID",
                         ReviewID = "Review Ticket ID",
                         RequirementType = "Template",
-                        Chapter = "first element from the list",
-                        HWPlatform = "first elem from list",
+                        Chapter = listOfRequirements.customValues.chapters.ElementAt(0), //"first element from the list",
+                        HWPlatform = listOfRequirements.customValues.hwPlatforms.ElementAt(0),
                         Domain = "N/A",
                         TestedAt = "N/A",
                         
@@ -644,13 +652,30 @@ namespace ReqM_Tool
         [System.Xml.Serialization.XmlElement("Baseline")]
         public string Baseline { get; set; }
         
+        [XmlArray("Columns")]
+        [XmlArrayItem(ElementName = "column")]
+        public List<string> columns { get; set; }
     }
 
-    /*public class Chapter
+    public class CustomValues
     {
+        [XmlArray("Chapters")]
+        [XmlArrayItem(ElementName = "chapter")]
+        public List<string> chapters { get; set; }
+
+        [XmlArray("HWPlatform")]
+        [XmlArrayItem(ElementName = "value")]
+        public List<string> hwPlatforms { get; set; }
+    
         [System.Xml.Serialization.XmlElement("chapter")]
         public string chapter { get; set; }
-    }*/
+   
+        public CustomValues()
+        {
+            chapters = new List<string>();
+            hwPlatforms = new List<string>();
+        }
+    }
 
     [Serializable()]
     [System.Xml.Serialization.XmlRoot("Requirements")]
@@ -704,69 +729,24 @@ namespace ReqM_Tool
         
     }
 
-    /*[Serializable()]
-    [System.Xml.Serialization.XmlRoot("root_file")]
-    public class root_settings
-    {
-
-        [XmlArray("document_settings")]
-        public List<doc_settings> list_of_settings = new List<doc_settings>();
-
-        public void Save(string fileName)
-        {
-            using (FileStream stream = new FileStream(fileName, FileMode.Create))
-            {
-                var XML = new XmlSerializer(typeof(root_settings));
-                XML.Serialize(stream, this);
-
-            }
-        }
-        //public List<document_settings> Settings_List = new List<document_settings>();
-    }
-
-    /*[Serializable()]
-    [System.Xml.Serialization.XmlRoot("root_file")]
-    public class root_file
-    {
-        [XmlArray("Requirements")]
-       
-        public List<RequirementItem> Requirements_Dynamic_List = new List<RequirementItem>();
-        public void SaveAs(string fileName)
-        {
-            using (FileStream stream = new FileStream(fileName, FileMode.Create ))
-            {
-                var XML = new XmlSerializer(typeof(root_file));
-                XML.Serialize(stream, this);
-            }
-        }
-        public void Save(string fileName)
-        {
-            using (FileStream stream = new FileStream(fileName, FileMode.Append))
-            {
-                var XML = new XmlSerializer(typeof(root_file));
-                XML.Serialize(stream, this);
-
-            }
-        }
-    }*/
-
+   
     public class root_file
     {
         
         [XmlArray("document_settings")]
         public List<doc_settings> list_of_settings { get; set; }
 
+        [System.Xml.Serialization.XmlElement("custom_values")]
+        public CustomValues customValues { get; set; }
         [XmlArray("Requirements")]
         public List<RequirementItem> Requirements_Dynamic_List { get; set; }
 
-        /*[XmlArray("Chapters")]
-        public List<string> chapters { get; set; }*/
 
         public root_file()
         {
             list_of_settings = new List<doc_settings>();
             Requirements_Dynamic_List = new List<RequirementItem>();
-            //chapters = new List<string>();
+            customValues = new CustomValues();
         }
         public void SaveAs(string fileName)
         {
