@@ -12,16 +12,16 @@ using System.Xml;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Xml.Serialization;
-//using System.Collections.Generic;
+using System.Collections.Generic;
 using function_namespace;
-
+using ReqM_namespace;
 
 namespace ReqM_Tool
 {
 
 
     public partial class Main : Form
-    {
+    { 
         /* create variable to the root of the xml file, for reading the requirements */
         root_file listOfRequirements = new root_file();
         /* create variable to the root of the xml file, for reading the settings */
@@ -35,6 +35,9 @@ namespace ReqM_Tool
         public int Column_Priority = 4;
         public int Column_needscoverage = 5;
         public int Column_providescoverage = 6;
+
+        /* FilterForm checkBoxes */
+        public bool cbox1;
 
         /* all the files from a folder */
         List<MyFile> listOfFiles;
@@ -52,18 +55,23 @@ namespace ReqM_Tool
             InitializeComponent();
         }
 
+        public DataGridView dgv
+        {
+            get { return dataGridView1; }
+        }
+
         /* Method called when a cell is modified */
         private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             /* collor change for needscoverage column */
             if (e.ColumnIndex == Column_needscoverage)
-            {
+            { 
                 if (
                (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString() == "tst") ||
                (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString() == "src")
                )
                 {
-                    dataGridView1.Rows[e.RowIndex].Cells[Column_needscoverage].Style.BackColor = Color.White;
+                    dataGridView1.Rows[e.RowIndex].Cells[Column_needscoverage].Style.BackColor = Color.White; 
                 }
                 else
                 {
@@ -74,22 +82,18 @@ namespace ReqM_Tool
 
         private void OpenBtn_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         private void SaveBtn_Click(object sender, EventArgs e)
         {
-
+  
         }
 
         private void AddBtn_Click(object sender, EventArgs e)
         {
-
-
-        }
-
-
-
+            
+        } 
         private void DeleteBtn_Click(object sender, EventArgs e)
         {
 
@@ -102,7 +106,7 @@ namespace ReqM_Tool
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -117,12 +121,7 @@ namespace ReqM_Tool
 
         private void button2_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void ImplementationPathButton_Click(object sender, EventArgs e)
-        {
-
+            
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -137,12 +136,12 @@ namespace ReqM_Tool
 
         private void ImplementationPathButton_Click_1(object sender, EventArgs e)
         {
-
+ 
         }
 
         private void button3_Click_1(object sender, EventArgs e)
         {
-
+  
         }
 
         private void button1_Click_1(object sender, EventArgs e)
@@ -156,6 +155,15 @@ namespace ReqM_Tool
             {
                 /* build the XML file path */
                 XmlFilePath = FileDialog.FileName;
+
+                string extension = Path.GetExtension(XmlFilePath);
+
+                /* verify file format */
+                if (extension != ".xml")
+                {
+                    MessageBox.Show("Unsupported file format. Please open supported Requirements file.");
+                    return;
+                }
                 try
                 {
                     /* create a serializer for the requirements */
@@ -180,7 +188,7 @@ namespace ReqM_Tool
                     dataGridView1.Columns["CreatedBy"].Visible = true;
                     dataGridView1.Columns["needscoverage"].Visible = true;
                     dataGridView1.Columns["providescoverage"].Visible = true;
-                    dataGridView1.Columns["version"].Visible = true;
+                    dataGridView1.Columns["version"].Visible = true; 
 
                     /* add event for Cell value changed */
                     dataGridView1.CellValueChanged -= dataGridView1_CellValueChanged;
@@ -205,7 +213,7 @@ namespace ReqM_Tool
                     //StreamReader reader_settings = new StreamReader(XmlFilePath);
                     /* dezerialize the data */
                     //listOfSettings = (root_settings)settings_serializer.Deserialize(reader_settings);
-                }
+                }                
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex);
@@ -248,7 +256,7 @@ namespace ReqM_Tool
             {
                 try
                 {
-
+                   
                     listOfRequirements.SaveAs(sfd.FileName);
                 }
                 catch (Exception ex)
@@ -293,8 +301,8 @@ namespace ReqM_Tool
                         HWPlatform = "first elem from list",
                         Domain = "N/A",
                         TestedAt = "N/A",
-
-
+                        
+                        
                     });
 
                     /* refresh the dataGridView */
@@ -456,7 +464,7 @@ namespace ReqM_Tool
             {
                 dataGridView1.DataSource = null;
             }
-
+           
         }
 
         private void PublishToolStripMenuItem_Click(object sender, EventArgs e)
@@ -466,54 +474,38 @@ namespace ReqM_Tool
 
         private void SaveAsExcelToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DataSet ds = new DataSet();
+            //DataSet ds = new DataSet();
 
             //Convert the XML into Dataset
-            ds.ReadXml(XmlFilePath);
+            //ds.ReadXml(XmlFilePath);
 
             //Retrieve the table fron Dataset
-            DataTable dt = ds.Tables[1];
+            // DataTable dt = ds.Tables[1];
 
             // Create an Excel object
             Microsoft.Office.Interop.Excel.Application excel = new Microsoft.Office.Interop.Excel.Application();
 
             //Create workbook object
-
-            Microsoft.Office.Interop.Excel.Workbook workbook = excel.Workbooks.Open(Filename: XmlFilePath);
-
+            Microsoft.Office.Interop.Excel.Workbook workbook = excel.Workbooks.Add(Type.Missing);
 
             //Create worksheet object
             Microsoft.Office.Interop.Excel.Worksheet worksheet = workbook.ActiveSheet;
 
-            // Column Headings
-            int iColumn = 0;
-
-            foreach (DataColumn c in dt.Columns)
+            for (int i = 1; i < dataGridView1.Columns.Count+1; i++)
             {
-                iColumn++;
-                excel.Cells[1, iColumn] = c.ColumnName;
+                worksheet.Cells[1, i] = dataGridView1.Columns[i - 1].HeaderText;
             }
-
-            // Row Data
-            int iRow = worksheet.UsedRange.Rows.Count - 1;
-
-            foreach (DataRow dr in dt.Rows)
+            for (int i = 0; i < dataGridView1.Rows.Count; i++)
             {
-                iRow++;
-
-                // Row's Cell Data
-                iColumn = 0;
-                foreach (DataColumn c in dt.Columns)
+                for (int j = 0; j < dataGridView1.Columns.Count; j++)
                 {
-                    iColumn++;
-                    excel.Cells[iRow + 1, iColumn] = dr[c.ColumnName];
+                    worksheet.Cells[i + 2, j + 1] = dataGridView1.Rows[i].Cells[j].Value.ToString();
                 }
             }
 
-                    ((Microsoft.Office.Interop.Excel._Worksheet)worksheet).Activate();
-
             SaveFileDialog sfd = new SaveFileDialog();
             sfd.Filter = "Excel|*.xlsx";
+
             /* open File dialog where to save the file */
             if (sfd.ShowDialog() == DialogResult.OK)
             {
@@ -528,8 +520,6 @@ namespace ReqM_Tool
                     Console.WriteLine(ex);
                 }
             }
-
-
 
             //Close the Workbook
             workbook.Close();
@@ -631,37 +621,10 @@ namespace ReqM_Tool
             chart1.Series["Series1"].Points.AddXY("Found Requirements", countReqFound);
         }
 
-        private void InsertImagesToolStripMenuItem_Click(object sender, EventArgs e)
+        private void Button2_Click_1(object sender, EventArgs e)
         {
-
-            
-
-            string FileName = null;
-
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.RestoreDirectory = true;
-
-            openFileDialog.Filter = "All picture files (*.BMP;*.JPG;*.GIF)|*.BMP;*.JPG;*.GIF";
-
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                /* get the selected row */
-                int selected_row = (this.dataGridView1.SelectedRows[0].Index);
-                    { 
-                    FileName = openFileDialog.FileName;
-                    //pictureBox2.Image = Image.FromFile(FileName);
-                    DataGridViewImageColumn img = new DataGridViewImageColumn();
-                    Image image = Image.FromFile(FileName);
-                    //img.Image = image;
-                    
-                    
-                    dataGridView1.Columns.Add(img);
-                    img.HeaderText = "Image";
-                    img.Name = "img";
-                    dataGridView1.Rows[selected_row].Cells["img"].Value = image;
-                }
-            }
-
+            FilterForm form = new FilterForm(this);
+            form.Show();   
         }
     }
 
