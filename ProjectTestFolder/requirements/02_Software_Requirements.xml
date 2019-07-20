@@ -2,27 +2,245 @@
 <root_file xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <document_settings>
     <doc_settings>
-      <Baseline>1</Baseline>
+      <Baseline>1.0</Baseline>
+      <Columns>
+        <column>balbalbal</column>
+        <column>babalambalbmalbam</column>
+      </Columns>
     </doc_settings>
   </document_settings>
+  <custom_values>
+    <Chapters>
+      <chapter>1</chapter>
+      <chapter>2</chapter>
+      <chapter>3</chapter>
+    </Chapters>
+    <HWPlatform>
+      <value>a1</value>
+      <value>a2</value>
+      <value>a3</value>
+    </HWPlatform>
+  </custom_values>
   <Requirements>
     <RequirementItem>
-      <id>NTT.0x22.DID.Type</id>
-      <description>The input parameter DID shall be an uint8 type.</description>
+      <id>NTT.RADU.SW.Req001</id>
+      <description>
+        [SWS_Dcm_01144] Protocol preemption can’t be activated with a concurrent TesterPresent of a higher priority protocol.
+      </description>
       <status>Approved</status>
       <CreatedBy>BogdanHerciu</CreatedBy>
       <needscoverage>src</needscoverage>
-      <providescoverage>NTT.0x22.DID</providescoverage>
-      <version>2</version>
+      <providescoverage>N/A</providescoverage>
+      <version>1.0</version>
+      <SafetyRelevant>QM</SafetyRelevant>
+      <ChangeRequest>N/A</ChangeRequest>
+      <ReviewID>N/A</ReviewID>
+      <RequirementType>Description</RequirementType>
+      <Chapter>N/A</Chapter>
+      <HWPlatform>N/A</HWPlatform>
+      <Domain>SW</Domain>
+      <TestedAt>N/A</TestedAt>
+      <ReqBaseline>1.6</ReqBaseline>
     </RequirementItem>
     <RequirementItem>
-      <id>NTT.0x22.Type</id>
-      <description>The input parameter shall be an uint8 type.</description>
+      <id>NTT.RADU.SW.Req002</id>
+      <description>
+        [SWS_Dcm_00079] d In order to cancel pending transmission in lower-layer, related to
+        the lower priority request, the Dcm module shall call PduR_DcmCancelTransmit () with
+        the following parameters: PduId: the id of the Pdu to be canceled
+      </description>
       <status>Approved</status>
-      <CreatedBy>BogdanHerciu</CreatedBy>
+      <CreatedBy>Jane Doe</CreatedBy>
       <needscoverage>src</needscoverage>
-      <providescoverage>NTT.0x22.Input</providescoverage>
-      <version>2</version>
+      <providescoverage>N/A</providescoverage>
+      <version>1.0</version>
+      <SafetyRelevant>QM</SafetyRelevant>
+      <ChangeRequest>N/A</ChangeRequest>
+      <ReviewID>N/A</ReviewID>
+      <RequirementType>Description</RequirementType>
+      <Chapter>N/A</Chapter>
+      <HWPlatform>N/A</HWPlatform>
+      <Domain>SW</Domain>
+      <TestedAt>N/A</TestedAt>
+      <ReqBaseline>1.1</ReqBaseline>
+    </RequirementItem>
+    <RequirementItem>
+      <id>NTT.RADU.SW.Req003</id>
+      <description>
+       [SWS_Dcm_00460] d When PduR_DcmCancelTransmit() returns E_NOT_OK, the
+        Dcm module shall assume that the ongoing transmission cannot be cancelled and shall
+        not retry to cancel the transmit request. The current protocol shall be stopped and the
+        new one started.
+      </description>
+      <status>Approved</status>
+      <CreatedBy>John Doe</CreatedBy>
+      <needscoverage>src</needscoverage>
+      <providescoverage>N/A</providescoverage>
+      <version>1.0</version>
+      <SafetyRelevant>QM</SafetyRelevant>
+      <ChangeRequest>N/A</ChangeRequest>
+      <ReviewID>N/A</ReviewID>
+      <RequirementType>Description</RequirementType>
+      <Chapter>N/A</Chapter>
+      <HWPlatform>N/A</HWPlatform>
+      <Domain>SW</Domain>
+      <TestedAt>N/A</TestedAt>
+      <ReqBaseline>1.0</ReqBaseline>
+    </RequirementItem>
+    <RequirementItem>
+      <id>NTT.RADU.SW.Req004</id>
+      <description>
+        [SWS_Dcm_01046] d If a running diagnostic request is preempted by a higher priority
+        request (of another protocol), the Dcm shall cancel all external pending operations with
+        Dcm_OpStatus set to DCM_CANCEL c()
+      </description>
+      <status>Approved</status>
+      <CreatedBy>John Doe</CreatedBy>
+      <needscoverage>src</needscoverage>
+      <providescoverage>N/A</providescoverage>
+      <version>1.0</version>
+      <SafetyRelevant>QM</SafetyRelevant>
+      <ChangeRequest>N/A</ChangeRequest>
+      <ReviewID>N/A</ReviewID>
+      <RequirementType>Description</RequirementType>
+      <Chapter>N/A</Chapter>
+      <HWPlatform>N/A</HWPlatform>
+      <Domain>SW</Domain>
+      <TestedAt>N/A</TestedAt>
+      <ReqBaseline>1.0</ReqBaseline>
+    </RequirementItem>
+    <RequirementItem>
+      <id>NTT.RADU.SW.Req005</id>
+      <description>
+        [SWS_Dcm_01047] d In case an operation to the Dem is pending and the new request
+        also requires an interaction with the Dem, the Dcm shall accept the new request and
+        call the corresponding Dem API with the parameters from the new request. c()
+      </description>
+      <status>Approved</status>
+      <CreatedBy>John Doe</CreatedBy>
+      <needscoverage>src</needscoverage>
+      <providescoverage>N/A</providescoverage>
+      <version>1.0</version>
+      <SafetyRelevant>QM</SafetyRelevant>
+      <ChangeRequest>N/A</ChangeRequest>
+      <ReviewID>N/A</ReviewID>
+      <RequirementType>Description</RequirementType>
+      <Chapter>N/A</Chapter>
+      <HWPlatform>N/A</HWPlatform>
+      <Domain>SW</Domain>
+      <TestedAt>N/A</TestedAt>
+      <ReqBaseline>1.0</ReqBaseline>
+    </RequirementItem>
+    <RequirementItem>
+      <id>NTT.RADU.SW.Req006</id>
+      <description>
+       [SWS_Dcm_01372] d If the Dcm processes an OBD request and the Dcm is receiving
+       an UDS diagnostic request to change in a non-default session, the Dcm shall delay the
+       UDS request until the OBD service is finished according to [SWS_Dcm_01371]. After
+       the O.BD service is finished, the Dcm shall make a transition into the requested nondefault session.
+      </description>
+      <status>Approved</status>
+      <CreatedBy>John Doe</CreatedBy>
+      <needscoverage>src</needscoverage>
+      <providescoverage>N/A</providescoverage>
+      <version>1.0</version>
+      <SafetyRelevant>QM</SafetyRelevant>
+      <ChangeRequest>N/A</ChangeRequest>
+      <ReviewID>N/A</ReviewID>
+      <RequirementType>Description</RequirementType>
+      <Chapter>N/A</Chapter>
+      <HWPlatform>N/A</HWPlatform>
+      <Domain>SW</Domain>
+      <TestedAt>N/A</TestedAt>
+      <ReqBaseline>1.1</ReqBaseline>
+    </RequirementItem>
+    <RequirementItem>
+      <id>NTT.RADU.SW.Req007</id>
+      <description>
+         [SWS_Dcm_01367] d The Dcm shall process incoming OBD requests in parallel to a running UDS request.
+         In this case the protocol priority check according to [SWS_Dcm_00015] is skipped and no protocol pre-emption is done.
+      </description>
+      <status>Approved</status>
+      <CreatedBy>John Doe</CreatedBy>
+      <needscoverage>src</needscoverage>
+      <providescoverage>N/A</providescoverage>
+      <version>1.0</version>
+      <SafetyRelevant>QM</SafetyRelevant>
+      <ChangeRequest>N/A</ChangeRequest>
+      <ReviewID>N/A</ReviewID>
+      <RequirementType>Description</RequirementType>
+      <Chapter>N/A</Chapter>
+      <HWPlatform>N/A</HWPlatform>
+      <Domain>SW</Domain>
+      <TestedAt>N/A</TestedAt>
+      <ReqBaseline>1.0</ReqBaseline>
+    </RequirementItem>
+    <RequirementItem>
+      <id>NTT.RADU.SW.Req008</id>
+      <description>
+         [SWS_Dcm_00727] d If a diagnostic request is already running and a second request
+         (ClientB) can not be processed (e.g.due to priority assessment), the response behaviour depends
+         on the configuration option parameter DcmDslDiagRespOnSecondDeclinedRequest (see [SWS_Dcm_00914]_Conf).
+         If this configuration parameter is TRUE, a negative response with NRC 0x21 (BusyRepeatRequest) shall be issued for
+         the second request (see [SWS_Dcm_00788] and [SWS_Dcm_00789]). If the configuration parameter is FALSE, no response
+         shall be issued (see [SWS_Dcm_00790]).
+      </description>
+      <status>Approved</status>
+      <CreatedBy>John Doe</CreatedBy>
+      <needscoverage>src</needscoverage>
+      <providescoverage>N/A</providescoverage>
+      <version>1.0</version>
+      <SafetyRelevant>QM</SafetyRelevant>
+      <ChangeRequest>N/A</ChangeRequest>
+      <ReviewID>N/A</ReviewID>
+      <RequirementType>Description</RequirementType>
+      <Chapter>N/A</Chapter>
+      <HWPlatform>N/A</HWPlatform>
+      <Domain>SW</Domain>
+      <TestedAt>N/A</TestedAt>
+      <ReqBaseline>1.0</ReqBaseline>
+    </RequirementItem>
+    <RequirementItem>
+      <id>NTT.RADU.SW.Req009</id>
+      <description>
+         [SWS_Dcm_00728] d The handling of protocols with equal priority shall be possible. c
+      </description>
+      <status>Approved</status>
+      <CreatedBy>John Doe</CreatedBy>
+      <needscoverage>src</needscoverage>
+      <providescoverage>N/A</providescoverage>
+      <version>1.0</version>
+      <SafetyRelevant>QM</SafetyRelevant>
+      <ChangeRequest>N/A</ChangeRequest>
+      <ReviewID>N/A</ReviewID>
+      <RequirementType>Description</RequirementType>
+      <Chapter>N/A</Chapter>
+      <HWPlatform>N/A</HWPlatform>
+      <Domain>SW</Domain>
+      <TestedAt>N/A</TestedAt>
+      <ReqBaseline>1.0</ReqBaseline>
+    </RequirementItem>
+    <RequirementItem>
+      <id>NTT.RADU.SW.Req010</id>
+      <description>
+        [SWS_Dcm_00575] d In order to cancel pending reception in lower-layer, related to
+        the lower priority request, the Dcm module shall call PduR_DcmCancelReceive () with
+        the following parameters: PduId: the id of the Pdu to be canceled c()
+      </description>
+      <status>Approved</status>
+      <CreatedBy>John Doe</CreatedBy>
+      <needscoverage>src</needscoverage>
+      <providescoverage>N/A</providescoverage>
+      <version>1.0</version>
+      <SafetyRelevant>QM</SafetyRelevant>
+      <ChangeRequest>N/A</ChangeRequest>
+      <ReviewID>N/A</ReviewID>
+      <RequirementType>Description</RequirementType>
+      <Chapter>N/A</Chapter>
+      <HWPlatform>N/A</HWPlatform>
+      <Domain>SW</Domain>
+      <TestedAt>N/A</TestedAt>
+      <ReqBaseline>1.0</ReqBaseline>
     </RequirementItem>
   </Requirements>
 </root_file>

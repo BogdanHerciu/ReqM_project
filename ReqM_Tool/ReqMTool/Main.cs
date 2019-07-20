@@ -24,6 +24,9 @@ namespace ReqM_Tool
     { 
         /* create variable to the root of the xml file, for reading the requirements */
         root_file listOfRequirements = new root_file();
+        /* The Copy of the File. Used to compare the modifications occured. */
+        root_file XMLCopy = new root_file();
+
         /* create variable to the root of the xml file, for reading the settings */
         bool statistics = false;
 
@@ -39,9 +42,19 @@ namespace ReqM_Tool
         public int Column_Description = 1;
         public int Column_Status = 2;
         public int Column_CreatedBy = 3;
-        public int Column_Priority = 4;
         public int Column_needscoverage = 5;
         public int Column_providescoverage = 6;
+        public int Column_version=7;
+        public int Column_SafetyRelevant=8;
+        public int Column_ChangeRequest = 9;
+        public int Column_ReviewID = 10;
+        public int Column_RequirementType = 11;
+        public int Column_Chapter = 12;
+        public int Column_HWPlatform = 13;
+        public int Column_Domain = 14;
+        public int Column_TestedAt = 15;
+        public int Column_ReqBaseline = 16;
+        public int MAX_Columns = 17;
 
         /* FilterForm checkBoxes */
         public bool cbox1;
@@ -75,7 +88,21 @@ namespace ReqM_Tool
         /* Method called when a cell is modified */
         private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            /* collor change for needscoverage column */
+
+            /* LINKSTO: Req076 */
+            /* Color each column that is changed. */
+            foreach (DataGridViewColumn col in this.dataGridView1.Columns)
+            {
+                dataGridView1.Rows[e.RowIndex].Cells[col.Index].Style.BackColor = Color.Yellow;
+            }
+            /* Increment the Requirement Baseline with 0.1.  */
+            double DocumentBaseline = Convert.ToDouble(listOfRequirements.list_of_settings[0].Baseline);
+            listOfRequirements.Requirements_Dynamic_List[e.RowIndex].ReqBaseline = Convert.ToString(DocumentBaseline + 0.1);
+
+
+
+            /* Color change for needscoverage column.
+             * If the Value is neighter tst nor src, color the box in red. */
             if (e.ColumnIndex == Column_needscoverage)
             { 
                 if (
@@ -227,6 +254,23 @@ namespace ReqM_Tool
                     Console.WriteLine(ex);
                 }
 
+                /* Save a copy of the XML File. Used to compare modifications occured. */
+                XMLCopy = listOfRequirements;
+            }
+
+            /* LINKSTO: Req076 */
+            /* Color the requirement with Yellow if it has different baseline than the document Baseline. */
+            /* Color each column that is changed. */
+            foreach (DataGridViewRow Row in this.dataGridView1.Rows)
+            {
+                if (listOfRequirements.Requirements_Dynamic_List[Row.Index].ReqBaseline != listOfRequirements.list_of_settings[0].Baseline)
+                {
+                    /* Color each column that is changed. */
+                    foreach (DataGridViewColumn Column in this.dataGridView1.Columns)
+                    {
+                        dataGridView1.Rows[Row.Index].Cells[Column.Index].Style.BackColor = Color.Yellow;
+                    }
+                }
             }
         }
 
@@ -309,8 +353,8 @@ namespace ReqM_Tool
                         HWPlatform = listOfRequirements.customValues.hwPlatforms.ElementAt(0),
                         Domain = "N/A",
                         TestedAt = "N/A",
-                        
-                        
+                        ReqBaseline = "1.0",
+
                     });
 
                     /* refresh the dataGridView */
@@ -634,6 +678,11 @@ namespace ReqM_Tool
             FilterForm form = new FilterForm(this);
             form.Show();   
         }
+
+        private void Label4_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 
     /* *******************/
@@ -726,7 +775,10 @@ namespace ReqM_Tool
         [System.Xml.Serialization.XmlElement("TestedAt")]
         public string TestedAt { get; set; }
 
-        
+
+        [System.Xml.Serialization.XmlElement("ReqBaseline")]
+        public string ReqBaseline { get; set; }
+
     }
 
    
