@@ -25,7 +25,7 @@
     <RequirementItem>
       <id>NTT.RADU.SW.Req001</id>
       <description>
-        [SWS_Dcm_01144] Protocol preemption can’t be activated with a concurrent TesterPresent of a higher priority protocol.
+[SWS_Dcm_01144] Protocol preemption can’t be activated with a concurrent TesterPresent of a higher priority protocol.
       </description>
       <status>Approved</status>
       <CreatedBy>BogdanHerciu</CreatedBy>
@@ -45,9 +45,9 @@
     <RequirementItem>
       <id>NTT.RADU.SW.Req002</id>
       <description>
-        [SWS_Dcm_00079] d In order to cancel pending transmission in lower-layer, related to
-        the lower priority request, the Dcm module shall call PduR_DcmCancelTransmit () with
-        the following parameters: PduId: the id of the Pdu to be canceled
+[SWS_Dcm_00079] d In order to cancel pending transmission in lower-layer, related to
+the lower priority request, the Dcm module shall call PduR_DcmCancelTransmit () with
+the following parameters: PduId: the id of the Pdu to be canceled
       </description>
       <status>Approved</status>
       <CreatedBy>Jane Doe</CreatedBy>
@@ -67,10 +67,10 @@
     <RequirementItem>
       <id>NTT.RADU.SW.Req003</id>
       <description>
-       [SWS_Dcm_00460] d When PduR_DcmCancelTransmit() returns E_NOT_OK, the
-        Dcm module shall assume that the ongoing transmission cannot be cancelled and shall
-        not retry to cancel the transmit request. The current protocol shall be stopped and the
-        new one started.
+[SWS_Dcm_00460] d When PduR_DcmCancelTransmit() returns E_NOT_OK, the
+Dcm module shall assume that the ongoing transmission cannot be cancelled and shall
+not retry to cancel the transmit request. The current protocol shall be stopped and the
+new one started.
       </description>
       <status>Approved</status>
       <CreatedBy>John Doe</CreatedBy>
@@ -90,9 +90,9 @@
     <RequirementItem>
       <id>NTT.RADU.SW.Req004</id>
       <description>
-        [SWS_Dcm_01046] d If a running diagnostic request is preempted by a higher priority
-        request (of another protocol), the Dcm shall cancel all external pending operations with
-        Dcm_OpStatus set to DCM_CANCEL c()
+[SWS_Dcm_01046] d If a running diagnostic request is preempted by a higher priority
+request (of another protocol), the Dcm shall cancel all external pending operations with
+Dcm_OpStatus set to DCM_CANCEL c()
       </description>
       <status>Approved</status>
       <CreatedBy>John Doe</CreatedBy>
@@ -112,9 +112,9 @@
     <RequirementItem>
       <id>NTT.RADU.SW.Req005</id>
       <description>
-        [SWS_Dcm_01047] d In case an operation to the Dem is pending and the new request
-        also requires an interaction with the Dem, the Dcm shall accept the new request and
-        call the corresponding Dem API with the parameters from the new request. c()
+[SWS_Dcm_01047] d In case an operation to the Dem is pending and the new request
+also requires an interaction with the Dem, the Dcm shall accept the new request and
+call the corresponding Dem API with the parameters from the new request. c()
       </description>
       <status>Approved</status>
       <CreatedBy>John Doe</CreatedBy>
@@ -134,10 +134,10 @@
     <RequirementItem>
       <id>NTT.RADU.SW.Req006</id>
       <description>
-       [SWS_Dcm_01372] d If the Dcm processes an OBD request and the Dcm is receiving
-       an UDS diagnostic request to change in a non-default session, the Dcm shall delay the
-       UDS request until the OBD service is finished according to [SWS_Dcm_01371]. After
-       the O.BD service is finished, the Dcm shall make a transition into the requested nondefault session.
+[SWS_Dcm_01372] d If the Dcm processes an OBD request and the Dcm is receiving
+an UDS diagnostic request to change in a non-default session, the Dcm shall delay the
+UDS request until the OBD service is finished according to [SWS_Dcm_01371]. After
+the O.BD service is finished, the Dcm shall make a transition into the requested nondefault session.
       </description>
       <status>Approved</status>
       <CreatedBy>John Doe</CreatedBy>
@@ -157,8 +157,8 @@
     <RequirementItem>
       <id>NTT.RADU.SW.Req007</id>
       <description>
-         [SWS_Dcm_01367] d The Dcm shall process incoming OBD requests in parallel to a running UDS request.
-         In this case the protocol priority check according to [SWS_Dcm_00015] is skipped and no protocol pre-emption is done.
+[SWS_Dcm_01367] d The Dcm shall process incoming OBD requests in parallel to a running UDS request.
+In this case the protocol priority check according to [SWS_Dcm_00015] is skipped and no protocol pre-emption is done.
       </description>
       <status>Approved</status>
       <CreatedBy>John Doe</CreatedBy>
@@ -178,12 +178,12 @@
     <RequirementItem>
       <id>NTT.RADU.SW.Req008</id>
       <description>
-         [SWS_Dcm_00727] d If a diagnostic request is already running and a second request
-         (ClientB) can not be processed (e.g.due to priority assessment), the response behaviour depends
-         on the configuration option parameter DcmDslDiagRespOnSecondDeclinedRequest (see [SWS_Dcm_00914]_Conf).
-         If this configuration parameter is TRUE, a negative response with NRC 0x21 (BusyRepeatRequest) shall be issued for
-         the second request (see [SWS_Dcm_00788] and [SWS_Dcm_00789]). If the configuration parameter is FALSE, no response
-         shall be issued (see [SWS_Dcm_00790]).
+[SWS_Dcm_00727] d If a diagnostic request is already running and a second request
+(ClientB) can not be processed (e.g.due to priority assessment), the response behaviour depends
+on the configuration option parameter DcmDslDiagRespOnSecondDeclinedRequest (see [SWS_Dcm_00914]_Conf).
+If this configuration parameter is TRUE, a negative response with NRC 0x21 (BusyRepeatRequest) shall be issued for
+the second request (see [SWS_Dcm_00788] and [SWS_Dcm_00789]). If the configuration parameter is FALSE, no response
+shall be issued (see [SWS_Dcm_00790]).
       </description>
       <status>Approved</status>
       <CreatedBy>John Doe</CreatedBy>
@@ -203,7 +203,7 @@
     <RequirementItem>
       <id>NTT.RADU.SW.Req009</id>
       <description>
-         [SWS_Dcm_00728] d The handling of protocols with equal priority shall be possible. c
+[SWS_Dcm_00728] d The handling of protocols with equal priority shall be possible. c
       </description>
       <status>Approved</status>
       <CreatedBy>John Doe</CreatedBy>
@@ -223,9 +223,9 @@
     <RequirementItem>
       <id>NTT.RADU.SW.Req010</id>
       <description>
-        [SWS_Dcm_00575] d In order to cancel pending reception in lower-layer, related to
-        the lower priority request, the Dcm module shall call PduR_DcmCancelReceive () with
-        the following parameters: PduId: the id of the Pdu to be canceled c()
+[SWS_Dcm_00575] d In order to cancel pending reception in lower-layer, related to
+the lower priority request, the Dcm module shall call PduR_DcmCancelReceive () with
+the following parameters: PduId: the id of the Pdu to be canceled c()
       </description>
       <status>Approved</status>
       <CreatedBy>John Doe</CreatedBy>
@@ -245,9 +245,9 @@
     <RequirementItem>
       <id>NTT.RADU.SW.Req010</id>
       <description>
-        [SWS_Dcm_00575] d In order to cancel pending reception in lower-layer, related to
-        the lower priority request, the Dcm module shall call PduR_DcmCancelReceive () with
-        the following parameters: PduId: the id of the Pdu to be canceled c()
+[SWS_Dcm_00575] d In order to cancel pending reception in lower-layer, related to
+the lower priority request, the Dcm module shall call PduR_DcmCancelReceive () with
+the following parameters: PduId: the id of the Pdu to be canceled c()
       </description>
       <status>Approved</status>
       <CreatedBy>John Doe</CreatedBy>
@@ -267,9 +267,9 @@
     <RequirementItem>
       <id>NTT.RADU.SW.Req011</id>
       <description>
-        [SWS_Dcm_00575] d In order to cancel pending reception in lower-layer, related to
-        the lower priority request, the Dcm module shall call PduR_DcmCancelReceive () with
-        the following parameters: PduId: the id of the Pdu to be canceled c()
+[SWS_Dcm_00575] d In order to cancel pending reception in lower-layer, related to
+the lower priority request, the Dcm module shall call PduR_DcmCancelReceive () with
+the following parameters: PduId: the id of the Pdu to be canceled c()
       </description>
       <status>Approved</status>
       <CreatedBy>John Doe</CreatedBy>
@@ -289,9 +289,9 @@
     <RequirementItem>
       <id>NTT.RADU.SW.Req012</id>
       <description>
-        [SWS_Dcm_00575] d In order to cancel pending reception in lower-layer, related to
-        the lower priority request, the Dcm module shall call PduR_DcmCancelReceive () with
-        the following parameters: PduId: the id of the Pdu to be canceled c()
+[SWS_Dcm_00575] d In order to cancel pending reception in lower-layer, related to
+the lower priority request, the Dcm module shall call PduR_DcmCancelReceive () with
+the following parameters: PduId: the id of the Pdu to be canceled c()
       </description>
       <status>Approved</status>
       <CreatedBy>John Doe</CreatedBy>
@@ -311,9 +311,9 @@
     <RequirementItem>
       <id>NTT.RADU.SW.Req013</id>
       <description>
-        [SWS_Dcm_00575] d In order to cancel pending reception in lower-layer, related to
-        the lower priority request, the Dcm module shall call PduR_DcmCancelReceive () with
-        the following parameters: PduId: the id of the Pdu to be canceled c()
+[SWS_Dcm_00575] d In order to cancel pending reception in lower-layer, related to
+the lower priority request, the Dcm module shall call PduR_DcmCancelReceive () with
+the following parameters: PduId: the id of the Pdu to be canceled c()
       </description>
       <status>Approved</status>
       <CreatedBy>John Doe</CreatedBy>
@@ -333,9 +333,9 @@
     <RequirementItem>
       <id>NTT.RADU.SW.Req014</id>
       <description>
-        [SWS_Dcm_00575] d In order to cancel pending reception in lower-layer, related to
-        the lower priority request, the Dcm module shall call PduR_DcmCancelReceive () with
-        the following parameters: PduId: the id of the Pdu to be canceled c()
+[SWS_Dcm_00575] d In order to cancel pending reception in lower-layer, related to
+the lower priority request, the Dcm module shall call PduR_DcmCancelReceive () with
+the following parameters: PduId: the id of the Pdu to be canceled c()
       </description>
       <status>Approved</status>
       <CreatedBy>John Doe</CreatedBy>
@@ -355,9 +355,9 @@
     <RequirementItem>
       <id>NTT.RADU.SW.Req015</id>
       <description>
-        [SWS_Dcm_00575] d In order to cancel pending reception in lower-layer, related to
-        the lower priority request, the Dcm module shall call PduR_DcmCancelReceive () with
-        the following parameters: PduId: the id of the Pdu to be canceled c()
+[SWS_Dcm_00575] d In order to cancel pending reception in lower-layer, related to
+the lower priority request, the Dcm module shall call PduR_DcmCancelReceive () with
+the following parameters: PduId: the id of the Pdu to be canceled c()
       </description>
       <status>Approved</status>
       <CreatedBy>John Doe</CreatedBy>
@@ -377,9 +377,9 @@
     <RequirementItem>
       <id>NTT.RADU.SW.Req016</id>
       <description>
-        [SWS_Dcm_00392] d When sending a positive response to UDS Service 0x19 with
-        subfunction 0x0B, 0x0C, 0x0D or 0x0E, the Dcm module shall use the data in 
-        the response message according to Table 7.20.c()
+[SWS_Dcm_00392] d When sending a positive response to UDS Service 0x19 with
+subfunction 0x0B, 0x0C, 0x0D or 0x0E, the Dcm module shall use the data in 
+the response message according to Table 7.20.c()
       </description>
       <status>Approved</status>
       <CreatedBy>John Doe</CreatedBy>
@@ -399,12 +399,12 @@
     <RequirementItem>
       <id>NTT.RADU.SW.Req017</id>
       <description>
-        [SWS_Dcm_00393] d For the purpose of responding to UDS Service 0x19 with subfunctions 0x0B,
-        0x0C, 0x0D or 0x0E, the Dcm module shall obtain the StatusOfDtc by
-        calling Dem_GetStatusOfDTC() with the following parameter values:
-        - ClientId :Client Id for this Dcm instance (see DcmDemClientRef
-        - DTC: the DTC value as defined in [SWS_Dcm_00466]
-        - DTCOrigin: DEM_DTC_ORIGIN_PRIMARY_MEMORY
+[SWS_Dcm_00393] d For the purpose of responding to UDS Service 0x19 with subfunctions 0x0B,
+0x0C, 0x0D or 0x0E, the Dcm module shall obtain the StatusOfDtc by
+calling Dem_GetStatusOfDTC() with the following parameter values:
+- ClientId :Client Id for this Dcm instance (see DcmDemClientRef
+- DTC: the DTC value as defined in [SWS_Dcm_00466]
+- DTCOrigin: DEM_DTC_ORIGIN_PRIMARY_MEMORY
       </description>
       <status>Approved</status>
       <CreatedBy>John Doe</CreatedBy>
@@ -424,8 +424,8 @@
     <RequirementItem>
       <id>NTT.RADU.SW.Req018</id>
       <description>
-        [SWS_Dcm_00766] d If the Dcm received DEM_NO_SUCH_ELEMENT by calling
-        Dem_GetDTCByOccurrenceTime it shall reply with a positive response and empty DTCAndStatusRecord. c()
+[SWS_Dcm_00766] d If the Dcm received DEM_NO_SUCH_ELEMENT by calling
+Dem_GetDTCByOccurrenceTime it shall reply with a positive response and empty DTCAndStatusRecord. c()
       </description>
       <status>Approved</status>
       <CreatedBy>John Doe</CreatedBy>
@@ -445,8 +445,8 @@
     <RequirementItem>
       <id>NTT.RADU.SW.Req019</id>
       <description>
-        [SWS_Dcm_00464] d When sending a positive response to UDS Service 0x19 with
-        subfunction 0x14, the Dcm module shall use the data in the response message according to Table 7.22.c()
+[SWS_Dcm_00464] d When sending a positive response to UDS Service 0x19 with
+subfunction 0x14, the Dcm module shall use the data in the response message according to Table 7.22.c()
       </description>
       <status>Approved</status>
       <CreatedBy>John Doe</CreatedBy>
@@ -466,11 +466,11 @@
     <RequirementItem>
       <id>NTT.RADU.SW.Req020</id>
       <description>
-        [SWS_Dcm_00465] d When responding to UDS Service 0x19 with subfunctions 0x14,
-        the Dcm module shall obtain the DTCFaultCounter of every DTCs with status "prefailed"
-        by repeatedly calling Dem_GetNextFilteredDTCAndFDC() after having configured the
-        filter with Dem_SetDTCFilter() using the parameter values according to Table 7.23.c
-        (SRS_Diag_04058)
+[SWS_Dcm_00465] d When responding to UDS Service 0x19 with subfunctions 0x14,
+the Dcm module shall obtain the DTCFaultCounter of every DTCs with status "prefailed"
+by repeatedly calling Dem_GetNextFilteredDTCAndFDC() after having configured the
+filter with Dem_SetDTCFilter() using the parameter values according to Table 7.23.c
+(SRS_Diag_04058)
       </description>
       <status>Approved</status>
       <CreatedBy>John Doe</CreatedBy>
@@ -490,9 +490,9 @@
     <RequirementItem>
       <id>NTT.RADU.SW.Req021</id>
       <description>
-        [SWS_Dcm_00681] d The Dcm module shall obtain the number of records
-        that will be found using Dem_GetNextFilteredDTCAndFDC() by using
-        Dem_GetNumberOfFilteredDTC(). c()
+[SWS_Dcm_00681] d The Dcm module shall obtain the number of records
+that will be found using Dem_GetNextFilteredDTCAndFDC() by using
+Dem_GetNumberOfFilteredDTC(). c()
       </description>
       <status>Approved</status>
       <CreatedBy>John Doe</CreatedBy>
@@ -512,8 +512,8 @@
     <RequirementItem>
       <id>NTT.RADU.SW.Req022</id>
       <description>
-        [SWS_Dcm_00519] d The calls to Dem_SetDTCFilter() with parameter FilterForFaultDetectionCounter set
-        to YES shall be done in the context of the Dcm_MainFunction
+[SWS_Dcm_00519] d The calls to Dem_SetDTCFilter() with parameter FilterForFaultDetectionCounter set
+to YES shall be done in the context of the Dcm_MainFunction
       </description>
       <status>Approved</status>
       <CreatedBy>John Doe</CreatedBy>
@@ -533,8 +533,8 @@
     <RequirementItem>
       <id>NTT.RADU.SW.Req023</id>
       <description>
-         [SWS_Dcm_01232] d If Dem_GetNextFilteredDTCAndFDC() returns DEM_NO_SUCH_ELEMENT and at least one matching 
-         element could be retrieved before, the Dcm shall send a positive response including these data elements.
+[SWS_Dcm_01232] d If Dem_GetNextFilteredDTCAndFDC() returns DEM_NO_SUCH_ELEMENT and at least one matching 
+element could be retrieved before, the Dcm shall send a positive response including these data elements.
       </description>
       <status>Approved</status>
       <CreatedBy>John Doe</CreatedBy>
@@ -554,8 +554,8 @@
     <RequirementItem>
       <id>NTT.RADU.SW.Req024</id>
       <description>
-        [SWS_Dcm_00420] d After the execution of [SWS_Dcm_00419], the Dcm module shall
-        respond to the servi
+[SWS_Dcm_00420] d After the execution of [SWS_Dcm_00419], the Dcm module shall
+respond to the servi
       </description>
       <status>Approved</status>
       <CreatedBy>John Doe</CreatedBy>
@@ -575,8 +575,8 @@
     <RequirementItem>
       <id>NTT.RADU.SW.Req025</id>
       <description>
-         [SWS_Dcm_00948] d As specified in [3, SAE J1979], unused data bytes shall be filled
-         with $00. c()
+[SWS_Dcm_00948] d As specified in [3, SAE J1979], unused data bytes shall be filled
+with $00. c()
       </description>
       <status>Approved</status>
       <CreatedBy>John Doe</CreatedBy>
@@ -596,9 +596,9 @@
     <RequirementItem>
       <id>NTT.RADU.SW.Req026</id>
       <description>
-         [SWS_Dcm_00422] d On reception of an OBD Service $09 request with one or more
-         "availability InfoTypes" as parameter, the Dcm module shall respond with the corresponding supported
-         (=configured) InfoTypes.
+[SWS_Dcm_00422] d On reception of an OBD Service $09 request with one or more
+"availability InfoTypes" as parameter, the Dcm module shall respond with the corresponding supported
+(=configured) InfoTypes.
       </description>
       <status>Approved</status>
       <CreatedBy>John Doe</CreatedBy>
@@ -618,8 +618,8 @@
     <RequirementItem>
       <id>NTT.RADU.SW.Req027</id>
       <description>
-        [SWS_Dcm_00949] d On reception of an OBD Service $09 request "availability InfoTypes" together with
-        other InfoTypes as parameter, the Dcm module shall ignore the request.
+[SWS_Dcm_00949] d On reception of an OBD Service $09 request "availability InfoTypes" together with
+other InfoTypes as parameter, the Dcm module shall ignore the request.
       </description>
       <status>Approved</status>
       <CreatedBy>John Doe</CreatedBy>
@@ -639,8 +639,8 @@
     <RequirementItem>
       <id>NTT.RADU.SW.Req028</id>
       <description>
-         [SWS_Dcm_CONSTR_6045] d In case the responsibility is on provider side (DcmDspVehInfoNODIProvResp is set to TRUE),
-         only one DcmDspVehInfoData container shall be allowed. c()
+[SWS_Dcm_CONSTR_6045] d In case the responsibility is on provider side (DcmDspVehInfoNODIProvResp is set to TRUE),
+only one DcmDspVehInfoData container shall be allowed. c()
       </description>
       <status>Approved</status>
       <CreatedBy>John Doe</CreatedBy>
@@ -660,9 +660,9 @@
     <RequirementItem>
       <id>NTT.RADU.SW.Req029</id>
       <description>
-          [SWS_Dcm_CONSTR_6046] d In case DcmDspVehInfoDataUsePort
-          is set to FALSE and DcmDspVehInfoDataReadFnc is set to either
-          Dem_DcmGetInfoTypeValue08 or Dem_DcmGetInfoTypeValue0B then DcmDspVehInfoNODIProvResp shall be set to TRUE. c()
+[SWS_Dcm_CONSTR_6046] d In case DcmDspVehInfoDataUsePort
+is set to FALSE and DcmDspVehInfoDataReadFnc is set to either
+Dem_DcmGetInfoTypeValue08 or Dem_DcmGetInfoTypeValue0B then DcmDspVehInfoNODIProvResp shall be set to TRUE. c()
       </description>
       <status>Approved</status>
       <CreatedBy>John Doe</CreatedBy>
@@ -682,8 +682,8 @@
     <RequirementItem>
       <id>NTT.RADU.SW.Req030</id>
       <description>
-         [SWS_Dcm_01191] d If Xxx_GetInfoTypeValueData() doesn’t return E_OK or
-         E_PENDING, the Dcm shall return NRC 0x12. c()
+[SWS_Dcm_01191] d If Xxx_GetInfoTypeValueData() doesn’t return E_OK or
+E_PENDING, the Dcm shall return NRC 0x12. c()
       </description>
       <status>Approved</status>
       <CreatedBy>John Doe</CreatedBy>
@@ -703,10 +703,10 @@
     <RequirementItem>
       <id>NTT.RADU.SW.Req031</id>
       <description>
-         [SWS_Dcm_00532] d On reception of service DiagnosticSessionControl if the provided session is used to jump to
-         OEM bootloader (parameter DcmDspSessionForBoot set to DCM_OEM_BOOT or DCM_OEM_BOOT_RESPAPP) the Dcm shall prepare
-         the jump to the OEM bootloader (see [SWS_Dcm_00535]) by triggering the mode
-         switch of ModeDeclarationGroupPrototype DcmEcuReset to JUMPTOBOOTLOADER.
+[SWS_Dcm_00532] d On reception of service DiagnosticSessionControl if the provided session is used to jump to
+OEM bootloader (parameter DcmDspSessionForBoot set to DCM_OEM_BOOT or DCM_OEM_BOOT_RESPAPP) the Dcm shall prepare
+the jump to the OEM bootloader (see [SWS_Dcm_00535]) by triggering the mode
+switch of ModeDeclarationGroupPrototype DcmEcuReset to JUMPTOBOOTLOADER.
       </description>
       <status>Approved</status>
       <CreatedBy>John Doe</CreatedBy>
@@ -726,12 +726,12 @@
     <RequirementItem>
       <id>NTT.RADU.SW.Req032</id>
       <description>
-         [SWS_Dcm_00592] d On reception of service DiagnosticSessionControl if the provided session is used to jump to
-         System Supplier bootloader (parameter DcmDspSessionForBoot set to DCM_SYS_BOOT or DCM_SYS_BOOT_RESPAPP) the Dcm
-         shall prepare the jump to the System Supplier bootloader (see [SWS_Dcm_00535])
-         by triggering the mode switch of ModeDeclarationGroupPrototype DcmEcuReset to
-         JUMPTOSYSSUPPLIERBOOTLOADER c(SRS_Diag_04098)
-         Note: By this mode switch the Dcm informs the BswM to prepare the jump to the bootloader.
+[SWS_Dcm_00592] d On reception of service DiagnosticSessionControl if the provided session is used to jump to
+System Supplier bootloader (parameter DcmDspSessionForBoot set to DCM_SYS_BOOT or DCM_SYS_BOOT_RESPAPP) the Dcm
+shall prepare the jump to the System Supplier bootloader (see [SWS_Dcm_00535])
+by triggering the mode switch of ModeDeclarationGroupPrototype DcmEcuReset to
+JUMPTOSYSSUPPLIERBOOTLOADER c(SRS_Diag_04098)
+Note: By this mode switch the Dcm informs the BswM to prepare the jump to the bootloader.
       </description>
       <status>Approved</status>
       <CreatedBy>John Doe</CreatedBy>
@@ -751,8 +751,8 @@
     <RequirementItem>
       <id>NTT.RADU.SW.Req033</id>
       <description>
-        [SWS_Dcm_01164] d In case the service DiagnosticSessionControl implies an ECU
-        reset, the Dcm shall ignore all further requests while that reset is being processed. c()
+[SWS_Dcm_01164] d In case the service DiagnosticSessionControl implies an ECU
+reset, the Dcm shall ignore all further requests while that reset is being processed. c()
       </description>
       <status>Approved</status>
       <CreatedBy>John Doe</CreatedBy>
@@ -772,11 +772,11 @@
     <RequirementItem>
       <id>NTT.RADU.SW.Req034</id>
       <description>
-         [SWS_Dcm_00654] d In case the ModeDeclarationGroupPrototype DcmEcuReset is switched to mode JUMPTOBOOTLOADER or
-         JUMPTOSYSSUPPLIERBOOTLOADER and the configuration parameter DcmSendRespPendOnRestart is set to
-         TRUE, the Dcm shall trigger transmission of NRC 0x78 - RCR-RP. c(SRS_Diag_04098)
-         Note: This final transmission of NRC 0x78 before switching to Bootloader shall reload
-         the P2* timeout in the client.
+[SWS_Dcm_00654] d In case the ModeDeclarationGroupPrototype DcmEcuReset is switched to mode JUMPTOBOOTLOADER or
+JUMPTOSYSSUPPLIERBOOTLOADER and the configuration parameter DcmSendRespPendOnRestart is set to
+TRUE, the Dcm shall trigger transmission of NRC 0x78 - RCR-RP. c(SRS_Diag_04098)
+Note: This final transmission of NRC 0x78 before switching to Bootloader shall reload
+the P2* timeout in the client.
       </description>
       <status>Approved</status>
       <CreatedBy>John Doe</CreatedBy>
@@ -796,9 +796,9 @@
     <RequirementItem>
       <id>NTT.RADU.SW.Req035</id>
       <description>
-        [SWS_Dcm_01175] d In case the ModeDeclarationGroupPrototype DcmEcuReset can
-        not be switched JUMPTOBOOTLOADER or JUMPTOSYSSUPPLIERBOOTLOADER,
-        the Dcm shall answer negatively to the request with NRC 0x22 (Conditions not correct).
+[SWS_Dcm_01175] d In case the ModeDeclarationGroupPrototype DcmEcuReset can
+not be switched JUMPTOBOOTLOADER or JUMPTOSYSSUPPLIERBOOTLOADER,
+the Dcm shall answer negatively to the request with NRC 0x22 (Conditions not correct).
       </description>
       <status>Approved</status>
       <CreatedBy>John Doe</CreatedBy>
@@ -818,11 +818,11 @@
     <RequirementItem>
       <id>NTT.RADU.SW.Req036</id>
       <description>
-        [SWS_Dcm_00535] d If the jump to bootloader is requested (see [SWS_Dcm_00532],
-        [SWS_Dcm_00592], the configuration parameter DcmSendRespPendOnRestart is
-        set to TRUE (see [SWS_Dcm_00654]) and the configuration parameter DcmDspSessionForBoot is set to DCM_OEM_BOOT or DCM_SYS_BOOT, the Dcm shall call
-        Dcm_SetProgConditions after a successful transmission of NRC 0x78 (Response
-        pending). c(SRS_Diag_04098)
+[SWS_Dcm_00535] d If the jump to bootloader is requested (see [SWS_Dcm_00532],
+[SWS_Dcm_00592], the configuration parameter DcmSendRespPendOnRestart is
+set to TRUE (see [SWS_Dcm_00654]) and the configuration parameter DcmDspSessionForBoot is set to DCM_OEM_BOOT or DCM_SYS_BOOT, the Dcm shall call
+Dcm_SetProgConditions after a successful transmission of NRC 0x78 (Response
+pending). c(SRS_Diag_04098)
       </description>
       <status>Approved</status>
       <CreatedBy>John Doe</CreatedBy>
@@ -842,8 +842,8 @@
     <RequirementItem>
       <id>NTT.RADU.SW.Req037</id>
       <description>
-         [SWS_Dcm_00997] d If the NRC 0x78 (Response Pending) response in
-         [SWS_Dcm_00535] is not sent successfully no jump to the bootloader shall be performed c()
+[SWS_Dcm_00997] d If the NRC 0x78 (Response Pending) response in
+[SWS_Dcm_00535] is not sent successfully no jump to the bootloader shall be performed c()
       </description>
       <status>Approved</status>
       <CreatedBy>John Doe</CreatedBy>
@@ -863,10 +863,10 @@
     <RequirementItem>
       <id>NTT.RADU.SW.Req038</id>
       <description>
-         [SWS_Dcm_01178] d In case the ModeDeclarationGroupPrototype DcmEcuReset is switched to mode JUMPTOBOOTLOADER
-         or JUMPTOSYSSUPPLIERBOOTLOADER, the configuration parameter DcmSendRespPendOnRestart is set
-         to FALSE and the configuration parameter DcmDspSessionForBoot is set to
-         DCM_OEM_BOOT_RESP
+[SWS_Dcm_01178] d In case the ModeDeclarationGroupPrototype DcmEcuReset is switched to mode JUMPTOBOOTLOADER
+or JUMPTOSYSSUPPLIERBOOTLOADER, the configuration parameter DcmSendRespPendOnRestart is set
+to FALSE and the configuration parameter DcmDspSessionForBoot is set to
+DCM_OEM_BOOT_RESP
       </description>
       <status>Approved</status>
       <CreatedBy>John Doe</CreatedBy>
@@ -886,8 +886,8 @@
     <RequirementItem>
       <id>NTT.RADU.SW.Req039</id>
       <description>
-         [SWS_Dcm_01180] d If Dcm_SetProgConditions returns E_OK according to
-         [SWS_Dcm_01179], the Dcm shall trigger the mode switch of the ModeDeclarationGroupPrototype DcmEcuReset to EXECUTE. c()
+[SWS_Dcm_01180] d If Dcm_SetProgConditions returns E_OK according to
+[SWS_Dcm_01179], the Dcm shall trigger the mode switch of the ModeDeclarationGroupPrototype DcmEcuReset to EXECUTE. c()
       </description>
       <status>Approved</status>
       <CreatedBy>John Doe</CreatedBy>
@@ -907,10 +907,10 @@
     <RequirementItem>
       <id>NTT.RADU.SW.Req040</id>
       <description>
-         [SWS_Dcm_01181] d If Dcm_SetProgConditions returns E_NOT_OK according to
-         [SWS_Dcm_01179], the Dcm shall not request any reset, shall not perform the jump to
-         bootloader, and shall not switch the ModeDeclarationGroupPrototype DcmEcuReset to
-         EXECUTE. c()
+[SWS_Dcm_01181] d If Dcm_SetProgConditions returns E_NOT_OK according to
+[SWS_Dcm_01179], the Dcm shall not request any reset, shall not perform the jump to
+bootloader, and shall not switch the ModeDeclarationGroupPrototype DcmEcuReset to
+EXECUTE. c()
       </description>
       <status>Approved</status>
       <CreatedBy>John Doe</CreatedBy>
@@ -930,11 +930,11 @@
     <RequirementItem>
       <id>NTT.RADU.SW.Req041</id>
       <description>
-          [SWS_Dcm_00720] d In case the ModeDeclarationGroupPrototype DcmEcuReset is switched to mode JUMPTOBOOTLOADER
-          or JUMPTOSYSSUPPLIERBOOTLOADER, the configuration parameter DcmSendRespPendOnRestart is set to FALSE and the
-          configuration parameter DcmDspSessionForBoot it set to DCM_OEM_BOOT or DCM_SYS_BOOT, the Dcm shall
-          call Dcm_SetProgConditions immediately. (see [SWS_Dcm_00532] and
-          [SWS_Dcm_00592]) c()
+[SWS_Dcm_00720] d In case the ModeDeclarationGroupPrototype DcmEcuReset is switched to mode JUMPTOBOOTLOADER
+or JUMPTOSYSSUPPLIERBOOTLOADER, the configuration parameter DcmSendRespPendOnRestart is set to FALSE and the
+configuration parameter DcmDspSessionForBoot it set to DCM_OEM_BOOT or DCM_SYS_BOOT, the Dcm shall
+call Dcm_SetProgConditions immediately. (see [SWS_Dcm_00532] and
+[SWS_Dcm_00592]) c()
       </description>
       <status>Approved</status>
       <CreatedBy>John Doe</CreatedBy>
@@ -954,9 +954,9 @@
     <RequirementItem>
       <id>NTT.RADU.SW.Req042</id>
       <description>
-        [SWS_Dcm_00719] d If Dcm_SetProgConditions returns E_OK according to
-        [SWS_Dcm_00720], the Dcm shall shall trigger the mode switch of the ModeDeclarationGroupPrototype DcmEcuReset
-        to EXECUTE without sending a NRC 0x78 (Response pending). c()
+[SWS_Dcm_00719] d If Dcm_SetProgConditions returns E_OK according to
+[SWS_Dcm_00720], the Dcm shall shall trigger the mode switch of the ModeDeclarationGroupPrototype DcmEcuReset
+to EXECUTE without sending a NRC 0x78 (Response pending). c()
       </description>
       <status>Approved</status>
       <CreatedBy>John Doe</CreatedBy>
@@ -976,11 +976,11 @@
     <RequirementItem>
       <id>NTT.RADU.SW.Req043</id>
       <description>
-       [SWS_Dcm_00715] d If the jump to bootloader is requested (see [SWS_Dcm_00532]
-       and [SWS_Dcm_00592]) and if the call to Dcm_SetProgConditions returns
-       E_NOT_OK (see [SWS_Dcm_00535] and [SWS_Dcm_00720]), no further action shall
-       be taken by the Dcm and negative response NRC 0x22 (Conditions not correct) shall be
-       returned. c()
+[SWS_Dcm_00715] d If the jump to bootloader is requested (see [SWS_Dcm_00532]
+and [SWS_Dcm_00592]) and if the call to Dcm_SetProgConditions returns
+E_NOT_OK (see [SWS_Dcm_00535] and [SWS_Dcm_00720]), no further action shall
+be taken by the Dcm and negative response NRC 0x22 (Conditions not correct) shall be
+returned. c()
       </description>
       <status>Approved</status>
       <CreatedBy>John Doe</CreatedBy>

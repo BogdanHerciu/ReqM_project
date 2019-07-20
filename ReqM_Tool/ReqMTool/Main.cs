@@ -24,8 +24,6 @@ namespace ReqM_Tool
     { 
         /* create variable to the root of the xml file, for reading the requirements */
         root_file listOfRequirements = new root_file();
-        /* The Copy of the File. Used to compare the modifications occured. */
-        root_file XMLCopy = new root_file();
 
         /* create variable to the root of the xml file, for reading the settings */
         bool statistics = false;
@@ -140,7 +138,7 @@ namespace ReqM_Tool
 
         private void Main_Load(object sender, EventArgs e)
         {
-
+       
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -254,8 +252,17 @@ namespace ReqM_Tool
                     Console.WriteLine(ex);
                 }
 
-                /* Save a copy of the XML File. Used to compare modifications occured. */
-                XMLCopy = listOfRequirements;
+                /* Center the text for all columns except "Description" column. */
+                foreach (DataGridViewRow Row in this.dataGridView1.Rows)
+                {
+                    foreach (DataGridViewColumn Column in this.dataGridView1.Columns)
+                    {
+                        if (Column.Index != Column_Description)
+                        {
+                            dataGridView1.Columns[Column.Index].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                        }
+                    }
+                }
             }
 
             /* LINKSTO: Req076 */
