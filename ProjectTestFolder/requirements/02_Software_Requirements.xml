@@ -4,8 +4,8 @@
     <doc_settings>
       <Baseline>1.0</Baseline>
       <Columns>
-        <column>balbalbal</column>
-        <column>babalambalbmalbam</column>
+        <column>Column1</column>
+        <column>Column2</column>
       </Columns>
     </doc_settings>
   </document_settings>
