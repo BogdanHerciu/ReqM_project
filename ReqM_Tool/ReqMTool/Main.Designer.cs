@@ -57,6 +57,8 @@ namespace ReqM_Tool
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addRowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteRowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addColumnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.baselineToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -259,21 +261,21 @@ namespace ReqM_Tool
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.openToolStripMenuItem.Text = "Open";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem1
             // 
             this.saveToolStripMenuItem1.Name = "saveToolStripMenuItem1";
-            this.saveToolStripMenuItem1.Size = new System.Drawing.Size(113, 22);
+            this.saveToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.saveToolStripMenuItem1.Text = "Save";
             this.saveToolStripMenuItem1.Click += new System.EventHandler(this.saveToolStripMenuItem1_Click);
             // 
             // saveAsToolStripMenuItem1
             // 
             this.saveAsToolStripMenuItem1.Name = "saveAsToolStripMenuItem1";
-            this.saveAsToolStripMenuItem1.Size = new System.Drawing.Size(113, 22);
+            this.saveAsToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.saveAsToolStripMenuItem1.Text = "SaveAs";
             this.saveAsToolStripMenuItem1.Click += new System.EventHandler(this.saveAsToolStripMenuItem1_Click);
             // 
@@ -284,32 +286,32 @@ namespace ReqM_Tool
             this.saveAsPdfToolStripMenuItem,
             this.saveAsExcelToolStripMenuItem});
             this.publishToolStripMenuItem.Name = "publishToolStripMenuItem";
-            this.publishToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
+            this.publishToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.publishToolStripMenuItem.Text = "Publish";
             // 
             // saveAsWordToolStripMenuItem
             // 
             this.saveAsWordToolStripMenuItem.Name = "saveAsWordToolStripMenuItem";
-            this.saveAsWordToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.saveAsWordToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.saveAsWordToolStripMenuItem.Text = "Save as Word";
             // 
             // saveAsPdfToolStripMenuItem
             // 
             this.saveAsPdfToolStripMenuItem.Name = "saveAsPdfToolStripMenuItem";
-            this.saveAsPdfToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.saveAsPdfToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.saveAsPdfToolStripMenuItem.Text = "Save as Pdf";
             // 
             // saveAsExcelToolStripMenuItem
             // 
             this.saveAsExcelToolStripMenuItem.Name = "saveAsExcelToolStripMenuItem";
-            this.saveAsExcelToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.saveAsExcelToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.saveAsExcelToolStripMenuItem.Text = "Save as Excel";
             this.saveAsExcelToolStripMenuItem.Click += new System.EventHandler(this.SaveAsExcelToolStripMenuItem_Click);
             // 
             // closeToolStripMenuItem
             // 
             this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-            this.closeToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
+            this.closeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.closeToolStripMenuItem.Text = "Close";
             this.closeToolStripMenuItem.Click += new System.EventHandler(this.CloseToolStripMenuItem_Click);
             // 
@@ -317,7 +319,9 @@ namespace ReqM_Tool
             // 
             this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addRowToolStripMenuItem,
-            this.deleteRowToolStripMenuItem});
+            this.deleteRowToolStripMenuItem,
+            this.addColumnToolStripMenuItem,
+            this.baselineToolStripMenuItem});
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
             this.editToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
             this.editToolStripMenuItem.Text = "Edit";
@@ -325,16 +329,30 @@ namespace ReqM_Tool
             // addRowToolStripMenuItem
             // 
             this.addRowToolStripMenuItem.Name = "addRowToolStripMenuItem";
-            this.addRowToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.addRowToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.addRowToolStripMenuItem.Text = "Add Row";
             this.addRowToolStripMenuItem.Click += new System.EventHandler(this.addRowToolStripMenuItem_Click);
             // 
             // deleteRowToolStripMenuItem
             // 
             this.deleteRowToolStripMenuItem.Name = "deleteRowToolStripMenuItem";
-            this.deleteRowToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.deleteRowToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.deleteRowToolStripMenuItem.Text = "Delete Row";
             this.deleteRowToolStripMenuItem.Click += new System.EventHandler(this.deleteRowToolStripMenuItem_Click);
+            // 
+            // addColumnToolStripMenuItem
+            // 
+            this.addColumnToolStripMenuItem.Name = "addColumnToolStripMenuItem";
+            this.addColumnToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addColumnToolStripMenuItem.Text = "Add Column";
+            this.addColumnToolStripMenuItem.Click += new System.EventHandler(this.AddColumnToolStripMenuItem_Click);
+            // 
+            // baselineToolStripMenuItem
+            // 
+            this.baselineToolStripMenuItem.Name = "baselineToolStripMenuItem";
+            this.baselineToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.baselineToolStripMenuItem.Text = "Baseline";
+            this.baselineToolStripMenuItem.Click += new System.EventHandler(this.BaselineToolStripMenuItem_Click);
             // 
             // tabPage3
             // 
@@ -693,6 +711,8 @@ namespace ReqM_Tool
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.ToolStripMenuItem addColumnToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem baselineToolStripMenuItem;
     }
 }
 

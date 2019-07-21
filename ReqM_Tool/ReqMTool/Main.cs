@@ -54,6 +54,9 @@ namespace ReqM_Tool
         public int Column_ReqBaseline = 16;
         public int MAX_Columns = 17;
 
+        /* "No File has been open" Text Box. */
+        public string NoFileOpen = "No file has been opened!";
+
         /* FilterForm checkBoxes */
         public bool cbox1;
 
@@ -285,7 +288,7 @@ namespace ReqM_Tool
         {
             if (XmlFilePath == null)
             {
-                MessageBox.Show("No file has been opened!");
+                MessageBox.Show(NoFileOpen);
                 return;
             }
 
@@ -304,7 +307,7 @@ namespace ReqM_Tool
         {
             if (XmlFilePath == null)
             {
-                MessageBox.Show("No file has been opened!");
+                MessageBox.Show(NoFileOpen);
                 return;
             }
 
@@ -329,7 +332,7 @@ namespace ReqM_Tool
         {
             if (XmlFilePath == null)
             {
-                MessageBox.Show("No file has been opened!");
+                MessageBox.Show(NoFileOpen);
                 return;
             }
             else
@@ -380,7 +383,7 @@ namespace ReqM_Tool
             /* check if a XML file is open */
             if (XmlFilePath == null)
             {
-                MessageBox.Show("No file has been opened!");
+                MessageBox.Show(NoFileOpen);
                 return;
             }
             else
@@ -533,58 +536,67 @@ namespace ReqM_Tool
 
         private void SaveAsExcelToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //DataSet ds = new DataSet();
-
-            //Convert the XML into Dataset
-            //ds.ReadXml(XmlFilePath);
-
-            //Retrieve the table fron Dataset
-            // DataTable dt = ds.Tables[1];
-
-            // Create an Excel object
-            Microsoft.Office.Interop.Excel.Application excel = new Microsoft.Office.Interop.Excel.Application();
-
-            //Create workbook object
-            Microsoft.Office.Interop.Excel.Workbook workbook = excel.Workbooks.Add(Type.Missing);
-
-            //Create worksheet object
-            Microsoft.Office.Interop.Excel.Worksheet worksheet = workbook.ActiveSheet;
-
-            for (int i = 1; i < dataGridView1.Columns.Count+1; i++)
+            /* Check if a XML file is open. */
+            if (XmlFilePath == null)
             {
-                worksheet.Cells[1, i] = dataGridView1.Columns[i - 1].HeaderText;
+                MessageBox.Show(NoFileOpen);
+                return;
             }
-            for (int i = 0; i < dataGridView1.Rows.Count; i++)
+            else
             {
-                for (int j = 0; j < dataGridView1.Columns.Count; j++)
+                //DataSet ds = new DataSet();
+
+                //Convert the XML into Dataset
+                //ds.ReadXml(XmlFilePath);
+
+                //Retrieve the table fron Dataset
+                // DataTable dt = ds.Tables[1];
+
+                // Create an Excel object
+                Microsoft.Office.Interop.Excel.Application excel = new Microsoft.Office.Interop.Excel.Application();
+
+                //Create workbook object
+                Microsoft.Office.Interop.Excel.Workbook workbook = excel.Workbooks.Add(Type.Missing);
+
+                //Create worksheet object
+                Microsoft.Office.Interop.Excel.Worksheet worksheet = workbook.ActiveSheet;
+
+                for (int i = 1; i < dataGridView1.Columns.Count + 1; i++)
                 {
-                    worksheet.Cells[i + 2, j + 1] = dataGridView1.Rows[i].Cells[j].Value.ToString();
+                    worksheet.Cells[1, i] = dataGridView1.Columns[i - 1].HeaderText;
                 }
+                for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                {
+                    for (int j = 0; j < dataGridView1.Columns.Count; j++)
+                    {
+                        worksheet.Cells[i + 2, j + 1] = dataGridView1.Rows[i].Cells[j].Value.ToString();
+                    }
+                }
+
+                SaveFileDialog sfd = new SaveFileDialog();
+                sfd.Filter = "Excel|*.xlsx";
+
+                /* open File dialog where to save the file */
+                if (sfd.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        //Save the workbook
+                        workbook.SaveAs(sfd.FileName);
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex);
+                    }
+                }
+
+                //Close the Workbook
+                workbook.Close();
+
+                // Finally Quit the Application
+                ((Microsoft.Office.Interop.Excel._Application)excel).Quit();
             }
-
-            SaveFileDialog sfd = new SaveFileDialog();
-            sfd.Filter = "Excel|*.xlsx";
-
-            /* open File dialog where to save the file */
-            if (sfd.ShowDialog() == DialogResult.OK)
-            {
-                try
-                {
-                    //Save the workbook
-                    workbook.SaveAs(sfd.FileName);
-
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex);
-                }
-            }
-
-            //Close the Workbook
-            workbook.Close();
-
-            // Finally Quit the Application
-            ((Microsoft.Office.Interop.Excel._Application)excel).Quit();
         }
 
         private void Label2_Click_1(object sender, EventArgs e)
@@ -594,22 +606,22 @@ namespace ReqM_Tool
 
         private void Button1_Click_2(object sender, EventArgs e)
         {
-            /* total number of requirements */
+            /* Total number of requirements. */
             float countReq = 0;
-            /* number of found requirements */
+            /* Number of found requirements. */
             float countReqFound = 0;
             float coverage = 0; ;
 
             string content = string.Empty;
             MatchCollection matches;
 
-            /* check the paths for null */
+            /* Check the paths for null. */
             if (false == myFunctions.Paths(implementationFilePath, testFilePath, XmlFilePath))
             {
                 return;
             }
 
-            /* path of xml files */
+            /* Path of xml files. */
             string path = XmlFilePath;
             int indx = path.LastIndexOf("\\");
             if (indx > 0)
@@ -617,35 +629,35 @@ namespace ReqM_Tool
 
             foreach (string file in Directory.GetFiles(path, "*Software*"))
             {
-                /* create variable to the root of the xml file */
+                /* Create variable to the root of the xml file. */
                 root_file listOfRequirements = null;
-                /* create a serializer */
+                /* Create a serializer. */
                 XmlSerializer serializer = new XmlSerializer(typeof(root_file));
-                /* read the data from the xml file */
+                /* Read the data from the xml file. */
                 StreamReader reader = new StreamReader(file);
-                /* dezerialize the data */
+                /* Dezerialize the data. */
                 listOfRequirements = (root_file)serializer.Deserialize(reader);
 
-                /* count RequirementItems */
+                /* Count RequirementItems. */
                 countReq += listOfRequirements.Requirements_Dynamic_List.Count();
 
-                /* search in folders string */
+                /* Search in folders string. */
                 string pattern;
                 for (int index = 0; index < (listOfRequirements.Requirements_Dynamic_List.Count()); index++)
                 {
-                    /* ID - the name of the Requirement which is searched in all files */
+                    /* ID - the name of the Requirement which is searched in all files. */
                     pattern = listOfRequirements.Requirements_Dynamic_List[index].id;
 
                     string selectable_path = implementationFilePath;
 
-                    /* search in each file from the folder "selectable_path" */
+                    /* Search in each file from the folder "selectable_path". */
                     foreach (string file2 in Directory.GetFiles(selectable_path, "*.*"))    //.c.h
                     {
                         content = File.ReadAllText(file2);
                         Regex r = new Regex(pattern, RegexOptions.IgnoreCase);
                         matches = r.Matches(content);
 
-                        /* if Requirement is found,  */
+                        /* If Requirement is found, cout it. */
                         if (matches.Count > 0)
                         {
                             countReqFound++;
@@ -655,14 +667,14 @@ namespace ReqM_Tool
 
                     selectable_path = testFilePath;
 
-                    /* search in each file from the folder "selectable_path" */
+                    /* Search in each file from the folder "selectable_path". */
                     foreach (string file2 in Directory.GetFiles(selectable_path, "*.*"))    //.c.h
                     {
                         content = File.ReadAllText(file2);
                         Regex r = new Regex(pattern, RegexOptions.IgnoreCase);
                         matches = r.Matches(content);
 
-                        /* if Requirement is found, count it */
+                        /* If Requirement is found, count it. */
                         if (matches.Count > 0)
                         {
                             countReqFound++;
@@ -689,6 +701,60 @@ namespace ReqM_Tool
         private void Label4_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void BaselineToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            /* Check if a XML file is open. */
+            if (XmlFilePath == null)
+            {
+                MessageBox.Show(NoFileOpen);
+                return;
+            }
+            else
+            {
+                if (MessageBox.Show("Are you sure that you want to Baseline the Document?", "Baseline", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    /* LINKSTO: Req083 */
+                    /* Increment the Requirement Baseline with 1.0.  */
+                    double DocumentBaseline = Convert.ToDouble(listOfRequirements.list_of_settings[0].Baseline);
+                    DocumentBaseline += 1.0;
+                    listOfRequirements.list_of_settings[0].Baseline = Convert.ToString(DocumentBaseline);
+                    /* Set the Requirement Baseline to the Document Baseline. */
+                    foreach (DataGridViewRow Row in this.dataGridView1.Rows)
+                    {
+                        listOfRequirements.Requirements_Dynamic_List[Row.Index].ReqBaseline = listOfRequirements.list_of_settings[0].Baseline;
+                    }
+                    /* Gray the rows that are colored with yellow. */
+                    foreach (DataGridViewRow Row in this.dataGridView1.Rows)
+                    {
+                        if (listOfRequirements.Requirements_Dynamic_List[Row.Index].ReqBaseline == listOfRequirements.list_of_settings[0].Baseline)
+                        {
+                            /* Color each column back to "gray". */
+                            foreach (DataGridViewColumn Column in this.dataGridView1.Columns)
+                            {
+                                dataGridView1.Rows[Row.Index].Cells[Column.Index].Style.BackColor = Color.White;
+                            }
+                        }
+                    }
+                }
+            }
+
+        }
+
+        private void AddColumnToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            /* Check if a XML file is open. */
+            if (XmlFilePath == null)
+            {
+                MessageBox.Show(NoFileOpen);
+                return;
+            }
+            else
+            {
+                /* TODO */
+                /* Your CODE. */
+            }
         }
     }
 
