@@ -57,7 +57,7 @@ namespace function_namespace
             }
             else
             {
-                MessageBox.Show("Error! Requirement from row "+ (index +1)+ " has member needscoverage invalid!");
+                MessageBox.Show("Error! Requirement from row " + (index + 1) + " has member needscoverage invalid!");
                 return null;
             }
         }
@@ -74,5 +74,6 @@ namespace function_namespace
             /* set the color */
             row.DefaultCellStyle.BackColor = Color.Red;
         }
+
     }
 }

@@ -35,24 +35,26 @@ namespace ReqM_Tool
         public List<string> tested { get; }
         public List<string> type { get; }
 
+
         /* define columns from DataGridView */
-        public int Column_ID = 0;
-        public int Column_Description = 1;
-        public int Column_Status = 2;
-        public int Column_CreatedBy = 3;
-        public int Column_needscoverage = 5;
-        public int Column_providescoverage = 6;
-        public int Column_version=7;
-        public int Column_SafetyRelevant=8;
-        public int Column_ChangeRequest = 9;
-        public int Column_ReviewID = 10;
-        public int Column_RequirementType = 11;
-        public int Column_Chapter = 12;
-        public int Column_HWPlatform = 13;
-        public int Column_Domain = 14;
-        public int Column_TestedAt = 15;
-        public int Column_ReqBaseline = 16;
-        public int MAX_Columns = 17;
+        public int Column_ID               = 0;
+        public int Column_Description      = 1;
+        public int Column_Status           = 2;
+        public int Column_CreatedBy        = 3;
+        public int Column_needscoverage    = 4;
+        public int Column_providescoverage = 5;
+        public int Column_version          = 6;
+        public int Column_SafetyRelevant   = 7;
+        public int Column_ChangeRequest    = 8;
+        public int Column_ReviewID         = 9;
+        public int Column_RequirementType  = 10;
+        public int Column_Chapter          = 11;
+        public int Column_HWPlatform       = 12;
+        public int Column_Domain           = 13;
+        public int Column_TestedAt         = 14;
+        public int Column_ReqBaseline      = 15;
+        public int Column_HWPlatform_COPY  = 16;
+        public int MAX_Columns             = 17;
 
         /* "No File has been open" Text Box. */
         public string NoFileOpen = "No file has been opened!";
@@ -60,21 +62,24 @@ namespace ReqM_Tool
         /* FilterForm checkBoxes */
         public bool cbox1;
 
-        /* all the files from a folder */
+        public bool OpenFileFinished = false;
+
+        /* All the files from a folder. */
         List<MyFile> listOfFiles;
         OpenFileDialog FileDialog = new OpenFileDialog();
-        /* the path of the xml file */
+        /* The path of the xml file. */
         string XmlFilePath;
-        /* path in where we search for the Requirements that needs to cover the Implementation */
+        /* Path in where we search for the Requirements that needs to cover the Implementation. */
         string implementationFilePath;
-        /* path in where we search for the Requirements that needs to cover the Tests */
+        /* Path in where we search for the Requirements that needs to cover the Tests. */
         string testFilePath;
         // FileDialog.Filter = "XML|*.xml";
 
         public Main()
         {
             InitializeComponent();
-			status = new List<string> { "Accepted by project", "Ready for review", "Discarded by project", "In work", "Draft" };
+
+            status = new List<string> { "Accepted by project", "Ready for review", "Discarded by project", "In work", "Draft" };
             safetyRelevant = new List<string> { "N/A", "QM", "ASIL A", "ASIL B", "ASIL C", "ASIL D" };
             domain = new List<string> { "N/A", "SW", "MD", "HW" };
             tested = new List<string> { "N/A", "SYS.5", "SYS.4", "SWE.6", "SWE.5", "SWE.4", "DEV Test/Review" };
@@ -89,35 +94,38 @@ namespace ReqM_Tool
         /* Method called when a cell is modified */
         private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-
             /* LINKSTO: Req076 */
             /* Color each column that is changed. */
-            foreach (DataGridViewColumn col in this.dataGridView1.Columns)
+            if (OpenFileFinished == true)
             {
-                dataGridView1.Rows[e.RowIndex].Cells[col.Index].Style.BackColor = Color.Yellow;
+                foreach (DataGridViewColumn col in this.dataGridView1.Columns)
+                {
+                    dataGridView1.Rows[e.RowIndex].Cells[col.Index].Style.BackColor = Color.Yellow;
+                }
+                /* Increment the Requirement Baseline with 0.1.  */
+                double DocumentBaseline = Convert.ToDouble(listOfRequirements.list_of_settings[0].Baseline);
+                listOfRequirements.Requirements_Dynamic_List[e.RowIndex].ReqBaseline = Convert.ToString(DocumentBaseline + 0.1);
+
+                /* Get the HWVersion from ColumnInserted and copy to the listOfRequirements structure. */
+                listOfRequirements.Requirements_Dynamic_List[e.RowIndex].HWPlatform = dataGridView1.Rows[e.RowIndex].Cells[Column_HWPlatform_COPY].Value.ToString();
             }
-            /* Increment the Requirement Baseline with 0.1.  */
-            double DocumentBaseline = Convert.ToDouble(listOfRequirements.list_of_settings[0].Baseline);
-            listOfRequirements.Requirements_Dynamic_List[e.RowIndex].ReqBaseline = Convert.ToString(DocumentBaseline + 0.1);
-
-
 
             /* Color change for needscoverage column.
              * If the Value is neighter tst nor src, color the box in red. */
             if (e.ColumnIndex == Column_needscoverage)
-            { 
-                if (
-               (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString() == "tst") ||
-               (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString() == "src")
-               )
                 {
-                    dataGridView1.Rows[e.RowIndex].Cells[Column_needscoverage].Style.BackColor = Color.White; 
+                    if (
+                   (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString() == "tst") ||
+                   (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString() == "src")
+                   )
+                    {
+                        dataGridView1.Rows[e.RowIndex].Cells[Column_needscoverage].Style.BackColor = Color.White;
+                    }
+                    else
+                    {
+                        dataGridView1.Rows[e.RowIndex].Cells[Column_needscoverage].Style.BackColor = Color.Red;
+                    }
                 }
-                else
-                {
-                    dataGridView1.Rows[e.RowIndex].Cells[Column_needscoverage].Style.BackColor = Color.Red;
-                }
-            }
         }
 
         private void OpenBtn_Click(object sender, EventArgs e)
@@ -221,7 +229,7 @@ namespace ReqM_Tool
                     /* default columns to display */
                     for (int i = 0; i < dataGridView1.Columns.Count; i++)
                     {
-                        dataGridView1.Columns[i].Visible = false;
+                        dataGridView1.Columns[i].Visible = true;
                     }
 
                     dataGridView1.Columns["id"].Visible = true;
@@ -282,6 +290,29 @@ namespace ReqM_Tool
                     }
                 }
             }
+
+            /* COMBO BOX.
+             * If the Column is HWVersion, set it as a combo box.
+             * Hide the current Column. */
+            dataGridView1.Columns[Column_HWPlatform].Visible = false;
+            /* Create a new ComboBox. */
+            DataGridViewComboBoxColumn cmbCol = new DataGridViewComboBoxColumn();
+
+            cmbCol.HeaderText = "HwPlatform";
+            cmbCol.Name = "HwPlatform_Copy";
+            cmbCol.Items.Add("True");
+            /* Add the data to the ComboBox. */
+            cmbCol.DataSource = listOfRequirements.customValues.hwPlatforms;
+            /* Add the ComboBox into the dataGridView1. */
+            dataGridView1.Columns.Add(cmbCol);
+
+            /* Populate the HwPlatform List with the values from the XML File. */
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                row.Cells[Column_HWPlatform_COPY].Value = listOfRequirements.Requirements_Dynamic_List[row.Index].HWPlatform.ToString();
+                /* row.Cells[Column_HWPlatform_COPY].Style.BackColor = Color.White; !!! not working */
+            }
+            OpenFileFinished = true;
         }
 
         private void saveToolStripMenuItem1_Click(object sender, EventArgs e)
