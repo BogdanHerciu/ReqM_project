@@ -16,9 +16,12 @@
       <chapter>3</chapter>
     </Chapters>
     <HWPlatform>
-      <value>a1</value>
-      <value>a2</value>
-      <value>a3</value>
+      <value>HWPlatform_1</value>
+      <value>HWPlatform_2</value>
+      <value>HWPlatform_3</value>
+      <value>HWPlatform_4</value>
+      <value>HWPlatform_5</value>
+      <value>HWPlatform_6</value>
     </HWPlatform>
   </custom_values>
   <Requirements>
@@ -37,7 +40,7 @@
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
       <Chapter>N/A</Chapter>
-      <HWPlatform>N/A</HWPlatform>
+      <HWPlatform>HWPlatform_5</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
       <ReqBaseline>1.1</ReqBaseline>
@@ -59,7 +62,7 @@ the following parameters: PduId: the id of the Pdu to be canceled
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
       <Chapter>N/A</Chapter>
-      <HWPlatform>N/A</HWPlatform>
+      <HWPlatform>HWPlatform_5</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
       <ReqBaseline>1.0</ReqBaseline>
@@ -82,7 +85,7 @@ new one started.
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
       <Chapter>N/A</Chapter>
-      <HWPlatform>N/A</HWPlatform>
+      <HWPlatform>HWPlatform_5</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
       <ReqBaseline>1.0</ReqBaseline>
@@ -104,7 +107,7 @@ Dcm_OpStatus set to DCM_CANCEL c()
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
       <Chapter>N/A</Chapter>
-      <HWPlatform>N/A</HWPlatform>
+      <HWPlatform>HWPlatform_5</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
       <ReqBaseline>1.0</ReqBaseline>
@@ -126,7 +129,7 @@ call the corresponding Dem API with the parameters from the new request. c()
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
       <Chapter>N/A</Chapter>
-      <HWPlatform>N/A</HWPlatform>
+      <HWPlatform>HWPlatform_5</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
       <ReqBaseline>1.0</ReqBaseline>
@@ -149,7 +152,7 @@ the O.BD service is finished, the Dcm shall make a transition into the requested
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
       <Chapter>N/A</Chapter>
-      <HWPlatform>N/A</HWPlatform>
+      <HWPlatform>HWPlatform_5</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
       <ReqBaseline>1.0</ReqBaseline>
@@ -170,7 +173,7 @@ In this case the protocol priority check according to [SWS_Dcm_00015] is skipped
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
       <Chapter>N/A</Chapter>
-      <HWPlatform>N/A</HWPlatform>
+      <HWPlatform>HWPlatform_5</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
       <ReqBaseline>1.1</ReqBaseline>
@@ -195,7 +198,7 @@ shall be issued (see [SWS_Dcm_00790]).
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
       <Chapter>N/A</Chapter>
-      <HWPlatform>N/A</HWPlatform>
+      <HWPlatform>HWPlatform_5</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
       <ReqBaseline>1.0</ReqBaseline>
@@ -215,7 +218,7 @@ shall be issued (see [SWS_Dcm_00790]).
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
       <Chapter>N/A</Chapter>
-      <HWPlatform>N/A</HWPlatform>
+      <HWPlatform>HWPlatform_5</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
       <ReqBaseline>1.0</ReqBaseline>
@@ -237,7 +240,7 @@ shall be issued (see [SWS_Dcm_00790]).
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
       <Chapter>N/A</Chapter>
-      <HWPlatform>N/A</HWPlatform>
+      <HWPlatform>HWPlatform_5</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
       <ReqBaseline>1.0</ReqBaseline>
@@ -259,7 +262,7 @@ shall be issued (see [SWS_Dcm_00790]).
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
       <Chapter>N/A</Chapter>
-      <HWPlatform>N/A</HWPlatform>
+      <HWPlatform>HWPlatform_5</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
       <ReqBaseline>1.0</ReqBaseline>
@@ -281,7 +284,7 @@ shall be issued (see [SWS_Dcm_00790]).
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
       <Chapter>N/A</Chapter>
-      <HWPlatform>N/A</HWPlatform>
+      <HWPlatform>HWPlatform_5</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
       <ReqBaseline>1.0</ReqBaseline>
@@ -303,7 +306,7 @@ shall be issued (see [SWS_Dcm_00790]).
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
       <Chapter>N/A</Chapter>
-      <HWPlatform>N/A</HWPlatform>
+      <HWPlatform>HWPlatform_5</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
       <ReqBaseline>1.0</ReqBaseline>
@@ -325,7 +328,7 @@ shall be issued (see [SWS_Dcm_00790]).
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
       <Chapter>N/A</Chapter>
-      <HWPlatform>N/A</HWPlatform>
+      <HWPlatform>HWPlatform_5</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
       <ReqBaseline>1.0</ReqBaseline>
@@ -347,7 +350,7 @@ shall be issued (see [SWS_Dcm_00790]).
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
       <Chapter>N/A</Chapter>
-      <HWPlatform>N/A</HWPlatform>
+      <HWPlatform>HWPlatform_5</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
       <ReqBaseline>1.0</ReqBaseline>
@@ -369,7 +372,7 @@ shall be issued (see [SWS_Dcm_00790]).
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
       <Chapter>N/A</Chapter>
-      <HWPlatform>N/A</HWPlatform>
+      <HWPlatform>HWPlatform_5</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
       <ReqBaseline>1.0</ReqBaseline>
@@ -391,7 +394,7 @@ shall be issued (see [SWS_Dcm_00790]).
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
       <Chapter>N/A</Chapter>
-      <HWPlatform>N/A</HWPlatform>
+      <HWPlatform>HWPlatform_5</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
       <ReqBaseline>1.0</ReqBaseline>
@@ -416,7 +419,7 @@ shall be issued (see [SWS_Dcm_00790]).
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
       <Chapter>N/A</Chapter>
-      <HWPlatform>N/A</HWPlatform>
+      <HWPlatform>HWPlatform_5</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
       <ReqBaseline>1.0</ReqBaseline>
@@ -437,7 +440,7 @@ shall be issued (see [SWS_Dcm_00790]).
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
       <Chapter>N/A</Chapter>
-      <HWPlatform>N/A</HWPlatform>
+      <HWPlatform>HWPlatform_5</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
       <ReqBaseline>1.0</ReqBaseline>
@@ -458,7 +461,7 @@ shall be issued (see [SWS_Dcm_00790]).
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
       <Chapter>N/A</Chapter>
-      <HWPlatform>N/A</HWPlatform>
+      <HWPlatform>HWPlatform_5</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
       <ReqBaseline>1.0</ReqBaseline>
@@ -482,7 +485,7 @@ shall be issued (see [SWS_Dcm_00790]).
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
       <Chapter>N/A</Chapter>
-      <HWPlatform>N/A</HWPlatform>
+      <HWPlatform>HWPlatform_5</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
       <ReqBaseline>1.0</ReqBaseline>
@@ -504,7 +507,7 @@ shall be issued (see [SWS_Dcm_00790]).
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
       <Chapter>N/A</Chapter>
-      <HWPlatform>N/A</HWPlatform>
+      <HWPlatform>HWPlatform_5</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
       <ReqBaseline>1.0</ReqBaseline>
@@ -525,7 +528,7 @@ shall be issued (see [SWS_Dcm_00790]).
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
       <Chapter>N/A</Chapter>
-      <HWPlatform>N/A</HWPlatform>
+      <HWPlatform>HWPlatform_5</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
       <ReqBaseline>1.0</ReqBaseline>
@@ -546,7 +549,7 @@ shall be issued (see [SWS_Dcm_00790]).
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
       <Chapter>N/A</Chapter>
-      <HWPlatform>N/A</HWPlatform>
+      <HWPlatform>HWPlatform_5</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
       <ReqBaseline>1.0</ReqBaseline>
@@ -567,7 +570,7 @@ shall be issued (see [SWS_Dcm_00790]).
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
       <Chapter>N/A</Chapter>
-      <HWPlatform>N/A</HWPlatform>
+      <HWPlatform>HWPlatform_5</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
       <ReqBaseline>1.0</ReqBaseline>
@@ -588,7 +591,7 @@ shall be issued (see [SWS_Dcm_00790]).
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
       <Chapter>N/A</Chapter>
-      <HWPlatform>N/A</HWPlatform>
+      <HWPlatform>HWPlatform_5</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
       <ReqBaseline>1.0</ReqBaseline>
@@ -610,7 +613,7 @@ shall be issued (see [SWS_Dcm_00790]).
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
       <Chapter>N/A</Chapter>
-      <HWPlatform>N/A</HWPlatform>
+      <HWPlatform>HWPlatform_5</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
       <ReqBaseline>1.0</ReqBaseline>
@@ -631,7 +634,7 @@ shall be issued (see [SWS_Dcm_00790]).
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
       <Chapter>N/A</Chapter>
-      <HWPlatform>N/A</HWPlatform>
+      <HWPlatform>HWPlatform_5</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
       <ReqBaseline>1.0</ReqBaseline>
@@ -652,7 +655,7 @@ shall be issued (see [SWS_Dcm_00790]).
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
       <Chapter>N/A</Chapter>
-      <HWPlatform>N/A</HWPlatform>
+      <HWPlatform>HWPlatform_5</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
       <ReqBaseline>1.0</ReqBaseline>
@@ -674,7 +677,7 @@ shall be issued (see [SWS_Dcm_00790]).
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
       <Chapter>N/A</Chapter>
-      <HWPlatform>N/A</HWPlatform>
+      <HWPlatform>HWPlatform_5</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
       <ReqBaseline>1.0</ReqBaseline>
@@ -695,7 +698,7 @@ shall be issued (see [SWS_Dcm_00790]).
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
       <Chapter>N/A</Chapter>
-      <HWPlatform>N/A</HWPlatform>
+      <HWPlatform>HWPlatform_5</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
       <ReqBaseline>1.0</ReqBaseline>
@@ -718,7 +721,7 @@ shall be issued (see [SWS_Dcm_00790]).
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
       <Chapter>N/A</Chapter>
-      <HWPlatform>N/A</HWPlatform>
+      <HWPlatform>HWPlatform_5</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
       <ReqBaseline>1.0</ReqBaseline>
@@ -743,7 +746,7 @@ shall be issued (see [SWS_Dcm_00790]).
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
       <Chapter>N/A</Chapter>
-      <HWPlatform>N/A</HWPlatform>
+      <HWPlatform>HWPlatform_5</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
       <ReqBaseline>1.0</ReqBaseline>
@@ -764,7 +767,7 @@ shall be issued (see [SWS_Dcm_00790]).
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
       <Chapter>N/A</Chapter>
-      <HWPlatform>N/A</HWPlatform>
+      <HWPlatform>HWPlatform_5</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
       <ReqBaseline>1.0</ReqBaseline>
@@ -788,7 +791,7 @@ shall be issued (see [SWS_Dcm_00790]).
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
       <Chapter>N/A</Chapter>
-      <HWPlatform>N/A</HWPlatform>
+      <HWPlatform>HWPlatform_5</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
       <ReqBaseline>1.0</ReqBaseline>
@@ -810,7 +813,7 @@ shall be issued (see [SWS_Dcm_00790]).
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
       <Chapter>N/A</Chapter>
-      <HWPlatform>N/A</HWPlatform>
+      <HWPlatform>HWPlatform_5</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
       <ReqBaseline>1.0</ReqBaseline>
@@ -834,7 +837,7 @@ shall be issued (see [SWS_Dcm_00790]).
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
       <Chapter>N/A</Chapter>
-      <HWPlatform>N/A</HWPlatform>
+      <HWPlatform>HWPlatform_5</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
       <ReqBaseline>1.0</ReqBaseline>
@@ -855,7 +858,7 @@ shall be issued (see [SWS_Dcm_00790]).
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
       <Chapter>N/A</Chapter>
-      <HWPlatform>N/A</HWPlatform>
+      <HWPlatform>HWPlatform_5</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
       <ReqBaseline>1.0</ReqBaseline>
@@ -878,7 +881,7 @@ shall be issued (see [SWS_Dcm_00790]).
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
       <Chapter>N/A</Chapter>
-      <HWPlatform>N/A</HWPlatform>
+      <HWPlatform>HWPlatform_5</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
       <ReqBaseline>1.0</ReqBaseline>
@@ -899,7 +902,7 @@ shall be issued (see [SWS_Dcm_00790]).
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
       <Chapter>N/A</Chapter>
-      <HWPlatform>N/A</HWPlatform>
+      <HWPlatform>HWPlatform_5</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
       <ReqBaseline>1.0</ReqBaseline>
@@ -922,7 +925,7 @@ shall be issued (see [SWS_Dcm_00790]).
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
       <Chapter>N/A</Chapter>
-      <HWPlatform>N/A</HWPlatform>
+      <HWPlatform>HWPlatform_5</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
       <ReqBaseline>1.0</ReqBaseline>
@@ -946,7 +949,7 @@ shall be issued (see [SWS_Dcm_00790]).
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
       <Chapter>N/A</Chapter>
-      <HWPlatform>N/A</HWPlatform>
+      <HWPlatform>HWPlatform_5</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
       <ReqBaseline>1.0</ReqBaseline>
@@ -968,7 +971,7 @@ shall be issued (see [SWS_Dcm_00790]).
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
       <Chapter>N/A</Chapter>
-      <HWPlatform>N/A</HWPlatform>
+      <HWPlatform>HWPlatform_5</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
       <ReqBaseline>1.0</ReqBaseline>
@@ -992,7 +995,7 @@ shall be issued (see [SWS_Dcm_00790]).
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
       <Chapter>N/A</Chapter>
-      <HWPlatform>N/A</HWPlatform>
+      <HWPlatform>HWPlatform_5</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
       <ReqBaseline>1.0</ReqBaseline>
