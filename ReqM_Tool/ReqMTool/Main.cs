@@ -23,7 +23,8 @@ namespace ReqM_Tool
     public partial class Main : Form
     { 
         /* create variable to the root of the xml file, for reading the requirements */
-        root_file listOfRequirements = new root_file();
+        public root_file listOfRequirements { get; set; } = new root_file();
+        //public root_file listOfRequirementsCopy { get; set; }= new root_file();
 
         /* create variable to the root of the xml file, for reading the settings */
         bool statistics = false;
@@ -57,7 +58,7 @@ namespace ReqM_Tool
         public int MAX_Columns             = 17;
 
         /* "No File has been open" Text Box. */
-        public string NoFileOpen = "No file has been opened!";
+        public string NoFileOpen { get; } = "No file has been opened!";
 
         /* FilterForm checkBoxes */
         public bool cbox1;
@@ -68,12 +69,14 @@ namespace ReqM_Tool
         List<MyFile> listOfFiles;
         OpenFileDialog FileDialog = new OpenFileDialog();
         /* The path of the xml file. */
-        string XmlFilePath;
+        public string XmlFilePath { get; set; }
         /* Path in where we search for the Requirements that needs to cover the Implementation. */
         string implementationFilePath;
         /* Path in where we search for the Requirements that needs to cover the Tests. */
         string testFilePath;
         // FileDialog.Filter = "XML|*.xml";
+
+
 
         public Main()
         {
@@ -220,6 +223,7 @@ namespace ReqM_Tool
                     StreamReader reader = new StreamReader(XmlFilePath);
                     /* dezerialize the data */
                     listOfRequirements = (root_file)serializer.Deserialize(reader);
+                    //listOfRequirementsCopy = (root_file)serializer.Deserialize(reader);
 
                     /* add the data into the table */
                     dataGridView1.DataSource = listOfRequirements.Requirements_Dynamic_List;
@@ -229,16 +233,27 @@ namespace ReqM_Tool
                     /* default columns to display */
                     for (int i = 0; i < dataGridView1.Columns.Count; i++)
                     {
-                        dataGridView1.Columns[i].Visible = true;
+                        dataGridView1.Columns[i].Visible = false;
                     }
 
-                    dataGridView1.Columns["id"].Visible = true;
-                    dataGridView1.Columns["description"].Visible = true;
-                    dataGridView1.Columns["status"].Visible = true;
-                    dataGridView1.Columns["CreatedBy"].Visible = true;
-                    dataGridView1.Columns["needscoverage"].Visible = true;
-                    dataGridView1.Columns["providescoverage"].Visible = true;
-                    dataGridView1.Columns["version"].Visible = true; 
+                    if (listOfRequirements.list_of_settings.ElementAt(0).columns.Count > 0)
+                    {
+                        for (int i = 0; i < listOfRequirements.list_of_settings.ElementAt(0).columns.Count; i++)
+                        {
+                            string column = listOfRequirements.list_of_settings.ElementAt(0).columns.ElementAt(i);
+                            dataGridView1.Columns[column].Visible = true;
+                        }
+                    }
+                    else
+                    {
+                        dataGridView1.Columns["id"].Visible = true;
+                        dataGridView1.Columns["description"].Visible = true;
+                        dataGridView1.Columns["status"].Visible = true;
+                        dataGridView1.Columns["CreatedBy"].Visible = true;
+                        dataGridView1.Columns["needscoverage"].Visible = true;
+                        dataGridView1.Columns["providescoverage"].Visible = true;
+                        dataGridView1.Columns["version"].Visible = true;
+                    }
 
                     /* add event for Cell value changed */
                     dataGridView1.CellValueChanged -= dataGridView1_CellValueChanged;
@@ -291,28 +306,28 @@ namespace ReqM_Tool
                 }
             }
 
-            /* COMBO BOX.
-             * If the Column is HWVersion, set it as a combo box.
-             * Hide the current Column. */
-            dataGridView1.Columns[Column_HWPlatform].Visible = false;
-            /* Create a new ComboBox. */
-            DataGridViewComboBoxColumn cmbCol = new DataGridViewComboBoxColumn();
-
-            cmbCol.HeaderText = "HwPlatform";
-            cmbCol.Name = "HwPlatform_Copy";
-            cmbCol.Items.Add("True");
-            /* Add the data to the ComboBox. */
-            cmbCol.DataSource = listOfRequirements.customValues.hwPlatforms;
-            /* Add the ComboBox into the dataGridView1. */
-            dataGridView1.Columns.Add(cmbCol);
-
-            /* Populate the HwPlatform List with the values from the XML File. */
-            foreach (DataGridViewRow row in dataGridView1.Rows)
-            {
-                row.Cells[Column_HWPlatform_COPY].Value = listOfRequirements.Requirements_Dynamic_List[row.Index].HWPlatform.ToString();
-                /* row.Cells[Column_HWPlatform_COPY].Style.BackColor = Color.White; !!! not working */
-            }
-            OpenFileFinished = true;
+           /* COMBO BOX.
+            * If the Column is HWVersion, set it as a combo box.
+            * Hide the current Column. */
+//          dataGridView1.Columns[Column_HWPlatform].Visible = false;
+//          /* Create a new ComboBox. */
+//          DataGridViewComboBoxColumn cmbCol = new DataGridViewComboBoxColumn();
+//
+//          cmbCol.HeaderText = "HwPlatform";
+//          cmbCol.Name = "HwPlatform_Copy";
+//          cmbCol.Items.Add("True");
+//          /* Add the data to the ComboBox. */
+//          cmbCol.DataSource = listOfRequirements.customValues.hwPlatforms;
+//          /* Add the ComboBox into the dataGridView1. */
+//          dataGridView1.Columns.Add(cmbCol);
+//
+//          /* Populate the HwPlatform List with the values from the XML File. */
+//          foreach (DataGridViewRow row in dataGridView1.Rows)
+//          {
+//              row.Cells[Column_HWPlatform_COPY].Value = listOfRequirements.Requirements_Dynamic_List[row.Index].HWPlatform.ToString();
+//              /* row.Cells[Column_HWPlatform_COPY].Style.BackColor = Color.White; !!! not working */
+//          }
+//          OpenFileFinished = true;
         }
 
         private void saveToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -725,8 +740,16 @@ namespace ReqM_Tool
 
         private void Button2_Click_1(object sender, EventArgs e)
         {
-            FilterForm form = new FilterForm(this);
-            form.Show();   
+            if((Application.OpenForms["FilterForm"] as FilterForm) != null)
+            {
+                Console.WriteLine("Form is already open!");
+            }
+            else
+            {
+                FilterForm myform = new FilterForm(this);
+                myform.Show();
+            }
+
         }
 
         private void Label4_Click(object sender, EventArgs e)
@@ -921,7 +944,10 @@ namespace ReqM_Tool
 
             }
         }
+
+        public object ShallowCopy()
+        {
+            return (root_file)this.MemberwiseClone();
+        }
     }
-
-
 }
