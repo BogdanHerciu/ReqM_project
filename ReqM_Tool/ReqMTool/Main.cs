@@ -24,6 +24,7 @@ namespace ReqM_Tool
     { 
         /* create variable to the root of the xml file, for reading the requirements */
         root_file listOfRequirements = new root_file();
+        root_file listOfRequirementsCopy = new root_file();
 
         /* create variable to the root of the xml file, for reading the settings */
         bool statistics = false;
@@ -84,6 +85,7 @@ namespace ReqM_Tool
             domain = new List<string> { "N/A", "SW", "MD", "HW" };
             tested = new List<string> { "N/A", "SYS.5", "SYS.4", "SWE.6", "SWE.5", "SWE.4", "DEV Test/Review" };
             type = new List<string> { "Description", "Technical Requirement", "Project Requirement", "Functional Requirement", "Non-Functional Requirement", "Template" };
+            dataGridView1.AutoGenerateColumns = false;
         }
 
         public DataGridView dgv
@@ -92,27 +94,27 @@ namespace ReqM_Tool
         }
 
         /* Method called when a cell is modified */
-        private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        /*private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             /* LINKSTO: Req076 */
             /* Color each column that is changed. */
-            if (OpenFileFinished == true)
+            /*if (OpenFileFinished == true)
             {
                 foreach (DataGridViewColumn col in this.dataGridView1.Columns)
                 {
                     dataGridView1.Rows[e.RowIndex].Cells[col.Index].Style.BackColor = Color.Yellow;
                 }
                 /* Increment the Requirement Baseline with 0.1.  */
-                double DocumentBaseline = Convert.ToDouble(listOfRequirements.list_of_settings[0].Baseline);
+                /*double DocumentBaseline = Convert.ToDouble(listOfRequirements.list_of_settings[0].Baseline);
                 listOfRequirements.Requirements_Dynamic_List[e.RowIndex].ReqBaseline = Convert.ToString(DocumentBaseline + 0.1);
 
                 /* Get the HWVersion from ColumnInserted and copy to the listOfRequirements structure. */
-                listOfRequirements.Requirements_Dynamic_List[e.RowIndex].HWPlatform = dataGridView1.Rows[e.RowIndex].Cells[Column_HWPlatform_COPY].Value.ToString();
-            }
+                //listOfRequirements.Requirements_Dynamic_List[e.RowIndex].HWPlatform = dataGridView1.Rows[e.RowIndex].Cells[Column_HWPlatform_COPY].Value.ToString();
+            //}
 
             /* Color change for needscoverage column.
              * If the Value is neighter tst nor src, color the box in red. */
-            if (e.ColumnIndex == Column_needscoverage)
+            /*if (e.ColumnIndex == Column_needscoverage)
                 {
                     if (
                    (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString() == "tst") ||
@@ -126,7 +128,22 @@ namespace ReqM_Tool
                         dataGridView1.Rows[e.RowIndex].Cells[Column_needscoverage].Style.BackColor = Color.Red;
                     }
                 }
-        }
+            */
+           /* if (dataGridView1.Columns[e.ColumnIndex].Name == "needscoverage")
+            {
+                if (
+                   (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString() == "tst") ||
+                   (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString() == "src")
+                   )
+                {
+                    dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor = Color.White;
+                }
+                else
+                {
+                    dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor = Color.Red;
+                }
+            }
+        }*/
 
         private void OpenBtn_Click(object sender, EventArgs e)
         {
@@ -197,6 +214,159 @@ namespace ReqM_Tool
 
         }
 
+        public void CreateDataGridView()
+        {
+            DataGridViewTextBoxColumn textBoxColumn = new DataGridViewTextBoxColumn();
+            textBoxColumn.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            textBoxColumn.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            textBoxColumn.DataPropertyName = "id";
+            textBoxColumn.Name = "id";
+            textBoxColumn.HeaderText = "id";
+            dataGridView1.Columns.Add(textBoxColumn);
+
+            DataGridViewTextBoxColumn textBoxColumn2 = new DataGridViewTextBoxColumn();
+            textBoxColumn2.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            textBoxColumn2.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            textBoxColumn2.Name = "description";
+            textBoxColumn2.HeaderText = "description";
+            textBoxColumn2.DataPropertyName = "description";
+            dataGridView1.Columns.Add(textBoxColumn2);
+
+            DataGridViewComboBoxColumn comboBoxColumn = new DataGridViewComboBoxColumn();
+            comboBoxColumn.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            comboBoxColumn.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            comboBoxColumn.Name = "status";
+            comboBoxColumn.HeaderText = "status";
+            comboBoxColumn.DataPropertyName = "status";
+            comboBoxColumn.DataSource = status;
+            dataGridView1.Columns.Add(comboBoxColumn);
+
+            DataGridViewTextBoxColumn textBoxColumn3 = new DataGridViewTextBoxColumn();
+            textBoxColumn3.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            textBoxColumn3.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            textBoxColumn3.Name = "CreatedBy";
+            textBoxColumn3.HeaderText = "CreatedBy";
+            textBoxColumn3.DataPropertyName = "CreatedBy";
+            dataGridView1.Columns.Add(textBoxColumn3);
+
+            DataGridViewTextBoxColumn textBoxColumn4 = new DataGridViewTextBoxColumn();
+            textBoxColumn4.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            textBoxColumn4.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            textBoxColumn4.Name = "needscoverage";
+            textBoxColumn4.HeaderText = "needscoverage";
+            textBoxColumn4.DataPropertyName = "needscoverage";
+            dataGridView1.Columns.Add(textBoxColumn4);
+
+            DataGridViewTextBoxColumn textBoxColumn5 = new DataGridViewTextBoxColumn();
+            textBoxColumn5.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            textBoxColumn5.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            textBoxColumn5.Name = "providescoverage";
+            textBoxColumn5.HeaderText = "providescoverage";
+            textBoxColumn5.DataPropertyName = "providescoverage";
+            dataGridView1.Columns.Add(textBoxColumn5);
+
+            DataGridViewTextBoxColumn textBoxColumn6 = new DataGridViewTextBoxColumn();
+            textBoxColumn6.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            textBoxColumn6.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            textBoxColumn6.Name = "version";
+            textBoxColumn6.HeaderText = "version";
+            textBoxColumn6.DataPropertyName = "version";
+            dataGridView1.Columns.Add(textBoxColumn6);
+
+            DataGridViewComboBoxColumn comboBoxColumn2 = new DataGridViewComboBoxColumn();
+            comboBoxColumn2.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            comboBoxColumn2.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            comboBoxColumn2.Name = "SafetyRelevant";
+            comboBoxColumn2.HeaderText = "SafetyRelevant";
+            comboBoxColumn2.DataPropertyName = "SafetyRelevant";
+            comboBoxColumn2.DataSource = safetyRelevant;
+            dataGridView1.Columns.Add(comboBoxColumn2);
+
+            DataGridViewTextBoxColumn textBoxColumn7 = new DataGridViewTextBoxColumn();
+            textBoxColumn7.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            textBoxColumn7.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            textBoxColumn7.Name = "ChangeRequest";
+            textBoxColumn7.HeaderText = "ChangeRequest";
+            textBoxColumn7.DataPropertyName = "ChangeRequest";
+            dataGridView1.Columns.Add(textBoxColumn7);
+
+            DataGridViewTextBoxColumn textBoxColumn8 = new DataGridViewTextBoxColumn();
+            textBoxColumn8.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            textBoxColumn8.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            textBoxColumn8.Name = "ReviewID";
+            textBoxColumn8.HeaderText = "ReviewID";
+            textBoxColumn8.DataPropertyName = "ReviewID";
+            dataGridView1.Columns.Add(textBoxColumn8);
+
+            DataGridViewComboBoxColumn comboBoxColumn3 = new DataGridViewComboBoxColumn();
+            comboBoxColumn3.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            comboBoxColumn3.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            comboBoxColumn3.Name = "RequirementType";
+            comboBoxColumn3.HeaderText = "RequirementType";
+            comboBoxColumn3.DataPropertyName = "RequirementType";
+            comboBoxColumn3.DataSource = type;
+            dataGridView1.Columns.Add(comboBoxColumn3);
+
+            DataGridViewComboBoxColumn comboBoxColumn4 = new DataGridViewComboBoxColumn();
+            comboBoxColumn4.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            comboBoxColumn4.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            comboBoxColumn4.Name = "Chapter";
+            comboBoxColumn4.HeaderText = "Chapter";
+            comboBoxColumn4.DataPropertyName = "Chapter";
+            comboBoxColumn4.DataSource = listOfRequirements.customValues.chapters;
+            dataGridView1.Columns.Add(comboBoxColumn4);
+
+            DataGridViewComboBoxColumn comboBoxColumn5 = new DataGridViewComboBoxColumn();
+            comboBoxColumn5.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            comboBoxColumn5.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            comboBoxColumn5.Name = "HWPlatform";
+            comboBoxColumn5.HeaderText = "HWPlatform";
+            comboBoxColumn5.DataPropertyName = "HWPlatform";
+            comboBoxColumn5.DataSource = listOfRequirements.customValues.hwPlatforms;
+            dataGridView1.Columns.Add(comboBoxColumn5);
+
+            DataGridViewComboBoxColumn comboBoxColumn7 = new DataGridViewComboBoxColumn();
+            comboBoxColumn7.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            comboBoxColumn7.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            comboBoxColumn7.Name = "Domain";
+            comboBoxColumn7.HeaderText = "Domain";
+            comboBoxColumn7.DataPropertyName = "Domain";
+            comboBoxColumn7.DataSource = domain;
+            dataGridView1.Columns.Add(comboBoxColumn7);
+
+            DataGridViewComboBoxColumn comboBoxColumn6 = new DataGridViewComboBoxColumn();
+            comboBoxColumn6.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            comboBoxColumn6.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            comboBoxColumn6.Name = "TestedAt";
+            comboBoxColumn6.HeaderText = "TestedAt";
+            comboBoxColumn6.DataPropertyName = "TestedAt";
+            comboBoxColumn6.DataSource = tested;
+            dataGridView1.Columns.Add(comboBoxColumn6);
+
+            DataGridViewTextBoxColumn textBoxColumn9 = new DataGridViewTextBoxColumn();
+            textBoxColumn9.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            textBoxColumn9.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            textBoxColumn9.Name = "ReqBaseline";
+            textBoxColumn9.HeaderText = "ReqBaseline";
+            textBoxColumn9.DataPropertyName = "ReqBaseline";
+            dataGridView1.Columns.Add(textBoxColumn9);
+
+            dataGridView1.DataError += new DataGridViewDataErrorEventHandler(dgvCombo_DataError);
+        }
+
+        public void PopulateDataGridView()
+        {
+            //foreach (var req in listOfRequirements.Requirements_Dynamic_List)
+            //  dataGridView1.Rows.Add(req.id, req.description);
+            dataGridView1.DataSource = listOfRequirements.Requirements_Dynamic_List;
+            
+        }
+
+        void dgvCombo_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+            // (No need to write anything in here)
+        }
+
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (FileDialog.ShowDialog() == DialogResult.OK)
@@ -220,29 +390,44 @@ namespace ReqM_Tool
                     StreamReader reader = new StreamReader(XmlFilePath);
                     /* dezerialize the data */
                     listOfRequirements = (root_file)serializer.Deserialize(reader);
+                    listOfRequirementsCopy = listOfRequirements;
 
                     /* add the data into the table */
-                    dataGridView1.DataSource = listOfRequirements.Requirements_Dynamic_List;
+                    //dataGridView1.DataSource = listOfRequirements.Requirements_Dynamic_List;
+
+                    CreateDataGridView();
+                    PopulateDataGridView();
 
                     //listOfRequirements.list_of_settings.ElementAt(0).columns = new List<string> { "a", "b" };
 
                     /* default columns to display */
                     for (int i = 0; i < dataGridView1.Columns.Count; i++)
                     {
-                        dataGridView1.Columns[i].Visible = true;
+                            //dataGridView1.Columns[i].Visible = false;
                     }
 
-                    dataGridView1.Columns["id"].Visible = true;
-                    dataGridView1.Columns["description"].Visible = true;
-                    dataGridView1.Columns["status"].Visible = true;
-                    dataGridView1.Columns["CreatedBy"].Visible = true;
-                    dataGridView1.Columns["needscoverage"].Visible = true;
-                    dataGridView1.Columns["providescoverage"].Visible = true;
-                    dataGridView1.Columns["version"].Visible = true; 
+                    if (listOfRequirements.list_of_settings.ElementAt(0).columns.Count > 0)
+                    {
+                        for (int i = 0; i < listOfRequirements.list_of_settings.ElementAt(0).columns.Count; i++)
+                        {
+                            string column = listOfRequirements.list_of_settings.ElementAt(0).columns.ElementAt(i);
+                            dataGridView1.Columns[column].Visible = true;
+                        }
+                    }
+                    else
+                    {
+                        dataGridView1.Columns["id"].Visible = true;
+                        dataGridView1.Columns["description"].Visible = true;
+                        dataGridView1.Columns["status"].Visible = true;
+                        dataGridView1.Columns["CreatedBy"].Visible = true;
+                        dataGridView1.Columns["needscoverage"].Visible = true;
+                        dataGridView1.Columns["providescoverage"].Visible = true;
+                        dataGridView1.Columns["version"].Visible = true;
+                    }
 
                     /* add event for Cell value changed */
-                    dataGridView1.CellValueChanged -= dataGridView1_CellValueChanged;
-                    dataGridView1.CellValueChanged += dataGridView1_CellValueChanged;
+                    //dataGridView1.CellValueChanged -= dataGridView1_CellValueChanged;
+                    //dataGridView1.CellValueChanged += dataGridView1_CellValueChanged;
 
                     /* color with red needscoverage column if there's an error! */
                     for (int index = 0; index < (listOfRequirements.Requirements_Dynamic_List.Count()); index++)
@@ -264,27 +449,22 @@ namespace ReqM_Tool
                 }
 
                 /* Center the text for all columns except "Description" column. */
-                foreach (DataGridViewRow Row in this.dataGridView1.Rows)
+                foreach (DataGridViewColumn c in dataGridView1.Columns)
                 {
-                    foreach (DataGridViewColumn Column in this.dataGridView1.Columns)
-                    {
-                        if (Column.Index != Column_Description)
-                        {
-                            dataGridView1.Columns[Column.Index].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                        }
-                    }
+                    if (c.Name != "description")
+                        dataGridView1.Columns[c.Name].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 }
             }
 
             /* LINKSTO: Req076 */
             /* Color the requirement with Yellow if it has different baseline than the document Baseline. */
-            /* Color each column that is changed. */
-            foreach (DataGridViewRow Row in this.dataGridView1.Rows)
+            /* Color each column that is changed. 
+            foreach (DataGridViewRow Row in dataGridView1.Rows)
             {
                 if (listOfRequirements.Requirements_Dynamic_List[Row.Index].ReqBaseline != listOfRequirements.list_of_settings[0].Baseline)
                 {
-                    /* Color each column that is changed. */
-                    foreach (DataGridViewColumn Column in this.dataGridView1.Columns)
+                    /* Color each column that is changed. 
+                    foreach (DataGridViewColumn Column in dataGridView1.Columns)
                     {
                         dataGridView1.Rows[Row.Index].Cells[Column.Index].Style.BackColor = Color.Yellow;
                     }
@@ -294,24 +474,25 @@ namespace ReqM_Tool
             /* COMBO BOX.
              * If the Column is HWVersion, set it as a combo box.
              * Hide the current Column. */
-            dataGridView1.Columns[Column_HWPlatform].Visible = false;
+            //dataGridView1.Columns["HWPlatform"].Visible = false;
             /* Create a new ComboBox. */
-            DataGridViewComboBoxColumn cmbCol = new DataGridViewComboBoxColumn();
+           /* DataGridViewComboBoxColumn cmbCol = new DataGridViewComboBoxColumn();
 
             cmbCol.HeaderText = "HwPlatform";
             cmbCol.Name = "HwPlatform_Copy";
             cmbCol.Items.Add("True");
             /* Add the data to the ComboBox. */
-            cmbCol.DataSource = listOfRequirements.customValues.hwPlatforms;
+            //cmbCol.DataSource = listOfRequirements.customValues.hwPlatforms;
             /* Add the ComboBox into the dataGridView1. */
-            dataGridView1.Columns.Add(cmbCol);
+            //dataGridView1.Columns.Add(cmbCol);
+            //dataGridView1.Columns.Insert(dataGridView1.Columns["HWPlatform"].Index, cmbCol);
 
             /* Populate the HwPlatform List with the values from the XML File. */
-            foreach (DataGridViewRow row in dataGridView1.Rows)
+            /*foreach (DataGridViewRow row in dataGridView1.Rows)
             {
                 row.Cells[Column_HWPlatform_COPY].Value = listOfRequirements.Requirements_Dynamic_List[row.Index].HWPlatform.ToString();
-                /* row.Cells[Column_HWPlatform_COPY].Style.BackColor = Color.White; !!! not working */
-            }
+                /* row.Cells[Column_HWPlatform_COPY].Style.BackColor = Color.White; !!! not working 
+            }*/
             OpenFileFinished = true;
         }
 
@@ -326,6 +507,12 @@ namespace ReqM_Tool
             try
             {
                 /* Save the file to the XmlFilePath (the path from where was opened) */
+                listOfRequirements.list_of_settings.ElementAt(0).columns.Clear();
+
+                foreach (DataGridViewColumn c in dataGridView1.Columns)
+                {
+                    listOfRequirements.list_of_settings.ElementAt(0).columns.Add(c.Name);
+                }
                 listOfRequirements.Save(XmlFilePath);
             }
             catch (Exception ex)
@@ -349,7 +536,12 @@ namespace ReqM_Tool
             {
                 try
                 {
-                   
+                    listOfRequirements.list_of_settings.ElementAt(0).columns.Clear();
+
+                    foreach (DataGridViewColumn c in dataGridView1.Columns)
+                    {
+                        listOfRequirements.list_of_settings.ElementAt(0).columns.Add(c.Name);
+                    }
                     listOfRequirements.SaveAs(sfd.FileName);
                 }
                 catch (Exception ex)
