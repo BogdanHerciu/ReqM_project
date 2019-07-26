@@ -822,7 +822,9 @@ namespace ReqM_Tool
                 }
 
                 /* NTT logo */
-                worksheet.Shapes.AddPicture("C:\\Users\\Rares\\Desktop\\NTT.png", MsoTriState.msoFalse, MsoTriState.msoCTrue, 0, 3, 300, 57);
+                var projectPath = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName;
+                string filePath = Path.Combine(projectPath, "Resources");
+                worksheet.Shapes.AddPicture(filePath + "\\NTT.png", MsoTriState.msoFalse, MsoTriState.msoCTrue, 0, 3, 300, 57);
 
                 /* Date&Project */
                 worksheet.Cells[2, 3] = "R.A.D.U. - Requirements And Design Utility";
@@ -1144,7 +1146,9 @@ namespace ReqM_Tool
                 }
 
                 /* NTT logo */
-                worksheet.Shapes.AddPicture("C:\\Users\\Rares\\Desktop\\NTT.png", MsoTriState.msoFalse, MsoTriState.msoCTrue, 0, 3, 300, 57);
+                var projectPath = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName;
+                string filePath = Path.Combine(projectPath, "Resources");
+                worksheet.Shapes.AddPicture(filePath + "\\NTT.png", MsoTriState.msoFalse, MsoTriState.msoCTrue, 0, 3, 300, 57);
 
                 /* Date&Project */
                 worksheet.Cells[2, 4] = "R.A.D.U. - Requirements And Design Utility";
