@@ -4,8 +4,13 @@
     <doc_settings>
       <Baseline>1.0</Baseline>
       <Columns>
-        <column>Column1</column>
-        <column>Column2</column>
+        <column>id</column>
+        <column>description</column>
+        <column>status</column>
+        <column>CreatedBy</column>
+        <column>needscoverage</column>
+        <column>providescoverage</column>
+        <column>version</column>
       </Columns>
     </doc_settings>
   </document_settings>

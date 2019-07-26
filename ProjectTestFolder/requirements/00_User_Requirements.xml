@@ -1,11 +1,14 @@
 <?xml version="1.0"?>
-<root_file>
+<root_file xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <document_settings>
     <doc_settings>
       <Baseline>1.0</Baseline>
       <Columns>
-        <column>Column1</column>
-        <column>Column2</column>
+        <column>id</column>
+        <column>description</column>
+        <column>status</column>
+        <column>CreatedBy</column>
+        <column>providescoverage</column>
       </Columns>
     </doc_settings>
   </document_settings>
@@ -30,7 +33,7 @@
       <description>
 [SWS_Dcm_01144] Protocol preemption can’t be activated with a concurrent TesterPresent of a higher priority protocol.
       </description>
-      <status>Approved</status>
+      <status>Ready for review</status>
       <CreatedBy>BogdanHerciu</CreatedBy>
       <needscoverage>src</needscoverage>
       <providescoverage>N/A</providescoverage>
@@ -52,9 +55,9 @@
 the lower priority request, the Dcm module shall call PduR_DcmCancelTransmit () with
 the following parameters: PduId: the id of the Pdu to be canceled
       </description>
-      <status>Approved</status>
+      <status>Discarded by project</status>
       <CreatedBy>Jane Doe</CreatedBy>
-      <needscoverage>src</needscoverage>
+      <needscoverage>tst</needscoverage>
       <providescoverage>N/A</providescoverage>
       <version>1.0</version>
       <SafetyRelevant>QM</SafetyRelevant>
@@ -65,7 +68,7 @@ the following parameters: PduId: the id of the Pdu to be canceled
       <HWPlatform>HWPlatform_5</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
-      <ReqBaseline>1.0</ReqBaseline>
+      <ReqBaseline>1.1</ReqBaseline>
     </RequirementItem>
     <RequirementItem>
       <id>NTT.RADU.SW.Req203</id>
@@ -75,7 +78,7 @@ Dcm module shall assume that the ongoing transmission cannot be cancelled and sh
 not retry to cancel the transmit request. The current protocol shall be stopped and the
 new one started.
       </description>
-      <status>Approved</status>
+      <status>In work</status>
       <CreatedBy>John Doe</CreatedBy>
       <needscoverage>src</needscoverage>
       <providescoverage>N/A</providescoverage>
@@ -163,7 +166,7 @@ the O.BD service is finished, the Dcm shall make a transition into the requested
 [SWS_Dcm_01367] d The Dcm shall process incoming OBD requests in parallel to a running UDS request.
 In this case the protocol priority check according to [SWS_Dcm_00015] is skipped and no protocol pre-emption is done.
       </description>
-      <status>Approved</status>
+      <status>Ready for review</status>
       <CreatedBy>John Doe</CreatedBy>
       <needscoverage>src</needscoverage>
       <providescoverage>N/A</providescoverage>

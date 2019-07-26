@@ -4,8 +4,10 @@
     <doc_settings>
       <Baseline>1.0</Baseline>
       <Columns>
-        <column>Column1</column>
-        <column>Column2</column>
+        <column>id</column>
+        <column>description</column>
+        <column>status</column>
+        <column>CreatedBy</column>
       </Columns>
     </doc_settings>
   </document_settings>
@@ -40,7 +42,7 @@
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
       <Chapter>N/A</Chapter>
-      <HWPlatform>HWPlatform_6</HWPlatform>
+      <HWPlatform>1.1</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
       <ReqBaseline>1.1</ReqBaseline>
@@ -62,7 +64,7 @@ the following parameters: PduId: the id of the Pdu to be canceled
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
       <Chapter>N/A</Chapter>
-      <HWPlatform>HWPlatform_3</HWPlatform>
+      <HWPlatform>1.1</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
       <ReqBaseline>1.1</ReqBaseline>
@@ -85,10 +87,10 @@ new one started.
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
       <Chapter>N/A</Chapter>
-      <HWPlatform>HWPlatform_6</HWPlatform>
+      <HWPlatform>1.1</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
-      <ReqBaseline>1.0</ReqBaseline>
+      <ReqBaseline>1.1</ReqBaseline>
     </RequirementItem>
     <RequirementItem>
       <id>NTT.RADU.SW.Req104</id>
@@ -107,10 +109,10 @@ Dcm_OpStatus set to DCM_CANCEL c()
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
       <Chapter>N/A</Chapter>
-      <HWPlatform>HWPlatform_6</HWPlatform>
+      <HWPlatform>1.1</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
-      <ReqBaseline>1.0</ReqBaseline>
+      <ReqBaseline>1.1</ReqBaseline>
     </RequirementItem>
     <RequirementItem>
       <id>NTT.RADU.SW.Req105</id>
@@ -129,10 +131,10 @@ call the corresponding Dem API with the parameters from the new request. c()
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
       <Chapter>N/A</Chapter>
-      <HWPlatform>HWPlatform_6</HWPlatform>
+      <HWPlatform>1.1</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
-      <ReqBaseline>1.0</ReqBaseline>
+      <ReqBaseline>1.1</ReqBaseline>
     </RequirementItem>
     <RequirementItem>
       <id>NTT.RADU.SW.Req106</id>
@@ -152,10 +154,10 @@ the O.BD service is finished, the Dcm shall make a transition into the requested
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
       <Chapter>N/A</Chapter>
-      <HWPlatform>HWPlatform_6</HWPlatform>
+      <HWPlatform>1.1</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
-      <ReqBaseline>1.0</ReqBaseline>
+      <ReqBaseline>1.1</ReqBaseline>
     </RequirementItem>
     <RequirementItem>
       <id>NTT.RADU.SW.Req107</id>
@@ -173,7 +175,7 @@ In this case the protocol priority check according to [SWS_Dcm_00015] is skipped
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
       <Chapter>N/A</Chapter>
-      <HWPlatform>HWPlatform_6</HWPlatform>
+      <HWPlatform>1.1</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
       <ReqBaseline>1.1</ReqBaseline>
@@ -198,10 +200,10 @@ shall be issued (see [SWS_Dcm_00790]).
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
       <Chapter>N/A</Chapter>
-      <HWPlatform>HWPlatform_6</HWPlatform>
+      <HWPlatform>1.1</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
-      <ReqBaseline>1.0</ReqBaseline>
+      <ReqBaseline>1.1</ReqBaseline>
     </RequirementItem>
     <RequirementItem>
       <id>NTT.RADU.SW.Req109</id>
@@ -218,10 +220,10 @@ shall be issued (see [SWS_Dcm_00790]).
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
       <Chapter>N/A</Chapter>
-      <HWPlatform>HWPlatform_6</HWPlatform>
+      <HWPlatform>1.1</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
-      <ReqBaseline>1.0</ReqBaseline>
+      <ReqBaseline>1.1</ReqBaseline>
     </RequirementItem>
     <RequirementItem>
       <id>NTT.RADU.SW.Req110</id>
@@ -240,10 +242,10 @@ the following parameters: PduId: the id of the Pdu to be canceled c()
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
       <Chapter>N/A</Chapter>
-      <HWPlatform>HWPlatform_6</HWPlatform>
+      <HWPlatform>1.1</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
-      <ReqBaseline>1.0</ReqBaseline>
+      <ReqBaseline>1.1</ReqBaseline>
     </RequirementItem>
     <RequirementItem>
       <id>NTT.RADU.SW.Req110</id>
@@ -262,10 +264,10 @@ the following parameters: PduId: the id of the Pdu to be canceled c()
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
       <Chapter>N/A</Chapter>
-      <HWPlatform>HWPlatform_6</HWPlatform>
+      <HWPlatform>1.1</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
-      <ReqBaseline>1.0</ReqBaseline>
+      <ReqBaseline>1.1</ReqBaseline>
     </RequirementItem>
     <RequirementItem>
       <id>NTT.RADU.SW.Req111</id>
@@ -284,10 +286,10 @@ the following parameters: PduId: the id of the Pdu to be canceled c()
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
       <Chapter>N/A</Chapter>
-      <HWPlatform>HWPlatform_6</HWPlatform>
+      <HWPlatform>1.1</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
-      <ReqBaseline>1.0</ReqBaseline>
+      <ReqBaseline>1.1</ReqBaseline>
     </RequirementItem>
     <RequirementItem>
       <id>NTT.RADU.SW.Req112</id>
@@ -306,10 +308,10 @@ the following parameters: PduId: the id of the Pdu to be canceled c()
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
       <Chapter>N/A</Chapter>
-      <HWPlatform>HWPlatform_6</HWPlatform>
+      <HWPlatform>1.1</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
-      <ReqBaseline>1.0</ReqBaseline>
+      <ReqBaseline>1.1</ReqBaseline>
     </RequirementItem>
     <RequirementItem>
       <id>NTT.RADU.SW.Req113</id>
@@ -328,10 +330,10 @@ the following parameters: PduId: the id of the Pdu to be canceled c()
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
       <Chapter>N/A</Chapter>
-      <HWPlatform>HWPlatform_6</HWPlatform>
+      <HWPlatform>1.1</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
-      <ReqBaseline>1.0</ReqBaseline>
+      <ReqBaseline>1.1</ReqBaseline>
     </RequirementItem>
     <RequirementItem>
       <id>NTT.RADU.SW.Req114</id>
@@ -350,10 +352,10 @@ the following parameters: PduId: the id of the Pdu to be canceled c()
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
       <Chapter>N/A</Chapter>
-      <HWPlatform>HWPlatform_6</HWPlatform>
+      <HWPlatform>1.1</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
-      <ReqBaseline>1.0</ReqBaseline>
+      <ReqBaseline>1.1</ReqBaseline>
     </RequirementItem>
     <RequirementItem>
       <id>NTT.RADU.SW.Req115</id>
@@ -372,10 +374,10 @@ the following parameters: PduId: the id of the Pdu to be canceled c()
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
       <Chapter>N/A</Chapter>
-      <HWPlatform>HWPlatform_6</HWPlatform>
+      <HWPlatform>1.1</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
-      <ReqBaseline>1.0</ReqBaseline>
+      <ReqBaseline>1.1</ReqBaseline>
     </RequirementItem>
     <RequirementItem>
       <id>NTT.RADU.SW.Req116</id>
@@ -394,10 +396,10 @@ the response message according to Table 7.20.c()
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
       <Chapter>N/A</Chapter>
-      <HWPlatform>HWPlatform_6</HWPlatform>
+      <HWPlatform>1.1</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
-      <ReqBaseline>1.0</ReqBaseline>
+      <ReqBaseline>1.1</ReqBaseline>
     </RequirementItem>
     <RequirementItem>
       <id>NTT.RADU.SW.Req117</id>
@@ -419,10 +421,10 @@ the response message according to Table 7.20.c()
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
       <Chapter>N/A</Chapter>
-      <HWPlatform>HWPlatform_6</HWPlatform>
+      <HWPlatform>1.1</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
-      <ReqBaseline>1.0</ReqBaseline>
+      <ReqBaseline>1.1</ReqBaseline>
     </RequirementItem>
     <RequirementItem>
       <id>NTT.RADU.SW.Req118</id>
@@ -440,10 +442,10 @@ the response message according to Table 7.20.c()
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
       <Chapter>N/A</Chapter>
-      <HWPlatform>HWPlatform_6</HWPlatform>
+      <HWPlatform>1.1</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
-      <ReqBaseline>1.0</ReqBaseline>
+      <ReqBaseline>1.1</ReqBaseline>
     </RequirementItem>
     <RequirementItem>
       <id>NTT.RADU.SW.Req119</id>
@@ -461,10 +463,10 @@ the response message according to Table 7.20.c()
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
       <Chapter>N/A</Chapter>
-      <HWPlatform>HWPlatform_6</HWPlatform>
+      <HWPlatform>1.1</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
-      <ReqBaseline>1.0</ReqBaseline>
+      <ReqBaseline>1.1</ReqBaseline>
     </RequirementItem>
     <RequirementItem>
       <id>NTT.RADU.SW.Req120</id>
@@ -485,10 +487,10 @@ the response message according to Table 7.20.c()
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
       <Chapter>N/A</Chapter>
-      <HWPlatform>HWPlatform_6</HWPlatform>
+      <HWPlatform>1.1</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
-      <ReqBaseline>1.0</ReqBaseline>
+      <ReqBaseline>1.1</ReqBaseline>
     </RequirementItem>
     <RequirementItem>
       <id>NTT.RADU.SW.Req121</id>
@@ -507,10 +509,10 @@ the response message according to Table 7.20.c()
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
       <Chapter>N/A</Chapter>
-      <HWPlatform>HWPlatform_6</HWPlatform>
+      <HWPlatform>1.1</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
-      <ReqBaseline>1.0</ReqBaseline>
+      <ReqBaseline>1.1</ReqBaseline>
     </RequirementItem>
     <RequirementItem>
       <id>NTT.RADU.SW.Req122</id>
@@ -528,10 +530,10 @@ the response message according to Table 7.20.c()
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
       <Chapter>N/A</Chapter>
-      <HWPlatform>HWPlatform_6</HWPlatform>
+      <HWPlatform>1.1</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
-      <ReqBaseline>1.0</ReqBaseline>
+      <ReqBaseline>1.1</ReqBaseline>
     </RequirementItem>
     <RequirementItem>
       <id>NTT.RADU.SW.Req123</id>
@@ -549,10 +551,10 @@ the response message according to Table 7.20.c()
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
       <Chapter>N/A</Chapter>
-      <HWPlatform>HWPlatform_6</HWPlatform>
+      <HWPlatform>1.1</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
-      <ReqBaseline>1.0</ReqBaseline>
+      <ReqBaseline>1.1</ReqBaseline>
     </RequirementItem>
     <RequirementItem>
       <id>NTT.RADU.SW.Req124</id>
@@ -570,10 +572,10 @@ the response message according to Table 7.20.c()
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
       <Chapter>N/A</Chapter>
-      <HWPlatform>HWPlatform_6</HWPlatform>
+      <HWPlatform>1.1</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
-      <ReqBaseline>1.0</ReqBaseline>
+      <ReqBaseline>1.1</ReqBaseline>
     </RequirementItem>
     <RequirementItem>
       <id>NTT.RADU.SW.Req125</id>
@@ -591,10 +593,10 @@ the response message according to Table 7.20.c()
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
       <Chapter>N/A</Chapter>
-      <HWPlatform>HWPlatform_6</HWPlatform>
+      <HWPlatform>1.1</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
-      <ReqBaseline>1.0</ReqBaseline>
+      <ReqBaseline>1.1</ReqBaseline>
     </RequirementItem>
     <RequirementItem>
       <id>NTT.RADU.SW.Req126</id>
@@ -613,10 +615,10 @@ the response message according to Table 7.20.c()
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
       <Chapter>N/A</Chapter>
-      <HWPlatform>HWPlatform_6</HWPlatform>
+      <HWPlatform>1.1</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
-      <ReqBaseline>1.0</ReqBaseline>
+      <ReqBaseline>1.1</ReqBaseline>
     </RequirementItem>
     <RequirementItem>
       <id>NTT.RADU.SW.Req127</id>
@@ -634,10 +636,10 @@ the response message according to Table 7.20.c()
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
       <Chapter>N/A</Chapter>
-      <HWPlatform>HWPlatform_6</HWPlatform>
+      <HWPlatform>1.1</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
-      <ReqBaseline>1.0</ReqBaseline>
+      <ReqBaseline>1.1</ReqBaseline>
     </RequirementItem>
     <RequirementItem>
       <id>NTT.RADU.SW.Req128</id>
@@ -655,10 +657,10 @@ the response message according to Table 7.20.c()
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
       <Chapter>N/A</Chapter>
-      <HWPlatform>HWPlatform_6</HWPlatform>
+      <HWPlatform>1.1</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
-      <ReqBaseline>1.0</ReqBaseline>
+      <ReqBaseline>1.1</ReqBaseline>
     </RequirementItem>
     <RequirementItem>
       <id>NTT.RADU.SW.Req129</id>
@@ -677,10 +679,10 @@ the response message according to Table 7.20.c()
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
       <Chapter>N/A</Chapter>
-      <HWPlatform>HWPlatform_6</HWPlatform>
+      <HWPlatform>1.1</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
-      <ReqBaseline>1.0</ReqBaseline>
+      <ReqBaseline>1.1</ReqBaseline>
     </RequirementItem>
     <RequirementItem>
       <id>NTT.RADU.SW.Req130</id>
@@ -698,10 +700,10 @@ the response message according to Table 7.20.c()
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
       <Chapter>N/A</Chapter>
-      <HWPlatform>HWPlatform_6</HWPlatform>
+      <HWPlatform>1.1</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
-      <ReqBaseline>1.0</ReqBaseline>
+      <ReqBaseline>1.1</ReqBaseline>
     </RequirementItem>
     <RequirementItem>
       <id>NTT.RADU.SW.Req131</id>
@@ -721,10 +723,10 @@ the response message according to Table 7.20.c()
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
       <Chapter>N/A</Chapter>
-      <HWPlatform>HWPlatform_6</HWPlatform>
+      <HWPlatform>1.1</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
-      <ReqBaseline>1.0</ReqBaseline>
+      <ReqBaseline>1.1</ReqBaseline>
     </RequirementItem>
     <RequirementItem>
       <id>NTT.RADU.SW.Req132</id>
@@ -746,10 +748,10 @@ the response message according to Table 7.20.c()
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
       <Chapter>N/A</Chapter>
-      <HWPlatform>HWPlatform_6</HWPlatform>
+      <HWPlatform>1.1</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
-      <ReqBaseline>1.0</ReqBaseline>
+      <ReqBaseline>1.1</ReqBaseline>
     </RequirementItem>
     <RequirementItem>
       <id>NTT.RADU.SW.Req133</id>
@@ -767,10 +769,10 @@ the response message according to Table 7.20.c()
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
       <Chapter>N/A</Chapter>
-      <HWPlatform>HWPlatform_6</HWPlatform>
+      <HWPlatform>1.1</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
-      <ReqBaseline>1.0</ReqBaseline>
+      <ReqBaseline>1.1</ReqBaseline>
     </RequirementItem>
     <RequirementItem>
       <id>NTT.RADU.SW.Req134</id>
@@ -791,10 +793,10 @@ the response message according to Table 7.20.c()
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
       <Chapter>N/A</Chapter>
-      <HWPlatform>HWPlatform_6</HWPlatform>
+      <HWPlatform>1.1</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
-      <ReqBaseline>1.0</ReqBaseline>
+      <ReqBaseline>1.1</ReqBaseline>
     </RequirementItem>
     <RequirementItem>
       <id>NTT.RADU.SW.Req135</id>
@@ -813,10 +815,10 @@ the response message according to Table 7.20.c()
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
       <Chapter>N/A</Chapter>
-      <HWPlatform>HWPlatform_6</HWPlatform>
+      <HWPlatform>1.1</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
-      <ReqBaseline>1.0</ReqBaseline>
+      <ReqBaseline>1.1</ReqBaseline>
     </RequirementItem>
     <RequirementItem>
       <id>NTT.RADU.SW.Req136</id>
@@ -837,10 +839,10 @@ the response message according to Table 7.20.c()
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
       <Chapter>N/A</Chapter>
-      <HWPlatform>HWPlatform_6</HWPlatform>
+      <HWPlatform>1.1</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
-      <ReqBaseline>1.0</ReqBaseline>
+      <ReqBaseline>1.1</ReqBaseline>
     </RequirementItem>
     <RequirementItem>
       <id>NTT.RADU.SW.Req137</id>
@@ -858,10 +860,10 @@ the response message according to Table 7.20.c()
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
       <Chapter>N/A</Chapter>
-      <HWPlatform>HWPlatform_6</HWPlatform>
+      <HWPlatform>1.1</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
-      <ReqBaseline>1.0</ReqBaseline>
+      <ReqBaseline>1.1</ReqBaseline>
     </RequirementItem>
     <RequirementItem>
       <id>NTT.RADU.SW.Req138</id>
@@ -881,10 +883,10 @@ the response message according to Table 7.20.c()
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
       <Chapter>N/A</Chapter>
-      <HWPlatform>HWPlatform_6</HWPlatform>
+      <HWPlatform>1.1</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
-      <ReqBaseline>1.0</ReqBaseline>
+      <ReqBaseline>1.1</ReqBaseline>
     </RequirementItem>
     <RequirementItem>
       <id>NTT.RADU.SW.Req139</id>
@@ -902,10 +904,10 @@ the response message according to Table 7.20.c()
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
       <Chapter>N/A</Chapter>
-      <HWPlatform>HWPlatform_6</HWPlatform>
+      <HWPlatform>1.1</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
-      <ReqBaseline>1.0</ReqBaseline>
+      <ReqBaseline>1.1</ReqBaseline>
     </RequirementItem>
     <RequirementItem>
       <id>NTT.RADU.SW.Req140</id>
@@ -925,10 +927,10 @@ the response message according to Table 7.20.c()
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
       <Chapter>N/A</Chapter>
-      <HWPlatform>HWPlatform_6</HWPlatform>
+      <HWPlatform>1.1</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
-      <ReqBaseline>1.0</ReqBaseline>
+      <ReqBaseline>1.1</ReqBaseline>
     </RequirementItem>
     <RequirementItem>
       <id>NTT.RADU.SW.Req141</id>
@@ -949,10 +951,10 @@ the response message according to Table 7.20.c()
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
       <Chapter>N/A</Chapter>
-      <HWPlatform>HWPlatform_6</HWPlatform>
+      <HWPlatform>1.1</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
-      <ReqBaseline>1.0</ReqBaseline>
+      <ReqBaseline>1.1</ReqBaseline>
     </RequirementItem>
     <RequirementItem>
       <id>NTT.RADU.SW.Req142</id>
@@ -971,10 +973,10 @@ the response message according to Table 7.20.c()
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
       <Chapter>N/A</Chapter>
-      <HWPlatform>HWPlatform_6</HWPlatform>
+      <HWPlatform>1.1</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
-      <ReqBaseline>1.0</ReqBaseline>
+      <ReqBaseline>1.1</ReqBaseline>
     </RequirementItem>
     <RequirementItem>
       <id>NTT.RADU.SW.Req143</id>
@@ -995,10 +997,10 @@ the response message according to Table 7.20.c()
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
       <Chapter>N/A</Chapter>
-      <HWPlatform>HWPlatform_6</HWPlatform>
+      <HWPlatform>1.1</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
-      <ReqBaseline>1.0</ReqBaseline>
+      <ReqBaseline>1.1</ReqBaseline>
     </RequirementItem>
   </Requirements>
 </root_file>

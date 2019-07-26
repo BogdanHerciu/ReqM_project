@@ -29,18 +29,27 @@ namespace ReqM_Tool
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.LoadTab = new System.Windows.Forms.TabControl();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.tstTextBox = new System.Windows.Forms.TextBox();
+            this.tstButton = new System.Windows.Forms.Button();
+            this.srcButton = new System.Windows.Forms.Button();
+            this.srcTextBox = new System.Windows.Forms.TextBox();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.searchBox = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
@@ -70,6 +79,7 @@ namespace ReqM_Tool
             this.selectTestPathToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.makeCoverageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.publishToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.label3 = new System.Windows.Forms.Label();
@@ -89,10 +99,12 @@ namespace ReqM_Tool
             this.contextMenuStrip3 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.asdToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip4 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.contextMenuStrip5 = new System.Windows.Forms.ContextMenuStrip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.LoadTab.SuspendLayout();
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.tabPage5.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.menuStrip3.SuspendLayout();
             this.tabPage3.SuspendLayout();
@@ -114,20 +126,21 @@ namespace ReqM_Tool
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.Location = new System.Drawing.Point(6, 32);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.Size = new System.Drawing.Size(781, 367);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellValueChanged);
             // 
             // LoadTab
             // 
@@ -136,6 +149,7 @@ namespace ReqM_Tool
             | System.Windows.Forms.AnchorStyles.Right)));
             this.LoadTab.Controls.Add(this.tabPage4);
             this.LoadTab.Controls.Add(this.tabPage1);
+            this.LoadTab.Controls.Add(this.tabPage5);
             this.LoadTab.Controls.Add(this.tabPage3);
             this.LoadTab.Controls.Add(this.tabPage2);
             this.LoadTab.Location = new System.Drawing.Point(12, 2);
@@ -147,6 +161,7 @@ namespace ReqM_Tool
             // tabPage4
             // 
             this.tabPage4.BackColor = System.Drawing.Color.AliceBlue;
+            this.tabPage4.Controls.Add(this.label5);
             this.tabPage4.Controls.Add(this.label1);
             this.tabPage4.Controls.Add(this.label4);
             this.tabPage4.Controls.Add(this.pictureBox1);
@@ -157,11 +172,23 @@ namespace ReqM_Tool
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "StartPage";
             // 
+            // label5
+            // 
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(151, 139);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(469, 13);
+            this.label5.TabIndex = 8;
+            this.label5.Text = "This project is managing the User Requirements, System Requirements and Software " +
+    "requirements";
+            this.label5.Click += new System.EventHandler(this.Label5_Click);
+            // 
             // label1
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(364, 388);
+            this.label1.Location = new System.Drawing.Point(382, 379);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(31, 13);
             this.label1.TabIndex = 7;
@@ -190,8 +217,80 @@ namespace ReqM_Tool
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
             // 
+            // tabPage5
+            // 
+            this.tabPage5.Controls.Add(this.label7);
+            this.tabPage5.Controls.Add(this.label6);
+            this.tabPage5.Controls.Add(this.tstTextBox);
+            this.tabPage5.Controls.Add(this.tstButton);
+            this.tabPage5.Controls.Add(this.srcButton);
+            this.tabPage5.Controls.Add(this.srcTextBox);
+            this.tabPage5.Location = new System.Drawing.Point(4, 22);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage5.Size = new System.Drawing.Size(793, 405);
+            this.tabPage5.TabIndex = 5;
+            this.tabPage5.Text = "Project Settings";
+            this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(51, 102);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(63, 13);
+            this.label7.TabIndex = 5;
+            this.label7.Text = "Test Folder:";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(41, 67);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(73, 13);
+            this.label6.TabIndex = 4;
+            this.label6.Text = "Source folder:";
+            // 
+            // tstTextBox
+            // 
+            this.tstTextBox.Location = new System.Drawing.Point(120, 99);
+            this.tstTextBox.Name = "tstTextBox";
+            this.tstTextBox.ReadOnly = true;
+            this.tstTextBox.Size = new System.Drawing.Size(515, 20);
+            this.tstTextBox.TabIndex = 3;
+            // 
+            // tstButton
+            // 
+            this.tstButton.Location = new System.Drawing.Point(646, 97);
+            this.tstButton.Name = "tstButton";
+            this.tstButton.Size = new System.Drawing.Size(100, 23);
+            this.tstButton.TabIndex = 2;
+            this.tstButton.Text = "Browse...";
+            this.tstButton.UseVisualStyleBackColor = true;
+            this.tstButton.Click += new System.EventHandler(this.TstButton_Click);
+            // 
+            // srcButton
+            // 
+            this.srcButton.Location = new System.Drawing.Point(646, 62);
+            this.srcButton.Name = "srcButton";
+            this.srcButton.Size = new System.Drawing.Size(100, 23);
+            this.srcButton.TabIndex = 1;
+            this.srcButton.Text = "Browse...";
+            this.srcButton.UseVisualStyleBackColor = true;
+            this.srcButton.Click += new System.EventHandler(this.SrcButton_Click);
+            // 
+            // srcTextBox
+            // 
+            this.srcTextBox.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.srcTextBox.Location = new System.Drawing.Point(120, 64);
+            this.srcTextBox.Name = "srcTextBox";
+            this.srcTextBox.ReadOnly = true;
+            this.srcTextBox.Size = new System.Drawing.Size(515, 20);
+            this.srcTextBox.TabIndex = 0;
+            // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.searchBox);
             this.tabPage1.Controls.Add(this.button2);
             this.tabPage1.Controls.Add(this.dataGridView1);
             this.tabPage1.Controls.Add(this.menuStrip1);
@@ -204,6 +303,19 @@ namespace ReqM_Tool
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Database";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // searchBox
+            // 
+            this.searchBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.searchBox.ForeColor = System.Drawing.SystemColors.InactiveCaption;
+            this.searchBox.Location = new System.Drawing.Point(396, 6);
+            this.searchBox.Name = "searchBox";
+            this.searchBox.Size = new System.Drawing.Size(301, 20);
+            this.searchBox.TabIndex = 10;
+            this.searchBox.Text = " Search";
+            this.searchBox.Click += new System.EventHandler(this.SearchBox_Click);
+            this.searchBox.TextChanged += new System.EventHandler(this.SearchBox_TextChanged);
+            this.searchBox.Leave += new System.EventHandler(this.SearchBox_Leave);
             // 
             // button2
             // 
@@ -261,21 +373,21 @@ namespace ReqM_Tool
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
             this.openToolStripMenuItem.Text = "Open";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem1
             // 
             this.saveToolStripMenuItem1.Name = "saveToolStripMenuItem1";
-            this.saveToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.saveToolStripMenuItem1.Size = new System.Drawing.Size(113, 22);
             this.saveToolStripMenuItem1.Text = "Save";
             this.saveToolStripMenuItem1.Click += new System.EventHandler(this.saveToolStripMenuItem1_Click);
             // 
             // saveAsToolStripMenuItem1
             // 
             this.saveAsToolStripMenuItem1.Name = "saveAsToolStripMenuItem1";
-            this.saveAsToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.saveAsToolStripMenuItem1.Size = new System.Drawing.Size(113, 22);
             this.saveAsToolStripMenuItem1.Text = "SaveAs";
             this.saveAsToolStripMenuItem1.Click += new System.EventHandler(this.saveAsToolStripMenuItem1_Click);
             // 
@@ -286,32 +398,32 @@ namespace ReqM_Tool
             this.saveAsPdfToolStripMenuItem,
             this.saveAsExcelToolStripMenuItem});
             this.publishToolStripMenuItem.Name = "publishToolStripMenuItem";
-            this.publishToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.publishToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
             this.publishToolStripMenuItem.Text = "Publish";
             // 
             // saveAsWordToolStripMenuItem
             // 
             this.saveAsWordToolStripMenuItem.Name = "saveAsWordToolStripMenuItem";
-            this.saveAsWordToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveAsWordToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
             this.saveAsWordToolStripMenuItem.Text = "Save as Word";
             // 
             // saveAsPdfToolStripMenuItem
             // 
             this.saveAsPdfToolStripMenuItem.Name = "saveAsPdfToolStripMenuItem";
-            this.saveAsPdfToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveAsPdfToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
             this.saveAsPdfToolStripMenuItem.Text = "Save as Pdf";
             // 
             // saveAsExcelToolStripMenuItem
             // 
             this.saveAsExcelToolStripMenuItem.Name = "saveAsExcelToolStripMenuItem";
-            this.saveAsExcelToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveAsExcelToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
             this.saveAsExcelToolStripMenuItem.Text = "Save as Excel";
             this.saveAsExcelToolStripMenuItem.Click += new System.EventHandler(this.SaveAsExcelToolStripMenuItem_Click);
             // 
             // closeToolStripMenuItem
             // 
             this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-            this.closeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.closeToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
             this.closeToolStripMenuItem.Text = "Close";
             this.closeToolStripMenuItem.Click += new System.EventHandler(this.CloseToolStripMenuItem_Click);
             // 
@@ -329,28 +441,28 @@ namespace ReqM_Tool
             // addRowToolStripMenuItem
             // 
             this.addRowToolStripMenuItem.Name = "addRowToolStripMenuItem";
-            this.addRowToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addRowToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.addRowToolStripMenuItem.Text = "Add Row";
             this.addRowToolStripMenuItem.Click += new System.EventHandler(this.addRowToolStripMenuItem_Click);
             // 
             // deleteRowToolStripMenuItem
             // 
             this.deleteRowToolStripMenuItem.Name = "deleteRowToolStripMenuItem";
-            this.deleteRowToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.deleteRowToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.deleteRowToolStripMenuItem.Text = "Delete Row";
             this.deleteRowToolStripMenuItem.Click += new System.EventHandler(this.deleteRowToolStripMenuItem_Click);
             // 
             // addColumnToolStripMenuItem
             // 
             this.addColumnToolStripMenuItem.Name = "addColumnToolStripMenuItem";
-            this.addColumnToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addColumnToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.addColumnToolStripMenuItem.Text = "Add Column";
             this.addColumnToolStripMenuItem.Click += new System.EventHandler(this.AddColumnToolStripMenuItem_Click);
             // 
             // baselineToolStripMenuItem
             // 
             this.baselineToolStripMenuItem.Name = "baselineToolStripMenuItem";
-            this.baselineToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.baselineToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.baselineToolStripMenuItem.Text = "Baseline";
             this.baselineToolStripMenuItem.Click += new System.EventHandler(this.BaselineToolStripMenuItem_Click);
             // 
@@ -382,7 +494,7 @@ namespace ReqM_Tool
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.ReadOnly = true;
             this.dataGridView2.RowHeadersWidth = 51;
-            this.dataGridView2.Size = new System.Drawing.Size(787, 344);
+            this.dataGridView2.Size = new System.Drawing.Size(787, 375);
             this.dataGridView2.TabIndex = 1;
             this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
             // 
@@ -445,7 +557,8 @@ namespace ReqM_Tool
             // toolsToolStripMenuItem
             // 
             this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.makeCoverageToolStripMenuItem});
+            this.makeCoverageToolStripMenuItem,
+            this.publishToolStripMenuItem1});
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
             this.toolsToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
             this.toolsToolStripMenuItem.Text = "Tools";
@@ -453,9 +566,16 @@ namespace ReqM_Tool
             // makeCoverageToolStripMenuItem
             // 
             this.makeCoverageToolStripMenuItem.Name = "makeCoverageToolStripMenuItem";
-            this.makeCoverageToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.makeCoverageToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.makeCoverageToolStripMenuItem.Text = "Make Coverage";
             this.makeCoverageToolStripMenuItem.Click += new System.EventHandler(this.makeCoverageToolStripMenuItem_Click);
+            // 
+            // publishToolStripMenuItem1
+            // 
+            this.publishToolStripMenuItem1.Name = "publishToolStripMenuItem1";
+            this.publishToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.publishToolStripMenuItem1.Text = "Publish";
+            this.publishToolStripMenuItem1.Click += new System.EventHandler(this.PublishToolStripMenuItem1_Click);
             // 
             // tabPage2
             // 
@@ -475,19 +595,18 @@ namespace ReqM_Tool
             // 
             // chart1
             // 
-            this.chart1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
+            this.chart1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            chartArea2.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chart1.Legends.Add(legend2);
             this.chart1.Location = new System.Drawing.Point(251, 40);
             this.chart1.Name = "chart1";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chart1.Series.Add(series1);
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.chart1.Series.Add(series2);
             this.chart1.Size = new System.Drawing.Size(520, 333);
             this.chart1.TabIndex = 5;
             this.chart1.Text = "chart1";
@@ -620,6 +739,11 @@ namespace ReqM_Tool
             this.contextMenuStrip4.Name = "contextMenuStrip4";
             this.contextMenuStrip4.Size = new System.Drawing.Size(61, 4);
             // 
+            // contextMenuStrip5
+            // 
+            this.contextMenuStrip5.Name = "contextMenuStrip5";
+            this.contextMenuStrip5.Size = new System.Drawing.Size(61, 4);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -637,6 +761,8 @@ namespace ReqM_Tool
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.tabPage5.ResumeLayout(false);
+            this.tabPage5.PerformLayout();
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.menuStrip3.ResumeLayout(false);
@@ -713,6 +839,17 @@ namespace ReqM_Tool
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.ToolStripMenuItem addColumnToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem baselineToolStripMenuItem;
+        private System.Windows.Forms.TextBox searchBox;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip5;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TabPage tabPage5;
+        private System.Windows.Forms.TextBox tstTextBox;
+        private System.Windows.Forms.Button tstButton;
+        private System.Windows.Forms.Button srcButton;
+        private System.Windows.Forms.TextBox srcTextBox;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ToolStripMenuItem publishToolStripMenuItem1;
     }
 }
 

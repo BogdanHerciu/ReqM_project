@@ -12,50 +12,50 @@ using System.Xml;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Xml.Serialization;
-using System.Collections.Generic;
 using function_namespace;
 using ReqM_namespace;
+using System.Runtime.InteropServices;
+using Microsoft.Office.Core;
 
 namespace ReqM_Tool
 {
 
 
     public partial class Main : Form
-    { 
+    {
         /* create variable to the root of the xml file, for reading the requirements */
         public root_file listOfRequirements { get; set; } = new root_file();
-        //public root_file listOfRequirementsCopy { get; set; }= new root_file();
-
-        /* create variable to the root of the xml file, for reading the settings */
-        bool statistics = false;
+       
 
         /* define lists of possible values */
-        public List<string> status { get; } 
+        public List<string> status { get; }
         public List<string> safetyRelevant { get; }
         public List<string> domain { get; }
         public List<string> tested { get; }
         public List<string> type { get; }
 
+        /* Data Table */
+        DataTable dt = new DataTable();
 
         /* define columns from DataGridView */
-        public int Column_ID               = 0;
-        public int Column_Description      = 1;
-        public int Column_Status           = 2;
-        public int Column_CreatedBy        = 3;
-        public int Column_needscoverage    = 4;
+        /*public int Column_ID = 0;
+        public int Column_Description = 1;
+        public int Column_Status = 2;
+        public int Column_CreatedBy = 3;
+        public int Column_needscoverage = 4;
         public int Column_providescoverage = 5;
-        public int Column_version          = 6;
-        public int Column_SafetyRelevant   = 7;
-        public int Column_ChangeRequest    = 8;
-        public int Column_ReviewID         = 9;
-        public int Column_RequirementType  = 10;
-        public int Column_Chapter          = 11;
-        public int Column_HWPlatform       = 12;
-        public int Column_Domain           = 13;
-        public int Column_TestedAt         = 14;
-        public int Column_ReqBaseline      = 15;
-        public int Column_HWPlatform_COPY  = 16;
-        public int MAX_Columns             = 17;
+        public int Column_version = 6;
+        public int Column_SafetyRelevant = 7;
+        public int Column_ChangeRequest = 8;
+        public int Column_ReviewID = 9;
+        public int Column_RequirementType = 10;
+        public int Column_Chapter = 11;
+        public int Column_HWPlatform = 12;
+        public int Column_Domain = 13;
+        public int Column_TestedAt = 14;
+        public int Column_ReqBaseline = 15;
+        public int Column_HWPlatform_COPY = 16;
+        public int MAX_Columns = 17;*/
 
         /* "No File has been open" Text Box. */
         public string NoFileOpen { get; } = "No file has been opened!";
@@ -92,49 +92,33 @@ namespace ReqM_Tool
         {
             get { return dataGridView1; }
         }
-
-        /* Method called when a cell is modified */
-        /*private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+		
+		/* Method called when a cell is modified */
+        private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             /* LINKSTO: Req076 */
             /* Color each column that is changed. */
-            /*if (OpenFileFinished == true)
+            if (OpenFileFinished == true)
             {
-                foreach (DataGridViewColumn col in this.dataGridView1.Columns)
+                foreach (DataGridViewColumn column in this.dataGridView1.Columns)
                 {
-                    dataGridView1.Rows[e.RowIndex].Cells[col.Index].Style.BackColor = Color.Yellow;
+                    dataGridView1.Rows[e.RowIndex].Cells[column.Index].Style.BackColor = Color.Yellow;
                 }
                 /* Increment the Requirement Baseline with 0.1.  */
-                /*double DocumentBaseline = Convert.ToDouble(listOfRequirements.list_of_settings[0].Baseline);
+                double DocumentBaseline = Convert.ToDouble(listOfRequirements.list_of_settings[0].Baseline);
                 listOfRequirements.Requirements_Dynamic_List[e.RowIndex].ReqBaseline = Convert.ToString(DocumentBaseline + 0.1);
 
-                /* Get the HWVersion from ColumnInserted and copy to the listOfRequirements structure. */
-                //listOfRequirements.Requirements_Dynamic_List[e.RowIndex].HWPlatform = dataGridView1.Rows[e.RowIndex].Cells[Column_HWPlatform_COPY].Value.ToString();
-            //}
+            }
 
-            /* Color change for needscoverage column.
-             * If the Value is neighter tst nor src, color the box in red. */
-            /*if (e.ColumnIndex == Column_needscoverage)
-                {
-                    if (
-                   (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString() == "tst") ||
-                   (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString() == "src")
-                   )
-                    {
-                        dataGridView1.Rows[e.RowIndex].Cells[Column_needscoverage].Style.BackColor = Color.White;
-                    }
-                    else
-                    {
-                        dataGridView1.Rows[e.RowIndex].Cells[Column_needscoverage].Style.BackColor = Color.Red;
-                    }
-                }
-            */
-           /* if (dataGridView1.Columns[e.ColumnIndex].Name == "needscoverage")
+            /* Color change for needscoverage column. */
+            /* If the Value is neither tst nor src, color the box in red. */
+           
+            if (dataGridView1.Columns[e.ColumnIndex].Name == "needscoverage")
             {
                 if (
-                   (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString() == "tst") ||
-                   (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString() == "src")
-                   )
+                (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString() == "tst") ||
+                (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString() == "src")
+                )
                 {
                     dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor = Color.White;
                 }
@@ -143,22 +127,44 @@ namespace ReqM_Tool
                     dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor = Color.Red;
                 }
             }
-        }*/
+        }
 
+        public void UpdateDT()
+        {
+            /* Clears DataTable */
+            dt.Columns.Clear();
+            dt.Rows.Clear();
+
+            foreach (DataGridViewColumn col in dataGridView1.Columns)
+            {
+                dt.Columns.Add(col.Name);
+            }
+
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                DataRow dRow = dt.NewRow();
+                foreach (DataGridViewCell cell in row.Cells)
+                {
+                    dRow[cell.ColumnIndex] = cell.Value;
+                }
+                dt.Rows.Add(dRow);
+            }
+        }
+		
         private void OpenBtn_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void SaveBtn_Click(object sender, EventArgs e)
         {
-  
+
         }
 
         private void AddBtn_Click(object sender, EventArgs e)
         {
-            
-        } 
+
+        }
         private void DeleteBtn_Click(object sender, EventArgs e)
         {
 
@@ -166,12 +172,12 @@ namespace ReqM_Tool
 
         private void Main_Load(object sender, EventArgs e)
         {
-       
+
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -186,7 +192,7 @@ namespace ReqM_Tool
 
         private void button2_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -201,12 +207,12 @@ namespace ReqM_Tool
 
         private void ImplementationPathButton_Click_1(object sender, EventArgs e)
         {
- 
+
         }
 
         private void button3_Click_1(object sender, EventArgs e)
         {
-  
+
         }
 
         private void button1_Click_1(object sender, EventArgs e)
@@ -225,8 +231,6 @@ namespace ReqM_Tool
             dataGridView1.Columns.Add(textBoxColumn);
 
             DataGridViewTextBoxColumn textBoxColumn2 = new DataGridViewTextBoxColumn();
-            textBoxColumn2.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            textBoxColumn2.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             textBoxColumn2.Name = "description";
             textBoxColumn2.HeaderText = "description";
             textBoxColumn2.DataPropertyName = "description";
@@ -354,23 +358,36 @@ namespace ReqM_Tool
             dataGridView1.DataError += new DataGridViewDataErrorEventHandler(dgvCombo_DataError);
         }
 
-        public void PopulateDataGridView()
-        {
-            //foreach (var req in listOfRequirements.Requirements_Dynamic_List)
-            //  dataGridView1.Rows.Add(req.id, req.description);
-            dataGridView1.DataSource = listOfRequirements.Requirements_Dynamic_List;
-            
-        }
 
         void dgvCombo_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
             // (No need to write anything in here)
+        }
+		
+		public void AddCustomColumns()
+        {
+            foreach (var column in listOfRequirements.Requirements_Dynamic_List.ElementAt(0).newColumns)
+            {
+                DataGridViewTextBoxColumn newColumn = new DataGridViewTextBoxColumn();
+                newColumn.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                newColumn.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                newColumn.Name = column.name;
+                newColumn.HeaderText = column.name;
+                newColumn.DataPropertyName = "value";
+                dataGridView1.Columns.Add(newColumn);
+            }
         }
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (FileDialog.ShowDialog() == DialogResult.OK)
             {
+                /* Clear DataGridView if other xml is opened */
+                dataGridView1.DataSource = null;
+                XmlFilePath = null;
+                dataGridView1.Columns.Clear();
+                dataGridView1.Refresh();
+
                 /* build the XML file path */
                 XmlFilePath = FileDialog.FileName;
 
@@ -392,17 +409,18 @@ namespace ReqM_Tool
                     listOfRequirements = (root_file)serializer.Deserialize(reader);
 
                     /* add the data into the table */
-                    //dataGridView1.DataSource = listOfRequirements.Requirements_Dynamic_List;
-
                     CreateDataGridView();
-                    PopulateDataGridView();
+					AddCustomColumns();
+					dataGridView1.DataSource = listOfRequirements.Requirements_Dynamic_List;
 
-                    //listOfRequirements.list_of_settings.ElementAt(0).columns = new List<string> { "a", "b" };
-
+                    /* Clears DataTable */
+                    dt.Columns.Clear();
+                    dt.Rows.Clear();
+					
                     /* default columns to display */
                     for (int i = 0; i < dataGridView1.Columns.Count; i++)
                     {
-                            dataGridView1.Columns[i].Visible = false;
+                        dataGridView1.Columns[i].Visible = false;
                     }
 
                     if (listOfRequirements.list_of_settings.ElementAt(0).columns.Count > 0)
@@ -425,8 +443,8 @@ namespace ReqM_Tool
                     }
 
                     /* add event for Cell value changed */
-                    //dataGridView1.CellValueChanged -= dataGridView1_CellValueChanged;
-                    //dataGridView1.CellValueChanged += dataGridView1_CellValueChanged;
+                    dataGridView1.CellValueChanged -= dataGridView1_CellValueChanged;
+                    dataGridView1.CellValueChanged += dataGridView1_CellValueChanged;
 
                     /* color with red needscoverage column if there's an error! */
                     for (int index = 0; index < (listOfRequirements.Requirements_Dynamic_List.Count()); index++)
@@ -436,12 +454,13 @@ namespace ReqM_Tool
                             (listOfRequirements.Requirements_Dynamic_List[index].needscoverage.ToString() != "src")
                             )
                         {
-                            dataGridView1.Rows[index].Cells[Column_needscoverage].Style.BackColor = Color.Red;
+                            int ind = dataGridView1.Columns["needscoverage"].Index;
+                            dataGridView1.Rows[index].Cells[ind].Style.BackColor = Color.Red;
                         }
                     }
 
-                   
-                }                
+
+                }
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex);
@@ -453,16 +472,32 @@ namespace ReqM_Tool
                     if (c.Name != "description")
                         dataGridView1.Columns[c.Name].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 }
-            }
 
-            /* LINKSTO: Req076 */
+                
+                foreach (DataGridViewColumn col in dataGridView1.Columns)
+                {
+                    dt.Columns.Add(col.Name);
+                }
+
+                foreach (DataGridViewRow row in dataGridView1.Rows)
+                {
+                    DataRow dRow = dt.NewRow();
+                    foreach (DataGridViewCell cell in row.Cells)
+                    {
+                        dRow[cell.ColumnIndex] = cell.Value;
+                    }
+                    dt.Rows.Add(dRow);
+                }
+            }
+			
+			/* LINKSTO: Req076 */
             /* Color the requirement with Yellow if it has different baseline than the document Baseline. */
-            /* Color each column that is changed. 
+            /* Color each column that is changed. */
             foreach (DataGridViewRow Row in dataGridView1.Rows)
             {
                 if (listOfRequirements.Requirements_Dynamic_List[Row.Index].ReqBaseline != listOfRequirements.list_of_settings[0].Baseline)
                 {
-                    /* Color each column that is changed. 
+                    /* Color each column that is changed. */
                     foreach (DataGridViewColumn Column in dataGridView1.Columns)
                     {
                         dataGridView1.Rows[Row.Index].Cells[Column.Index].Style.BackColor = Color.Yellow;
@@ -470,28 +505,7 @@ namespace ReqM_Tool
                 }
             }
 
-            /* COMBO BOX.
-             * If the Column is HWVersion, set it as a combo box.
-             * Hide the current Column. */
-            //dataGridView1.Columns["HWPlatform"].Visible = false;
-            /* Create a new ComboBox. */
-           /* DataGridViewComboBoxColumn cmbCol = new DataGridViewComboBoxColumn();
-
-            cmbCol.HeaderText = "HwPlatform";
-            cmbCol.Name = "HwPlatform_Copy";
-            cmbCol.Items.Add("True");
-            /* Add the data to the ComboBox. */
-            //cmbCol.DataSource = listOfRequirements.customValues.hwPlatforms;
-            /* Add the ComboBox into the dataGridView1. */
-            //dataGridView1.Columns.Add(cmbCol);
-            //dataGridView1.Columns.Insert(dataGridView1.Columns["HWPlatform"].Index, cmbCol);
-
-            /* Populate the HwPlatform List with the values from the XML File. */
-            /*foreach (DataGridViewRow row in dataGridView1.Rows)
-            {
-                row.Cells[Column_HWPlatform_COPY].Value = listOfRequirements.Requirements_Dynamic_List[row.Index].HWPlatform.ToString();
-                /* row.Cells[Column_HWPlatform_COPY].Style.BackColor = Color.White; !!! not working 
-            }*/
+            
             OpenFileFinished = true;
         }
 
@@ -598,10 +612,13 @@ namespace ReqM_Tool
                     MessageBox.Show("No row is selected for adding a new item");
                 }
             }
+            UpdateDT();
         }
 
         private void deleteRowToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            
+
             /* check if a XML file is open */
             if (XmlFilePath == null)
             {
@@ -627,6 +644,7 @@ namespace ReqM_Tool
                     MessageBox.Show("No row is selected for removal.");
                 }
             }
+            UpdateDT();
         }
 
         private void selectSourcePathToolStripMenuItem_Click(object sender, EventArgs e)
@@ -644,6 +662,7 @@ namespace ReqM_Tool
 
         private void selectTestPathToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            /* get the file path for the "test" folder(folder in where are the .c and .h files) */
             FolderBrowserDialog fbd = new FolderBrowserDialog();
             DialogResult result = fbd.ShowDialog();
 
@@ -747,8 +766,11 @@ namespace ReqM_Tool
             if (dialogResult == DialogResult.Yes)
             {
                 dataGridView1.DataSource = null;
+                XmlFilePath = null;
+                dataGridView1.Columns.Clear();
+                dataGridView1.Refresh();
             }
-           
+
         }
 
         private void PublishToolStripMenuItem_Click(object sender, EventArgs e)
@@ -776,27 +798,57 @@ namespace ReqM_Tool
 
                 // Create an Excel object
                 Microsoft.Office.Interop.Excel.Application excel = new Microsoft.Office.Interop.Excel.Application();
-
-                //Create workbook object
+                // Create workbook object
                 Microsoft.Office.Interop.Excel.Workbook workbook = excel.Workbooks.Add(Type.Missing);
-
-                //Create worksheet object
+                // Create worksheet object
                 Microsoft.Office.Interop.Excel.Worksheet worksheet = workbook.ActiveSheet;
 
-                for (int i = 1; i < dataGridView1.Columns.Count + 1; i++)
+                // index for nr. of columns
+                int index = 0; 
+                for (int i = 1; i < dataGridView1.Columns.Count + 1; i++) 
                 {
-                    worksheet.Cells[1, i] = dataGridView1.Columns[i - 1].HeaderText;
+                    // int n = dataGridView1.Columns[i - 1].HeaderText.Length;
+                    index++;
+                    worksheet.Cells.ColumnWidth = 20;
+                    worksheet.Cells[5, 2].ColumnWidth = 40;
+                    worksheet.Cells[5, i] = dataGridView1.Columns[i - 1].HeaderText;
                 }
                 for (int i = 0; i < dataGridView1.Rows.Count; i++)
                 {
                     for (int j = 0; j < dataGridView1.Columns.Count; j++)
                     {
-                        worksheet.Cells[i + 2, j + 1] = dataGridView1.Rows[i].Cells[j].Value.ToString();
+                        worksheet.Cells[i + 6, j + 1] = dataGridView1.Rows[i].Cells[j].Value.ToString();
                     }
                 }
 
+                /* NTT logo */
+                worksheet.Shapes.AddPicture("C:\\Users\\Rares\\Desktop\\NTT.png", MsoTriState.msoFalse, MsoTriState.msoCTrue, 0, 3, 300, 57);
+
+                /* Date&Project */
+                worksheet.Cells[2, 3] = "R.A.D.U. - Requirements And Design Utility";
+                worksheet.Cells[2, 3].HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignLeft;
+                worksheet.Cells[3, 3] = DateTime.Now.ToString("dddd, dd MMMM yyyy");
+                worksheet.Cells[3, 3].HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignLeft;
+
+                /* Headings color */
+                var columnHeadingsRange = excel.Range[excel.Cells[5, 1],excel.Cells[5, index]];
+                columnHeadingsRange.Interior.Color = Microsoft.Office.Interop.Excel.XlRgbColor.rgbSkyBlue;                
+
+                /* Cells align - centered */
+                worksheet.Cells.Style.VerticalAlignment = Microsoft.Office.Interop.Excel.XlVAlign.xlVAlignCenter;
+                worksheet.Cells.Style.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+                /* Description cells align - top left */
+                var descriptionRange = excel.Range[excel.Cells[5, 2], excel.Cells[dataGridView1.Rows.Count+5, 2]];
+                descriptionRange.Cells.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignLeft;
+                descriptionRange.Cells.VerticalAlignment = Microsoft.Office.Interop.Excel.XlVAlign.xlVAlignTop;
+
+                /* Title (name of the XML file) */
+                string XmlFileName = XmlFilePath.Substring(XmlFilePath.LastIndexOf("\\") + 1);
+                XmlFileName = XmlFileName.Substring(0, XmlFileName.LastIndexOf("."));
+
                 SaveFileDialog sfd = new SaveFileDialog();
                 sfd.Filter = "Excel|*.xlsx";
+                sfd.FileName = XmlFileName;
 
                 /* open File dialog where to save the file */
                 if (sfd.ShowDialog() == DialogResult.OK)
@@ -825,7 +877,6 @@ namespace ReqM_Tool
         {
 
         }
-
         private void Button1_Click_2(object sender, EventArgs e)
         {
             /* Total number of requirements. */
@@ -916,15 +967,16 @@ namespace ReqM_Tool
 
         private void Button2_Click_1(object sender, EventArgs e)
         {
-            if((Application.OpenForms["FilterForm"] as FilterForm) != null)
+            if (XmlFilePath != null)
             {
-                Console.WriteLine("Form is already open!");
+                if ((Application.OpenForms["FilterForm"] as FilterForm) == null)
+                {
+                    FilterForm myform = new FilterForm(this);
+                    myform.Show();
+                }
             }
             else
-            {
-                FilterForm myform = new FilterForm(this);
-                myform.Show();
-            }
+                MessageBox.Show(NoFileOpen);
         }
 
         private void Label4_Click(object sender, EventArgs e)
@@ -981,9 +1033,168 @@ namespace ReqM_Tool
             }
             else
             {
-                /* TODO */
-                /* Your CODE. */
+                AddForm form = new AddForm(this);
+                form.ShowDialog();
             }
+        }
+
+        private void SearchBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        private void SearchBox_TextChanged(object sender, EventArgs e)
+        {
+            /* LINKSTO: Req050 */
+            if ( XmlFilePath != null )
+            {
+                if ( searchBox.Text != " Search" )
+                {
+                    DataView dv = new DataView(dt);
+                    string columns = "";
+
+                    foreach (DataGridViewColumn c in dataGridView1.Columns)
+                    {
+                        if (c.Visible)
+                            columns += c.HeaderText + " LIKE '%{0}%' OR ";
+                    }
+
+                    columns = columns.Substring(0, columns.Length - 3);
+                    dv.RowFilter = string.Format(columns, searchBox.Text);
+                    dataGridView1.DataSource = dv.ToTable();
+                }  
+            }           
+        }
+
+        private void SearchBox_Click(object sender, EventArgs e)
+        {
+            if (searchBox.Text == " Search")
+                searchBox.Text = "";
+        }
+
+        private void SearchBox_Leave(object sender, EventArgs e)
+        {
+            if ( searchBox.Text == "" )
+                searchBox.Text = " Search";
+        }
+
+        private void Label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void SrcButton_Click(object sender, EventArgs e)
+        {
+            /* get the file path for the "source" folder(folder in where are the .c and .h files) */
+            FolderBrowserDialog fbd = new FolderBrowserDialog();
+            DialogResult result = fbd.ShowDialog();
+
+            if (result == DialogResult.OK)
+            {
+                /* save "source" folder path */
+                implementationFilePath = fbd.SelectedPath;
+            }
+            srcTextBox.Text = implementationFilePath;
+        }
+
+        private void TstButton_Click(object sender, EventArgs e)
+        {
+            /* get the file path for the "test" folder(folder in where are the .c and .h files) */
+            FolderBrowserDialog fbd = new FolderBrowserDialog();
+            DialogResult result = fbd.ShowDialog();
+
+            if (result == DialogResult.OK)
+            {
+                /* save "test" folder path */
+                testFilePath = fbd.SelectedPath;
+            }
+            tstTextBox.Text = testFilePath;
+        }
+
+        private void PublishToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            /* Check if a XML file is open. */
+            if (XmlFilePath == null)
+            {
+                MessageBox.Show(NoFileOpen);
+                return;
+            }
+            else
+            {
+                // Create an Excel object
+                Microsoft.Office.Interop.Excel.Application excel = new Microsoft.Office.Interop.Excel.Application();
+                //Create workbook object
+                Microsoft.Office.Interop.Excel.Workbook workbook = excel.Workbooks.Add(Type.Missing);
+                //Create worksheet object
+                Microsoft.Office.Interop.Excel.Worksheet worksheet = workbook.ActiveSheet;
+
+                int index = 0;
+                for (int i = 1; i < dataGridView2.Columns.Count + 1; i++)
+                {
+                    index++;
+                    worksheet.Cells.ColumnWidth = 20;
+                    worksheet.Cells[5, i] = dataGridView2.Columns[i - 1].HeaderText;
+                }
+                for (int i = 0; i < dataGridView2.Rows.Count; i++)
+                {
+                    for (int j = 0; j < dataGridView2.Columns.Count; j++)
+                    {
+                        worksheet.Cells[i + 6, j + 1] = dataGridView2.Rows[i].Cells[j].Value.ToString();
+                    }
+                }
+
+                /* NTT logo */
+                worksheet.Shapes.AddPicture("C:\\Users\\Rares\\Desktop\\NTT.png", MsoTriState.msoFalse, MsoTriState.msoCTrue, 0, 3, 300, 57);
+
+                /* Date&Project */
+                worksheet.Cells[2, 4] = "R.A.D.U. - Requirements And Design Utility";
+                worksheet.Cells[2, 4].HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignLeft;
+                worksheet.Cells[3, 4] = DateTime.Now.ToString("dddd, dd MMMM yyyy");
+                worksheet.Cells[3, 4].HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignLeft;
+
+                /* Headings color */
+                var columnHeadingsRange = excel.Range[excel.Cells[5, 1], excel.Cells[5, index]];
+                columnHeadingsRange.Interior.Color = Microsoft.Office.Interop.Excel.XlRgbColor.rgbSkyBlue;
+
+                /* Cells align - centered */
+                worksheet.Cells.Style.VerticalAlignment = Microsoft.Office.Interop.Excel.XlVAlign.xlVAlignCenter;
+                worksheet.Cells.Style.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+
+                /* Title (name of the XML file) */
+                string XmlFileName = XmlFilePath.Substring(XmlFilePath.LastIndexOf("\\") + 1);
+                XmlFileName = XmlFileName.Substring(0, XmlFileName.LastIndexOf("."));
+                XmlFileName += "_Report";
+
+                SaveFileDialog sfd = new SaveFileDialog();
+                sfd.Filter = "Excel|*.xlsx";
+                sfd.FileName = XmlFileName;
+
+                /* open File dialog where to save the file */
+                if (sfd.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        //Save the workbook
+                        workbook.SaveAs(sfd.FileName);
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex);
+                    }
+                }
+
+                //Close the Workbook
+                workbook.Close();
+
+                // Finally Quit the Application
+                ((Microsoft.Office.Interop.Excel._Application)excel).Quit();
+            }
+        }
+
+        private void DataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            UpdateDT();
         }
     }
 
@@ -1002,7 +1213,7 @@ namespace ReqM_Tool
     {
         [System.Xml.Serialization.XmlElement("Baseline")]
         public string Baseline { get; set; }
-        
+
         [XmlArray("Columns")]
         [XmlArrayItem(ElementName = "column")]
         public List<string> columns { get; set; }
@@ -1017,16 +1228,30 @@ namespace ReqM_Tool
         [XmlArray("HWPlatform")]
         [XmlArrayItem(ElementName = "value")]
         public List<string> hwPlatforms { get; set; }
-    
+
         [System.Xml.Serialization.XmlElement("chapter")]
         public string chapter { get; set; }
-   
+
         public CustomValues()
         {
             chapters = new List<string>();
             hwPlatforms = new List<string>();
         }
     }
+    public class NewColumn
+    {
+        [System.Xml.Serialization.XmlElement("name")]
+        public string name { get; set; }
+        [System.Xml.Serialization.XmlElement("value")]
+        public string value { get; set; }
+
+        /*public override string ToString()
+        {
+            return value;
+        }*/
+
+    }
+    
 
     [Serializable()]
     [System.Xml.Serialization.XmlRoot("Requirements")]
@@ -1081,12 +1306,15 @@ namespace ReqM_Tool
         [System.Xml.Serialization.XmlElement("ReqBaseline")]
         public string ReqBaseline { get; set; }
 
+        [XmlArray("NewColumns")]
+        [XmlArrayItem(ElementName = "column")]
+        public List<NewColumn> newColumns { get; set; }
     }
 
-   
+
     public class root_file
     {
-        
+
         [XmlArray("document_settings")]
         public List<doc_settings> list_of_settings { get; set; }
 
