@@ -169,3 +169,16 @@ E:\NTT\New folder\ReqM_Tool\ReqMTool\obj\Debug\ReqM Tool.csproj.GenerateResource
 E:\NTT\New folder\ReqM_Tool\ReqMTool\obj\Debug\ReqM Tool.csproj.CoreCompileInputs.cache
 E:\NTT\New folder\ReqM_Tool\ReqMTool\obj\Debug\RequirementManagementTool.exe
 E:\NTT\New folder\ReqM_Tool\ReqMTool\obj\Debug\RequirementManagementTool.pdb
+E:\NTT\30.07\ReqM_Tool\ReqMTool\bin\Debug\RequirementManagementTool.exe.config
+E:\NTT\30.07\ReqM_Tool\ReqMTool\bin\Debug\RequirementManagementTool.exe
+E:\NTT\30.07\ReqM_Tool\ReqMTool\bin\Debug\RequirementManagementTool.pdb
+E:\NTT\30.07\ReqM_Tool\ReqMTool\obj\Debug\ReqM Tool.csprojAssemblyReference.cache
+E:\NTT\30.07\ReqM_Tool\ReqMTool\obj\Debug\ReqM Tool.csproj.ResolveComReference.cache
+E:\NTT\30.07\ReqM_Tool\ReqMTool\obj\Debug\ReqM_namespace.AddForm.resources
+E:\NTT\30.07\ReqM_Tool\ReqMTool\obj\Debug\ReqM_namespace.FilterForm.resources
+E:\NTT\30.07\ReqM_Tool\ReqMTool\obj\Debug\ReqM_Tool.Main.resources
+E:\NTT\30.07\ReqM_Tool\ReqMTool\obj\Debug\ReqM_namespace.Properties.Resources.resources
+E:\NTT\30.07\ReqM_Tool\ReqMTool\obj\Debug\ReqM Tool.csproj.GenerateResource.cache
+E:\NTT\30.07\ReqM_Tool\ReqMTool\obj\Debug\ReqM Tool.csproj.CoreCompileInputs.cache
+E:\NTT\30.07\ReqM_Tool\ReqMTool\obj\Debug\RequirementManagementTool.exe
+E:\NTT\30.07\ReqM_Tool\ReqMTool\obj\Debug\RequirementManagementTool.pdb

@@ -1,9 +1,8 @@
 {
   "ExpandedNodes": [
     "",
-    "\\ReqM_Tool",
-    "\\ReqM_Tool\\ReqMTool"
+    "\\ReqM_Tool"
   ],
-  "SelectedNode": "\\ReqM_Tool\\ReqMTool\\AddForm.cs",
+  "SelectedNode": "\\ReqM_Tool\\ReqMTool",
   "PreviewInSolutionExplorer": false
 }
