@@ -774,10 +774,13 @@ namespace ReqM_Tool
 
             for (int index = 0; index < (listOfRequirements.Requirements_Dynamic_List.Count()); index++)
             {
-                /* the name of the requirement which is searched in all files */
-                pattern = listOfRequirements.Requirements_Dynamic_List[index].id;
+                /* requirement version */
+                string version = listOfRequirements.Requirements_Dynamic_List[index].version.ToString();
+
+                /* the name and version of the requirement which is searched in all files */
+                pattern = listOfRequirements.Requirements_Dynamic_List[index].id + ", " + "\\d\\.\\d";
                 MyFile mf = new MyFile();
-                MatchCollection matches;
+                Match matches;
                 string selectable_path = null;
                 /* flag to check if the requirement is not found in any file */
                 requirementFound = false;
@@ -790,43 +793,58 @@ namespace ReqM_Tool
                     return;
                 }
 
-                /* search in each file from the folder "selectable_path" */
-                foreach (string file in Directory.GetFiles(selectable_path, "*.*"))
+                foreach (string word in selectable_path.Split('*'))
                 {
-                    content = File.ReadAllText(file);
-                    Regex r = new Regex(pattern, RegexOptions.IgnoreCase);
-                    matches = r.Matches(content);
-
-                    /* if Requirement is found. Add into the table. */
-                    if (matches.Count > 0)
+                    /* search in each file from the folder "selectable_path" */
+                    foreach (string file in Directory.GetFiles(word, "*.*"))
                     {
-                        int rowId = dataGridView2.Rows.Add();
-                        /* grab the new row */
-                        DataGridViewRow row = dataGridView2.Rows[rowId];
+                        content = File.ReadAllText(file);
+                        Regex r = new Regex(pattern, RegexOptions.IgnoreCase);
+                        matches = r.Match(content);
 
-                        /* add the data */
-                        /* Set Req_ID and Covered cell only first time */
-                        if (requirementFound == false)
+                        /* if Requirement is found. Add into the table. */
+                        if (matches.ToString() != "")
                         {
-                            row.Cells[0].Value = pattern;
-                            row.Cells[1].Value = "Covered";
-                            /* TODO: merge cells!!! */
+                            int rowId = dataGridView2.Rows.Add();
+                            /* grab the new row */
+                            DataGridViewRow row = dataGridView2.Rows[rowId];
 
+                            /* add the data */
+                            /* Set Req_ID and Covered cell only first time */
+                            if (requirementFound == false)
+                            {
+                                row.Cells[0].Value = pattern.Substring(0, pattern.IndexOf(","));
+                                row.Cells[1].Value = "Covered";
+                                /* TODO: merge cells!!! */
+                            }
+                            //row.Cells[2].Value = Path.GetFileName(file);
+                            row.Cells[2].Value = word;
+                            /* Version Mismatch */
+                            if (version == matches.Value.Substring(matches.Value.LastIndexOf(", ") + 2, 3))
+                            {
+                                row.Cells[3].Value = "Version OK";
+                            }
+                            else
+                            {
+                                row.Cells[3].Value = "Version mismatch";
+                                row.Cells[3].Style.BackColor = Color.Red;
+                            }
+                            /* set the color */
+                            row.DefaultCellStyle.BackColor = Color.Green;
+
+                            /* mark as a found requirement */
+                            requirementFound = true;
                         }
-                        row.Cells[2].Value = Path.GetFileName(file);
-                        /* set the color */
-                        row.DefaultCellStyle.BackColor = Color.Green;
+                    } /* end foreach */
 
-                        /* mark as a found requirement */
-                        requirementFound = true;
+                    /* if the requirement has not been found, add requirement_id and "notCovered" text */
+                    if (requirementFound == false)
+                    {
+                        myFunctions.ReqNotFound_AddRow(dataGridView2, pattern.Substring(0, pattern.IndexOf(",")));
                     }
-                } /* end foreach */
-
-                /* if the requirement has not been found, add requirement_id and "notCovered" text */
-                if (requirementFound == false)
-                {
-                    myFunctions.ReqNotFound_AddRow(dataGridView2, pattern);
                 }
+
+                
             }
             /* close the reader */
             reader.Close();
@@ -957,7 +975,7 @@ namespace ReqM_Tool
             float countReq = 0;
             /* Number of found requirements. */
             float countReqFound = 0;
-            float coverage = 0; ;
+            float coverage = 0;
 
             string content = string.Empty;
             MatchCollection matches;
@@ -1322,6 +1340,53 @@ namespace ReqM_Tool
             //}
           
 
+            UpdateDT();
+        }
+		private void DataGridView1_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                var hti = dataGridView1.HitTest(e.X, e.Y);
+                dataGridView1.ClearSelection();
+                dataGridView1.Rows[hti.RowIndex].Selected = true;
+            }
+            UpdateDT();
+        }
+
+        private void DuplicateRowToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (XmlFilePath == null)
+            {
+                MessageBox.Show(NoFileOpen);
+                return;
+            }
+            else
+            {
+                /* make sure that AllowUserToAddRows is set to 'true' */
+                dataGridView1.AllowUserToAddRows = true;
+
+                /* get the selected row */
+                int selected_row = (this.dataGridView1.SelectedRows[0].Index);
+
+                /* INSERT AFTER: add a new element to Requirements_Dynamic_List "database" */
+                RequirementItem reqitem = listOfRequirements.Requirements_Dynamic_List[selected_row];
+                listOfRequirements.Requirements_Dynamic_List.Insert(selected_row + 1, reqitem);
+
+                /* refresh the dataGridView */
+                dataGridView1.DataSource = null;
+                dataGridView1.DataSource = listOfRequirements.Requirements_Dynamic_List;
+            }
+            UpdateDT();
+        }
+
+        private void DataGridView1_MouseDown_1(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                var hti = dataGridView1.HitTest(e.X, e.Y);
+                dataGridView1.ClearSelection();
+                dataGridView1.Rows[hti.RowIndex].Selected = true;
+            }
             UpdateDT();
         }
     }
