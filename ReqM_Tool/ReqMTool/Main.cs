@@ -530,6 +530,8 @@ namespace ReqM_Tool
                     CheckNeedscoverage();  
                     CheckBaseline();
                     UpdateDT();
+                    
+                    
                 }
                 catch (Exception ex)
                 {
@@ -568,6 +570,7 @@ namespace ReqM_Tool
             /* LINKSTO: Req076 */
             /* Color the requirement with Yellow if it has different baseline than the document Baseline. */
             /* Color each column that is changed. */
+            Console.WriteLine(dataGridView1.Rows.Count);
             foreach (DataGridViewRow Row in dataGridView1.Rows)
             {
                 if (listOfRequirements.Requirements_Dynamic_List[Row.Index].ReqBaseline != listOfRequirements.list_of_settings[0].Baseline)
@@ -684,6 +687,8 @@ namespace ReqM_Tool
                     MessageBox.Show("No row is selected for adding a new item");
                 }
             }
+            CheckNeedscoverage();
+            CheckBaseline();
             UpdateDT();
         }
 
@@ -716,6 +721,8 @@ namespace ReqM_Tool
                     MessageBox.Show("No row is selected for removal.");
                 }
             }
+            CheckNeedscoverage();
+            CheckBaseline();
             UpdateDT();
         }
 
@@ -1120,6 +1127,7 @@ namespace ReqM_Tool
         private void SearchBox_TextChanged(object sender, EventArgs e)
         {
             /* LINKSTO: Req050 */
+           
             if (XmlFilePath != null)
             {
                 if (searchBox.Text != " Search")
@@ -1135,7 +1143,9 @@ namespace ReqM_Tool
 
                     columns = columns.Substring(0, columns.Length - 3);
                     dv.RowFilter = string.Format(columns, searchBox.Text);
-                    dataGridView1.DataSource = dv.ToTable();
+                    dataGridView1.DataSource = dv.ToTable();             
+                    CheckBaseline();
+                    CheckNeedscoverage();
                 }
             }
         }
