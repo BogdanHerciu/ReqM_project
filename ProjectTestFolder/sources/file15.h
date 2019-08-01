@@ -8,7 +8,7 @@
 *
 *   AUTHOR:         John Doe
 *
-*   DESCRIPTION:	This is a demo file used by the C# Application
+*   DESCRIPTION:    This is a demo file used by the C# Application
 *
 *   HISTORY:        14-Apr-2019 Initial Version
 *
@@ -34,16 +34,16 @@ volatile long ClujNapoca;
 /* type definitions ******************************************************** */
 enum RequirementList
 {
-	reqA = 0,
-	reqB,
-	reqC,
-	reqD,
+    reqA = 0,
+    reqB,
+    reqC,
+    reqD,
 };
 
 /* functions ************************************************************** */
 
 /******************************************************************************
-*	Full name:       requirementsTraceability
+*    Full name:       requirementsTraceability
 *
 *   Description:     Search the requirement with "req" ID in all project files
 *
