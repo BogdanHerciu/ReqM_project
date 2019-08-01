@@ -2,7 +2,7 @@
 <root_file xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <document_settings>
     <doc_settings>
-      <Baseline>1.0</Baseline>
+      <Baseline>1.1</Baseline>
       <Columns>
         <column>id</column>
         <column>description</column>
