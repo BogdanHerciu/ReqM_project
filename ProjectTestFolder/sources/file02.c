@@ -71,17 +71,58 @@ enum ListOfRequirements
 **************************************************************************** */
 void main(void)
 {
+    /* !LINKSTO NTT.RADU.SW.Req002,1.0*/
+    /* !LINKSTO NTT.RADU.SW.Req003,1.0*/
+    /* !LINKSTO NTT.RADU.SW.Req004,1.0*/
+    /* !LINKSTO NTT.RADU.SW.Req005,1.0*/
+    /* !LINKSTO NTT.RADU.SW.Req006,1.0*/
+    /* !LINKSTO NTT.RADU.SW.Req007,1.0*/
+    /* !LINKSTO NTT.RADU.SW.Req008,1.0*/
+    /* !LINKSTO NTT.RADU.SW.Req009,1.0*/
+    /* !LINKSTO NTT.RADU.SW.Req010,1.0*/
+    /* !LINKSTO NTT.RADU.SW.Req011,1.0*/
+    /* !LINKSTO NTT.RADU.SW.Req012,1.0*/
+    /* !LINKSTO NTT.RADU.SW.Req013,1.0*/
+    /* !LINKSTO NTT.RADU.SW.Req014,1.0*/
+    /* !LINKSTO NTT.RADU.SW.Req015,1.0*/
+    /* !LINKSTO NTT.RADU.SW.Req016,1.0*/
+    /* !LINKSTO NTT.RADU.SW.Req017,1.0*/
+    /* !LINKSTO NTT.RADU.SW.Req018,1.0*/
+    /* !LINKSTO NTT.RADU.SW.Req019,1.0*/
+    /* !LINKSTO NTT.RADU.SW.Req020,1.0*/
+    /* !LINKSTO NTT.RADU.SW.Req021,1.0*/
+    /* !LINKSTO NTT.RADU.SW.Req022,1.0*/
+    /* !LINKSTO NTT.RADU.SW.Req023,1.0*/
+    /* !LINKSTO NTT.RADU.SW.Req024,1.0*/
+    /* !LINKSTO NTT.RADU.SW.Req025,1.0*/
+    /* !LINKSTO NTT.RADU.SW.Req026,1.0*/
+    /* !LINKSTO NTT.RADU.SW.Req027,1.0*/
+    /* !LINKSTO NTT.RADU.SW.Req028,1.0*/
+    /* !LINKSTO NTT.RADU.SW.Req029,1.0*/
+    /* !LINKSTO NTT.RADU.SW.Req030,1.0*/
+    /* !LINKSTO NTT.RADU.SW.Req031,1.0*/
+    /* !LINKSTO NTT.RADU.SW.Req032,1.0*/
+    /* !LINKSTO NTT.RADU.SW.Req033,1.0*/
+    /* !LINKSTO NTT.RADU.SW.Req034,1.0*/
+    /* !LINKSTO NTT.RADU.SW.Req035,1.0*/
+    /* !LINKSTO NTT.RADU.SW.Req036,1.0*/
+    /* !LINKSTO NTT.RADU.SW.Req037,1.0*/
+    /* !LINKSTO NTT.RADU.SW.Req038,1.0*/
+    /* !LINKSTO NTT.RADU.SW.Req039,1.0*/
+    /* !LINKSTO NTT.RADU.SW.Req040,1.0*/
+    /* !LINKSTO NTT.RADU.SW.Req041,1.0*/
+    /* !LINKSTO NTT.RADU.SW.Req042,1.0*/
+    /* !LINKSTO NTT.RADU.SW.Req043,1.0*/
+    /* requirement_implementation: REQ1 */
+    int index = 0;
+    for (index = 3; index < MAX_COLUMNS; index++)
+    {
+        /* requirement_implementation: REQ2 */
+        cout << "NTT DATA Romania" << endl;
+    }
 
-	/* requirement_implementation: REQ1 */
-	int index = 0;
-	for (index = 3; index < MAX_COLUMNS; index++)
-	{
-		/* requirement_implementation: REQ2 */
-		cout << "NTT DATA Romania" << endl;
-	}
-
-	/* requirement_implementation: REQ3 */
-	printf("End of program\n");
+    /* requirement_implementation: REQ3 */
+    printf("End of program\n");
 }
 
 /* EOF */
