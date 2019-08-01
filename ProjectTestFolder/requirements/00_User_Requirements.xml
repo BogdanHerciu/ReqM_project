@@ -8,8 +8,31 @@
         <column>description</column>
         <column>status</column>
         <column>CreatedBy</column>
+        <column>needscoverage</column>
         <column>providescoverage</column>
+        <column>version</column>
       </Columns>
+      <DocumentIntro>
+                               User Requirements
+
+        1. Introduction.
+          1.1 Purpose of the Document.
+
+             This document describes the specific functionality of the Project X.
+
+          1.2 Intended Use
+
+             The Project X is intended for gathering and reporting the information
+             collected from the Sensor Y.
+
+        2. General Description
+
+             The Sensor Y is reading the data from the engine.
+             The information is afterwards stored in the database and processed acording
+             to the ISO-13156 Standard.
+
+        3. Requirements
+      </DocumentIntro>
     </doc_settings>
   </document_settings>
   <custom_values>
