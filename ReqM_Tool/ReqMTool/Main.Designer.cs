@@ -35,6 +35,10 @@ namespace ReqM_Tool
             System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.contextMenuStrip4 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.addRowToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteRowToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.duplicateRowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.LoadTab = new System.Windows.Forms.TabControl();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.label5 = new System.Windows.Forms.Label();
@@ -42,10 +46,9 @@ namespace ReqM_Tool
             this.label4 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.treeView1 = new System.Windows.Forms.TreeView();
             this.searchBox = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.menuStrip2 = new System.Windows.Forms.MenuStrip();
             this.menuStrip3 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -59,9 +62,9 @@ namespace ReqM_Tool
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addRowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteRowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.addColumnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.baselineToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.listBox1 = new System.Windows.Forms.ListBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.tstTextBox = new System.Windows.Forms.TextBox();
@@ -73,6 +76,7 @@ namespace ReqM_Tool
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip4 = new System.Windows.Forms.MenuStrip();
             this.editToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.selectSourcePathToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -91,20 +95,12 @@ namespace ReqM_Tool
             this.fileOpenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.asdToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.asdToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.asdToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.contextMenuStrip3 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.asdToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
-            this.contextMenuStrip4 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.addRowToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.deleteRowToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.duplicateRowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.contextMenuStrip5 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.contextMenuStrip4.SuspendLayout();
             this.LoadTab.SuspendLayout();
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -117,13 +113,11 @@ namespace ReqM_Tool
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
-            this.contextMenuStrip2.SuspendLayout();
-            this.contextMenuStrip3.SuspendLayout();
-            this.contextMenuStrip4.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToOrderColumns = true;
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
@@ -140,14 +134,46 @@ namespace ReqM_Tool
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridView1.Location = new System.Drawing.Point(6, 32);
+            this.dataGridView1.Location = new System.Drawing.Point(250, 133);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.Size = new System.Drawing.Size(781, 367);
+            this.dataGridView1.Size = new System.Drawing.Size(1081, 563);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellValueChanged);
             this.dataGridView1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DataGridView1_MouseDown_1);
+            // 
+            // contextMenuStrip4
+            // 
+            this.contextMenuStrip4.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contextMenuStrip4.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addRowToolStripMenuItem1,
+            this.deleteRowToolStripMenuItem1,
+            this.duplicateRowToolStripMenuItem});
+            this.contextMenuStrip4.Name = "contextMenuStrip4";
+            this.contextMenuStrip4.Size = new System.Drawing.Size(176, 76);
+            // 
+            // addRowToolStripMenuItem1
+            // 
+            this.addRowToolStripMenuItem1.Name = "addRowToolStripMenuItem1";
+            this.addRowToolStripMenuItem1.Size = new System.Drawing.Size(175, 24);
+            this.addRowToolStripMenuItem1.Text = "Add Row";
+            this.addRowToolStripMenuItem1.Click += new System.EventHandler(this.addRowToolStripMenuItem_Click);
+            // 
+            // deleteRowToolStripMenuItem1
+            // 
+            this.deleteRowToolStripMenuItem1.Name = "deleteRowToolStripMenuItem1";
+            this.deleteRowToolStripMenuItem1.Size = new System.Drawing.Size(175, 24);
+            this.deleteRowToolStripMenuItem1.Text = "Delete Row";
+            this.deleteRowToolStripMenuItem1.Click += new System.EventHandler(this.deleteRowToolStripMenuItem_Click);
+            // 
+            // duplicateRowToolStripMenuItem
+            // 
+            this.duplicateRowToolStripMenuItem.Name = "duplicateRowToolStripMenuItem";
+            this.duplicateRowToolStripMenuItem.Size = new System.Drawing.Size(175, 24);
+            this.duplicateRowToolStripMenuItem.Text = "Duplicate Row";
+            this.duplicateRowToolStripMenuItem.Click += new System.EventHandler(this.DuplicateRowToolStripMenuItem_Click);
             // 
             // LoadTab
             // 
@@ -159,10 +185,11 @@ namespace ReqM_Tool
             this.LoadTab.Controls.Add(this.tabPage5);
             this.LoadTab.Controls.Add(this.tabPage3);
             this.LoadTab.Controls.Add(this.tabPage2);
-            this.LoadTab.Location = new System.Drawing.Point(12, 2);
+            this.LoadTab.Location = new System.Drawing.Point(16, 2);
+            this.LoadTab.Margin = new System.Windows.Forms.Padding(4);
             this.LoadTab.Name = "LoadTab";
             this.LoadTab.SelectedIndex = 0;
-            this.LoadTab.Size = new System.Drawing.Size(801, 431);
+            this.LoadTab.Size = new System.Drawing.Size(1350, 735);
             this.LoadTab.TabIndex = 6;
             // 
             // tabPage4
@@ -172,10 +199,11 @@ namespace ReqM_Tool
             this.tabPage4.Controls.Add(this.label1);
             this.tabPage4.Controls.Add(this.label4);
             this.tabPage4.Controls.Add(this.pictureBox1);
-            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Location = new System.Drawing.Point(4, 25);
+            this.tabPage4.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(793, 405);
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(4);
+            this.tabPage4.Size = new System.Drawing.Size(1342, 706);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "StartPage";
             // 
@@ -183,9 +211,10 @@ namespace ReqM_Tool
             // 
             this.label5.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(151, 139);
+            this.label5.Location = new System.Drawing.Point(201, 171);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(469, 13);
+            this.label5.Size = new System.Drawing.Size(632, 17);
             this.label5.TabIndex = 8;
             this.label5.Text = "This project is managing the User Requirements, System Requirements and Software " +
     "requirements";
@@ -195,9 +224,10 @@ namespace ReqM_Tool
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(382, 379);
+            this.label1.Location = new System.Drawing.Point(509, 466);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(31, 13);
+            this.label1.Size = new System.Drawing.Size(40, 17);
             this.label1.TabIndex = 7;
             this.label1.Text = "2019";
             // 
@@ -206,47 +236,59 @@ namespace ReqM_Tool
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(93, 97);
+            this.label4.Location = new System.Drawing.Point(124, 119);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(580, 31);
+            this.label4.Size = new System.Drawing.Size(713, 39);
             this.label4.TabIndex = 5;
             this.label4.Text = "R.A.D.U. - Requirements And Design Utility";
-            this.label4.Click += new System.EventHandler(this.Label4_Click);
             // 
             // pictureBox1
             // 
             this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(678, 3);
+            this.pictureBox1.Location = new System.Drawing.Point(904, 4);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(115, 23);
+            this.pictureBox1.Size = new System.Drawing.Size(153, 28);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.treeView1);
             this.tabPage1.Controls.Add(this.searchBox);
             this.tabPage1.Controls.Add(this.button2);
             this.tabPage1.Controls.Add(this.dataGridView1);
-            this.tabPage1.Controls.Add(this.menuStrip1);
-            this.tabPage1.Controls.Add(this.menuStrip2);
             this.tabPage1.Controls.Add(this.menuStrip3);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Location = new System.Drawing.Point(4, 25);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(793, 405);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(4);
+            this.tabPage1.Size = new System.Drawing.Size(1342, 706);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Database";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // treeView1
+            // 
+            this.treeView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.treeView1.Location = new System.Drawing.Point(11, 133);
+            this.treeView1.Name = "treeView1";
+            this.treeView1.Size = new System.Drawing.Size(232, 563);
+            this.treeView1.TabIndex = 11;
+            this.treeView1.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.TreeView1_NodeMouseClick);
             // 
             // searchBox
             // 
             this.searchBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.searchBox.ForeColor = System.Drawing.SystemColors.InactiveCaption;
-            this.searchBox.Location = new System.Drawing.Point(396, 6);
+            this.searchBox.Location = new System.Drawing.Point(810, 7);
+            this.searchBox.Margin = new System.Windows.Forms.Padding(4);
             this.searchBox.Name = "searchBox";
-            this.searchBox.Size = new System.Drawing.Size(301, 20);
+            this.searchBox.Size = new System.Drawing.Size(400, 22);
             this.searchBox.TabIndex = 10;
             this.searchBox.Text = " Search";
             this.searchBox.Click += new System.EventHandler(this.SearchBox_Click);
@@ -256,31 +298,14 @@ namespace ReqM_Tool
             // button2
             // 
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(712, 4);
+            this.button2.Location = new System.Drawing.Point(1231, 5);
+            this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.Size = new System.Drawing.Size(100, 28);
             this.button2.TabIndex = 9;
             this.button2.Text = "View";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.Button2_Click_1);
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.menuStrip1.Location = new System.Drawing.Point(3, 51);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(787, 24);
-            this.menuStrip1.TabIndex = 6;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // menuStrip2
-            // 
-            this.menuStrip2.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.menuStrip2.Location = new System.Drawing.Point(3, 27);
-            this.menuStrip2.Name = "menuStrip2";
-            this.menuStrip2.Size = new System.Drawing.Size(787, 24);
-            this.menuStrip2.TabIndex = 7;
-            this.menuStrip2.Text = "menuStrip2";
             // 
             // menuStrip3
             // 
@@ -288,9 +313,10 @@ namespace ReqM_Tool
             this.menuStrip3.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.editToolStripMenuItem});
-            this.menuStrip3.Location = new System.Drawing.Point(3, 3);
+            this.menuStrip3.Location = new System.Drawing.Point(4, 4);
             this.menuStrip3.Name = "menuStrip3";
-            this.menuStrip3.Size = new System.Drawing.Size(787, 24);
+            this.menuStrip3.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
+            this.menuStrip3.Size = new System.Drawing.Size(1334, 28);
             this.menuStrip3.TabIndex = 8;
             this.menuStrip3.Text = "menuStrip3";
             // 
@@ -303,27 +329,27 @@ namespace ReqM_Tool
             this.publishToolStripMenuItem,
             this.closeToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(46, 24);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(139, 26);
             this.openToolStripMenuItem.Text = "Open";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem1
             // 
             this.saveToolStripMenuItem1.Name = "saveToolStripMenuItem1";
-            this.saveToolStripMenuItem1.Size = new System.Drawing.Size(113, 22);
+            this.saveToolStripMenuItem1.Size = new System.Drawing.Size(139, 26);
             this.saveToolStripMenuItem1.Text = "Save";
             this.saveToolStripMenuItem1.Click += new System.EventHandler(this.saveToolStripMenuItem1_Click);
             // 
             // saveAsToolStripMenuItem1
             // 
             this.saveAsToolStripMenuItem1.Name = "saveAsToolStripMenuItem1";
-            this.saveAsToolStripMenuItem1.Size = new System.Drawing.Size(113, 22);
+            this.saveAsToolStripMenuItem1.Size = new System.Drawing.Size(139, 26);
             this.saveAsToolStripMenuItem1.Text = "SaveAs";
             this.saveAsToolStripMenuItem1.Click += new System.EventHandler(this.saveAsToolStripMenuItem1_Click);
             // 
@@ -334,32 +360,32 @@ namespace ReqM_Tool
             this.saveAsPdfToolStripMenuItem,
             this.saveAsExcelToolStripMenuItem});
             this.publishToolStripMenuItem.Name = "publishToolStripMenuItem";
-            this.publishToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
+            this.publishToolStripMenuItem.Size = new System.Drawing.Size(139, 26);
             this.publishToolStripMenuItem.Text = "Publish";
             // 
             // saveAsWordToolStripMenuItem
             // 
             this.saveAsWordToolStripMenuItem.Name = "saveAsWordToolStripMenuItem";
-            this.saveAsWordToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.saveAsWordToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
             this.saveAsWordToolStripMenuItem.Text = "Save as Word";
             // 
             // saveAsPdfToolStripMenuItem
             // 
             this.saveAsPdfToolStripMenuItem.Name = "saveAsPdfToolStripMenuItem";
-            this.saveAsPdfToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.saveAsPdfToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
             this.saveAsPdfToolStripMenuItem.Text = "Save as Pdf";
             // 
             // saveAsExcelToolStripMenuItem
             // 
             this.saveAsExcelToolStripMenuItem.Name = "saveAsExcelToolStripMenuItem";
-            this.saveAsExcelToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.saveAsExcelToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
             this.saveAsExcelToolStripMenuItem.Text = "Save as Excel";
             this.saveAsExcelToolStripMenuItem.Click += new System.EventHandler(this.SaveAsExcelToolStripMenuItem_Click);
             // 
             // closeToolStripMenuItem
             // 
             this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-            this.closeToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
+            this.closeToolStripMenuItem.Size = new System.Drawing.Size(139, 26);
             this.closeToolStripMenuItem.Text = "Close";
             this.closeToolStripMenuItem.Click += new System.EventHandler(this.CloseToolStripMenuItem_Click);
             // 
@@ -368,87 +394,98 @@ namespace ReqM_Tool
             this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addRowToolStripMenuItem,
             this.deleteRowToolStripMenuItem,
-            this.addColumnToolStripMenuItem,
             this.baselineToolStripMenuItem});
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(49, 24);
             this.editToolStripMenuItem.Text = "Edit";
             // 
             // addRowToolStripMenuItem
             // 
             this.addRowToolStripMenuItem.Name = "addRowToolStripMenuItem";
-            this.addRowToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.addRowToolStripMenuItem.Size = new System.Drawing.Size(169, 26);
             this.addRowToolStripMenuItem.Text = "Add Row";
             this.addRowToolStripMenuItem.Click += new System.EventHandler(this.addRowToolStripMenuItem_Click);
             // 
             // deleteRowToolStripMenuItem
             // 
             this.deleteRowToolStripMenuItem.Name = "deleteRowToolStripMenuItem";
-            this.deleteRowToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.deleteRowToolStripMenuItem.Size = new System.Drawing.Size(169, 26);
             this.deleteRowToolStripMenuItem.Text = "Delete Row";
             this.deleteRowToolStripMenuItem.Click += new System.EventHandler(this.deleteRowToolStripMenuItem_Click);
-            // 
-            // addColumnToolStripMenuItem
-            // 
-            this.addColumnToolStripMenuItem.Name = "addColumnToolStripMenuItem";
-            this.addColumnToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
-            this.addColumnToolStripMenuItem.Text = "Add Column";
-            this.addColumnToolStripMenuItem.Click += new System.EventHandler(this.AddColumnToolStripMenuItem_Click);
             // 
             // baselineToolStripMenuItem
             // 
             this.baselineToolStripMenuItem.Name = "baselineToolStripMenuItem";
-            this.baselineToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.baselineToolStripMenuItem.Size = new System.Drawing.Size(169, 26);
             this.baselineToolStripMenuItem.Text = "Baseline";
             this.baselineToolStripMenuItem.Click += new System.EventHandler(this.BaselineToolStripMenuItem_Click);
             // 
             // tabPage5
             // 
+            this.tabPage5.Controls.Add(this.button4);
+            this.tabPage5.Controls.Add(this.button3);
+            this.tabPage5.Controls.Add(this.textBox3);
+            this.tabPage5.Controls.Add(this.comboBox1);
+            this.tabPage5.Controls.Add(this.listBox1);
             this.tabPage5.Controls.Add(this.label7);
             this.tabPage5.Controls.Add(this.label6);
             this.tabPage5.Controls.Add(this.tstTextBox);
             this.tabPage5.Controls.Add(this.tstButton);
             this.tabPage5.Controls.Add(this.srcButton);
             this.tabPage5.Controls.Add(this.srcTextBox);
-            this.tabPage5.Location = new System.Drawing.Point(4, 22);
+            this.tabPage5.Location = new System.Drawing.Point(4, 25);
+            this.tabPage5.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(793, 405);
+            this.tabPage5.Padding = new System.Windows.Forms.Padding(4);
+            this.tabPage5.Size = new System.Drawing.Size(1342, 706);
             this.tabPage5.TabIndex = 5;
             this.tabPage5.Text = "Project Settings";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.ItemHeight = 16;
+            this.listBox1.Location = new System.Drawing.Point(124, 273);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(120, 196);
+            this.listBox1.TabIndex = 6;
+            // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(51, 102);
+            this.label7.Location = new System.Drawing.Point(68, 126);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(63, 13);
+            this.label7.Size = new System.Drawing.Size(84, 17);
             this.label7.TabIndex = 5;
             this.label7.Text = "Test Folder:";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(41, 67);
+            this.label6.Location = new System.Drawing.Point(55, 82);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(73, 13);
+            this.label6.Size = new System.Drawing.Size(97, 17);
             this.label6.TabIndex = 4;
             this.label6.Text = "Source folder:";
             // 
             // tstTextBox
             // 
-            this.tstTextBox.Location = new System.Drawing.Point(120, 99);
+            this.tstTextBox.Location = new System.Drawing.Point(160, 122);
+            this.tstTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.tstTextBox.Name = "tstTextBox";
             this.tstTextBox.ReadOnly = true;
-            this.tstTextBox.Size = new System.Drawing.Size(515, 20);
+            this.tstTextBox.Size = new System.Drawing.Size(685, 22);
             this.tstTextBox.TabIndex = 3;
             // 
             // tstButton
             // 
-            this.tstButton.Location = new System.Drawing.Point(646, 97);
+            this.tstButton.Location = new System.Drawing.Point(861, 119);
+            this.tstButton.Margin = new System.Windows.Forms.Padding(4);
             this.tstButton.Name = "tstButton";
-            this.tstButton.Size = new System.Drawing.Size(100, 23);
+            this.tstButton.Size = new System.Drawing.Size(133, 28);
             this.tstButton.TabIndex = 2;
             this.tstButton.Text = "Browse...";
             this.tstButton.UseVisualStyleBackColor = true;
@@ -456,9 +493,10 @@ namespace ReqM_Tool
             // 
             // srcButton
             // 
-            this.srcButton.Location = new System.Drawing.Point(646, 62);
+            this.srcButton.Location = new System.Drawing.Point(861, 76);
+            this.srcButton.Margin = new System.Windows.Forms.Padding(4);
             this.srcButton.Name = "srcButton";
-            this.srcButton.Size = new System.Drawing.Size(100, 23);
+            this.srcButton.Size = new System.Drawing.Size(133, 28);
             this.srcButton.TabIndex = 1;
             this.srcButton.Text = "Browse...";
             this.srcButton.UseVisualStyleBackColor = true;
@@ -467,19 +505,21 @@ namespace ReqM_Tool
             // srcTextBox
             // 
             this.srcTextBox.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.srcTextBox.Location = new System.Drawing.Point(120, 64);
+            this.srcTextBox.Location = new System.Drawing.Point(160, 79);
+            this.srcTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.srcTextBox.Name = "srcTextBox";
             this.srcTextBox.ReadOnly = true;
-            this.srcTextBox.Size = new System.Drawing.Size(515, 20);
+            this.srcTextBox.Size = new System.Drawing.Size(685, 22);
             this.srcTextBox.TabIndex = 0;
             // 
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.dataGridView2);
             this.tabPage3.Controls.Add(this.menuStrip4);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Location = new System.Drawing.Point(4, 25);
+            this.tabPage3.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(793, 405);
+            this.tabPage3.Size = new System.Drawing.Size(1342, 706);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Coverage";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -498,13 +538,13 @@ namespace ReqM_Tool
             this.Column2,
             this.Column3,
             this.Column4});
-            this.dataGridView2.Location = new System.Drawing.Point(3, 27);
+            this.dataGridView2.Location = new System.Drawing.Point(4, 33);
+            this.dataGridView2.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.ReadOnly = true;
             this.dataGridView2.RowHeadersWidth = 51;
-            this.dataGridView2.Size = new System.Drawing.Size(787, 375);
+            this.dataGridView2.Size = new System.Drawing.Size(1331, 667);
             this.dataGridView2.TabIndex = 1;
-            this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
             // 
             // Column1
             // 
@@ -527,6 +567,13 @@ namespace ReqM_Tool
             this.Column3.Name = "Column3";
             this.Column3.ReadOnly = true;
             // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "Version";
+            this.Column4.MinimumWidth = 6;
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            // 
             // menuStrip4
             // 
             this.menuStrip4.ImageScalingSize = new System.Drawing.Size(20, 20);
@@ -535,7 +582,8 @@ namespace ReqM_Tool
             this.toolsToolStripMenuItem});
             this.menuStrip4.Location = new System.Drawing.Point(0, 0);
             this.menuStrip4.Name = "menuStrip4";
-            this.menuStrip4.Size = new System.Drawing.Size(793, 24);
+            this.menuStrip4.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
+            this.menuStrip4.Size = new System.Drawing.Size(1342, 28);
             this.menuStrip4.TabIndex = 6;
             this.menuStrip4.Text = "menuStrip4";
             // 
@@ -545,20 +593,20 @@ namespace ReqM_Tool
             this.selectSourcePathToolStripMenuItem,
             this.selectTestPathToolStripMenuItem});
             this.editToolStripMenuItem1.Name = "editToolStripMenuItem1";
-            this.editToolStripMenuItem1.Size = new System.Drawing.Size(61, 20);
+            this.editToolStripMenuItem1.Size = new System.Drawing.Size(76, 24);
             this.editToolStripMenuItem1.Text = "Settings";
             // 
             // selectSourcePathToolStripMenuItem
             // 
             this.selectSourcePathToolStripMenuItem.Name = "selectSourcePathToolStripMenuItem";
-            this.selectSourcePathToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
+            this.selectSourcePathToolStripMenuItem.Size = new System.Drawing.Size(213, 26);
             this.selectSourcePathToolStripMenuItem.Text = "Select Source Path";
             this.selectSourcePathToolStripMenuItem.Click += new System.EventHandler(this.selectSourcePathToolStripMenuItem_Click);
             // 
             // selectTestPathToolStripMenuItem
             // 
             this.selectTestPathToolStripMenuItem.Name = "selectTestPathToolStripMenuItem";
-            this.selectTestPathToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
+            this.selectTestPathToolStripMenuItem.Size = new System.Drawing.Size(213, 26);
             this.selectTestPathToolStripMenuItem.Text = "Select Test Path";
             this.selectTestPathToolStripMenuItem.Click += new System.EventHandler(this.selectTestPathToolStripMenuItem_Click);
             // 
@@ -568,20 +616,20 @@ namespace ReqM_Tool
             this.makeCoverageToolStripMenuItem,
             this.publishToolStripMenuItem1});
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
-            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
+            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(58, 24);
             this.toolsToolStripMenuItem.Text = "Tools";
             // 
             // makeCoverageToolStripMenuItem
             // 
             this.makeCoverageToolStripMenuItem.Name = "makeCoverageToolStripMenuItem";
-            this.makeCoverageToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.makeCoverageToolStripMenuItem.Size = new System.Drawing.Size(195, 26);
             this.makeCoverageToolStripMenuItem.Text = "Make Coverage";
             this.makeCoverageToolStripMenuItem.Click += new System.EventHandler(this.makeCoverageToolStripMenuItem_Click);
             // 
             // publishToolStripMenuItem1
             // 
             this.publishToolStripMenuItem1.Name = "publishToolStripMenuItem1";
-            this.publishToolStripMenuItem1.Size = new System.Drawing.Size(156, 22);
+            this.publishToolStripMenuItem1.Size = new System.Drawing.Size(195, 26);
             this.publishToolStripMenuItem1.Text = "Publish";
             this.publishToolStripMenuItem1.Click += new System.EventHandler(this.PublishToolStripMenuItem1_Click);
             // 
@@ -593,10 +641,11 @@ namespace ReqM_Tool
             this.tabPage2.Controls.Add(this.textBox2);
             this.tabPage2.Controls.Add(this.textBox1);
             this.tabPage2.Controls.Add(this.button1);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Location = new System.Drawing.Point(4, 25);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(793, 405);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(4);
+            this.tabPage2.Size = new System.Drawing.Size(1342, 706);
             this.tabPage2.TabIndex = 4;
             this.tabPage2.Text = "Statistics";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -608,57 +657,62 @@ namespace ReqM_Tool
             this.chart1.ChartAreas.Add(chartArea2);
             legend2.Name = "Legend1";
             this.chart1.Legends.Add(legend2);
-            this.chart1.Location = new System.Drawing.Point(251, 40);
+            this.chart1.Location = new System.Drawing.Point(335, 49);
+            this.chart1.Margin = new System.Windows.Forms.Padding(4);
             this.chart1.Name = "chart1";
             series2.ChartArea = "ChartArea1";
             series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
             series2.Legend = "Legend1";
             series2.Name = "Series1";
             this.chart1.Series.Add(series2);
-            this.chart1.Size = new System.Drawing.Size(520, 333);
+            this.chart1.Size = new System.Drawing.Size(693, 410);
             this.chart1.TabIndex = 5;
             this.chart1.Text = "chart1";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(74, 83);
+            this.label3.Location = new System.Drawing.Point(99, 102);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(56, 13);
+            this.label3.Size = new System.Drawing.Size(73, 17);
             this.label3.TabIndex = 4;
             this.label3.Text = "Coverage:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(28, 57);
+            this.label2.Location = new System.Drawing.Point(37, 70);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(102, 13);
+            this.label2.Size = new System.Drawing.Size(136, 17);
             this.label2.TabIndex = 3;
             this.label2.Text = "Total Requirements:";
-            this.label2.Click += new System.EventHandler(this.Label2_Click_1);
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(136, 80);
+            this.textBox2.Location = new System.Drawing.Point(181, 98);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(4);
             this.textBox2.Name = "textBox2";
             this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
+            this.textBox2.Size = new System.Drawing.Size(132, 22);
             this.textBox2.TabIndex = 2;
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(136, 54);
+            this.textBox1.Location = new System.Drawing.Point(181, 66);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.Size = new System.Drawing.Size(132, 22);
             this.textBox1.TabIndex = 1;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(136, 116);
+            this.button1.Location = new System.Drawing.Point(181, 143);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(100, 28);
             this.button1.TabIndex = 0;
             this.button1.Text = "calculate";
             this.button1.UseVisualStyleBackColor = true;
@@ -672,130 +726,77 @@ namespace ReqM_Tool
             this.saveToolStripMenuItem,
             this.saveAsToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(125, 70);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(142, 76);
             // 
             // fileOpenToolStripMenuItem
             // 
             this.fileOpenToolStripMenuItem.Name = "fileOpenToolStripMenuItem";
-            this.fileOpenToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.fileOpenToolStripMenuItem.Size = new System.Drawing.Size(141, 24);
             this.fileOpenToolStripMenuItem.Text = "File Open";
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(141, 24);
             this.saveToolStripMenuItem.Text = "Save";
             // 
             // saveAsToolStripMenuItem
             // 
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(141, 24);
             this.saveAsToolStripMenuItem.Text = "Save As";
             // 
-            // contextMenuStrip2
+            // comboBox1
             // 
-            this.contextMenuStrip2.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.contextMenuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.asdToolStripMenuItem,
-            this.asdToolStripMenuItem1,
-            this.asdToolStripMenuItem2,
-            this.toolStripMenuItem2});
-            this.contextMenuStrip2.Name = "contextMenuStrip2";
-            this.contextMenuStrip2.Size = new System.Drawing.Size(93, 92);
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(267, 273);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 24);
+            this.comboBox1.TabIndex = 7;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.ComboBox1_SelectedIndexChanged);
             // 
-            // asdToolStripMenuItem
+            // textBox3
             // 
-            this.asdToolStripMenuItem.Name = "asdToolStripMenuItem";
-            this.asdToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
-            this.asdToolStripMenuItem.Text = "asd";
+            this.textBox3.Location = new System.Drawing.Point(267, 321);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(121, 22);
+            this.textBox3.TabIndex = 8;
             // 
-            // asdToolStripMenuItem1
+            // button3
             // 
-            this.asdToolStripMenuItem1.Name = "asdToolStripMenuItem1";
-            this.asdToolStripMenuItem1.Size = new System.Drawing.Size(92, 22);
-            this.asdToolStripMenuItem1.Text = "asd";
+            this.button3.Location = new System.Drawing.Point(267, 371);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 9;
+            this.button3.Text = "Add";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.Button3_Click_2);
             // 
-            // asdToolStripMenuItem2
+            // button4
             // 
-            this.asdToolStripMenuItem2.Name = "asdToolStripMenuItem2";
-            this.asdToolStripMenuItem2.Size = new System.Drawing.Size(92, 22);
-            this.asdToolStripMenuItem2.Text = "asd";
-            // 
-            // toolStripMenuItem2
-            // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(92, 22);
-            this.toolStripMenuItem2.Text = "asd";
-            // 
-            // contextMenuStrip3
-            // 
-            this.contextMenuStrip3.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.contextMenuStrip3.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.asdToolStripMenuItem3});
-            this.contextMenuStrip3.Name = "contextMenuStrip3";
-            this.contextMenuStrip3.Size = new System.Drawing.Size(93, 26);
-            // 
-            // asdToolStripMenuItem3
-            // 
-            this.asdToolStripMenuItem3.Name = "asdToolStripMenuItem3";
-            this.asdToolStripMenuItem3.Size = new System.Drawing.Size(92, 22);
-            this.asdToolStripMenuItem3.Text = "asd";
-            // 
-            // contextMenuStrip4
-            // 
-            this.contextMenuStrip4.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.contextMenuStrip4.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addRowToolStripMenuItem1,
-            this.deleteRowToolStripMenuItem1,
-            this.duplicateRowToolStripMenuItem});
-            this.contextMenuStrip4.Name = "contextMenuStrip4";
-            this.contextMenuStrip4.Size = new System.Drawing.Size(151, 70);
-            // 
-            // addRowToolStripMenuItem1
-            // 
-            this.addRowToolStripMenuItem1.Name = "addRowToolStripMenuItem1";
-            this.addRowToolStripMenuItem1.Size = new System.Drawing.Size(150, 22);
-            this.addRowToolStripMenuItem1.Text = "Add Row";
-            this.addRowToolStripMenuItem1.Click += new System.EventHandler(this.addRowToolStripMenuItem_Click);
-            // 
-            // deleteRowToolStripMenuItem1
-            // 
-            this.deleteRowToolStripMenuItem1.Name = "deleteRowToolStripMenuItem1";
-            this.deleteRowToolStripMenuItem1.Size = new System.Drawing.Size(150, 22);
-            this.deleteRowToolStripMenuItem1.Text = "Delete Row";
-            this.deleteRowToolStripMenuItem1.Click += new System.EventHandler(this.deleteRowToolStripMenuItem_Click);
-            // 
-            // duplicateRowToolStripMenuItem
-            // 
-            this.duplicateRowToolStripMenuItem.Name = "duplicateRowToolStripMenuItem";
-            this.duplicateRowToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
-            this.duplicateRowToolStripMenuItem.Text = "Duplicate Row";
-            this.duplicateRowToolStripMenuItem.Click += new System.EventHandler(this.DuplicateRowToolStripMenuItem_Click);
-            // 
-            // contextMenuStrip5
-            // 
-            this.contextMenuStrip5.Name = "contextMenuStrip5";
-            this.contextMenuStrip5.Size = new System.Drawing.Size(61, 4);
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Version";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
+            this.button4.Location = new System.Drawing.Point(267, 418);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(75, 23);
+            this.button4.TabIndex = 10;
+            this.button4.Text = "Remove";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.Button4_Click);
             // 
             // Main
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(825, 445);
+            this.ClientSize = new System.Drawing.Size(1382, 753);
             this.Controls.Add(this.LoadTab);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MainMenuStrip = this.menuStrip1;
-            this.MinimumSize = new System.Drawing.Size(841, 484);
+            this.Margin = new System.Windows.Forms.Padding(4);
+            this.MinimumSize = new System.Drawing.Size(1115, 585);
             this.Name = "Main";
             this.Text = "Requirements Management Tool™";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_FormClosing);
             this.Load += new System.EventHandler(this.Main_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.contextMenuStrip4.ResumeLayout(false);
             this.LoadTab.ResumeLayout(false);
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
@@ -815,9 +816,6 @@ namespace ReqM_Tool
             this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
-            this.contextMenuStrip2.ResumeLayout(false);
-            this.contextMenuStrip3.ResumeLayout(false);
-            this.contextMenuStrip4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -836,25 +834,16 @@ namespace ReqM_Tool
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileOpenToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveAsToolStripMenuItem;
-        private System.Windows.Forms.MenuStrip menuStrip2;
         private System.Windows.Forms.MenuStrip menuStrip3;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem saveAsToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem closeToolStripMenuItem;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
-        private System.Windows.Forms.ToolStripMenuItem asdToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem asdToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem asdToolStripMenuItem2;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip3;
-        private System.Windows.Forms.ToolStripMenuItem asdToolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addRowToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem deleteRowToolStripMenuItem;
@@ -877,10 +866,8 @@ namespace ReqM_Tool
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.ToolStripMenuItem addColumnToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem baselineToolStripMenuItem;
         private System.Windows.Forms.TextBox searchBox;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip5;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TabPage tabPage5;
         private System.Windows.Forms.TextBox tstTextBox;
@@ -894,6 +881,12 @@ namespace ReqM_Tool
         private System.Windows.Forms.ToolStripMenuItem deleteRowToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem duplicateRowToolStripMenuItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.TreeView treeView1;
+        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }
 

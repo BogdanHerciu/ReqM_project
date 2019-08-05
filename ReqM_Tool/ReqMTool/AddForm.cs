@@ -27,7 +27,7 @@ namespace ReqM_namespace
 
         private void AddButton_Click(object sender, EventArgs e)
         {
-            DataGridViewTextBoxColumn column = new DataGridViewTextBoxColumn();
+            /*DataGridViewTextBoxColumn column = new DataGridViewTextBoxColumn();
             column.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             column.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             column.Name = textBox1.Text.ToString();
@@ -40,6 +40,7 @@ namespace ReqM_namespace
                 req.newColumns.Add(new NewColumn { name = textBox1.Text.ToString(), value = ""});
             }
             this.Close();
+            */
         }
 
     }

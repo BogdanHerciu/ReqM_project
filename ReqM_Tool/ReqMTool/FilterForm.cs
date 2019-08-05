@@ -9,6 +9,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
+using System.Xml.Linq;
 using System.Xml.Serialization;
 
 
@@ -22,6 +24,10 @@ namespace ReqM_namespace
         public FilterForm()
         {
             InitializeComponent();
+
+            this.FormBorderStyle = FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
         }
 
         public FilterForm(Form callingForm)
@@ -45,7 +51,6 @@ namespace ReqM_namespace
             if (!checkBox1.Checked && this.mainForm.dgv.Columns.Contains("id"))
             {
                 this.mainForm.dgv.Columns["id"].Visible = false;
-                //this.mainForm.dgv.Columns.Remove(this.mainForm.dgv.Columns["id"]);
             }
             else
                 this.mainForm.dgv.Columns["id"].Visible = true;
@@ -211,88 +216,121 @@ namespace ReqM_namespace
                 else
                     checkBox16.Checked = false;
             }
-
-           // Console.WriteLine(this.mainForm.dgv.Columns[0].HeaderText.ToString());
         }
 
         private void Button1_Click_1(object sender, EventArgs e)
         {
-            /* LINKSTO: Req049 */
-            //NO
-            root_file listOfRequirementsCopy = (root_file)mainForm.listOfRequirements.ShallowCopy();
 
-            for (int i = 0; i < mainForm.listOfRequirements.list_of_settings.ElementAt(0).columns.Count; ++i)
-                Console.WriteLine("ORIGINAL:"+mainForm.listOfRequirements.list_of_settings.ElementAt(0).columns.ElementAt(i));
-            for (int i = 0; i < listOfRequirementsCopy.list_of_settings.ElementAt(0).columns.Count; ++i)
-                Console.WriteLine("COPY:"+listOfRequirementsCopy.list_of_settings.ElementAt(0).columns.ElementAt(i));
+            XmlDocument doc = new XmlDocument();
+            doc.Load(mainForm.XmlFilePath);
 
-            listOfRequirementsCopy.list_of_settings.ElementAt(0).columns.Clear();
+            /* Clear all Columns child nodes */
+            XmlNode Columns = doc.SelectSingleNode("root_file/document_settings/doc_settings/Columns");
+            Columns.RemoveAll();
 
-            for (int i = 0; i < mainForm.listOfRequirements.list_of_settings.ElementAt(0).columns.Count; ++i)
-                Console.WriteLine("ORIGINAL:" + mainForm.listOfRequirements.list_of_settings.ElementAt(0).columns.ElementAt(i));
-            for (int i = 0; i < listOfRequirementsCopy.list_of_settings.ElementAt(0).columns.Count; ++i)
-                Console.WriteLine("COPY:" + listOfRequirementsCopy.list_of_settings.ElementAt(0).columns.ElementAt(i));
+            XmlElement currentNode = (XmlElement)doc.SelectSingleNode("root_file/document_settings/doc_settings/Columns");
 
             if (checkBox1.Checked)
-                listOfRequirementsCopy.list_of_settings.ElementAt(0).columns.Add("id");
+            {
+                XmlElement elem = doc.CreateElement("column");
+                elem.InnerText = "id";
+                currentNode.AppendChild(elem);
+            }
+
             if (checkBox2.Checked)
-                listOfRequirementsCopy.list_of_settings.ElementAt(0).columns.Add("description");
-           if (checkBox3.Checked)
-               listOfRequirementsCopy.list_of_settings.ElementAt(0).columns.Add("status");
-           if (checkBox4.Checked)
-               listOfRequirementsCopy.list_of_settings.ElementAt(0).columns.Add("CreatedBy");
-           if (checkBox5.Checked)
-               listOfRequirementsCopy.list_of_settings.ElementAt(0).columns.Add("needscoverage");
-           if (checkBox6.Checked)
-               listOfRequirementsCopy.list_of_settings.ElementAt(0).columns.Add("providescoverage");
-           if (checkBox7.Checked)
-               listOfRequirementsCopy.list_of_settings.ElementAt(0).columns.Add("version");
-           if (checkBox8.Checked)
-               listOfRequirementsCopy.list_of_settings.ElementAt(0).columns.Add("SafetyRelevant");
-           if (checkBox9.Checked)
-               listOfRequirementsCopy.list_of_settings.ElementAt(0).columns.Add("ChangeRequest");
-           if (checkBox10.Checked)
-               listOfRequirementsCopy.list_of_settings.ElementAt(0).columns.Add("ReviewID");
-           if (checkBox11.Checked)
-               listOfRequirementsCopy.list_of_settings.ElementAt(0).columns.Add("RequirementType");
-           if (checkBox12.Checked)
-               listOfRequirementsCopy.list_of_settings.ElementAt(0).columns.Add("Chapter");
-           if (checkBox13.Checked)
-               listOfRequirementsCopy.list_of_settings.ElementAt(0).columns.Add("HWPlatform");
-           if (checkBox14.Checked)
-               listOfRequirementsCopy.list_of_settings.ElementAt(0).columns.Add("Domain");
-           if (checkBox15.Checked)
-               listOfRequirementsCopy.list_of_settings.ElementAt(0).columns.Add("TestedAt");
-           if (checkBox16.Checked)
-               listOfRequirementsCopy.list_of_settings.ElementAt(0).columns.Add("ReqBaseline");
-
-           for (int i = 0; i < mainForm.listOfRequirements.list_of_settings.ElementAt(0).columns.Count; ++i)
-               Console.WriteLine("ORIGINAL:"+mainForm.listOfRequirements.list_of_settings.ElementAt(0).columns.ElementAt(i));
-           for (int i = 0; i < listOfRequirementsCopy.list_of_settings.ElementAt(0).columns.Count; ++i)
-               Console.WriteLine("COPY:"+listOfRequirementsCopy.list_of_settings.ElementAt(0).columns.ElementAt(i));
-
-            if (listOfRequirementsCopy.Equals(mainForm.listOfRequirements))
             {
-                //NO
-                MessageBox.Show("No filters applied!");
-                return;
+                XmlElement elem = doc.CreateElement("column");
+                elem.InnerText = "description";
+                currentNode.AppendChild(elem);
             }
-            if (mainForm.XmlFilePath == null)
+            if (checkBox3.Checked)
             {
-                MessageBox.Show(mainForm.NoFileOpen);
-                return;
+                XmlElement elem = doc.CreateElement("column");
+                elem.InnerText = "CreatedBy";
+                currentNode.AppendChild(elem);
+            }
+            if (checkBox4.Checked)
+            {
+                XmlElement elem = doc.CreateElement("column");
+                elem.InnerText = "status";
+                currentNode.AppendChild(elem);
+            }
+            if (checkBox5.Checked)
+            {
+                XmlElement elem = doc.CreateElement("column");
+                elem.InnerText = "needscoverage";
+                currentNode.AppendChild(elem);
+            }
+            if (checkBox6.Checked)
+            {
+                XmlElement elem = doc.CreateElement("column");
+                elem.InnerText = "providescoverage";
+                currentNode.AppendChild(elem);
+            }
+            if (checkBox7.Checked)
+            {
+                XmlElement elem = doc.CreateElement("column");
+                elem.InnerText = "version";
+                currentNode.AppendChild(elem);
+            }
+            if (checkBox8.Checked)
+            {
+                XmlElement elem = doc.CreateElement("column");
+                elem.InnerText = "SafetyRelevant";
+                currentNode.AppendChild(elem);
+            }
+            if (checkBox9.Checked)
+            {
+                XmlElement elem = doc.CreateElement("column");
+                elem.InnerText = "ChangeRequest";
+                currentNode.AppendChild(elem);
+            }
+            if (checkBox10.Checked)
+            {
+                XmlElement elem = doc.CreateElement("column");
+                elem.InnerText = "ReviewID";
+                currentNode.AppendChild(elem);
+            }
+            if (checkBox11.Checked)
+            {
+                XmlElement elem = doc.CreateElement("column");
+                elem.InnerText = "RequirementType";
+                currentNode.AppendChild(elem);
+            }
+            if (checkBox12.Checked)
+            {
+                XmlElement elem = doc.CreateElement("column");
+                elem.InnerText = "Chapter";
+                currentNode.AppendChild(elem);
+            }
+            if (checkBox13.Checked)
+            {
+                XmlElement elem = doc.CreateElement("column");
+                elem.InnerText = "HWPlatform";
+                currentNode.AppendChild(elem);
+            }
+            if (checkBox14.Checked)
+            {
+                XmlElement elem = doc.CreateElement("column");
+                elem.InnerText = "Domain";
+                currentNode.AppendChild(elem);
+            }
+            if (checkBox15.Checked)
+            {
+                XmlElement elem = doc.CreateElement("column");
+                elem.InnerText = "TestedAt";
+                currentNode.AppendChild(elem);
+            }
+            if (checkBox16.Checked)
+            {
+                XmlElement elem = doc.CreateElement("column");
+                elem.InnerText = "ReqBaseline";
+                currentNode.AppendChild(elem);
             }
 
-            try
-            {
-                /* Save the file to the XmlFilePath (the path from where was opened) */
-                listOfRequirementsCopy.Save(mainForm.XmlFilePath);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex);
-            }
+            doc.Save(mainForm.XmlFilePath);
 
+            MessageBox.Show("Filters saved");
         }
     }
 }
