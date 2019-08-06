@@ -20,11 +20,18 @@ namespace ReqM_namespace
         }
 
         private Main mainForm = null;
+        private List<string> images = new List<string>();
+        int currentIndex;
 
         public ImageForm(Form callingForm)
         {
             mainForm = callingForm as Main;
             InitializeComponent();
+
+            label1.Text = "";
+            label2.Text = "";
+            button1.Visible = false;
+            button2.Visible = false;
 
             /* Making form not resizable */
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
@@ -48,7 +55,11 @@ namespace ReqM_namespace
                 textBox1.Font = new Font(textBox1.Font, FontStyle.Bold);
 
                 textBox1.ReadOnly = false;
-                textBox1.Text = mainForm.DGVText;
+
+                string mystring = mainForm.DGVText;
+                mystring = mystring.Replace(System.Environment.NewLine, "<br />");
+
+                textBox1.Text = mystring;
                 string[] words = textBox1.Text.Split(' ');
                 foreach (var word in words)
                 {
@@ -58,17 +69,21 @@ namespace ReqM_namespace
 
                     if (match.ToString() != "")
                     {
-                        pictureBox1.Image = Image.FromFile(mainForm.imgFolderPath + "\\" + word);
-                        pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-                        pictureBox1.MaximumSize = pictureBox1.Image.Size;
-                        pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+                        images.Add(word);
                         pb = true;
                     }
                 }
                 if (pb == false)
                 {
                     pictureBox1.Visible = false;
-                    textBox1.Size = new Size(this.Width-40,this.Height-75);
+                    textBox1.Size = new Size(this.Width - 40, this.Height - 75);
+                }
+                else
+                {
+                    button1.Visible = true;
+                    button2.Visible = true;
+                    currentIndex = 0;
+                    DisplayImage(currentIndex);
                 }
             }
             catch (Exception ex)
@@ -80,7 +95,46 @@ namespace ReqM_namespace
 
         private void ImageForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            
+
+        }
+
+        public void DisplayImage(int index)
+        {
+            pictureBox1.Image = Image.FromFile(mainForm.imgFolderPath + "\\" + images[currentIndex]);
+
+            if (pictureBox1.Image.Width > pictureBox1.ClientSize.Width || pictureBox1.Image.Height > pictureBox1.ClientSize.Height)
+            {
+                pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            }
+            else
+            {
+                pictureBox1.SizeMode = PictureBoxSizeMode.CenterImage;
+            }
+
+            label1.Text = index + 1 + "/" + images.Count;
+            label2.Text = images[index];
+        }
+        private void Button2_Click(object sender, EventArgs e)
+        {
+            if (currentIndex < images.Count - 1)
+            {
+                currentIndex++;
+            }
+            else
+            {
+                currentIndex = 0;
+            }
+            DisplayImage(currentIndex);
+        }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TextBox1_TextChanged(object sender, EventArgs e)
+        {
+            mainForm.saved = false;
         }
     }
 }

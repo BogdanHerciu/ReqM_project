@@ -34,14 +34,21 @@ namespace ReqM_namespace
             this.Location = new Point(X, Y);
         }
 
-        private void TextBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void HeaderForm_Load(object sender, EventArgs e)
         {
-            textBox1.Text = mainForm.listOfRequirements.list_of_settings.ElementAt(0).header.ToString();
+            string mystring = mainForm.listOfRequirements.list_of_settings.ElementAt(0).header.ToString();
+            mystring = mystring.Replace(System.Environment.NewLine, "<br />");
+            textBox1.Text = mystring;
+        }
+
+        private void HeaderForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            mainForm.listOfRequirements.list_of_settings.ElementAt(0).header = textBox1.Text;
+        }
+
+        private void TextBox1_TextChanged(object sender, EventArgs e)
+        {
+            mainForm.saved = false;
         }
     }
 }

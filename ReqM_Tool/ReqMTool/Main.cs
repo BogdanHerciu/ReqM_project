@@ -625,38 +625,6 @@ namespace ReqM_Tool
                     
                     PopulateList();
                     listBox1.DataSource = list1;
-
-                    /* Chapter chart */
-                    foreach (var series in chart2.Series)
-                        series.Points.Clear();
-                    int index = 0;
-                    int[] chapters = new int[listOfRequirements.customValues.chapters.Count];
-
-                    foreach (var c in listOfRequirements.customValues.chapters)
-                    {
-                        foreach (var v in listOfRequirements.Requirements_Dynamic_List)
-                        {
-                            if (v.Chapter.ToString() == c.ToString())
-                                chapters[index]++;
-                        }
-                        chart2.Series["Chapters"].Points.AddXY(c.ToString(), chapters[index]);
-                        index++;
-                    }
-                    /* Status chart */
-                    foreach (var series in chart3.Series)
-                        series.Points.Clear();
-                    int[] stsTable = new int[status.Count];
-                    for (int i = 0; i < status.Count; i++)
-                    {
-                        foreach (var v in listOfRequirements.Requirements_Dynamic_List)
-                        {
-                            if (v.status.ToString() == status[i])
-                            {
-                                stsTable[i]++;
-                            }
-                        }
-                        chart3.Series["Status"].Points.AddXY(status[i].ToString(), stsTable[i]);
-                    }
                 }
                 catch (Exception ex)
                 {
@@ -1199,6 +1167,10 @@ namespace ReqM_Tool
             float countReqFound = 0;
             float coverage = 0;
 
+            /* Reset Pi Chart */
+            foreach (var series in chart1.Series)
+                series.Points.Clear();
+
             string content = string.Empty;
             MatchCollection matches;
 
@@ -1216,6 +1188,7 @@ namespace ReqM_Tool
 
             foreach (string file in Directory.GetFiles(path, "*Software*"))
             {
+                /* REQUIREMENTS CHART */
                 /* Create variable to the root of the xml file. */
                 root_file listOfRequirements = null;
                 /* Create a serializer. */
@@ -1274,9 +1247,54 @@ namespace ReqM_Tool
 
             textBox1.Text = countReq.ToString();
             textBox2.Text = coverage.ToString() + "%";
+            textBox4.Text = countReqFound.ToString();
+
 
             chart1.Series["Series1"].Points.AddXY("Requirements missing", countReq - countReqFound);
             chart1.Series["Series1"].Points.AddXY("Found Requirements", countReqFound);
+
+            chart1.Legends[0].Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
+            chart1.Legends[0].Alignment = System.Drawing.StringAlignment.Center;
+
+            //chart1.Series[1]["Series1"] = "Disabled";
+            //chart1.Series[2]["Series1"] = "Disabled";
+
+            /* Chapter chart */
+            foreach (var series in chart2.Series)
+                series.Points.Clear();
+            int j = 0;
+            int[] chapters = new int[listOfRequirements.customValues.chapters.Count];
+
+            foreach (var c in listOfRequirements.customValues.chapters)
+            {
+                foreach (var v in listOfRequirements.Requirements_Dynamic_List)
+                {
+                    if (v.Chapter.ToString() == c.ToString())
+                        chapters[j]++;
+                }
+                chart2.Series["Chapters"].Points.AddXY(c.ToString(), chapters[j]);
+                j++;
+            }
+            chart2.Legends[0].Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
+            chart2.Legends[0].Alignment = System.Drawing.StringAlignment.Center;
+
+            /* Status chart */
+            foreach (var series in chart3.Series)
+                series.Points.Clear();
+            int[] stsTable = new int[status.Count];
+            for (int i = 0; i < status.Count; i++)
+            {
+                foreach (var v in listOfRequirements.Requirements_Dynamic_List)
+                {
+                    if (v.status.ToString() == status[i])
+                    {
+                        stsTable[i]++;
+                    }
+                }
+                chart3.Series["Status"].Points.AddXY(status[i].ToString(), stsTable[i]);
+            }
+            chart3.Legends[0].Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
+            chart3.Legends[0].Alignment = System.Drawing.StringAlignment.Center;
         }
 
         private void Button2_Click_1(object sender, EventArgs e)
@@ -1353,6 +1371,7 @@ namespace ReqM_Tool
         private void SearchBox_TextChanged(object sender, EventArgs e)
         {
             /* LINKSTO: Req050 */
+            UpdateDT();
            
             if (XmlFilePath != null)
             {
@@ -1434,76 +1453,84 @@ namespace ReqM_Tool
             }
             else
             {
-                // Create an Excel object
-                Microsoft.Office.Interop.Excel.Application excel = new Microsoft.Office.Interop.Excel.Application();
-                //Create workbook object
-                Microsoft.Office.Interop.Excel.Workbook workbook = excel.Workbooks.Add(Type.Missing);
-                //Create worksheet object
-                Microsoft.Office.Interop.Excel.Worksheet worksheet = workbook.ActiveSheet;
-
-                int index = 0;
-                for (int i = 1; i < dataGridView2.Columns.Count + 1; i++)
+                if (dataGridView2.RowCount != 0)
                 {
-                    index++;
-                    worksheet.Cells.ColumnWidth = 20;
-                    worksheet.Cells[5, i] = dataGridView2.Columns[i - 1].HeaderText;
+                    // Create an Excel object
+                    Microsoft.Office.Interop.Excel.Application excel = new Microsoft.Office.Interop.Excel.Application();
+                    //Create workbook object
+                    Microsoft.Office.Interop.Excel.Workbook workbook = excel.Workbooks.Add(Type.Missing);
+                    //Create worksheet object
+                    Microsoft.Office.Interop.Excel.Worksheet worksheet = workbook.ActiveSheet;
+
+                    int index = 0;
+                    for (int i = 1; i < dataGridView2.Columns.Count + 1; i++)
+                    {
+                        index++;
+                        worksheet.Cells.ColumnWidth = 20;
+                        worksheet.Cells[5, i] = dataGridView2.Columns[i - 1].HeaderText;
+                    }
+                    for (int i = 0; i < dataGridView2.Rows.Count; i++)
+                    {
+                        for (int j = 0; j < dataGridView2.Columns.Count; j++)
+                        {
+                            if (dataGridView2.Rows[i].Cells[j].Value != null)
+                                worksheet.Cells[i + 6, j + 1] = dataGridView2.Rows[i].Cells[j].Value.ToString();
+                        }
+                    }
+
+                    /* NTT logo */
+                    var projectPath = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName;
+                    string filePath = Path.Combine(projectPath, "Resources");
+                    worksheet.Shapes.AddPicture(filePath + "\\NTT.png", MsoTriState.msoFalse, MsoTriState.msoCTrue, 0, 3, 300, 57);
+
+                    /* Date&Project */
+                    worksheet.Cells[2, 4] = "R.A.D.U. - Requirements And Design Utility";
+                    worksheet.Cells[2, 4].HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignLeft;
+                    worksheet.Cells[3, 4] = DateTime.Now.ToString("dddd, dd MMMM yyyy");
+                    worksheet.Cells[3, 4].HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignLeft;
+
+                    /* Headings color */
+                    var columnHeadingsRange = excel.Range[excel.Cells[5, 1], excel.Cells[5, index]];
+                    columnHeadingsRange.Interior.Color = Microsoft.Office.Interop.Excel.XlRgbColor.rgbSkyBlue;
+
+                    /* Cells align - centered */
+                    worksheet.Cells.Style.VerticalAlignment = Microsoft.Office.Interop.Excel.XlVAlign.xlVAlignCenter;
+                    worksheet.Cells.Style.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+
+                    /* Title (name of the XML file) */
+                    string XmlFileName = XmlFilePath.Substring(XmlFilePath.LastIndexOf("\\") + 1);
+                    XmlFileName = XmlFileName.Substring(0, XmlFileName.LastIndexOf("."));
+                    XmlFileName += "_Report";
+
+                    SaveFileDialog sfd = new SaveFileDialog();
+                    sfd.Filter = "Excel|*.xlsx";
+                    sfd.FileName = XmlFileName;
+
+                    /* open File dialog where to save the file */
+                    if (sfd.ShowDialog() == DialogResult.OK)
+                    {
+                        try
+                        {
+                            //Save the workbook
+                            workbook.SaveAs(sfd.FileName);
+
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex);
+                        }
+                    }
+
+                    //Close the Workbook
+                    workbook.Close();
+
+                    // Finally Quit the Application
+                    ((Microsoft.Office.Interop.Excel._Application)excel).Quit();
                 }
-                for (int i = 0; i < dataGridView2.Rows.Count; i++)
+                else
                 {
-                    for (int j = 0; j < dataGridView2.Columns.Count; j++)
-                    {
-                        worksheet.Cells[i + 6, j + 1] = dataGridView2.Rows[i].Cells[j].Value.ToString();
-                    }
+                    MessageBox.Show("Make coverage first!");
                 }
-
-                /* NTT logo */
-                var projectPath = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName;
-                string filePath = Path.Combine(projectPath, "Resources");
-                worksheet.Shapes.AddPicture(filePath + "\\NTT.png", MsoTriState.msoFalse, MsoTriState.msoCTrue, 0, 3, 300, 57);
-
-                /* Date&Project */
-                worksheet.Cells[2, 4] = "R.A.D.U. - Requirements And Design Utility";
-                worksheet.Cells[2, 4].HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignLeft;
-                worksheet.Cells[3, 4] = DateTime.Now.ToString("dddd, dd MMMM yyyy");
-                worksheet.Cells[3, 4].HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignLeft;
-
-                /* Headings color */
-                var columnHeadingsRange = excel.Range[excel.Cells[5, 1], excel.Cells[5, index]];
-                columnHeadingsRange.Interior.Color = Microsoft.Office.Interop.Excel.XlRgbColor.rgbSkyBlue;
-
-                /* Cells align - centered */
-                worksheet.Cells.Style.VerticalAlignment = Microsoft.Office.Interop.Excel.XlVAlign.xlVAlignCenter;
-                worksheet.Cells.Style.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
-
-                /* Title (name of the XML file) */
-                string XmlFileName = XmlFilePath.Substring(XmlFilePath.LastIndexOf("\\") + 1);
-                XmlFileName = XmlFileName.Substring(0, XmlFileName.LastIndexOf("."));
-                XmlFileName += "_Report";
-
-                SaveFileDialog sfd = new SaveFileDialog();
-                sfd.Filter = "Excel|*.xlsx";
-                sfd.FileName = XmlFileName;
-
-                /* open File dialog where to save the file */
-                if (sfd.ShowDialog() == DialogResult.OK)
-                {
-                    try
-                    {
-                        //Save the workbook
-                        workbook.SaveAs(sfd.FileName);
-
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine(ex);
-                    }
-                }
-
-                //Close the Workbook
-                workbook.Close();
-
-                // Finally Quit the Application
-                ((Microsoft.Office.Interop.Excel._Application)excel).Quit();
             }
         }
 
@@ -1836,6 +1863,7 @@ namespace ReqM_Tool
                 listOfRequirements.customValues.hwPlatforms.Add(elem);
             }
             doc.Save(XmlFilePath);
+            //doc.
             dataGridView1.Refresh(); // todo
         }
 
@@ -1983,6 +2011,16 @@ namespace ReqM_Tool
                 return null;
             }
             
+        }
+
+        private void DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void TabPage2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 

@@ -39,10 +39,10 @@
   </document_settings>
   <custom_values>
     <Chapters>
-      <chapter>0</chapter>
       <chapter>1</chapter>
       <chapter>2</chapter>
       <chapter>3</chapter>
+      <chapter>4</chapter>
     </Chapters>
     <HWPlatform>
       <value>HWPlatform_1</value>
