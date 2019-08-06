@@ -1345,7 +1345,12 @@ namespace ReqM_Tool
                             }
                         }
                     }
+                    /* Refresh the Grid after the document is Baselined. */
+                    dataGridView1.Refresh();
+
+                    /* The file is not saved! */
                     saved = false;
+                    
                 }
             }
 
