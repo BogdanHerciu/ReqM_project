@@ -202,6 +202,7 @@ namespace ReqM_Tool
             comboBox1.Items.Add("HWPlatform");
             comboBox1.SelectedIndex = 0;
             comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
+
         }
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -347,6 +348,7 @@ namespace ReqM_Tool
             textBoxColumn.DataPropertyName = "id";
             textBoxColumn.Name = "id";
             textBoxColumn.HeaderText = "id";
+            textBoxColumn.ReadOnly = true;
             dataGridView1.Columns.Add(textBoxColumn);
 
             DataGridViewTextBoxColumn textBoxColumn2 = new DataGridViewTextBoxColumn();
@@ -532,6 +534,7 @@ namespace ReqM_Tool
             dataGridView1.Columns.Clear();
             dataGridView1.Refresh();
             ClearTreeView();
+            saved = true;
         }
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
@@ -622,6 +625,38 @@ namespace ReqM_Tool
                     
                     PopulateList();
                     listBox1.DataSource = list1;
+
+                    /* Chapter chart */
+                    foreach (var series in chart2.Series)
+                        series.Points.Clear();
+                    int index = 0;
+                    int[] chapters = new int[listOfRequirements.customValues.chapters.Count];
+
+                    foreach (var c in listOfRequirements.customValues.chapters)
+                    {
+                        foreach (var v in listOfRequirements.Requirements_Dynamic_List)
+                        {
+                            if (v.Chapter.ToString() == c.ToString())
+                                chapters[index]++;
+                        }
+                        chart2.Series["Chapters"].Points.AddXY(c.ToString(), chapters[index]);
+                        index++;
+                    }
+                    /* Status chart */
+                    foreach (var series in chart3.Series)
+                        series.Points.Clear();
+                    int[] stsTable = new int[status.Count];
+                    for (int i = 0; i < status.Count; i++)
+                    {
+                        foreach (var v in listOfRequirements.Requirements_Dynamic_List)
+                        {
+                            if (v.status.ToString() == status[i])
+                            {
+                                stsTable[i]++;
+                            }
+                        }
+                        chart3.Series["Status"].Points.AddXY(status[i].ToString(), stsTable[i]);
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -744,6 +779,33 @@ namespace ReqM_Tool
                 }
             }
         }
+		        private void InsertReq(int index)
+        {
+            string newID = GenerateID();
+            if (newID != null)
+            {
+                listOfRequirements.Requirements_Dynamic_List.Insert(index, new RequirementItem()
+                {
+                    id = newID,                                /* default text for the id */
+                    description = "Please enter the description of the requirement",    /* default text for the description */
+                    status = "Draft",                         /* default text for the Status */
+                    CreatedBy = "Author of the requirement",  /* default text for the CreatedBy */
+                    needscoverage = "To be linked",           /* default text for the needscoverage */
+                    providescoverage = "To be linked",        /* default text for the providescoverage */
+                    version = "0.1",                          /* default text for the version */
+                    SafetyRelevant = "N/A",                   /* default text for the SafetyRelevant */
+                    ChangeRequest = "Change Request ID",
+                    ReviewID = "Review Ticket ID",
+                    RequirementType = "Template",
+                    Chapter = listOfRequirements.customValues.chapters.ElementAt(0), //"first element from the list",
+                    HWPlatform = listOfRequirements.customValues.hwPlatforms.ElementAt(0),
+                    Domain = "N/A",
+                    TestedAt = "N/A",
+                    ReqBaseline = listOfRequirements.list_of_settings[0].Baseline,
+
+                });
+            } 
+        }
 
         private void addRowToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -756,48 +818,57 @@ namespace ReqM_Tool
             {
                 /* make sure that AllowUserToAddRows is set to 'true' */
                 dataGridView1.AllowUserToAddRows = true;
-                if (this.dataGridView1.SelectedRows.Count > 0)
+
+                if (listOfRequirements.Requirements_Dynamic_List.Count > 0)
                 {
-                    /* get the selected row */
-                    int selected_row = (this.dataGridView1.SelectedRows[0].Index);
-
-
-                    /* INSERT AFTER: add a new element to Requirements_Dynamic_List "database" */
-                    listOfRequirements.Requirements_Dynamic_List.Insert(selected_row + 1, new RequirementItem()
+                    if (this.dataGridView1.SelectedRows.Count > 0)
                     {
-                        id = "id",                                /* default text for the id */
-                        description = "Please enter the description of the requirement",    /* default text for the description */
-                        status = "Draft",                         /* default text for the Status */
-                        CreatedBy = "Author of the requirement",  /* default text for the CreatedBy */
-                        needscoverage = "To be linked",           /* default text for the needscoverage */
-                        providescoverage = "To be linked",        /* default text for the providescoverage */
-                        version = "0.1",                          /* default text for the version */
-                        SafetyRelevant = "N/A",                   /* default text for the SafetyRelevant */
-                        ChangeRequest = "Change Request ID",
-                        ReviewID = "Review Ticket ID",
-                        RequirementType = "Template",
-                        Chapter = listOfRequirements.customValues.chapters.ElementAt(0), //"first element from the list",
-                        HWPlatform = listOfRequirements.customValues.hwPlatforms.ElementAt(0),
-                        Domain = "N/A",
-                        TestedAt = "N/A",
-                        ReqBaseline = listOfRequirements.list_of_settings[0].Baseline,
+                        /* get the selected row */
+                        int selected_row = (this.dataGridView1.SelectedRows[0].Index);
 
-                    });
 
-                    /* refresh the dataGridView */
-                    dataGridView1.DataSource = null;
-                    dataGridView1.DataSource = listOfRequirements.Requirements_Dynamic_List;
+                        /* INSERT AFTER: add a new element to Requirements_Dynamic_List "database" */
+                        InsertReq(selected_row + 1);
 
-                    saved = false;
+                        /* refresh the dataGridView */
+                        dataGridView1.DataSource = null;
+                        dataGridView1.DataSource = listOfRequirements.Requirements_Dynamic_List;
+
+                        /* add req to TreeView */
+                        RequirementItem item = listOfRequirements.Requirements_Dynamic_List[selected_row + 1];
+                        AddTreeNode(item.id, item.Chapter);
+
+                        saved = false;
+                        CheckNeedscoverage();
+                        CheckBaseline();
+                        UpdateDT();
+                    }
+                    else
+                    {
+                        MessageBox.Show("No row is selected for adding a new item");
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("No row is selected for adding a new item");
-                }
+                    InsertReq(0);
+
+                    if (listOfRequirements.Requirements_Dynamic_List.Count > 0)
+                    {
+                        /* refresh the dataGridView */
+                        dataGridView1.DataSource = null;
+                        dataGridView1.DataSource = listOfRequirements.Requirements_Dynamic_List;
+
+                        /* add req to TreeView */
+                        RequirementItem item = listOfRequirements.Requirements_Dynamic_List[0];
+                        AddTreeNode(item.id, item.Chapter);
+
+                        saved = false;
+                        CheckNeedscoverage();
+                        CheckBaseline();
+                        UpdateDT();
+                    }        
+                }           
             }
-            CheckNeedscoverage();
-            CheckBaseline();
-            UpdateDT();
         }
 
         private void deleteRowToolStripMenuItem_Click(object sender, EventArgs e)
@@ -819,8 +890,13 @@ namespace ReqM_Tool
 
                     RequirementItem item = FindReq(id, listOfRequirements);
 
+                    /* Delete req from TreeView */
                     if(FindNode(id) != null)
                         DeleteTreeNode(item.id, item.Chapter);
+
+                    /* If id number is lastID, set lastID - 1*/
+                    if (item.id.Substring(item.id.LastIndexOf('_')+1).Equals(listOfRequirements.list_of_settings[0].lastID))
+                        listOfRequirements.list_of_settings[0].lastID = (Convert.ToInt32(listOfRequirements.list_of_settings[0].lastID) - 1).ToString();
 
                     /* remove the row from the List */
                     listOfRequirements.Requirements_Dynamic_List.Remove(item);
@@ -1469,37 +1545,48 @@ namespace ReqM_Tool
                 /* make sure that AllowUserToAddRows is set to 'true' */
                 dataGridView1.AllowUserToAddRows = true;
 
-                /* get the selected row */
-                int selected_row = (this.dataGridView1.SelectedRows[0].Index);
-
-                /* INSERT AFTER: add a new element to Requirements_Dynamic_List "database" */
-                
-                RequirementItem item = listOfRequirements.Requirements_Dynamic_List[selected_row];
-                RequirementItem newItem = new RequirementItem()
+                if (dataGridView1.SelectedRows.Count > 0)
                 {
-                    id = item.id,
-                    description = item.description, 
-                    status = item.status,
-                    CreatedBy = item.CreatedBy,
-                    needscoverage = item.needscoverage,
-                    providescoverage = item.providescoverage,
-                    version = item.version,
-                    SafetyRelevant = item.SafetyRelevant,
-                    ChangeRequest = item.ChangeRequest,
-                    ReviewID = item.ReviewID,
-                    RequirementType = item.RequirementType,
-                    Chapter = item.Chapter,
-                    HWPlatform = item.HWPlatform,
-                    Domain = item.Domain,
-                    TestedAt = item.TestedAt,
-                    ReqBaseline = item.ReqBaseline
+                    /* get the selected row */
+                    int selected_row = (this.dataGridView1.SelectedRows[0].Index);
 
-                };
-                listOfRequirements.Requirements_Dynamic_List.Insert(selected_row + 1, newItem);
+                    /* INSERT AFTER: add a new element to Requirements_Dynamic_List "database" */
 
-                /* refresh the dataGridView */
-                dataGridView1.DataSource = null;
-                dataGridView1.DataSource = listOfRequirements.Requirements_Dynamic_List;
+                    RequirementItem item = listOfRequirements.Requirements_Dynamic_List[selected_row];
+                    RequirementItem newItem = new RequirementItem()
+                    {
+                        id = GenerateID(),
+                        description = item.description,
+                        status = item.status,
+                        CreatedBy = item.CreatedBy,
+                        needscoverage = item.needscoverage,
+                        providescoverage = item.providescoverage,
+                        version = item.version,
+                        SafetyRelevant = item.SafetyRelevant,
+                        ChangeRequest = item.ChangeRequest,
+                        ReviewID = item.ReviewID,
+                        RequirementType = item.RequirementType,
+                        Chapter = item.Chapter,
+                        HWPlatform = item.HWPlatform,
+                        Domain = item.Domain,
+                        TestedAt = item.TestedAt,
+                        ReqBaseline = item.ReqBaseline
+
+                    };
+                    listOfRequirements.Requirements_Dynamic_List.Insert(selected_row + 1, newItem);
+
+                    /* refresh the dataGridView */
+                    dataGridView1.DataSource = null;
+                    dataGridView1.DataSource = listOfRequirements.Requirements_Dynamic_List;
+
+                    /* add req to TreeView */
+                    AddTreeNode(newItem.id, newItem.Chapter);
+                }
+                else
+                {
+                    MessageBox.Show("No row selected");
+                }
+                
             }
             CheckNeedscoverage();
             CheckBaseline();
@@ -1508,13 +1595,15 @@ namespace ReqM_Tool
 
         private void DataGridView1_MouseDown_1(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Right)
+            if (e.Button == MouseButtons.Right && dataGridView1.SelectedRows != null)
             {
                 var hti = dataGridView1.HitTest(e.X, e.Y);
                 dataGridView1.ClearSelection();
-                dataGridView1.Rows[hti.RowIndex].Selected = true;
+                if (hti.RowIndex > -1)
+                    dataGridView1.Rows[hti.RowIndex].Selected = true;
+                UpdateDT();
             }
-            UpdateDT();
+           
         }
 
         private void Main_FormClosing(object sender, FormClosingEventArgs e)
@@ -1578,19 +1667,22 @@ namespace ReqM_Tool
         private void Button4_Click(object sender, EventArgs e)
         {
             /* DELETE button */
-            if (listBox1.Items.Count > 0)
+            if (listBox1.SelectedIndex >= 0)
             {
-                if (comboBox1.SelectedIndex == 0)
+                if (listBox1.Items.Count > 0)
                 {
-                    list1.RemoveAt(listBox1.SelectedIndex);
-                    listBox1.DataSource = null;
-                    listBox1.DataSource = list1;
-                }
-                if (comboBox1.SelectedIndex == 1)
-                {
-                    list2.RemoveAt(listBox1.SelectedIndex);
-                    listBox1.DataSource = null;
-                    listBox1.DataSource = list2;
+                    if (comboBox1.SelectedIndex == 0)
+                    {
+                        list1.RemoveAt(listBox1.SelectedIndex);
+                        listBox1.DataSource = null;
+                        listBox1.DataSource = list1;
+                    }
+                    if (comboBox1.SelectedIndex == 1)
+                    {
+                        list2.RemoveAt(listBox1.SelectedIndex);
+                        listBox1.DataSource = null;
+                        listBox1.DataSource = list2;
+                    }
                 }
             }
         }
@@ -1598,22 +1690,57 @@ namespace ReqM_Tool
         private void Button3_Click_2(object sender, EventArgs e)
         {
             /* ADD button */
-            if (textBox3.Text != String.Empty)
+            bool exists = false;
+            foreach (var v in listBox1.Items)
             {
-                if (comboBox1.SelectedIndex == 0)
-                {
-                    list1.Insert(listBox1.SelectedIndex + 1, textBox3.Text);
-                    listBox1.DataSource = null;
-                    listBox1.DataSource = list1;
-                }
-                if (comboBox1.SelectedIndex == 1)
-                {
-                    list2.Insert(listBox1.SelectedIndex + 1, textBox3.Text);
-                    listBox1.DataSource = null;
-                    listBox1.DataSource = list2;
-                }
+                if (textBox3.Text == v.ToString())
+                    exists = true;
             }
-            textBox3.Text = null;
+            
+            if (listBox1.SelectedIndex >= 0)
+            {
+                if (textBox3.Text != String.Empty && exists == false)
+                {
+                    if (comboBox1.SelectedIndex == 0)
+                    {
+                        list1.Insert(listBox1.SelectedIndex + 1, textBox3.Text);
+                        listBox1.DataSource = null;
+                        listBox1.DataSource = list1;;
+                    }
+                    if (comboBox1.SelectedIndex == 1 && exists == false)
+                    {
+                        list2.Insert(listBox1.SelectedIndex + 1, textBox3.Text);
+                        listBox1.DataSource = null;
+                        listBox1.DataSource = list2;
+                    }
+                }
+                else if (exists == true)
+                    MessageBox.Show("Element already exists");
+                textBox3.Text = null;
+            }
+            else
+            {               
+                if (textBox3.Text != String.Empty)
+                {
+                    if (listBox1.Items.Count != 0)
+                        listBox1.SelectedIndex = listBox1.Items.Count - 1;
+                    if (comboBox1.SelectedIndex == 0 && exists == false)
+                    {
+                        list1.Insert(listBox1.SelectedIndex + 1, textBox3.Text);
+                        listBox1.DataSource = null;
+                        listBox1.DataSource = list1;
+                    }
+                    if (comboBox1.SelectedIndex == 1 && exists == false)
+                    {
+                        list2.Insert(listBox1.SelectedIndex + 1, textBox3.Text);
+                        listBox1.DataSource = null;
+                        listBox1.DataSource = list2;
+                    }
+                }
+                else if (exists == true)
+                    MessageBox.Show("Element already exists");
+                textBox3.Text = null;
+            }
         }
 
         public void GenerateTreeView()
@@ -1674,6 +1801,189 @@ namespace ReqM_Tool
             }
             return null;
         }
+
+        private void Button5_Click(object sender, EventArgs e)
+        {
+            /* SAVE button */
+            XmlDocument doc = new XmlDocument();
+            doc.Load(XmlFilePath);
+
+            /* Clear all Columns child nodes */
+            XmlNode chapterNode = doc.SelectSingleNode("root_file/custom_values/Chapters");
+            chapterNode.RemoveAll();
+
+            XmlNode hwpNode = doc.SelectSingleNode("root_file/custom_values/HWPlatform");
+            hwpNode.RemoveAll();
+
+            XmlElement currentNode1 = (XmlElement)doc.SelectSingleNode("root_file/custom_values/Chapters");
+            XmlElement currentNode2 = (XmlElement)doc.SelectSingleNode("root_file/custom_values/HWPlatform");
+
+            listOfRequirements.customValues.chapters.Clear();
+            listOfRequirements.customValues.hwPlatforms.Clear();
+
+            foreach (string elem in list1)
+            {
+                XmlElement elm = doc.CreateElement("chapter");
+                elm.InnerText = elem;
+                currentNode1.AppendChild(elm);
+                listOfRequirements.customValues.chapters.Add(elem);
+            }
+            foreach (string elem in list2)
+            {
+                XmlElement elm = doc.CreateElement("value");
+                elm.InnerText = elem;
+                currentNode2.AppendChild(elm);
+                listOfRequirements.customValues.hwPlatforms.Add(elem);
+            }
+            doc.Save(XmlFilePath);
+            dataGridView1.Refresh(); // todo
+        }
+
+        private void Button6_Click(object sender, EventArgs e)
+        {
+            if (XmlFilePath != null)
+            {
+                if ((Application.OpenForms["HeaderForm"] as Form) == null)
+                {
+                    HeaderForm HeaderForm = new HeaderForm(this);
+                    HeaderForm.Show();
+                }
+            }
+            else
+                MessageBox.Show(NoFileOpen);
+        }
+
+        private void TextBox3_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        public string imgUrl;
+        public string imgFolderPath;
+        private void InsertImagesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            imgFolderPath = getImagePath();
+
+            int index = dataGridView1.CurrentCell.ColumnIndex;
+            if (dataGridView1.Columns[index].HeaderText == "description")
+            {
+                OpenFileDialog open = new OpenFileDialog();
+                open.InitialDirectory = imgFolderPath;
+                open.Filter = "Image Files(*.jpg; .jpeg; .gif; .bmp, .png)|*.jpg; .jpeg; .gif; .bmp; .png";
+
+                if (open.ShowDialog() == DialogResult.OK)
+                {
+                    // display image in picture box  
+                    //Image img = new Bitmap(open.FileName);
+                    ///dataGridView1.
+                    imgUrl = open.FileName;
+                    string text = dataGridView1.CurrentCell.Value.ToString();
+                    string output = imgUrl.Substring(imgUrl.LastIndexOf('\\') + 1);
+                    text += " " + output;
+                    dataGridView1.CurrentCell.Value = text;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Select Description Cell");
+            }
+        }
+        public string getImagePath()
+        {
+            string imgFolderPath = XmlFilePath;
+            for (int i = 0; i < 2; ++i)
+            {
+                imgFolderPath = imgFolderPath.Substring(0, imgFolderPath.LastIndexOf("\\"));
+            }
+            imgFolderPath += "\\img";
+            return imgFolderPath;
+        }
+
+        public string DGVText { get; set; }
+        private void DataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataGridView1.Columns[e.ColumnIndex].HeaderText == "description")
+            {
+                string imageurl = dataGridView1.CurrentRow.Cells[dataGridView1.Columns["description"].Index].Value.ToString();
+                DGVText = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
+                ImageForm myForm = new ImageForm(this);
+                myForm.ShowDialog();
+            }
+        }
+
+        private void InsertImageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            imgFolderPath = getImagePath();
+
+            int index = dataGridView1.CurrentCell.ColumnIndex;
+            if (dataGridView1.Columns[index].HeaderText == "description")
+            {
+                OpenFileDialog open = new OpenFileDialog();
+                open.InitialDirectory = imgFolderPath;
+                open.Filter = "Image Files(*.jpg; *.jpeg; *.gif; *.bmp, *.png)|*.jpg; *.jpeg; *.gif; *.bmp; *.png";
+
+                if (open.ShowDialog() == DialogResult.OK)
+                {
+                    // display image in picture box  
+                    //Image img = new Bitmap(open.FileName);
+                    ///dataGridView1.
+                    imgUrl = open.FileName;
+                    string text = dataGridView1.CurrentCell.Value.ToString();
+                    string output = imgUrl.Substring(imgUrl.LastIndexOf('\\') + 1);
+                    text += " " + output;
+                    dataGridView1.CurrentCell.Value = text;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Select Description Cell");
+            }
+        }
+		
+		public string GenerateID()
+        {
+            /* Generate the first id when there are no requirements */
+            if (listOfRequirements.Requirements_Dynamic_List.Count == 0)
+            {
+                //generate first id??
+                return GenerateFirstID();
+            }
+            else
+            {
+                string id = listOfRequirements.Requirements_Dynamic_List[0].id;
+                id = id.Substring(0, id.LastIndexOf('_') + 1);
+                int lastID = Convert.ToInt32(listOfRequirements.list_of_settings[0].lastID) + 1;
+                listOfRequirements.list_of_settings[0].lastID = lastID.ToString();
+                id += lastID.ToString();
+                return id;
+            }
+        }
+		
+		public string GenerateFirstID()
+        {
+            if (listOfRequirements.list_of_settings[0].reqType != null)
+            {
+                string id = "";
+                string type = listOfRequirements.list_of_settings[0].reqType;
+                if (type.Equals("SW"))
+                {
+                    id = "SWRS_0";
+                    listOfRequirements.list_of_settings[0].lastID = "0";
+                }
+                else if (type.Equals("SYS"))
+                {
+                    id = "SYSRS_0";
+                    listOfRequirements.list_of_settings[0].lastID = "0";
+                }
+                return id;
+            }
+            else
+            {
+                MessageBox.Show("Please set ReqType in XML");
+                return null;
+            }
+            
+        }
     }
 
     /* *******************/
@@ -1697,6 +2007,10 @@ namespace ReqM_Tool
         public List<string> columns { get; set; }
         [System.Xml.Serialization.XmlElement("DocumentIntro")]
         public string header { get; set; }
+        [System.Xml.Serialization.XmlElement("ReqType")]
+        public string reqType { get; set; }
+        [System.Xml.Serialization.XmlElement("LastID")]
+        public string lastID { get; set; }
     }
 
     public class CustomValues

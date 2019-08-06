@@ -35,7 +35,7 @@ namespace ReqM_namespace
             mainForm = callingForm as Main;
             InitializeComponent();
 
-            /* Making the form not resizable */
+            /* Making form not resizable */
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
 
             /* Filter Form start position */

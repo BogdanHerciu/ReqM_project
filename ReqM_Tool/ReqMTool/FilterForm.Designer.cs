@@ -60,9 +60,9 @@
             this.checkBox14 = new System.Windows.Forms.CheckBox();
             this.checkBox15 = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.checkBox16 = new System.Windows.Forms.CheckBox();
-            this.label16 = new System.Windows.Forms.Label();
             this.saveBtn = new System.Windows.Forms.Button();
+            this.label16 = new System.Windows.Forms.Label();
+            this.checkBox16 = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -359,14 +359,15 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Column";
             // 
-            // checkBox16
+            // saveBtn
             // 
-            this.checkBox16.AutoSize = true;
-            this.checkBox16.Location = new System.Drawing.Point(304, 185);
-            this.checkBox16.Name = "checkBox16";
-            this.checkBox16.Size = new System.Drawing.Size(15, 14);
-            this.checkBox16.TabIndex = 7;
-            this.checkBox16.UseVisualStyleBackColor = true;
+            this.saveBtn.Location = new System.Drawing.Point(244, 243);
+            this.saveBtn.Name = "saveBtn";
+            this.saveBtn.Size = new System.Drawing.Size(75, 23);
+            this.saveBtn.TabIndex = 35;
+            this.saveBtn.Text = "Save filters";
+            this.saveBtn.UseVisualStyleBackColor = true;
+            this.saveBtn.Click += new System.EventHandler(this.Button1_Click_1);
             // 
             // label16
             // 
@@ -377,15 +378,14 @@
             this.label16.TabIndex = 8;
             this.label16.Text = "Req. baseline:";
             // 
-            // saveBtn
+            // checkBox16
             // 
-            this.saveBtn.Location = new System.Drawing.Point(244, 243);
-            this.saveBtn.Name = "saveBtn";
-            this.saveBtn.Size = new System.Drawing.Size(75, 23);
-            this.saveBtn.TabIndex = 35;
-            this.saveBtn.Text = "Save filters";
-            this.saveBtn.UseVisualStyleBackColor = true;
-            this.saveBtn.Click += new System.EventHandler(this.Button1_Click_1);
+            this.checkBox16.AutoSize = true;
+            this.checkBox16.Location = new System.Drawing.Point(304, 185);
+            this.checkBox16.Name = "checkBox16";
+            this.checkBox16.Size = new System.Drawing.Size(15, 14);
+            this.checkBox16.TabIndex = 7;
+            this.checkBox16.UseVisualStyleBackColor = true;
             // 
             // FilterForm
             // 
@@ -423,6 +423,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox1);
+            this.MinimizeBox = false;
             this.Name = "FilterForm";
             this.Text = "Filter";
             this.Load += new System.EventHandler(this.FilterForm_Load);
