@@ -37,7 +37,7 @@ namespace ReqM_Tool
         /* Data Table */
         DataTable dt = new DataTable();
         /* If file is saved => true */
-        public bool saved = true;
+        public bool saved { get; set; } = true;
 
         /* "No File has been open" Text Box. */
         public string NoFileOpen { get; } = "No file has been opened!";
@@ -74,16 +74,12 @@ namespace ReqM_Tool
             tested = new List<string> { "N/A", "SYS.5", "SYS.4", "SWE.6", "SWE.5", "SWE.4", "DEV Test/Review" };
             type = new List<string> { "Description", "Technical Requirement", "Project Requirement", "Functional Requirement", "Non-Functional Requirement", "Template" };
             dataGridView1.AutoGenerateColumns = false;
+            fileLabel.Text = "";
         }
 
         public DataGridView dgv
         {
             get { return dataGridView1; }
-        }
-
-        private void AddColumnToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
         }
 
         /* Method called when a cell is modified */
@@ -535,6 +531,7 @@ namespace ReqM_Tool
             dataGridView1.Refresh();
             ClearTreeView();
             saved = true;
+            fileLabel.Text = "";
         }
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
@@ -595,10 +592,19 @@ namespace ReqM_Tool
                     /* dezerialize the data */
                     listOfRequirements = (root_file)serializer.Deserialize(reader);
                     reader.Close();
+                   
+                    /* if list is empty add default value */
+                    if (listOfRequirements.Requirements_Dynamic_List.Count == 0)
+                    {
+                        InsertReq(0);
+                    }
 
                     /* add the data into the table */
                     CreateDataGridView();
                     dataGridView1.DataSource = listOfRequirements.Requirements_Dynamic_List;
+
+                    /* default columns to display */
+                    DisplayDefaultColumns();
 
                     /* Clears DataTable */
                     dt.Columns.Clear();
@@ -606,12 +612,11 @@ namespace ReqM_Tool
 
                     /* Clears TreeView */
                     ClearTreeView();
-
-                    /* default columns to display */
-                    DisplayDefaultColumns();
-
                     /* generate TreeView */
                     GenerateTreeView();
+
+                    /* set file name label */
+                    fileLabel.Text = XmlFilePath.Substring(XmlFilePath.LastIndexOf("\\") + 1);
 
                     /* add event for Cell value changed */
                     dataGridView1.CellValueChanged -= dataGridView1_CellValueChanged;
@@ -785,7 +790,7 @@ namespace ReqM_Tool
             else
             {
                 /* make sure that AllowUserToAddRows is set to 'true' */
-                dataGridView1.AllowUserToAddRows = true;
+                //dataGridView1.AllowUserToAddRows = true;
 
                 if (listOfRequirements.Requirements_Dynamic_List.Count > 0)
                 {
@@ -1394,17 +1399,25 @@ namespace ReqM_Tool
                     columns = columns.Substring(0, columns.Length - 3);
                     dv.RowFilter = string.Format(columns, searchBox.Text);
                     dataGridView1.DataSource = dv.ToTable();             
-                    CheckBaseline();
-                    CheckNeedscoverage();
                 }
             }
         }
 
         private void SearchBox_Click(object sender, EventArgs e)
-    {
-        if (searchBox.Text == srchBoxText)
-            searchBox.Text = "";
-    }
+        {
+            if (searchBox.Text == srchBoxText)
+            {
+                searchBox.Text = "";
+
+                foreach (DataGridViewColumn column in dataGridView1.Columns)
+                {
+                    if (column.HeaderText != "id")
+                        column.ReadOnly = true;
+                }
+
+                dataGridView1.ContextMenuStrip = null;
+            }
+        }
 
         private void SearchBox_Leave(object sender, EventArgs e)
         {
@@ -1412,6 +1425,16 @@ namespace ReqM_Tool
             {
                 searchBox.Text = srchBoxText;
                 dataGridView1.DataSource = listOfRequirements.Requirements_Dynamic_List;
+
+                foreach (DataGridViewColumn column in dataGridView1.Columns)
+                {
+                    if (column.HeaderText != "id")
+                        column.ReadOnly = false;
+                }
+                dataGridView1.ContextMenuStrip = contextMenuStrip4;
+
+                CheckBaseline();
+                CheckNeedscoverage();
             }
         }
 
@@ -1796,9 +1819,22 @@ namespace ReqM_Tool
         {
             if (e.Node.Parent != null)
             {
-                dataGridView1.DataSource = listOfRequirements.Requirements_Dynamic_List;
-                CheckBaseline();
-                CheckNeedscoverage();
+                if (searchBox.Text != " Search")
+                {
+                    searchBox.Text = srchBoxText;
+                    dataGridView1.DataSource = listOfRequirements.Requirements_Dynamic_List;
+
+                    foreach (DataGridViewColumn column in dataGridView1.Columns)
+                    {
+                        if (column.HeaderText != "id")
+                            column.ReadOnly = false;
+                    }
+                    dataGridView1.ContextMenuStrip = contextMenuStrip4;
+          
+                    CheckBaseline();
+                    CheckNeedscoverage();
+                }
+                
 
                 int index = FindReqIndex(e.Node.Text, listOfRequirements);
                 if (index > -1)
@@ -1868,7 +1904,6 @@ namespace ReqM_Tool
                 listOfRequirements.customValues.hwPlatforms.Add(elem);
             }
             doc.Save(XmlFilePath);
-            //doc.
             dataGridView1.Refresh(); // todo
         }
 
@@ -1907,8 +1942,6 @@ namespace ReqM_Tool
                 if (open.ShowDialog() == DialogResult.OK)
                 {
                     // display image in picture box  
-                    //Image img = new Bitmap(open.FileName);
-                    ///dataGridView1.
                     imgUrl = open.FileName;
                     string text = dataGridView1.CurrentCell.Value.ToString();
                     string output = imgUrl.Substring(imgUrl.LastIndexOf('\\') + 1);
@@ -1935,7 +1968,7 @@ namespace ReqM_Tool
         public string DGVText { get; set; }
         private void DataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dataGridView1.Columns[e.ColumnIndex].HeaderText == "description")
+            if (e.ColumnIndex > -1 && dataGridView1.Columns[e.ColumnIndex].HeaderText == "description")
             {
                 string imageurl = dataGridView1.CurrentRow.Cells[dataGridView1.Columns["description"].Index].Value.ToString();
                 DGVText = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
