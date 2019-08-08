@@ -614,6 +614,12 @@ namespace ReqM_Tool
                     /* dezerialize the data */
                     listOfRequirements = (root_file)serializer.Deserialize(reader);
                     reader.Close();
+                   
+                    /* if list is empty add default value */
+                    if (listOfRequirements.Requirements_Dynamic_List.Count == 0)
+                    {
+                        InsertReq(0);
+                    }
 
                     /* if list is empty add default value */
                     if (listOfRequirements.Requirements_Dynamic_List.Count == 0)
@@ -640,6 +646,9 @@ namespace ReqM_Tool
                     ClearTreeView();
                     /* generate TreeView */
                     GenerateTreeView();                    
+
+                    /* set file name label */
+                    fileLabel.Text = XmlFilePath.Substring(XmlFilePath.LastIndexOf("\\") + 1);
 
                     /* add event for Cell value changed */
                     dataGridView1.CellValueChanged -= dataGridView1_CellValueChanged;
@@ -1372,7 +1381,6 @@ namespace ReqM_Tool
 
                     /* The file is not saved! */
                     saved = false;
-
                 }
             }
 
@@ -1415,6 +1423,7 @@ namespace ReqM_Tool
 
                     columns = columns.Substring(0, columns.Length - 3);
                     dv.RowFilter = string.Format(columns, searchBox.Text);
+
                     dataGridView1.DataSource = dv.ToTable();
                 }
             }
@@ -1851,7 +1860,6 @@ namespace ReqM_Tool
                     CheckBaseline();
                     CheckNeedscoverage();
                 }
-
 
                 int index = FindReqIndex(e.Node.Text, listOfRequirements);
                 if (index > -1)
