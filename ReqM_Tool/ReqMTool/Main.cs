@@ -37,7 +37,7 @@ namespace ReqM_Tool
         /* Data Table */
         DataTable dt = new DataTable();
         /* If file is saved => true */
-        public bool saved = true;
+        public bool saved { get; set; } = true;
 
         /* "No File has been open" Text Box. */
         public string NoFileOpen { get; } = "No file has been opened!";
@@ -62,6 +62,11 @@ namespace ReqM_Tool
         string testFilePath;
         // FileDialog.Filter = "XML|*.xml";
 
+        /* Colors */
+        Color red = ColorTranslator.FromHtml("#F7362C");
+        Color green = ColorTranslator.FromHtml("#85DD5D");
+        Color yellow = ColorTranslator.FromHtml("#FFDE3D");
+
         public Main()
         {
             InitializeComponent();
@@ -74,16 +79,12 @@ namespace ReqM_Tool
             tested = new List<string> { "N/A", "SYS.5", "SYS.4", "SWE.6", "SWE.5", "SWE.4", "DEV Test/Review" };
             type = new List<string> { "Description", "Technical Requirement", "Project Requirement", "Functional Requirement", "Non-Functional Requirement", "Template" };
             dataGridView1.AutoGenerateColumns = false;
+            fileLabel.Text = "";
         }
 
         public DataGridView dgv
         {
             get { return dataGridView1; }
-        }
-
-        private void AddColumnToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
         }
 
         /* Method called when a cell is modified */
@@ -95,7 +96,7 @@ namespace ReqM_Tool
             {
                 foreach (DataGridViewColumn column in this.dataGridView1.Columns)
                 {
-                    dataGridView1.Rows[e.RowIndex].Cells[column.Index].Style.BackColor = Color.Yellow;
+                    dataGridView1.Rows[e.RowIndex].Cells[column.Index].Style.BackColor = yellow;
                 }
                 /* Increment the Requirement Baseline with 0.1.  */
                 double DocumentBaseline = Convert.ToDouble(listOfRequirements.list_of_settings[0].Baseline);
@@ -110,17 +111,19 @@ namespace ReqM_Tool
             {
                 if (
                 (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString() == "tst") ||
-                (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString() == "src")
+                (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString() == "src") ||
+                (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString() == "src, tst") ||
+                (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString() == "tst, src")
                 )
                 {
                     if (listOfRequirements.Requirements_Dynamic_List[e.RowIndex].ReqBaseline != listOfRequirements.list_of_settings[0].Baseline)
-                        dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor = Color.Yellow;
+                        dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor = yellow;
                     else
                         dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor = Color.White;
                 }
                 else
                 {
-                    dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor = Color.Red;
+                    dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor = red;
                 }
             }
             else if (dataGridView1.Columns[e.ColumnIndex].Name == "Chapter")
@@ -129,7 +132,7 @@ namespace ReqM_Tool
                 string id = dataGridView1.Rows[e.RowIndex].Cells[dataGridView1.Columns["id"].Index].Value.ToString();
                 /* Get current RequirementItem from list */
                 RequirementItem item = FindReq(id, listOfRequirements);
-                
+
                 if (item != null)
                 {
                     /* Get the node from treeView */
@@ -146,7 +149,7 @@ namespace ReqM_Tool
                     {
                         AddTreeNode(item.id, item.Chapter);
                     }
-                   
+
                 }
 
             }
@@ -175,7 +178,7 @@ namespace ReqM_Tool
                 dt.Rows.Add(dRow);
             }*/
 
-            if ( searchBox.Text == srchBoxText)
+            if (searchBox.Text == srchBoxText)
             {
                 dt = new DataTable();
                 //Adding the Columns.
@@ -193,7 +196,7 @@ namespace ReqM_Tool
                         dt.Rows[dt.Rows.Count - 1][cell.ColumnIndex] = cell.Value.ToString();
                     }
                 }
-            } 
+            }
         }
 
         private void Main_Load(object sender, EventArgs e)
@@ -213,7 +216,7 @@ namespace ReqM_Tool
                 {
                     /* value of providescoverage column */
                     string value = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
-                    
+
                     /* path of xml files */
                     string path = XmlFilePath.Substring(0, XmlFilePath.LastIndexOf("\\"));
 
@@ -271,6 +274,10 @@ namespace ReqM_Tool
                                                     DisplayDefaultColumns();
                                                     dataGridView1.Refresh();
 
+                                                    /* set file name label */
+                                                    fileLabel.Text = XmlFilePath.Substring(XmlFilePath.LastIndexOf("\\") + 1);
+                                                    fileLabel.MaximumSize = new Size(145, fileLabel.Height);
+
                                                     /* Update Treeview */
                                                     ClearTreeView();
                                                     GenerateTreeView();
@@ -284,7 +291,7 @@ namespace ReqM_Tool
                                                 {
                                                     MessageBox.Show(invalidColumns);
                                                 }
-      
+
                                             }
                                             else if (result == DialogResult.No)
                                             {
@@ -294,6 +301,10 @@ namespace ReqM_Tool
                                                 saved = true;
                                                 DisplayDefaultColumns();
                                                 dataGridView1.Refresh();
+
+                                                /* set file name label */
+                                                fileLabel.Text = XmlFilePath.Substring(XmlFilePath.LastIndexOf("\\") + 1);
+                                                fileLabel.MaximumSize = new Size(145, fileLabel.Height);
 
                                                 /* Update Treeview */
                                                 ClearTreeView();
@@ -318,6 +329,10 @@ namespace ReqM_Tool
                                                 DisplayDefaultColumns();
                                                 dataGridView1.Refresh();
 
+                                                /* set file name label */
+                                                fileLabel.Text = XmlFilePath.Substring(XmlFilePath.LastIndexOf("\\") + 1);
+                                                fileLabel.MaximumSize = new Size(145, fileLabel.Height);
+
                                                 dataGridView1.FirstDisplayedScrollingRowIndex = index;
                                                 UpdateDT();
                                                 CheckBaseline();
@@ -335,7 +350,7 @@ namespace ReqM_Tool
                         }
                     }
                     MessageBox.Show("Requirement could not be found");
-                      
+
                 }
             }
         }
@@ -535,6 +550,10 @@ namespace ReqM_Tool
             dataGridView1.Refresh();
             ClearTreeView();
             saved = true;
+            fileLabel.Text = "";
+
+            list1.Clear();
+            list2.Clear();
         }
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
@@ -572,7 +591,7 @@ namespace ReqM_Tool
                 {
                     CloseFile();
                 }
-                
+
 
                 /* build the XML file path */
                 XmlFilePath = FileDialog.FileName;
@@ -596,33 +615,42 @@ namespace ReqM_Tool
                     listOfRequirements = (root_file)serializer.Deserialize(reader);
                     reader.Close();
 
+                    /* if list is empty add default value */
+                    if (listOfRequirements.Requirements_Dynamic_List.Count == 0)
+                    {
+                        InsertReq(0);
+                    }
+
                     /* add the data into the table */
                     CreateDataGridView();
                     dataGridView1.DataSource = listOfRequirements.Requirements_Dynamic_List;
+
+                    /* default columns to display */
+                    DisplayDefaultColumns();
 
                     /* Clears DataTable */
                     dt.Columns.Clear();
                     dt.Rows.Clear();
 
+                    /* set file name label */
+                    fileLabel.Text = XmlFilePath.Substring(XmlFilePath.LastIndexOf("\\") + 1);
+                    fileLabel.MaximumSize = new Size(145 ,fileLabel.Height);
+
                     /* Clears TreeView */
                     ClearTreeView();
-
-                    /* default columns to display */
-                    DisplayDefaultColumns();
-
                     /* generate TreeView */
-                    GenerateTreeView();
+                    GenerateTreeView();                    
 
                     /* add event for Cell value changed */
                     dataGridView1.CellValueChanged -= dataGridView1_CellValueChanged;
                     dataGridView1.CellValueChanged += dataGridView1_CellValueChanged;
 
                     /* color with red needscoverage column if there's an error! */
-                    CheckNeedscoverage();  
+                    CheckNeedscoverage();
                     CheckBaseline();
                     UpdateDT();
-                    
-                    
+
+
                     PopulateList();
                     listBox1.DataSource = list1;
                 }
@@ -645,7 +673,7 @@ namespace ReqM_Tool
                     )
                 {
                     int ind = dataGridView1.Columns["needscoverage"].Index;
-                    dataGridView1.Rows[index].Cells[ind].Style.BackColor = Color.Red;
+                    dataGridView1.Rows[index].Cells[ind].Style.BackColor = red;
                 }
             }
         }
@@ -663,7 +691,7 @@ namespace ReqM_Tool
                     /* Color each column that is changed. */
                     foreach (DataGridViewColumn Column in dataGridView1.Columns)
                     {
-                        dataGridView1.Rows[Row.Index].Cells[Column.Index].Style.BackColor = Color.Yellow;
+                        dataGridView1.Rows[Row.Index].Cells[Column.Index].Style.BackColor = yellow;
                     }
                 }
             }
@@ -677,7 +705,7 @@ namespace ReqM_Tool
             {
                 foreach (DataGridViewColumn column in dataGridView1.Columns)
                 {
-                    if (dataGridView1.Rows[row.Index].Cells[column.Index].Style.BackColor == Color.Red)
+                    if (dataGridView1.Rows[row.Index].Cells[column.Index].Style.BackColor == red)
                         return false;
                 }
             }
@@ -699,7 +727,7 @@ namespace ReqM_Tool
                     }
                 }
                 listOfRequirements.Save(XmlFilePath);
-                saved = true;   
+                saved = true;
             }
             catch (Exception ex)
             {
@@ -747,7 +775,7 @@ namespace ReqM_Tool
                 }
             }
         }
-		        private void InsertReq(int index)
+        private void InsertReq(int index)
         {
             string newID = GenerateID();
             if (newID != null)
@@ -772,7 +800,7 @@ namespace ReqM_Tool
                     ReqBaseline = listOfRequirements.list_of_settings[0].Baseline,
 
                 });
-            } 
+            }
         }
 
         private void addRowToolStripMenuItem_Click(object sender, EventArgs e)
@@ -785,7 +813,7 @@ namespace ReqM_Tool
             else
             {
                 /* make sure that AllowUserToAddRows is set to 'true' */
-                dataGridView1.AllowUserToAddRows = true;
+                //dataGridView1.AllowUserToAddRows = true;
 
                 if (listOfRequirements.Requirements_Dynamic_List.Count > 0)
                 {
@@ -834,8 +862,8 @@ namespace ReqM_Tool
                         CheckNeedscoverage();
                         CheckBaseline();
                         UpdateDT();
-                    }        
-                }           
+                    }
+                }
             }
         }
 
@@ -859,11 +887,11 @@ namespace ReqM_Tool
                     RequirementItem item = FindReq(id, listOfRequirements);
 
                     /* Delete req from TreeView */
-                    if(FindNode(id) != null)
+                    if (FindNode(id) != null)
                         DeleteTreeNode(item.id, item.Chapter);
 
                     /* If id number is lastID, set lastID - 1*/
-                    if (item.id.Substring(item.id.LastIndexOf('_')+1).Equals(listOfRequirements.list_of_settings[0].lastID))
+                    if (item.id.Substring(item.id.LastIndexOf('_') + 1).Equals(listOfRequirements.list_of_settings[0].lastID))
                         listOfRequirements.list_of_settings[0].lastID = (Convert.ToInt32(listOfRequirements.list_of_settings[0].lastID) - 1).ToString();
 
                     /* remove the row from the List */
@@ -993,10 +1021,10 @@ namespace ReqM_Tool
                             else
                             {
                                 row.Cells[3].Value = "Version mismatch";
-                                row.Cells[3].Style.BackColor = Color.Red;
+                                row.Cells[3].Style.BackColor = red;
                             }
                             /* set the color */
-                            row.DefaultCellStyle.BackColor = Color.Green;
+                            row.DefaultCellStyle.BackColor = green;
 
                             /* mark as a found requirement */
                             requirementFound = true;
@@ -1009,8 +1037,6 @@ namespace ReqM_Tool
                         myFunctions.ReqNotFound_AddRow(dataGridView2, pattern.Substring(0, pattern.IndexOf(",")));
                     }
                 }
-
-                
             }
             /* close the reader */
             reader.Close();
@@ -1168,7 +1194,7 @@ namespace ReqM_Tool
             float coverage = 0;
 
             /* Reset Pi Chart */
-            foreach (var series in chart1.Series)
+            foreach (var series in chart4.Series)
                 series.Points.Clear();
 
             string content = string.Empty;
@@ -1186,7 +1212,7 @@ namespace ReqM_Tool
             if (indx > 0)
                 path = path.Substring(0, indx + 1);
 
-            foreach (string file in Directory.GetFiles(path, "*Software*"))
+            foreach (string file in Directory.GetFiles(path, "*Software*.xml"))
             {
                 /* REQUIREMENTS CHART */
                 /* Create variable to the root of the xml file. */
@@ -1245,22 +1271,18 @@ namespace ReqM_Tool
             }
             coverage = (countReqFound / countReq) * 100;
 
-            textBox1.Text = countReq.ToString();
-            textBox2.Text = coverage.ToString() + "%";
-            textBox4.Text = countReqFound.ToString();
+            textBox7.Text = countReq.ToString();
+            textBox5.Text = coverage.ToString() + "%";
+            textBox6.Text = countReqFound.ToString();
 
-
-            chart1.Series["Series1"].Points.AddXY("Requirements missing", countReq - countReqFound);
-            chart1.Series["Series1"].Points.AddXY("Found Requirements", countReqFound);
-
-            chart1.Legends[0].Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
-            chart1.Legends[0].Alignment = System.Drawing.StringAlignment.Center;
-
-            //chart1.Series[1]["Series1"] = "Disabled";
-            //chart1.Series[2]["Series1"] = "Disabled";
+            chart4.Series["Series1"].Points.AddXY("Requirements missing", countReq - countReqFound);
+            chart4.Series["Series1"].Points.AddXY("Found Requirements", countReqFound);
+                 
+            chart4.Legends[0].Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
+            chart4.Legends[0].Alignment = System.Drawing.StringAlignment.Center;
 
             /* Chapter chart */
-            foreach (var series in chart2.Series)
+            foreach (var series in chart6.Series)
                 series.Points.Clear();
             int j = 0;
             int[] chapters = new int[listOfRequirements.customValues.chapters.Count];
@@ -1272,14 +1294,14 @@ namespace ReqM_Tool
                     if (v.Chapter.ToString() == c.ToString())
                         chapters[j]++;
                 }
-                chart2.Series["Chapters"].Points.AddXY(c.ToString(), chapters[j]);
+                chart6.Series["Chapters"].Points.AddXY(c.ToString(), chapters[j]);
                 j++;
             }
-            chart2.Legends[0].Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
-            chart2.Legends[0].Alignment = System.Drawing.StringAlignment.Center;
+            chart6.Legends[0].Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
+            chart6.Legends[0].Alignment = System.Drawing.StringAlignment.Center;
 
             /* Status chart */
-            foreach (var series in chart3.Series)
+            foreach (var series in chart5.Series)
                 series.Points.Clear();
             int[] stsTable = new int[status.Count];
             for (int i = 0; i < status.Count; i++)
@@ -1291,10 +1313,10 @@ namespace ReqM_Tool
                         stsTable[i]++;
                     }
                 }
-                chart3.Series["Status"].Points.AddXY(status[i].ToString(), stsTable[i]);
+                chart5.Series["Status"].Points.AddXY(status[i].ToString(), stsTable[i]);
             }
-            chart3.Legends[0].Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
-            chart3.Legends[0].Alignment = System.Drawing.StringAlignment.Center;
+            chart5.Legends[0].Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
+            chart5.Legends[0].Alignment = System.Drawing.StringAlignment.Center;
         }
 
         private void Button2_Click_1(object sender, EventArgs e)
@@ -1345,7 +1367,12 @@ namespace ReqM_Tool
                             }
                         }
                     }
+                    /* Refresh the Grid after the document is Baselined. */
+                    dataGridView1.Refresh();
+
+                    /* The file is not saved! */
                     saved = false;
+
                 }
             }
 
@@ -1366,13 +1393,13 @@ namespace ReqM_Tool
             }
 
         }*/
-		public string srchBoxText = " Search";
+        public string srchBoxText = " Search";
 
         private void SearchBox_TextChanged(object sender, EventArgs e)
         {
             /* LINKSTO: Req050 */
             UpdateDT();
-           
+
             if (XmlFilePath != null)
             {
                 if (searchBox.Text != srchBoxText)
@@ -1388,18 +1415,26 @@ namespace ReqM_Tool
 
                     columns = columns.Substring(0, columns.Length - 3);
                     dv.RowFilter = string.Format(columns, searchBox.Text);
-                    dataGridView1.DataSource = dv.ToTable();             
-                    CheckBaseline();
-                    CheckNeedscoverage();
+                    dataGridView1.DataSource = dv.ToTable();
                 }
             }
         }
 
         private void SearchBox_Click(object sender, EventArgs e)
-    {
-        if (searchBox.Text == srchBoxText)
-            searchBox.Text = "";
-    }
+        {
+            if (searchBox.Text == srchBoxText)
+            {
+                searchBox.Text = "";
+
+                foreach (DataGridViewColumn column in dataGridView1.Columns)
+                {
+                    if (column.HeaderText != "id")
+                        column.ReadOnly = true;
+                }
+
+                dataGridView1.ContextMenuStrip = null;
+            }
+        }
 
         private void SearchBox_Leave(object sender, EventArgs e)
         {
@@ -1407,6 +1442,16 @@ namespace ReqM_Tool
             {
                 searchBox.Text = srchBoxText;
                 dataGridView1.DataSource = listOfRequirements.Requirements_Dynamic_List;
+
+                foreach (DataGridViewColumn column in dataGridView1.Columns)
+                {
+                    if (column.HeaderText != "id")
+                        column.ReadOnly = false;
+                }
+                dataGridView1.ContextMenuStrip = contextMenuStrip4;
+
+                CheckBaseline();
+                CheckNeedscoverage();
             }
         }
 
@@ -1416,7 +1461,7 @@ namespace ReqM_Tool
         }
 
         private void SrcButton_Click(object sender, EventArgs e)
-        { 
+        {
             /* get the file path for the "source" folder(folder in where are the .c and .h files) */
             FolderBrowserDialog fbd = new FolderBrowserDialog();
             DialogResult result = fbd.ShowDialog();
@@ -1556,8 +1601,8 @@ namespace ReqM_Tool
 
         private void DataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            
-           
+
+
         }
 
         private void DuplicateRowToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1613,7 +1658,7 @@ namespace ReqM_Tool
                 {
                     MessageBox.Show("No row selected");
                 }
-                
+
             }
             CheckNeedscoverage();
             CheckBaseline();
@@ -1630,7 +1675,7 @@ namespace ReqM_Tool
                     dataGridView1.Rows[hti.RowIndex].Selected = true;
                 UpdateDT();
             }
-           
+
         }
 
         private void Main_FormClosing(object sender, FormClosingEventArgs e)
@@ -1652,7 +1697,7 @@ namespace ReqM_Tool
                         MessageBox.Show(invalidColumns);
                         e.Cancel = true;
                     }
-                        
+
                 }
                 else if (result == DialogResult.Cancel)
                 {
@@ -1660,10 +1705,10 @@ namespace ReqM_Tool
                 }
             }
         }
-		
-		private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
+
+        private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+
             if (XmlFilePath == null)
                 listBox1.Items.Add("XML file not open!");
             else
@@ -1676,10 +1721,10 @@ namespace ReqM_Tool
                 {
                     listBox1.DataSource = list2;
                 }
-            }            
+            }
         }
-		
-		public void PopulateList()
+
+        public void PopulateList()
         {
             for (int i = 0; i < listOfRequirements.customValues.chapters.Count; i++)
             {
@@ -1723,7 +1768,7 @@ namespace ReqM_Tool
                 if (textBox3.Text == v.ToString())
                     exists = true;
             }
-            
+
             if (listBox1.SelectedIndex >= 0)
             {
                 if (textBox3.Text != String.Empty && exists == false)
@@ -1732,7 +1777,7 @@ namespace ReqM_Tool
                     {
                         list1.Insert(listBox1.SelectedIndex + 1, textBox3.Text);
                         listBox1.DataSource = null;
-                        listBox1.DataSource = list1;;
+                        listBox1.DataSource = list1; ;
                     }
                     if (comboBox1.SelectedIndex == 1 && exists == false)
                     {
@@ -1746,7 +1791,7 @@ namespace ReqM_Tool
                 textBox3.Text = null;
             }
             else
-            {               
+            {
                 if (textBox3.Text != String.Empty)
                 {
                     if (listBox1.Items.Count != 0)
@@ -1791,9 +1836,22 @@ namespace ReqM_Tool
         {
             if (e.Node.Parent != null)
             {
-                dataGridView1.DataSource = listOfRequirements.Requirements_Dynamic_List;
-                CheckBaseline();
-                CheckNeedscoverage();
+                if (searchBox.Text != " Search")
+                {
+                    searchBox.Text = srchBoxText;
+                    dataGridView1.DataSource = listOfRequirements.Requirements_Dynamic_List;
+
+                    foreach (DataGridViewColumn column in dataGridView1.Columns)
+                    {
+                        if (column.HeaderText != "id")
+                            column.ReadOnly = false;
+                    }
+                    dataGridView1.ContextMenuStrip = contextMenuStrip4;
+
+                    CheckBaseline();
+                    CheckNeedscoverage();
+                }
+
 
                 int index = FindReqIndex(e.Node.Text, listOfRequirements);
                 if (index > -1)
@@ -1821,7 +1879,7 @@ namespace ReqM_Tool
 
         public TreeNode FindNode(string id)
         {
-            foreach(TreeNode node in treeView1.Nodes)
+            foreach (TreeNode node in treeView1.Nodes)
             {
                 if (node.Nodes.ContainsKey(id))
                     return node.Nodes[id];
@@ -1863,7 +1921,6 @@ namespace ReqM_Tool
                 listOfRequirements.customValues.hwPlatforms.Add(elem);
             }
             doc.Save(XmlFilePath);
-            //doc.
             dataGridView1.Refresh(); // todo
         }
 
@@ -1902,8 +1959,6 @@ namespace ReqM_Tool
                 if (open.ShowDialog() == DialogResult.OK)
                 {
                     // display image in picture box  
-                    //Image img = new Bitmap(open.FileName);
-                    ///dataGridView1.
                     imgUrl = open.FileName;
                     string text = dataGridView1.CurrentCell.Value.ToString();
                     string output = imgUrl.Substring(imgUrl.LastIndexOf('\\') + 1);
@@ -1930,7 +1985,7 @@ namespace ReqM_Tool
         public string DGVText { get; set; }
         private void DataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dataGridView1.Columns[e.ColumnIndex].HeaderText == "description")
+            if (e.ColumnIndex > -1 && dataGridView1.Columns[e.ColumnIndex].HeaderText == "description")
             {
                 string imageurl = dataGridView1.CurrentRow.Cells[dataGridView1.Columns["description"].Index].Value.ToString();
                 DGVText = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
@@ -1967,8 +2022,8 @@ namespace ReqM_Tool
                 MessageBox.Show("Select Description Cell");
             }
         }
-		
-		public string GenerateID()
+
+        public string GenerateID()
         {
             /* Generate the first id when there are no requirements */
             if (listOfRequirements.Requirements_Dynamic_List.Count == 0)
@@ -1986,8 +2041,8 @@ namespace ReqM_Tool
                 return id;
             }
         }
-		
-		public string GenerateFirstID()
+
+        public string GenerateFirstID()
         {
             if (listOfRequirements.list_of_settings[0].reqType != null)
             {
@@ -2010,7 +2065,7 @@ namespace ReqM_Tool
                 MessageBox.Show("Please set ReqType in XML");
                 return null;
             }
-            
+
         }
 
         private void DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -2078,7 +2133,7 @@ namespace ReqM_Tool
         public string value { get; set; }
 
     }
-    
+
 
     [Serializable()]
     [System.Xml.Serialization.XmlRoot("Requirements")]

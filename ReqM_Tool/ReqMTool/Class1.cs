@@ -64,14 +64,18 @@ namespace function_namespace
         public static void ReqNotFound_AddRow(DataGridView myGrid, string Req_Id)
         {
             int rowId = myGrid.Rows.Add();
+
             /* grab the new row */
             DataGridViewRow row = myGrid.Rows[rowId];
+
             /* add the data */
             row.Cells[0].Value = Req_Id;
             row.Cells[1].Value = "Uncovered";
             row.Cells[2].Value = "N/A";
+
             /* set the color */
-            row.DefaultCellStyle.BackColor = Color.Red;
+            Color red = ColorTranslator.FromHtml("#F7362C");
+            row.DefaultCellStyle.BackColor = red;
         }
 
     }

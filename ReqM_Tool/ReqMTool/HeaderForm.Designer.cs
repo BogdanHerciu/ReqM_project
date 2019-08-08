@@ -33,9 +33,10 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(3, 12);
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox1.Location = new System.Drawing.Point(12, 12);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(405, 274);
+            this.textBox1.Size = new System.Drawing.Size(396, 274);
             this.textBox1.TabIndex = 0;
             this.textBox1.Text = "";
             this.textBox1.TextChanged += new System.EventHandler(this.TextBox1_TextChanged);
@@ -48,6 +49,7 @@
             this.Controls.Add(this.textBox1);
             this.Name = "HeaderForm";
             this.Text = "Document Header";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.HeaderForm_FormClosed);
             this.Load += new System.EventHandler(this.HeaderForm_Load);
             this.ResumeLayout(false);
 

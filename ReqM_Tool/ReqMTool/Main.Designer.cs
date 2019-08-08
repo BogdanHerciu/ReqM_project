@@ -30,6 +30,7 @@ namespace ReqM_Tool
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
@@ -39,7 +40,15 @@ namespace ReqM_Tool
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.contextMenuStrip4 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.addRowToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -51,6 +60,7 @@ namespace ReqM_Tool
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.fileLabel = new System.Windows.Forms.Label();
             this.button6 = new System.Windows.Forms.Button();
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.searchBox = new System.Windows.Forms.TextBox();
@@ -61,8 +71,6 @@ namespace ReqM_Tool
             this.saveToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.saveAsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.publishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveAsWordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveAsPdfToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveAsExcelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -98,6 +106,17 @@ namespace ReqM_Tool
             this.publishToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.chart5 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.chart6 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.chart4 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.button7 = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.textBox7 = new System.Windows.Forms.TextBox();
             this.chart3 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.textBox4 = new System.Windows.Forms.TextBox();
@@ -114,7 +133,6 @@ namespace ReqM_Tool
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.fileLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.contextMenuStrip4.SuspendLayout();
             this.LoadTab.SuspendLayout();
@@ -130,6 +148,10 @@ namespace ReqM_Tool
             this.menuStrip4.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart6)).BeginInit();
+            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
             this.panel1.SuspendLayout();
@@ -231,7 +253,7 @@ namespace ReqM_Tool
             // tabPage4
             // 
             this.tabPage4.BackColor = System.Drawing.Color.White;
-            this.tabPage4.BackgroundImage = global::ReqM_namespace.Properties.Resources._5_01;
+            this.tabPage4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("tabPage4.BackgroundImage")));
             this.tabPage4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.tabPage4.Controls.Add(this.pictureBox1);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
@@ -245,8 +267,9 @@ namespace ReqM_Tool
             // 
             this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.BackColor = System.Drawing.Color.White;
-            this.pictureBox1.Image = global::ReqM_namespace.Properties.Resources.NTT;
-            this.pictureBox1.Location = new System.Drawing.Point(879, 11);
+            this.pictureBox1.BackgroundImage = global::ReqM_namespace.Properties.Resources.NTT;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Location = new System.Drawing.Point(1226, 11);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(115, 23);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -270,6 +293,15 @@ namespace ReqM_Tool
             this.tabPage1.Text = "Database";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // fileLabel
+            // 
+            this.fileLabel.AutoSize = true;
+            this.fileLabel.Location = new System.Drawing.Point(7, 40);
+            this.fileLabel.Name = "fileLabel";
+            this.fileLabel.Size = new System.Drawing.Size(35, 13);
+            this.fileLabel.TabIndex = 13;
+            this.fileLabel.Text = "label4";
+            // 
             // button6
             // 
             this.button6.BackgroundImage = global::ReqM_namespace.Properties.Resources.info;
@@ -286,10 +318,10 @@ namespace ReqM_Tool
             // 
             this.treeView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.treeView1.Location = new System.Drawing.Point(8, 63);
+            this.treeView1.Location = new System.Drawing.Point(3, 63);
             this.treeView1.Margin = new System.Windows.Forms.Padding(2);
             this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(175, 652);
+            this.treeView1.Size = new System.Drawing.Size(180, 652);
             this.treeView1.TabIndex = 11;
             this.treeView1.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.TreeView1_NodeMouseClick);
             // 
@@ -365,29 +397,15 @@ namespace ReqM_Tool
             // publishToolStripMenuItem
             // 
             this.publishToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.saveAsWordToolStripMenuItem,
-            this.saveAsPdfToolStripMenuItem,
             this.saveAsExcelToolStripMenuItem});
             this.publishToolStripMenuItem.Name = "publishToolStripMenuItem";
             this.publishToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
             this.publishToolStripMenuItem.Text = "Publish";
             // 
-            // saveAsWordToolStripMenuItem
-            // 
-            this.saveAsWordToolStripMenuItem.Name = "saveAsWordToolStripMenuItem";
-            this.saveAsWordToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
-            this.saveAsWordToolStripMenuItem.Text = "Save as Word";
-            // 
-            // saveAsPdfToolStripMenuItem
-            // 
-            this.saveAsPdfToolStripMenuItem.Name = "saveAsPdfToolStripMenuItem";
-            this.saveAsPdfToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
-            this.saveAsPdfToolStripMenuItem.Text = "Save as Pdf";
-            // 
             // saveAsExcelToolStripMenuItem
             // 
             this.saveAsExcelToolStripMenuItem.Name = "saveAsExcelToolStripMenuItem";
-            this.saveAsExcelToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.saveAsExcelToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
             this.saveAsExcelToolStripMenuItem.Text = "Save as Excel";
             this.saveAsExcelToolStripMenuItem.Click += new System.EventHandler(this.SaveAsExcelToolStripMenuItem_Click);
             // 
@@ -413,34 +431,34 @@ namespace ReqM_Tool
             // addRowToolStripMenuItem
             // 
             this.addRowToolStripMenuItem.Name = "addRowToolStripMenuItem";
-            this.addRowToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.addRowToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.addRowToolStripMenuItem.Text = "Add Row";
             this.addRowToolStripMenuItem.Click += new System.EventHandler(this.addRowToolStripMenuItem_Click);
             // 
             // deleteRowToolStripMenuItem
             // 
             this.deleteRowToolStripMenuItem.Name = "deleteRowToolStripMenuItem";
-            this.deleteRowToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.deleteRowToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.deleteRowToolStripMenuItem.Text = "Delete Row";
             this.deleteRowToolStripMenuItem.Click += new System.EventHandler(this.deleteRowToolStripMenuItem_Click);
             // 
             // baselineToolStripMenuItem
             // 
             this.baselineToolStripMenuItem.Name = "baselineToolStripMenuItem";
-            this.baselineToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.baselineToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.baselineToolStripMenuItem.Text = "Baseline";
             this.baselineToolStripMenuItem.Click += new System.EventHandler(this.BaselineToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(141, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(136, 6);
             // 
             // insertImagesToolStripMenuItem
             // 
             this.insertImagesToolStripMenuItem.Name = "insertImagesToolStripMenuItem";
-            this.insertImagesToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
-            this.insertImagesToolStripMenuItem.Text = "Insert Images";
+            this.insertImagesToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.insertImagesToolStripMenuItem.Text = "Insert Image";
             this.insertImagesToolStripMenuItem.Click += new System.EventHandler(this.InsertImagesToolStripMenuItem_Click);
             // 
             // tabPage5
@@ -625,11 +643,11 @@ namespace ReqM_Tool
             this.Column2,
             this.Column3,
             this.Column4});
-            this.dataGridView2.Location = new System.Drawing.Point(3, 27);
+            this.dataGridView2.Location = new System.Drawing.Point(0, 27);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.ReadOnly = true;
             this.dataGridView2.RowHeadersWidth = 51;
-            this.dataGridView2.Size = new System.Drawing.Size(1346, 691);
+            this.dataGridView2.Size = new System.Drawing.Size(1352, 693);
             this.dataGridView2.TabIndex = 1;
             // 
             // Column1
@@ -710,39 +728,164 @@ namespace ReqM_Tool
             // 
             this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox3.Controls.Add(this.chart3);
-            this.groupBox3.Controls.Add(this.chart2);
-            this.groupBox3.Controls.Add(this.textBox4);
-            this.groupBox3.Controls.Add(this.button1);
-            this.groupBox3.Controls.Add(this.panel1);
-            this.groupBox3.Controls.Add(this.label1);
-            this.groupBox3.Controls.Add(this.textBox1);
-            this.groupBox3.Controls.Add(this.textBox2);
-            this.groupBox3.Controls.Add(this.label2);
-            this.groupBox3.Controls.Add(this.label3);
-            this.groupBox3.Location = new System.Drawing.Point(16, 16);
+            this.groupBox3.Controls.Add(this.chart5);
+            this.groupBox3.Controls.Add(this.chart6);
+            this.groupBox3.Controls.Add(this.panel2);
+            this.groupBox3.Controls.Add(this.button7);
+            this.groupBox3.Controls.Add(this.label4);
+            this.groupBox3.Controls.Add(this.label5);
+            this.groupBox3.Controls.Add(this.label8);
+            this.groupBox3.Controls.Add(this.textBox5);
+            this.groupBox3.Controls.Add(this.textBox6);
+            this.groupBox3.Controls.Add(this.textBox7);
+            this.groupBox3.Location = new System.Drawing.Point(26, 34);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(1316, 500);
+            this.groupBox3.Size = new System.Drawing.Size(1311, 505);
             this.groupBox3.TabIndex = 7;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Reqirements";
+            // 
+            // chart5
+            // 
+            this.chart5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            chartArea1.Name = "ChartArea1";
+            this.chart5.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart5.Legends.Add(legend1);
+            this.chart5.Location = new System.Drawing.Point(744, 16);
+            this.chart5.Name = "chart5";
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Bar;
+            series1.Legend = "Legend1";
+            series1.Name = "Status";
+            this.chart5.Series.Add(series1);
+            this.chart5.Size = new System.Drawing.Size(561, 228);
+            this.chart5.TabIndex = 1;
+            this.chart5.Text = "chart5";
+            // 
+            // chart6
+            // 
+            this.chart6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            chartArea2.Name = "ChartArea1";
+            this.chart6.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chart6.Legends.Add(legend2);
+            this.chart6.Location = new System.Drawing.Point(744, 264);
+            this.chart6.Name = "chart6";
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Bar;
+            series2.Legend = "Legend1";
+            series2.Name = "Chapters";
+            this.chart6.Series.Add(series2);
+            this.chart6.Size = new System.Drawing.Size(561, 228);
+            this.chart6.TabIndex = 2;
+            this.chart6.Text = "chart6";
+            // 
+            // panel2
+            // 
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.chart4);
+            this.panel2.Location = new System.Drawing.Point(258, 16);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(475, 476);
+            this.panel2.TabIndex = 15;
+            // 
+            // chart4
+            // 
+            chartArea3.Name = "ChartArea1";
+            this.chart4.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.chart4.Legends.Add(legend3);
+            this.chart4.Location = new System.Drawing.Point(3, 3);
+            this.chart4.Name = "chart4";
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            this.chart4.Series.Add(series3);
+            this.chart4.Size = new System.Drawing.Size(467, 468);
+            this.chart4.TabIndex = 0;
+            this.chart4.Text = "chart4";
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(140, 36);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(100, 23);
+            this.button7.TabIndex = 8;
+            this.button7.Text = "calculate";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.Button1_Click_2);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(22, 77);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(96, 13);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "Total Reuirements:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(22, 103);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(108, 13);
+            this.label5.TabIndex = 10;
+            this.label5.Text = "Found Requirements:";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(22, 132);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(56, 13);
+            this.label8.TabIndex = 11;
+            this.label8.Text = "Coverage:";
+            // 
+            // textBox5
+            // 
+            this.textBox5.Location = new System.Drawing.Point(140, 129);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.ReadOnly = true;
+            this.textBox5.Size = new System.Drawing.Size(100, 20);
+            this.textBox5.TabIndex = 12;
+            // 
+            // textBox6
+            // 
+            this.textBox6.Location = new System.Drawing.Point(140, 103);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.ReadOnly = true;
+            this.textBox6.Size = new System.Drawing.Size(100, 20);
+            this.textBox6.TabIndex = 13;
+            // 
+            // textBox7
+            // 
+            this.textBox7.Location = new System.Drawing.Point(140, 77);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.ReadOnly = true;
+            this.textBox7.Size = new System.Drawing.Size(100, 20);
+            this.textBox7.TabIndex = 14;
             // 
             // chart3
             // 
             this.chart3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea1.Name = "ChartArea1";
-            this.chart3.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart3.Legends.Add(legend1);
+            chartArea4.Name = "ChartArea1";
+            this.chart3.ChartAreas.Add(chartArea4);
+            legend4.Name = "Legend1";
+            this.chart3.Legends.Add(legend4);
             this.chart3.Location = new System.Drawing.Point(747, 23);
             this.chart3.Name = "chart3";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Bar;
-            series1.Legend = "Legend1";
-            series1.Name = "Status";
-            this.chart3.Series.Add(series1);
-            this.chart3.Size = new System.Drawing.Size(552, 220);
+            series4.ChartArea = "ChartArea1";
+            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Bar;
+            series4.Legend = "Legend1";
+            series4.Name = "Status";
+            this.chart3.Series.Add(series4);
+            this.chart3.Size = new System.Drawing.Size(553, 220);
             this.chart3.TabIndex = 8;
             this.chart3.Text = "chart3";
             // 
@@ -750,19 +893,19 @@ namespace ReqM_Tool
             // 
             this.chart2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea2.Name = "ChartArea1";
-            this.chart2.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chart2.Legends.Add(legend2);
+            chartArea5.Name = "ChartArea1";
+            this.chart2.ChartAreas.Add(chartArea5);
+            legend5.Name = "Legend1";
+            this.chart2.Legends.Add(legend5);
             this.chart2.Location = new System.Drawing.Point(747, 264);
             this.chart2.Name = "chart2";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Bar;
-            series2.Legend = "Legend1";
-            series2.Name = "Chapters";
-            series2.YValuesPerPoint = 2;
-            this.chart2.Series.Add(series2);
-            this.chart2.Size = new System.Drawing.Size(552, 220);
+            series5.ChartArea = "ChartArea1";
+            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Bar;
+            series5.Legend = "Legend1";
+            series5.Name = "Chapters";
+            series5.YValuesPerPoint = 2;
+            this.chart2.Series.Add(series5);
+            this.chart2.Size = new System.Drawing.Size(553, 220);
             this.chart2.TabIndex = 7;
             this.chart2.Text = "chart2";
             // 
@@ -796,18 +939,18 @@ namespace ReqM_Tool
             // chart1
             // 
             this.chart1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            chartArea3.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea3);
-            legend3.BackImageAlignment = System.Windows.Forms.DataVisualization.Charting.ChartImageAlignmentStyle.Top;
-            legend3.Name = "Legend1";
-            this.chart1.Legends.Add(legend3);
+            chartArea6.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea6);
+            legend6.BackImageAlignment = System.Windows.Forms.DataVisualization.Charting.ChartImageAlignmentStyle.Top;
+            legend6.Name = "Legend1";
+            this.chart1.Legends.Add(legend6);
             this.chart1.Location = new System.Drawing.Point(3, 3);
             this.chart1.Name = "chart1";
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
-            series3.Legend = "Legend1";
-            series3.Name = "Series1";
-            this.chart1.Series.Add(series3);
+            series6.ChartArea = "ChartArea1";
+            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
+            series6.Legend = "Legend1";
+            series6.Name = "Series1";
+            this.chart1.Series.Add(series6);
             this.chart1.Size = new System.Drawing.Size(461, 457);
             this.chart1.TabIndex = 5;
             this.chart1.Text = "chart1";
@@ -887,15 +1030,6 @@ namespace ReqM_Tool
             // 
             this.toolTip1.Tag = "";
             // 
-            // fileLabel
-            // 
-            this.fileLabel.AutoSize = true;
-            this.fileLabel.Location = new System.Drawing.Point(11, 39);
-            this.fileLabel.Name = "fileLabel";
-            this.fileLabel.Size = new System.Drawing.Size(35, 13);
-            this.fileLabel.TabIndex = 13;
-            this.fileLabel.Text = "label4";
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -930,6 +1064,10 @@ namespace ReqM_Tool
             this.tabPage2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart6)).EndInit();
+            this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.chart4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart2)).EndInit();
             this.panel1.ResumeLayout(false);
@@ -969,8 +1107,6 @@ namespace ReqM_Tool
         private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem makeCoverageToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem publishToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem saveAsWordToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem saveAsPdfToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveAsExcelToolStripMenuItem;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Label label2;
@@ -1016,6 +1152,17 @@ namespace ReqM_Tool
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label fileLabel;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart5;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart6;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart4;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox textBox7;
     }
 }
 

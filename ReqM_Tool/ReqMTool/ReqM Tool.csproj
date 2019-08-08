@@ -173,15 +173,6 @@
     <None Include="Resources\triangle-l.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\4-01.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\BckImage-01.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\BackgroundImage-01.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\5-01.png" />
   </ItemGroup>
   <ItemGroup>

@@ -95,7 +95,7 @@ namespace ReqM_namespace
 
         private void ImageForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-
+            mainForm.dgv.CurrentCell.Value = textBox1.Text;
         }
 
         public void DisplayImage(int index)
@@ -129,7 +129,15 @@ namespace ReqM_namespace
 
         private void Button1_Click(object sender, EventArgs e)
         {
-
+            if (currentIndex > 0)
+            {
+                currentIndex--;
+            }
+            else
+            {
+                currentIndex = images.Count - 1;
+            }
+            DisplayImage(currentIndex);
         }
 
         private void TextBox1_TextChanged(object sender, EventArgs e)

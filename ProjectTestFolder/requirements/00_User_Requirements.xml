@@ -2,7 +2,7 @@
 <root_file xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <document_settings>
     <doc_settings>
-      <Baseline>1.0</Baseline>
+      <Baseline>3</Baseline>
       <Columns>
         <column>id</column>
         <column>description</column>
@@ -12,7 +12,8 @@
         <column>providescoverage</column>
         <column>version</column>
         <column>Chapter</column>
-        <column>HWPlatform</column>
+        <column>Domain</column>
+        <column>ReqBaseline</column>
       </Columns>
       <DocumentIntro>
                                User Requirements
@@ -35,14 +36,14 @@
 
         3. Requirements
       </DocumentIntro>
+      <LastID>246</LastID>
     </doc_settings>
   </document_settings>
   <custom_values>
     <Chapters>
-      <chapter>1</chapter>
-      <chapter>2</chapter>
-      <chapter>3</chapter>
-      <chapter>4</chapter>
+      <chapter>Chapter 1</chapter>
+      <chapter>Chapter 2</chapter>
+      <chapter>Chapter 3</chapter>
     </Chapters>
     <HWPlatform>
       <value>HWPlatform_1</value>
@@ -55,7 +56,7 @@
   </custom_values>
   <Requirements>
     <RequirementItem>
-      <id>NTT.RADU.SW.Req201</id>
+      <id>NTT.RADU.SW.Req_201</id>
       <description>
 [SWS_Dcm_01144] Protocol preemption can’t be activated with a concurrent TesterPresent of a higher priority protocol.
        0.jpg</description>
@@ -68,64 +69,121 @@
       <ChangeRequest>N/A</ChangeRequest>
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
-      <Chapter>1</Chapter>
+      <Chapter>Chapter 1</Chapter>
       <HWPlatform>HWPlatform_5</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
-      <ReqBaseline>1.1</ReqBaseline>
+      <ReqBaseline>3</ReqBaseline>
     </RequirementItem>
     <RequirementItem>
-      <id>NTT.RADU.SW.Req202</id>
+      <id>NTT.RADU.SW.Req_244</id>
+      <description>Please enter the description of the requirement</description>
+      <status>Draft</status>
+      <CreatedBy>Author of the requirement</CreatedBy>
+      <needscoverage>tst</needscoverage>
+      <providescoverage>To be linked</providescoverage>
+      <version>0.1</version>
+      <SafetyRelevant>N/A</SafetyRelevant>
+      <ChangeRequest>Change Request ID</ChangeRequest>
+      <ReviewID>Review Ticket ID</ReviewID>
+      <RequirementType>Template</RequirementType>
+      <Chapter>Chapter 1</Chapter>
+      <HWPlatform>HWPlatform_1</HWPlatform>
+      <Domain>N/A</Domain>
+      <TestedAt>N/A</TestedAt>
+      <ReqBaseline>3</ReqBaseline>
+    </RequirementItem>
+    <RequirementItem>
+      <id>NTT.RADU.SW.Req_202</id>
       <description>
 [SWS_Dcm_00079] d In order to cancel pending transmission in lower-layer, related to
 the lower priority request, the Dcm module shall call PduR_DcmCancelTransmit () with
 the following parameters: PduId: the id of the Pdu to be canceled
-      </description>
+       Req1.png</description>
       <status>Discarded by project</status>
       <CreatedBy>Jane Doe</CreatedBy>
       <needscoverage>tst</needscoverage>
-      <providescoverage>N/A</providescoverage>
+      <providescoverage>NTT.RADU.SW.Req_005</providescoverage>
       <version>1.0</version>
       <SafetyRelevant>QM</SafetyRelevant>
       <ChangeRequest>N/A</ChangeRequest>
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
-      <Chapter>1</Chapter>
+      <Chapter>Chapter 1</Chapter>
       <HWPlatform>HWPlatform_5</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
-      <ReqBaseline>1.1</ReqBaseline>
+      <ReqBaseline>3</ReqBaseline>
     </RequirementItem>
     <RequirementItem>
-      <id>NTT.RADU.SW.Req203</id>
+      <id>NTT.RADU.SW.Req_245</id>
+      <description>
+[SWS_Dcm_00079] d In order to cancel pending transmission in lower-layer, related to
+the lower priority request, the Dcm module shall call PduR_DcmCancelTransmit () with
+the following parameters: PduId: the id of the Pdu to be canceled
+       Req1.png</description>
+      <status>Discarded by project</status>
+      <CreatedBy>Jane D</CreatedBy>
+      <needscoverage>tst</needscoverage>
+      <providescoverage>NTT.RADU.SW.Req_005</providescoverage>
+      <version>1.0</version>
+      <SafetyRelevant>QM</SafetyRelevant>
+      <ChangeRequest>N/A</ChangeRequest>
+      <ReviewID>N/A</ReviewID>
+      <RequirementType>Description</RequirementType>
+      <Chapter>Chapter 1</Chapter>
+      <HWPlatform>HWPlatform_5</HWPlatform>
+      <Domain>SW</Domain>
+      <TestedAt>N/A</TestedAt>
+      <ReqBaseline>3</ReqBaseline>
+    </RequirementItem>
+    <RequirementItem>
+      <id>NTT.RADU.SW.Req_246</id>
+      <description>Please enter the description of the requirement</description>
+      <status>Draft</status>
+      <CreatedBy>Author of the requirement</CreatedBy>
+      <needscoverage>src</needscoverage>
+      <providescoverage>To be linked</providescoverage>
+      <version>0.1</version>
+      <SafetyRelevant>N/A</SafetyRelevant>
+      <ChangeRequest>Change Request ID</ChangeRequest>
+      <ReviewID>Review Ticket ID</ReviewID>
+      <RequirementType>Template</RequirementType>
+      <Chapter>Chapter 1</Chapter>
+      <HWPlatform>HWPlatform_1</HWPlatform>
+      <Domain>N/A</Domain>
+      <TestedAt>N/A</TestedAt>
+      <ReqBaseline>3.1</ReqBaseline>
+    </RequirementItem>
+    <RequirementItem>
+      <id>NTT.RADU.SW.Req_203</id>
       <description>
 [SWS_Dcm_00460] d When PduR_DcmCancelTransmit() returns E_NOT_OK, the
 Dcm module shall assume that the ongoing transmission cannot be cancelled and shall
-not retry to cancel the transmit request. The current protocol shall be stopped and the
-new one started.
-       NTT.png</description>
+not retry to cancel the transmit request. The current protocol shall 
+       NTT.png Req1.png</description>
       <status>In work</status>
       <CreatedBy>John Doe</CreatedBy>
       <needscoverage>src</needscoverage>
-      <providescoverage>N/A</providescoverage>
+      <providescoverage>NTT.RADU.SW.Req_002</providescoverage>
       <version>1.0</version>
       <SafetyRelevant>QM</SafetyRelevant>
       <ChangeRequest>N/A</ChangeRequest>
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
-      <Chapter>2</Chapter>
+      <Chapter>Chapter 2</Chapter>
       <HWPlatform>HWPlatform_5</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
-      <ReqBaseline>1.1</ReqBaseline>
+      <ReqBaseline>3</ReqBaseline>
     </RequirementItem>
     <RequirementItem>
-      <id>NTT.RADU.SW.Req204</id>
+      <id>NTT.RADU.SW.Req_204</id>
       <description>
 [SWS_Dcm_01046] d If a running diagnostic request is preempted by a higher priority
 request (of another protocol), the Dcm shall cancel all external pending operations with
 Dcm_OpStatus set to DCM_CANCEL c()
-       TRY2_Final_StickyNote-03.png</description>
+</description>
       <status>Approved</status>
       <CreatedBy>John Doe</CreatedBy>
       <needscoverage>src</needscoverage>
@@ -135,14 +193,14 @@ Dcm_OpStatus set to DCM_CANCEL c()
       <ChangeRequest>N/A</ChangeRequest>
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
-      <Chapter>3</Chapter>
+      <Chapter>Chapter 2</Chapter>
       <HWPlatform>HWPlatform_5</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
-      <ReqBaseline>1.1</ReqBaseline>
+      <ReqBaseline>3</ReqBaseline>
     </RequirementItem>
     <RequirementItem>
-      <id>NTT.RADU.SW.Req205</id>
+      <id>NTT.RADU.SW.Req_205</id>
       <description>
 [SWS_Dcm_01047] d In case an operation to the Dem is pending and the new request
 also requires an interaction with the Dem, the Dcm shall accept the new request and
@@ -157,14 +215,14 @@ call the corresponding Dem API with the parameters from the new request. c()
       <ChangeRequest>N/A</ChangeRequest>
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
-      <Chapter>N/A</Chapter>
+      <Chapter>Chapter 1</Chapter>
       <HWPlatform>HWPlatform_5</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
-      <ReqBaseline>1.0</ReqBaseline>
+      <ReqBaseline>3</ReqBaseline>
     </RequirementItem>
     <RequirementItem>
-      <id>NTT.RADU.SW.Req206</id>
+      <id>NTT.RADU.SW.Req_206</id>
       <description>
 [SWS_Dcm_01372] d If the Dcm processes an OBD request and the Dcm is receiving
 an UDS diagnostic request to change in a non-default session, the Dcm shall delay the
@@ -174,41 +232,41 @@ the O.BD service is finished, the Dcm shall make a transition into the requested
       <status>Approved</status>
       <CreatedBy>John Doe</CreatedBy>
       <needscoverage>src</needscoverage>
-      <providescoverage>N/A</providescoverage>
+      <providescoverage>NTT.RADU.SW.Req_103</providescoverage>
       <version>1.0</version>
       <SafetyRelevant>QM</SafetyRelevant>
       <ChangeRequest>N/A</ChangeRequest>
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
-      <Chapter>N/A</Chapter>
+      <Chapter>Chapter 1</Chapter>
       <HWPlatform>HWPlatform_5</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
-      <ReqBaseline>1.0</ReqBaseline>
+      <ReqBaseline>3</ReqBaseline>
     </RequirementItem>
     <RequirementItem>
-      <id>NTT.RADU.SW.Req207</id>
+      <id>NTT.RADU.SW.Req_207</id>
       <description>
 [SWS_Dcm_01367] d The Dcm shall process incoming OBD requests in parallel to a running UDS request.
 In this case the protocol priority check according to [SWS_Dcm_00015] is skipped and no protocol pre-emption is done.
       </description>
       <status>Ready for review</status>
       <CreatedBy>John Doe</CreatedBy>
-      <needscoverage>src</needscoverage>
+      <needscoverage>tst</needscoverage>
       <providescoverage>N/A</providescoverage>
       <version>1.0</version>
       <SafetyRelevant>QM</SafetyRelevant>
       <ChangeRequest>N/A</ChangeRequest>
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
-      <Chapter>N/A</Chapter>
+      <Chapter>Chapter 1</Chapter>
       <HWPlatform>HWPlatform_5</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
-      <ReqBaseline>1.1</ReqBaseline>
+      <ReqBaseline>3</ReqBaseline>
     </RequirementItem>
     <RequirementItem>
-      <id>NTT.RADU.SW.Req208</id>
+      <id>NTT.RADU.SW.Req_208</id>
       <description>
 [SWS_Dcm_00727] d If a diagnostic request is already running and a second request
 (ClientB) can not be processed (e.g.due to priority assessment), the response behaviour depends
@@ -219,21 +277,21 @@ shall be issued (see [SWS_Dcm_00790]).
       </description>
       <status>Approved</status>
       <CreatedBy>John Doe</CreatedBy>
-      <needscoverage>src</needscoverage>
+      <needscoverage>tst</needscoverage>
       <providescoverage>N/A</providescoverage>
       <version>1.0</version>
       <SafetyRelevant>QM</SafetyRelevant>
       <ChangeRequest>N/A</ChangeRequest>
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
-      <Chapter>N/A</Chapter>
+      <Chapter>Chapter 1</Chapter>
       <HWPlatform>HWPlatform_5</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
-      <ReqBaseline>1.0</ReqBaseline>
+      <ReqBaseline>3</ReqBaseline>
     </RequirementItem>
     <RequirementItem>
-      <id>NTT.RADU.SW.Req209</id>
+      <id>NTT.RADU.SW.Req_209</id>
       <description>
 [SWS_Dcm_00728] d The handling of protocols with equal priority shall be possible. c
       </description>
@@ -246,14 +304,58 @@ shall be issued (see [SWS_Dcm_00790]).
       <ChangeRequest>N/A</ChangeRequest>
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
-      <Chapter>N/A</Chapter>
+      <Chapter>Chapter 1</Chapter>
       <HWPlatform>HWPlatform_5</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
-      <ReqBaseline>1.0</ReqBaseline>
+      <ReqBaseline>3</ReqBaseline>
     </RequirementItem>
     <RequirementItem>
-      <id>NTT.RADU.SW.Req210</id>
+      <id>NTT.RADU.SW.Req_210</id>
+      <description>
+        [SWS_Dcm_00575] d In order to cancel pending reception in lower-layer, related to
+        the lower priority request, the Dcm module shall call PduR_DcmCancelReceive () with
+        the following parameters: PduId: the id of the Pdu to be canceled c()
+      </description>
+      <status>Approved</status>
+      <CreatedBy>John Doe</CreatedBy>
+      <needscoverage>tst</needscoverage>
+      <providescoverage>N/A</providescoverage>
+      <version>1.0</version>
+      <SafetyRelevant>QM</SafetyRelevant>
+      <ChangeRequest>N/A</ChangeRequest>
+      <ReviewID>N/A</ReviewID>
+      <RequirementType>Description</RequirementType>
+      <Chapter>Chapter 1</Chapter>
+      <HWPlatform>HWPlatform_5</HWPlatform>
+      <Domain>SW</Domain>
+      <TestedAt>N/A</TestedAt>
+      <ReqBaseline>3</ReqBaseline>
+    </RequirementItem>
+    <RequirementItem>
+      <id>NTT.RADU.SW.Req_210</id>
+      <description>
+        [SWS_Dcm_00575] d In order to cancel pending reception in lower-layer, related to
+        the lower priority request, the Dcm module shall call PduR_DcmCancelReceive () with
+        the following parameters: PduId: the id of the Pdu to be canceled c()
+      </description>
+      <status>Approved</status>
+      <CreatedBy>John Doe</CreatedBy>
+      <needscoverage>tst</needscoverage>
+      <providescoverage>N/A</providescoverage>
+      <version>1.0</version>
+      <SafetyRelevant>QM</SafetyRelevant>
+      <ChangeRequest>N/A</ChangeRequest>
+      <ReviewID>N/A</ReviewID>
+      <RequirementType>Description</RequirementType>
+      <Chapter>Chapter 1</Chapter>
+      <HWPlatform>HWPlatform_5</HWPlatform>
+      <Domain>SW</Domain>
+      <TestedAt>N/A</TestedAt>
+      <ReqBaseline>3</ReqBaseline>
+    </RequirementItem>
+    <RequirementItem>
+      <id>NTT.RADU.SW.Req_211</id>
       <description>
         [SWS_Dcm_00575] d In order to cancel pending reception in lower-layer, related to
         the lower priority request, the Dcm module shall call PduR_DcmCancelReceive () with
@@ -268,14 +370,14 @@ shall be issued (see [SWS_Dcm_00790]).
       <ChangeRequest>N/A</ChangeRequest>
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
-      <Chapter>N/A</Chapter>
+      <Chapter>Chapter 3</Chapter>
       <HWPlatform>HWPlatform_5</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
-      <ReqBaseline>1.0</ReqBaseline>
+      <ReqBaseline>3</ReqBaseline>
     </RequirementItem>
     <RequirementItem>
-      <id>NTT.RADU.SW.Req210</id>
+      <id>NTT.RADU.SW.Req_212</id>
       <description>
         [SWS_Dcm_00575] d In order to cancel pending reception in lower-layer, related to
         the lower priority request, the Dcm module shall call PduR_DcmCancelReceive () with
@@ -290,14 +392,14 @@ shall be issued (see [SWS_Dcm_00790]).
       <ChangeRequest>N/A</ChangeRequest>
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
-      <Chapter>N/A</Chapter>
+      <Chapter>Chapter 3</Chapter>
       <HWPlatform>HWPlatform_5</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
-      <ReqBaseline>1.0</ReqBaseline>
+      <ReqBaseline>3</ReqBaseline>
     </RequirementItem>
     <RequirementItem>
-      <id>NTT.RADU.SW.Req211</id>
+      <id>NTT.RADU.SW.Req_213</id>
       <description>
         [SWS_Dcm_00575] d In order to cancel pending reception in lower-layer, related to
         the lower priority request, the Dcm module shall call PduR_DcmCancelReceive () with
@@ -312,14 +414,14 @@ shall be issued (see [SWS_Dcm_00790]).
       <ChangeRequest>N/A</ChangeRequest>
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
-      <Chapter>3</Chapter>
+      <Chapter>Chapter 1</Chapter>
       <HWPlatform>HWPlatform_5</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
-      <ReqBaseline>1.1</ReqBaseline>
+      <ReqBaseline>3</ReqBaseline>
     </RequirementItem>
     <RequirementItem>
-      <id>NTT.RADU.SW.Req212</id>
+      <id>NTT.RADU.SW.Req_214</id>
       <description>
         [SWS_Dcm_00575] d In order to cancel pending reception in lower-layer, related to
         the lower priority request, the Dcm module shall call PduR_DcmCancelReceive () with
@@ -334,14 +436,14 @@ shall be issued (see [SWS_Dcm_00790]).
       <ChangeRequest>N/A</ChangeRequest>
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
-      <Chapter>3</Chapter>
+      <Chapter>Chapter 2</Chapter>
       <HWPlatform>HWPlatform_5</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
-      <ReqBaseline>1.1</ReqBaseline>
+      <ReqBaseline>3</ReqBaseline>
     </RequirementItem>
     <RequirementItem>
-      <id>NTT.RADU.SW.Req213</id>
+      <id>NTT.RADU.SW.Req_215</id>
       <description>
         [SWS_Dcm_00575] d In order to cancel pending reception in lower-layer, related to
         the lower priority request, the Dcm module shall call PduR_DcmCancelReceive () with
@@ -356,58 +458,14 @@ shall be issued (see [SWS_Dcm_00790]).
       <ChangeRequest>N/A</ChangeRequest>
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
-      <Chapter>N/A</Chapter>
+      <Chapter>Chapter 1</Chapter>
       <HWPlatform>HWPlatform_5</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
-      <ReqBaseline>1.0</ReqBaseline>
+      <ReqBaseline>3</ReqBaseline>
     </RequirementItem>
     <RequirementItem>
-      <id>NTT.RADU.SW.Req214</id>
-      <description>
-        [SWS_Dcm_00575] d In order to cancel pending reception in lower-layer, related to
-        the lower priority request, the Dcm module shall call PduR_DcmCancelReceive () with
-        the following parameters: PduId: the id of the Pdu to be canceled c()
-      </description>
-      <status>Approved</status>
-      <CreatedBy>John Doe</CreatedBy>
-      <needscoverage>src</needscoverage>
-      <providescoverage>N/A</providescoverage>
-      <version>1.0</version>
-      <SafetyRelevant>QM</SafetyRelevant>
-      <ChangeRequest>N/A</ChangeRequest>
-      <ReviewID>N/A</ReviewID>
-      <RequirementType>Description</RequirementType>
-      <Chapter>N/A</Chapter>
-      <HWPlatform>HWPlatform_5</HWPlatform>
-      <Domain>SW</Domain>
-      <TestedAt>N/A</TestedAt>
-      <ReqBaseline>1.0</ReqBaseline>
-    </RequirementItem>
-    <RequirementItem>
-      <id>NTT.RADU.SW.Req215</id>
-      <description>
-        [SWS_Dcm_00575] d In order to cancel pending reception in lower-layer, related to
-        the lower priority request, the Dcm module shall call PduR_DcmCancelReceive () with
-        the following parameters: PduId: the id of the Pdu to be canceled c()
-      </description>
-      <status>Approved</status>
-      <CreatedBy>John Doe</CreatedBy>
-      <needscoverage>src</needscoverage>
-      <providescoverage>N/A</providescoverage>
-      <version>1.0</version>
-      <SafetyRelevant>QM</SafetyRelevant>
-      <ChangeRequest>N/A</ChangeRequest>
-      <ReviewID>N/A</ReviewID>
-      <RequirementType>Description</RequirementType>
-      <Chapter>N/A</Chapter>
-      <HWPlatform>HWPlatform_5</HWPlatform>
-      <Domain>SW</Domain>
-      <TestedAt>N/A</TestedAt>
-      <ReqBaseline>1.0</ReqBaseline>
-    </RequirementItem>
-    <RequirementItem>
-      <id>NTT.RADU.SW.Req216</id>
+      <id>NTT.RADU.SW.Req_216</id>
       <description>
         [SWS_Dcm_00392] d When sending a positive response to UDS Service 0x19 with
         subfunction 0x0B, 0x0C, 0x0D or 0x0E, the Dcm module shall use the data in 
@@ -422,14 +480,14 @@ shall be issued (see [SWS_Dcm_00790]).
       <ChangeRequest>N/A</ChangeRequest>
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
-      <Chapter>N/A</Chapter>
+      <Chapter>Chapter 2</Chapter>
       <HWPlatform>HWPlatform_5</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
-      <ReqBaseline>1.0</ReqBaseline>
+      <ReqBaseline>3</ReqBaseline>
     </RequirementItem>
     <RequirementItem>
-      <id>NTT.RADU.SW.Req217</id>
+      <id>NTT.RADU.SW.Req_217</id>
       <description>
         [SWS_Dcm_00393] d For the purpose of responding to UDS Service 0x19 with subfunctions 0x0B,
         0x0C, 0x0D or 0x0E, the Dcm module shall obtain the StatusOfDtc by
@@ -447,14 +505,14 @@ shall be issued (see [SWS_Dcm_00790]).
       <ChangeRequest>N/A</ChangeRequest>
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
-      <Chapter>N/A</Chapter>
+      <Chapter>Chapter 1</Chapter>
       <HWPlatform>HWPlatform_5</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
-      <ReqBaseline>1.0</ReqBaseline>
+      <ReqBaseline>3</ReqBaseline>
     </RequirementItem>
     <RequirementItem>
-      <id>NTT.RADU.SW.Req218</id>
+      <id>NTT.RADU.SW.Req_218</id>
       <description>
         [SWS_Dcm_00766] d If the Dcm received DEM_NO_SUCH_ELEMENT by calling
         Dem_GetDTCByOccurrenceTime it shall reply with a positive response and empty DTCAndStatusRecord. c()
@@ -468,14 +526,14 @@ shall be issued (see [SWS_Dcm_00790]).
       <ChangeRequest>N/A</ChangeRequest>
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
-      <Chapter>N/A</Chapter>
+      <Chapter>Chapter 1</Chapter>
       <HWPlatform>HWPlatform_5</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
-      <ReqBaseline>1.0</ReqBaseline>
+      <ReqBaseline>3</ReqBaseline>
     </RequirementItem>
     <RequirementItem>
-      <id>NTT.RADU.SW.Req219</id>
+      <id>NTT.RADU.SW.Req_219</id>
       <description>
         [SWS_Dcm_00464] d When sending a positive response to UDS Service 0x19 with
         subfunction 0x14, the Dcm module shall use the data in the response message according to Table 7.22.c()
@@ -489,14 +547,14 @@ shall be issued (see [SWS_Dcm_00790]).
       <ChangeRequest>N/A</ChangeRequest>
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
-      <Chapter>N/A</Chapter>
+      <Chapter>Chapter 2</Chapter>
       <HWPlatform>HWPlatform_5</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
-      <ReqBaseline>1.0</ReqBaseline>
+      <ReqBaseline>3</ReqBaseline>
     </RequirementItem>
     <RequirementItem>
-      <id>NTT.RADU.SW.Req220</id>
+      <id>NTT.RADU.SW.Req_220</id>
       <description>
         [SWS_Dcm_00465] d When responding to UDS Service 0x19 with subfunctions 0x14,
         the Dcm module shall obtain the DTCFaultCounter of every DTCs with status "prefailed"
@@ -513,14 +571,14 @@ shall be issued (see [SWS_Dcm_00790]).
       <ChangeRequest>N/A</ChangeRequest>
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
-      <Chapter>N/A</Chapter>
+      <Chapter>Chapter 1</Chapter>
       <HWPlatform>HWPlatform_5</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
-      <ReqBaseline>1.0</ReqBaseline>
+      <ReqBaseline>3</ReqBaseline>
     </RequirementItem>
     <RequirementItem>
-      <id>NTT.RADU.SW.Req221</id>
+      <id>NTT.RADU.SW.Req_221</id>
       <description>
         [SWS_Dcm_00681] d The Dcm module shall obtain the number of records
         that will be found using Dem_GetNextFilteredDTCAndFDC() by using
@@ -535,14 +593,14 @@ shall be issued (see [SWS_Dcm_00790]).
       <ChangeRequest>N/A</ChangeRequest>
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
-      <Chapter>N/A</Chapter>
+      <Chapter>Chapter 1</Chapter>
       <HWPlatform>HWPlatform_5</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
-      <ReqBaseline>1.0</ReqBaseline>
+      <ReqBaseline>3</ReqBaseline>
     </RequirementItem>
     <RequirementItem>
-      <id>NTT.RADU.SW.Req222</id>
+      <id>NTT.RADU.SW.Req_222</id>
       <description>
         [SWS_Dcm_00519] d The calls to Dem_SetDTCFilter() with parameter FilterForFaultDetectionCounter set
         to YES shall be done in the context of the Dcm_MainFunction
@@ -556,14 +614,14 @@ shall be issued (see [SWS_Dcm_00790]).
       <ChangeRequest>N/A</ChangeRequest>
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
-      <Chapter>2</Chapter>
+      <Chapter>Chapter 2</Chapter>
       <HWPlatform>HWPlatform_5</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
-      <ReqBaseline>1.1</ReqBaseline>
+      <ReqBaseline>3</ReqBaseline>
     </RequirementItem>
     <RequirementItem>
-      <id>NTT.RADU.SW.Req223</id>
+      <id>NTT.RADU.SW.Req_223</id>
       <description>
          [SWS_Dcm_01232] d If Dem_GetNextFilteredDTCAndFDC() returns DEM_NO_SUCH_ELEMENT and at least one matching 
          element could be retrieved before, the Dcm shall send a positive response including these data elements.
@@ -577,14 +635,14 @@ shall be issued (see [SWS_Dcm_00790]).
       <ChangeRequest>N/A</ChangeRequest>
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
-      <Chapter>1</Chapter>
+      <Chapter>Chapter 1</Chapter>
       <HWPlatform>HWPlatform_5</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
-      <ReqBaseline>1.1</ReqBaseline>
+      <ReqBaseline>3</ReqBaseline>
     </RequirementItem>
     <RequirementItem>
-      <id>NTT.RADU.SW.Req224</id>
+      <id>NTT.RADU.SW.Req_224</id>
       <description>
         [SWS_Dcm_00420] d After the execution of [SWS_Dcm_00419], the Dcm module shall
         respond to the servi
@@ -598,14 +656,14 @@ shall be issued (see [SWS_Dcm_00790]).
       <ChangeRequest>N/A</ChangeRequest>
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
-      <Chapter>N/A</Chapter>
+      <Chapter>Chapter 1</Chapter>
       <HWPlatform>HWPlatform_5</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
-      <ReqBaseline>1.0</ReqBaseline>
+      <ReqBaseline>3</ReqBaseline>
     </RequirementItem>
     <RequirementItem>
-      <id>NTT.RADU.SW.Req225</id>
+      <id>NTT.RADU.SW.Req_225</id>
       <description>
          [SWS_Dcm_00948] d As specified in [3, SAE J1979], unused data bytes shall be filled
          with $00. c()
@@ -619,14 +677,14 @@ shall be issued (see [SWS_Dcm_00790]).
       <ChangeRequest>N/A</ChangeRequest>
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
-      <Chapter>N/A</Chapter>
+      <Chapter>Chapter 1</Chapter>
       <HWPlatform>HWPlatform_5</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
-      <ReqBaseline>1.0</ReqBaseline>
+      <ReqBaseline>3</ReqBaseline>
     </RequirementItem>
     <RequirementItem>
-      <id>NTT.RADU.SW.Req226</id>
+      <id>NTT.RADU.SW.Req_226</id>
       <description>
          [SWS_Dcm_00422] d On reception of an OBD Service $09 request with one or more
          "availability InfoTypes" as parameter, the Dcm module shall respond with the corresponding supported
@@ -641,19 +699,19 @@ shall be issued (see [SWS_Dcm_00790]).
       <ChangeRequest>N/A</ChangeRequest>
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
-      <Chapter>N/A</Chapter>
+      <Chapter>Chapter 1</Chapter>
       <HWPlatform>HWPlatform_5</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
-      <ReqBaseline>1.0</ReqBaseline>
+      <ReqBaseline>3</ReqBaseline>
     </RequirementItem>
     <RequirementItem>
-      <id>NTT.RADU.SW.Req227</id>
+      <id>NTT.RADU.SW.Req_227</id>
       <description>
         [SWS_Dcm_00949] d On reception of an OBD Service $09 request "availability InfoTypes" together with
         other InfoTypes as parameter, the Dcm module shall ignore the request.
       </description>
-      <status>Accepted by project</status>
+      <status>Discarded by project</status>
       <CreatedBy>John Doe</CreatedBy>
       <needscoverage>src</needscoverage>
       <providescoverage>N/A</providescoverage>
@@ -662,14 +720,14 @@ shall be issued (see [SWS_Dcm_00790]).
       <ChangeRequest>N/A</ChangeRequest>
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
-      <Chapter>N/A</Chapter>
+      <Chapter>Chapter 1</Chapter>
       <HWPlatform>HWPlatform_5</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
-      <ReqBaseline>1.1</ReqBaseline>
+      <ReqBaseline>3</ReqBaseline>
     </RequirementItem>
     <RequirementItem>
-      <id>NTT.RADU.SW.Req228</id>
+      <id>NTT.RADU.SW.Req_228</id>
       <description>
          [SWS_Dcm_CONSTR_6045] d In case the responsibility is on provider side (DcmDspVehInfoNODIProvResp is set to TRUE),
          only one DcmDspVehInfoData container shall be allowed. c()
@@ -683,20 +741,20 @@ shall be issued (see [SWS_Dcm_00790]).
       <ChangeRequest>N/A</ChangeRequest>
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
-      <Chapter>N/A</Chapter>
+      <Chapter>Chapter 1</Chapter>
       <HWPlatform>HWPlatform_5</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
-      <ReqBaseline>1.1</ReqBaseline>
+      <ReqBaseline>3</ReqBaseline>
     </RequirementItem>
     <RequirementItem>
-      <id>NTT.RADU.SW.Req229</id>
+      <id>NTT.RADU.SW.Req_229</id>
       <description>
           [SWS_Dcm_CONSTR_6046] d In case DcmDspVehInfoDataUsePort
           is set to FALSE and DcmDspVehInfoDataReadFnc is set to either
           Dem_DcmGetInfoTypeValue08 or Dem_DcmGetInfoTypeValue0B then DcmDspVehInfoNODIProvResp shall be set to TRUE. c()
       </description>
-      <status>Accepted by project</status>
+      <status>Draft</status>
       <CreatedBy>John Doe</CreatedBy>
       <needscoverage>src</needscoverage>
       <providescoverage>N/A</providescoverage>
@@ -705,19 +763,19 @@ shall be issued (see [SWS_Dcm_00790]).
       <ChangeRequest>N/A</ChangeRequest>
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
-      <Chapter>N/A</Chapter>
+      <Chapter>Chapter 2</Chapter>
       <HWPlatform>HWPlatform_5</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
-      <ReqBaseline>1.1</ReqBaseline>
+      <ReqBaseline>3</ReqBaseline>
     </RequirementItem>
     <RequirementItem>
-      <id>NTT.RADU.SW.Req230</id>
+      <id>NTT.RADU.SW.Req_230</id>
       <description>
          [SWS_Dcm_01191] d If Xxx_GetInfoTypeValueData() doesn’t return E_OK or
          E_PENDING, the Dcm shall return NRC 0x12. c()
       </description>
-      <status>Accepted by project</status>
+      <status>Discarded by project</status>
       <CreatedBy>John Doe</CreatedBy>
       <needscoverage>src</needscoverage>
       <providescoverage>N/A</providescoverage>
@@ -726,14 +784,14 @@ shall be issued (see [SWS_Dcm_00790]).
       <ChangeRequest>N/A</ChangeRequest>
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
-      <Chapter>N/A</Chapter>
+      <Chapter>Chapter 2</Chapter>
       <HWPlatform>HWPlatform_5</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
-      <ReqBaseline>1.1</ReqBaseline>
+      <ReqBaseline>3</ReqBaseline>
     </RequirementItem>
     <RequirementItem>
-      <id>NTT.RADU.SW.Req231</id>
+      <id>NTT.RADU.SW.Req_231</id>
       <description>
          [SWS_Dcm_00532] d On reception of service DiagnosticSessionControl if the provided session is used to jump to
          OEM bootloader (parameter DcmDspSessionForBoot set to DCM_OEM_BOOT or DCM_OEM_BOOT_RESPAPP) the Dcm shall prepare
@@ -749,14 +807,14 @@ shall be issued (see [SWS_Dcm_00790]).
       <ChangeRequest>N/A</ChangeRequest>
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
-      <Chapter>1</Chapter>
+      <Chapter>Chapter 1</Chapter>
       <HWPlatform>HWPlatform_5</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
-      <ReqBaseline>1.1</ReqBaseline>
+      <ReqBaseline>3</ReqBaseline>
     </RequirementItem>
     <RequirementItem>
-      <id>NTT.RADU.SW.Req232</id>
+      <id>NTT.RADU.SW.Req_232</id>
       <description>
          [SWS_Dcm_00592] d On reception of service DiagnosticSessionControl if the provided session is used to jump to
          System Supplier bootloader (parameter DcmDspSessionForBoot set to DCM_SYS_BOOT or DCM_SYS_BOOT_RESPAPP) the Dcm
@@ -774,19 +832,19 @@ shall be issued (see [SWS_Dcm_00790]).
       <ChangeRequest>N/A</ChangeRequest>
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
-      <Chapter>3</Chapter>
+      <Chapter>Chapter 3</Chapter>
       <HWPlatform>HWPlatform_5</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
-      <ReqBaseline>1.1</ReqBaseline>
+      <ReqBaseline>3</ReqBaseline>
     </RequirementItem>
     <RequirementItem>
-      <id>NTT.RADU.SW.Req233</id>
+      <id>NTT.RADU.SW.Req_233</id>
       <description>
         [SWS_Dcm_01164] d In case the service DiagnosticSessionControl implies an ECU
         reset, the Dcm shall ignore all further requests while that reset is being processed. c()
       </description>
-      <status>Approved</status>
+      <status>Ready for review</status>
       <CreatedBy>John Doe</CreatedBy>
       <needscoverage>src</needscoverage>
       <providescoverage>N/A</providescoverage>
@@ -795,14 +853,14 @@ shall be issued (see [SWS_Dcm_00790]).
       <ChangeRequest>N/A</ChangeRequest>
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
-      <Chapter>N/A</Chapter>
+      <Chapter>Chapter 1</Chapter>
       <HWPlatform>HWPlatform_5</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
-      <ReqBaseline>1.0</ReqBaseline>
+      <ReqBaseline>3</ReqBaseline>
     </RequirementItem>
     <RequirementItem>
-      <id>NTT.RADU.SW.Req234</id>
+      <id>NTT.RADU.SW.Req_234</id>
       <description>
          [SWS_Dcm_00654] d In case the ModeDeclarationGroupPrototype DcmEcuReset is switched to mode JUMPTOBOOTLOADER or
          JUMPTOSYSSUPPLIERBOOTLOADER and the configuration parameter DcmSendRespPendOnRestart is set to
@@ -810,7 +868,7 @@ shall be issued (see [SWS_Dcm_00790]).
          Note: This final transmission of NRC 0x78 before switching to Bootloader shall reload
          the P2* timeout in the client.
       </description>
-      <status>Approved</status>
+      <status>Accepted by project</status>
       <CreatedBy>John Doe</CreatedBy>
       <needscoverage>src</needscoverage>
       <providescoverage>N/A</providescoverage>
@@ -819,20 +877,20 @@ shall be issued (see [SWS_Dcm_00790]).
       <ChangeRequest>N/A</ChangeRequest>
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
-      <Chapter>N/A</Chapter>
+      <Chapter>Chapter 1</Chapter>
       <HWPlatform>HWPlatform_5</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
-      <ReqBaseline>1.0</ReqBaseline>
+      <ReqBaseline>3</ReqBaseline>
     </RequirementItem>
     <RequirementItem>
-      <id>NTT.RADU.SW.Req235</id>
+      <id>NTT.RADU.SW.Req_235</id>
       <description>
         [SWS_Dcm_01175] d In case the ModeDeclarationGroupPrototype DcmEcuReset can
         not be switched JUMPTOBOOTLOADER or JUMPTOSYSSUPPLIERBOOTLOADER,
         the Dcm shall answer negatively to the request with NRC 0x22 (Conditions not correct).
       </description>
-      <status>Approved</status>
+      <status>Discarded by project</status>
       <CreatedBy>John Doe</CreatedBy>
       <needscoverage>src</needscoverage>
       <providescoverage>N/A</providescoverage>
@@ -841,14 +899,14 @@ shall be issued (see [SWS_Dcm_00790]).
       <ChangeRequest>N/A</ChangeRequest>
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
-      <Chapter>N/A</Chapter>
+      <Chapter>Chapter 1</Chapter>
       <HWPlatform>HWPlatform_5</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
-      <ReqBaseline>1.0</ReqBaseline>
+      <ReqBaseline>3</ReqBaseline>
     </RequirementItem>
     <RequirementItem>
-      <id>NTT.RADU.SW.Req236</id>
+      <id>NTT.RADU.SW.Req_236</id>
       <description>
         [SWS_Dcm_00535] d If the jump to bootloader is requested (see [SWS_Dcm_00532],
         [SWS_Dcm_00592], the configuration parameter DcmSendRespPendOnRestart is
@@ -865,14 +923,14 @@ shall be issued (see [SWS_Dcm_00790]).
       <ChangeRequest>N/A</ChangeRequest>
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
-      <Chapter>N/A</Chapter>
+      <Chapter>Chapter 1</Chapter>
       <HWPlatform>HWPlatform_5</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
-      <ReqBaseline>1.0</ReqBaseline>
+      <ReqBaseline>3</ReqBaseline>
     </RequirementItem>
     <RequirementItem>
-      <id>NTT.RADU.SW.Req237</id>
+      <id>NTT.RADU.SW.Req_237</id>
       <description>
          [SWS_Dcm_00997] d If the NRC 0x78 (Response Pending) response in
          [SWS_Dcm_00535] is not sent successfully no jump to the bootloader shall be performed c()
@@ -886,14 +944,14 @@ shall be issued (see [SWS_Dcm_00790]).
       <ChangeRequest>N/A</ChangeRequest>
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
-      <Chapter>N/A</Chapter>
+      <Chapter>Chapter 1</Chapter>
       <HWPlatform>HWPlatform_5</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
-      <ReqBaseline>1.0</ReqBaseline>
+      <ReqBaseline>3</ReqBaseline>
     </RequirementItem>
     <RequirementItem>
-      <id>NTT.RADU.SW.Req238</id>
+      <id>NTT.RADU.SW.Req_238</id>
       <description>
          [SWS_Dcm_01178] d In case the ModeDeclarationGroupPrototype DcmEcuReset is switched to mode JUMPTOBOOTLOADER
          or JUMPTOSYSSUPPLIERBOOTLOADER, the configuration parameter DcmSendRespPendOnRestart is set
@@ -909,14 +967,14 @@ shall be issued (see [SWS_Dcm_00790]).
       <ChangeRequest>N/A</ChangeRequest>
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
-      <Chapter>N/A</Chapter>
+      <Chapter>Chapter 1</Chapter>
       <HWPlatform>HWPlatform_5</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
-      <ReqBaseline>1.0</ReqBaseline>
+      <ReqBaseline>3</ReqBaseline>
     </RequirementItem>
     <RequirementItem>
-      <id>NTT.RADU.SW.Req239</id>
+      <id>NTT.RADU.SW.Req_239</id>
       <description>
          [SWS_Dcm_01180] d If Dcm_SetProgConditions returns E_OK according to
          [SWS_Dcm_01179], the Dcm shall trigger the mode switch of the ModeDeclarationGroupPrototype DcmEcuReset to EXECUTE. c()
@@ -930,14 +988,14 @@ shall be issued (see [SWS_Dcm_00790]).
       <ChangeRequest>N/A</ChangeRequest>
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
-      <Chapter>N/A</Chapter>
+      <Chapter>Chapter 1</Chapter>
       <HWPlatform>HWPlatform_5</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
-      <ReqBaseline>1.0</ReqBaseline>
+      <ReqBaseline>3</ReqBaseline>
     </RequirementItem>
     <RequirementItem>
-      <id>NTT.RADU.SW.Req240</id>
+      <id>NTT.RADU.SW.Req_240</id>
       <description>
          [SWS_Dcm_01181] d If Dcm_SetProgConditions returns E_NOT_OK according to
          [SWS_Dcm_01179], the Dcm shall not request any reset, shall not perform the jump to
@@ -953,14 +1011,14 @@ shall be issued (see [SWS_Dcm_00790]).
       <ChangeRequest>N/A</ChangeRequest>
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
-      <Chapter>N/A</Chapter>
+      <Chapter>Chapter 1</Chapter>
       <HWPlatform>HWPlatform_5</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
-      <ReqBaseline>1.0</ReqBaseline>
+      <ReqBaseline>3</ReqBaseline>
     </RequirementItem>
     <RequirementItem>
-      <id>NTT.RADU.SW.Req241</id>
+      <id>NTT.RADU.SW.Req_241</id>
       <description>
           [SWS_Dcm_00720] d In case the ModeDeclarationGroupPrototype DcmEcuReset is switched to mode JUMPTOBOOTLOADER
           or JUMPTOSYSSUPPLIERBOOTLOADER, the configuration parameter DcmSendRespPendOnRestart is set to FALSE and the
@@ -977,20 +1035,20 @@ shall be issued (see [SWS_Dcm_00790]).
       <ChangeRequest>N/A</ChangeRequest>
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
-      <Chapter>N/A</Chapter>
+      <Chapter>Chapter 1</Chapter>
       <HWPlatform>HWPlatform_5</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
-      <ReqBaseline>1.0</ReqBaseline>
+      <ReqBaseline>3</ReqBaseline>
     </RequirementItem>
     <RequirementItem>
-      <id>NTT.RADU.SW.Req242</id>
+      <id>NTT.RADU.SW.Req_242</id>
       <description>
         [SWS_Dcm_00719] d If Dcm_SetProgConditions returns E_OK according to
         [SWS_Dcm_00720], the Dcm shall shall trigger the mode switch of the ModeDeclarationGroupPrototype DcmEcuReset
         to EXECUTE without sending a NRC 0x78 (Response pending). c()
       </description>
-      <status>Approved</status>
+      <status>Ready for review</status>
       <CreatedBy>John Doe</CreatedBy>
       <needscoverage>src</needscoverage>
       <providescoverage>N/A</providescoverage>
@@ -999,14 +1057,14 @@ shall be issued (see [SWS_Dcm_00790]).
       <ChangeRequest>N/A</ChangeRequest>
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
-      <Chapter>N/A</Chapter>
+      <Chapter>Chapter 1</Chapter>
       <HWPlatform>HWPlatform_5</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
-      <ReqBaseline>1.0</ReqBaseline>
+      <ReqBaseline>3</ReqBaseline>
     </RequirementItem>
     <RequirementItem>
-      <id>NTT.RADU.SW.Req243</id>
+      <id>NTT.RADU.SW.Req_243</id>
       <description>
        [SWS_Dcm_00715] d If the jump to bootloader is requested (see [SWS_Dcm_00532]
        and [SWS_Dcm_00592]) and if the call to Dcm_SetProgConditions returns
@@ -1023,11 +1081,11 @@ shall be issued (see [SWS_Dcm_00790]).
       <ChangeRequest>N/A</ChangeRequest>
       <ReviewID>N/A</ReviewID>
       <RequirementType>Description</RequirementType>
-      <Chapter>N/A</Chapter>
+      <Chapter>Chapter 1</Chapter>
       <HWPlatform>HWPlatform_5</HWPlatform>
       <Domain>SW</Domain>
       <TestedAt>N/A</TestedAt>
-      <ReqBaseline>1.0</ReqBaseline>
+      <ReqBaseline>3</ReqBaseline>
     </RequirementItem>
   </Requirements>
 </root_file>

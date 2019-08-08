@@ -197,3 +197,33 @@ E:\NTT\05.07\ReqM_Tool\ReqMTool\obj\Debug\RequirementManagementTool.exe
 E:\NTT\05.07\ReqM_Tool\ReqMTool\obj\Debug\RequirementManagementTool.pdb
 E:\NTT\05.07\ReqM_Tool\ReqMTool\obj\Debug\ReqM_namespace.HeaderForm.resources
 E:\NTT\05.07\ReqM_Tool\ReqMTool\obj\Debug\ReqM_namespace.ImageForm.resources
+C:\Users\Rares\Desktop\Project\07.08 - FINAL\ReqM_Tool\ReqMTool\bin\Debug\RequirementManagementTool.exe.config
+C:\Users\Rares\Desktop\Project\07.08 - FINAL\ReqM_Tool\ReqMTool\bin\Debug\RequirementManagementTool.exe
+C:\Users\Rares\Desktop\Project\07.08 - FINAL\ReqM_Tool\ReqMTool\bin\Debug\RequirementManagementTool.pdb
+C:\Users\Rares\Desktop\Project\07.08 - FINAL\ReqM_Tool\ReqMTool\obj\Debug\ReqM Tool.csprojAssemblyReference.cache
+C:\Users\Rares\Desktop\Project\07.08 - FINAL\ReqM_Tool\ReqMTool\obj\Debug\ReqM Tool.csproj.ResolveComReference.cache
+C:\Users\Rares\Desktop\Project\07.08 - FINAL\ReqM_Tool\ReqMTool\obj\Debug\ReqM_namespace.AddForm.resources
+C:\Users\Rares\Desktop\Project\07.08 - FINAL\ReqM_Tool\ReqMTool\obj\Debug\ReqM_namespace.FilterForm.resources
+C:\Users\Rares\Desktop\Project\07.08 - FINAL\ReqM_Tool\ReqMTool\obj\Debug\ReqM_namespace.HeaderForm.resources
+C:\Users\Rares\Desktop\Project\07.08 - FINAL\ReqM_Tool\ReqMTool\obj\Debug\ReqM_namespace.ImageForm.resources
+C:\Users\Rares\Desktop\Project\07.08 - FINAL\ReqM_Tool\ReqMTool\obj\Debug\ReqM_Tool.Main.resources
+C:\Users\Rares\Desktop\Project\07.08 - FINAL\ReqM_Tool\ReqMTool\obj\Debug\ReqM_namespace.Properties.Resources.resources
+C:\Users\Rares\Desktop\Project\07.08 - FINAL\ReqM_Tool\ReqMTool\obj\Debug\ReqM Tool.csproj.GenerateResource.cache
+C:\Users\Rares\Desktop\Project\07.08 - FINAL\ReqM_Tool\ReqMTool\obj\Debug\ReqM Tool.csproj.CoreCompileInputs.cache
+C:\Users\Rares\Desktop\Project\07.08 - FINAL\ReqM_Tool\ReqMTool\obj\Debug\RequirementManagementTool.exe
+C:\Users\Rares\Desktop\Project\07.08 - FINAL\ReqM_Tool\ReqMTool\obj\Debug\RequirementManagementTool.pdb
+C:\Users\Rares\Desktop\07.08 - FINAL\ReqM_Tool\ReqMTool\bin\Debug\RequirementManagementTool.exe.config
+C:\Users\Rares\Desktop\07.08 - FINAL\ReqM_Tool\ReqMTool\bin\Debug\RequirementManagementTool.exe
+C:\Users\Rares\Desktop\07.08 - FINAL\ReqM_Tool\ReqMTool\bin\Debug\RequirementManagementTool.pdb
+C:\Users\Rares\Desktop\07.08 - FINAL\ReqM_Tool\ReqMTool\obj\Debug\ReqM Tool.csprojAssemblyReference.cache
+C:\Users\Rares\Desktop\07.08 - FINAL\ReqM_Tool\ReqMTool\obj\Debug\ReqM Tool.csproj.ResolveComReference.cache
+C:\Users\Rares\Desktop\07.08 - FINAL\ReqM_Tool\ReqMTool\obj\Debug\ReqM_namespace.AddForm.resources
+C:\Users\Rares\Desktop\07.08 - FINAL\ReqM_Tool\ReqMTool\obj\Debug\ReqM_namespace.FilterForm.resources
+C:\Users\Rares\Desktop\07.08 - FINAL\ReqM_Tool\ReqMTool\obj\Debug\ReqM_namespace.HeaderForm.resources
+C:\Users\Rares\Desktop\07.08 - FINAL\ReqM_Tool\ReqMTool\obj\Debug\ReqM_namespace.ImageForm.resources
+C:\Users\Rares\Desktop\07.08 - FINAL\ReqM_Tool\ReqMTool\obj\Debug\ReqM_Tool.Main.resources
+C:\Users\Rares\Desktop\07.08 - FINAL\ReqM_Tool\ReqMTool\obj\Debug\ReqM_namespace.Properties.Resources.resources
+C:\Users\Rares\Desktop\07.08 - FINAL\ReqM_Tool\ReqMTool\obj\Debug\ReqM Tool.csproj.GenerateResource.cache
+C:\Users\Rares\Desktop\07.08 - FINAL\ReqM_Tool\ReqMTool\obj\Debug\ReqM Tool.csproj.CoreCompileInputs.cache
+C:\Users\Rares\Desktop\07.08 - FINAL\ReqM_Tool\ReqMTool\obj\Debug\RequirementManagementTool.exe
+C:\Users\Rares\Desktop\07.08 - FINAL\ReqM_Tool\ReqMTool\obj\Debug\RequirementManagementTool.pdb
